@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="iOS" BasePlatform="iOS" SchemaVersion="11" SoundbankVersion="128">
+	<RootPaths>
+		<ProjectRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/Documents/UnityProjects/GravityRacer/GravityRacer_WwiseProject/</ProjectRoot>
+		<SourceFilesRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/Documents/UnityProjects/GravityRacer/GravityRacer_WwiseProject/.cache/iOS/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/Documents/UnityProjects/GravityRacer/GravityRacer_WwiseProject/GeneratedSoundBanks/iOS/</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/Documents/UnityProjects/GravityRacer/GravityRacer_WwiseProject/GeneratedSoundBanks/iOS/</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3298724948" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Brakeout_Soundbank</ObjectPath>
+			<ShortName>Brakeout_Soundbank</ShortName>
+			<Path>Brakeout_Soundbank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1440041138" Name="autopilotclose" ObjectPath="\Events\Default Work Unit\autopilotclose" MaxAttenuation="0.000000"/>
+				<Event Id="750560166" Name="autopilotstart" ObjectPath="\Events\Default Work Unit\autopilotstart" MaxAttenuation="0.000000"/>
+				<Event Id="1974659302" Name="autopilotstop" ObjectPath="\Events\Default Work Unit\autopilotstop" MaxAttenuation="0.000000"/>
+				<Event Id="1584507803" Name="click" ObjectPath="\Events\Default Work Unit\click"/>
+				<Event Id="3048106310" Name="crash" ObjectPath="\Events\Default Work Unit\crash"/>
+				<Event Id="2512384458" Name="fall" ObjectPath="\Events\Default Work Unit\fall"/>
+				<Event Id="254420377" Name="magnetstart" ObjectPath="\Events\Default Work Unit\magnetstart" MaxAttenuation="0.000000"/>
+				<Event Id="2147734643" Name="magnetstop" ObjectPath="\Events\Default Work Unit\magnetstop" MaxAttenuation="0.000000"/>
+				<Event Id="1161967626" Name="shield" ObjectPath="\Events\Default Work Unit\shield"/>
+				<Event Id="4245713047" Name="slowtimestart" ObjectPath="\Events\Default Work Unit\slowtimestart" MaxAttenuation="0.000000"/>
+				<Event Id="1849998205" Name="slowtimestop" ObjectPath="\Events\Default Work Unit\slowtimestop" MaxAttenuation="0.000000"/>
+				<Event Id="3212360787" Name="startaudio" ObjectPath="\Events\Default Work Unit\startaudio"/>
+				<Event Id="2108779961" Name="wall" ObjectPath="\Events\Default Work Unit\wall"/>
+				<Event Id="1500973335" Name="x2" ObjectPath="\Events\Default Work Unit\x2"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="17309205" Language="SFX">
+					<ShortName>autopilot2.wav</ShortName>
+					<Path>SFX/autopilot2_F17FB28C.wem</Path>
+				</File>
+				<File Id="25741986" Language="SFX">
+					<ShortName>s1_pad.wav</ShortName>
+					<Path>SFX/s1_pad_F17FB28C.wem</Path>
+				</File>
+				<File Id="41281032" Language="SFX">
+					<ShortName>falling.wav</ShortName>
+					<Path>SFX/falling_1C9C67B2.wem</Path>
+				</File>
+				<File Id="92767240" Language="SFX">
+					<ShortName>impact1.wav</ShortName>
+					<Path>SFX/impact1_1C9C67B2.wem</Path>
+				</File>
+				<File Id="129775373" Language="SFX">
+					<ShortName>wall.wav</ShortName>
+					<Path>SFX/wall_1C9C67B2.wem</Path>
+				</File>
+				<File Id="135453911" Language="SFX">
+					<ShortName>s3_bass.wav</ShortName>
+					<Path>SFX/s3_bass_F17FB28C.wem</Path>
+				</File>
+				<File Id="146886846" Language="SFX">
+					<ShortName>s1_drums4.wav</ShortName>
+					<Path>SFX/s1_drums4_F17FB28C.wem</Path>
+				</File>
+				<File Id="153814299" Language="SFX">
+					<ShortName>shield.wav</ShortName>
+					<Path>SFX/shield_1C9C67B2.wem</Path>
+				</File>
+				<File Id="177744442" Language="SFX">
+					<ShortName>impact5.wav</ShortName>
+					<Path>SFX/impact5_1C9C67B2.wem</Path>
+				</File>
+				<File Id="181863761" Language="SFX">
+					<ShortName>bo_sfx_move.wav</ShortName>
+					<Path>SFX/bo_sfx_move_F17FB28C.wem</Path>
+				</File>
+				<File Id="211891317" Language="SFX">
+					<ShortName>s3_drums2.wav</ShortName>
+					<Path>SFX/s3_drums2_F17FB28C.wem</Path>
+				</File>
+				<File Id="212501281" Language="SFX">
+					<ShortName>s1_drums3.wav</ShortName>
+					<Path>SFX/s1_drums3_F17FB28C.wem</Path>
+				</File>
+				<File Id="222627598" Language="SFX">
+					<ShortName>s1_plucks3.wav</ShortName>
+					<Path>SFX/s1_plucks3_F17FB28C.wem</Path>
+				</File>
+				<File Id="311944374" Language="SFX">
+					<ShortName>s3_drums1.wav</ShortName>
+					<Path>SFX/s3_drums1_F17FB28C.wem</Path>
+				</File>
+				<File Id="334160190" Language="SFX">
+					<ShortName>s3_arp.wav</ShortName>
+					<Path>SFX/s3_arp_F17FB28C.wem</Path>
+				</File>
+				<File Id="365356470" Language="SFX">
+					<ShortName>s1_bass4.wav</ShortName>
+					<Path>SFX/s1_bass4_F17FB28C.wem</Path>
+				</File>
+				<File Id="403831451" Language="SFX">
+					<ShortName>s2_wood.wav</ShortName>
+					<Path>SFX/s2_wood_F17FB28C.wem</Path>
+				</File>
+				<File Id="418859249" Language="SFX">
+					<ShortName>s2_guitar.wav</ShortName>
+					<Path>SFX/s2_guitar_F17FB28C.wem</Path>
+				</File>
+				<File Id="425386642" Language="SFX">
+					<ShortName>s2_engine.wav</ShortName>
+					<Path>SFX/s2_engine_F17FB28C.wem</Path>
+				</File>
+				<File Id="427506041" Language="SFX">
+					<ShortName>slowtime.wav</ShortName>
+					<Path>SFX/slowtime_F17FB28C.wem</Path>
+				</File>
+				<File Id="454727253" Language="SFX">
+					<ShortName>s3_plucks2.wav</ShortName>
+					<Path>SFX/s3_plucks2_F17FB28C.wem</Path>
+				</File>
+				<File Id="473341384" Language="SFX">
+					<ShortName>s1_bass3.wav</ShortName>
+					<Path>SFX/s1_bass3_F17FB28C.wem</Path>
+				</File>
+				<File Id="556771638" Language="SFX">
+					<ShortName>s3_guitar.wav</ShortName>
+					<Path>SFX/s3_guitar_F17FB28C.wem</Path>
+				</File>
+				<File Id="576577722" Language="SFX">
+					<ShortName>s1_bass2.wav</ShortName>
+					<Path>SFX/s1_bass2_F17FB28C.wem</Path>
+				</File>
+				<File Id="600193801" Language="SFX">
+					<ShortName>s2_drums4.wav</ShortName>
+					<Path>SFX/s2_drums4_F17FB28C.wem</Path>
+				</File>
+				<File Id="629591569" Language="SFX">
+					<ShortName>impact3.wav</ShortName>
+					<Path>SFX/impact3_1C9C67B2.wem</Path>
+				</File>
+				<File Id="678696029" Language="SFX">
+					<ShortName>s1_plucks1.wav</ShortName>
+					<Path>SFX/s1_plucks1_F17FB28C.wem</Path>
+				</File>
+				<File Id="695709199" Language="SFX">
+					<ShortName>s1_drums1.wav</ShortName>
+					<Path>SFX/s1_drums1_F17FB28C.wem</Path>
+				</File>
+				<File Id="696160913" Language="SFX">
+					<ShortName>s1_plucks2.wav</ShortName>
+					<Path>SFX/s1_plucks2_F17FB28C.wem</Path>
+				</File>
+				<File Id="704082341" Language="SFX">
+					<ShortName>magnet.wav</ShortName>
+					<Path>SFX/magnet_F17FB28C.wem</Path>
+				</File>
+				<File Id="705595235" Language="SFX">
+					<ShortName>s2_drums1.wav</ShortName>
+					<Path>SFX/s2_drums1_F17FB28C.wem</Path>
+				</File>
+				<File Id="733407512" Language="SFX">
+					<ShortName>autopilot1.wav</ShortName>
+					<Path>SFX/autopilot1_F17FB28C.wem</Path>
+				</File>
+				<File Id="774448436" Language="SFX">
+					<ShortName>UIclick.wav</ShortName>
+					<Path>SFX/UIclick_1C9C67B2.wem</Path>
+				</File>
+				<File Id="781285813" Language="SFX">
+					<ShortName>s2_drums2.wav</ShortName>
+					<Path>SFX/s2_drums2_F17FB28C.wem</Path>
+				</File>
+				<File Id="793530142" Language="SFX">
+					<ShortName>impact4.wav</ShortName>
+					<Path>SFX/impact4_1C9C67B2.wem</Path>
+				</File>
+				<File Id="796066990" Language="SFX">
+					<ShortName>s1_bass1.wav</ShortName>
+					<Path>SFX/s1_bass1_F17FB28C.wem</Path>
+				</File>
+				<File Id="816385963" Language="SFX">
+					<ShortName>impact2.wav</ShortName>
+					<Path>SFX/impact2_1C9C67B2.wem</Path>
+				</File>
+				<File Id="825199187" Language="SFX">
+					<ShortName>s3_stabs1.wav</ShortName>
+					<Path>SFX/s3_stabs1_F17FB28C.wem</Path>
+				</File>
+				<File Id="842059455" Language="SFX">
+					<ShortName>s3_wood.wav</ShortName>
+					<Path>SFX/s3_wood_F17FB28C.wem</Path>
+				</File>
+				<File Id="847692359" Language="SFX">
+					<ShortName>s2_bass.wav</ShortName>
+					<Path>SFX/s2_bass_F17FB28C.wem</Path>
+				</File>
+				<File Id="853067935" Language="SFX">
+					<ShortName>s1_woods.wav</ShortName>
+					<Path>SFX/s1_woods_F17FB28C.wem</Path>
+				</File>
+				<File Id="899396544" Language="SFX">
+					<ShortName>s2_stabs.wav</ShortName>
+					<Path>SFX/s2_stabs_F17FB28C.wem</Path>
+				</File>
+				<File Id="932846871" Language="SFX">
+					<ShortName>s3_plucks1.wav</ShortName>
+					<Path>SFX/s3_plucks1_F17FB28C.wem</Path>
+				</File>
+				<File Id="937691303" Language="SFX">
+					<ShortName>s3_engine.wav</ShortName>
+					<Path>SFX/s3_engine_F17FB28C.wem</Path>
+				</File>
+				<File Id="950844031" Language="SFX">
+					<ShortName>x2.wav</ShortName>
+					<Path>SFX/x2_1C9C67B2.wem</Path>
+				</File>
+				<File Id="967749208" Language="SFX">
+					<ShortName>s1_arp.wav</ShortName>
+					<Path>SFX/s1_arp_F17FB28C.wem</Path>
+				</File>
+				<File Id="967789095" Language="SFX">
+					<ShortName>s3_stabs2.wav</ShortName>
+					<Path>SFX/s3_stabs2_F17FB28C.wem</Path>
+				</File>
+				<File Id="973476727" Language="SFX">
+					<ShortName>s1_stabs2.wav</ShortName>
+					<Path>SFX/s1_stabs2_F17FB28C.wem</Path>
+				</File>
+				<File Id="1009618198" Language="SFX">
+					<ShortName>s2_drums3.wav</ShortName>
+					<Path>SFX/s2_drums3_F17FB28C.wem</Path>
+				</File>
+				<File Id="1015603165" Language="SFX">
+					<ShortName>s1_guitar.wav</ShortName>
+					<Path>SFX/s1_guitar_F17FB28C.wem</Path>
+				</File>
+				<File Id="1019355250" Language="SFX">
+					<ShortName>s1_drums2.wav</ShortName>
+					<Path>SFX/s1_drums2_F17FB28C.wem</Path>
+				</File>
+				<File Id="1040992048" Language="SFX">
+					<ShortName>s1_stabs1.wav</ShortName>
+					<Path>SFX/s1_stabs1_F17FB28C.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

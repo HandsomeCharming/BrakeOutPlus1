@@ -1,0 +1,74 @@
+Event	ID	Name			Wwise Object Path	Notes
+	254420377	magnetstart			\Default Work Unit\magnetstart	
+	750560166	autopilotstart			\Default Work Unit\autopilotstart	
+	1161967626	shield			\Default Work Unit\shield	
+	1440041138	autopilotclose			\Default Work Unit\autopilotclose	
+	1500973335	x2			\Default Work Unit\x2	
+	1584507803	click			\Default Work Unit\click	
+	1849998205	slowtimestop			\Default Work Unit\slowtimestop	
+	1974659302	autopilotstop			\Default Work Unit\autopilotstop	
+	2108779961	wall			\Default Work Unit\wall	
+	2147734643	magnetstop			\Default Work Unit\magnetstop	
+	2512384458	fall			\Default Work Unit\fall	
+	3048106310	crash			\Default Work Unit\crash	
+	3212360787	startaudio			\Default Work Unit\startaudio	
+	4245713047	slowtimestart			\Default Work Unit\slowtimestart	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	640949982	SPEED			\Default Work Unit\SPEED	
+	2398231425	SCORE			\Default Work Unit\SCORE	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	17309205	autopilot2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\autopilot2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilot2		2112160
+	25741986	s1_pad	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_pad_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\PAD\s1_PAD\s1_pad\s1_pad		23075976
+	41281032	falling	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\falling_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\falling		564408
+	92767240	impact1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\impact1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact1		280924
+	129775373	wall	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\wall_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wall		262608
+	135453911	s3_bass	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_bass_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\BASS\s1BASS\s3_bass\s3_bass		7404520
+	146886846	s1_drums4	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_drums4_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s1_drums\s1_drums4		3236664
+	153814299	shield	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\shield_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\shield		131084
+	177744442	impact5	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\impact5_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact5		269764
+	181863761	bo_sfx_move	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\bo_sfx_move_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\move\bo_sfx_move\bo_sfx_move		1248064
+	211891317	s3_drums2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_drums2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s3_drums1\s3_drums2		6466504
+	212501281	s1_drums3	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_drums3_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s1_drums\s1_drums3		3180664
+	222627598	s1_plucks3	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_plucks3_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\PLUCKS\s1PLUCKS\s1_plucks1\s1_plucks3		3825432
+	311944374	s3_drums1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_drums1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s3_drums1\s3_drums1		6402664
+	334160190	s3_arp	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_arp_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\ARPS\s1ARPS\s3_arp\s3_arp		7404520
+	365356470	s1_bass4	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_bass4_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\BASS\s1BASS\s1_bass1\s1_bass4		3339152
+	403831451	s2_wood	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_wood_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\ARPS\s1ARPS\s2_wood\s2_wood		3507240
+	418859249	s2_guitar	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_guitar_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\GUITAR\s1GUITAR\s2_guitar\s2_guitar		4328204
+	425386642	s2_engine	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_engine_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\PAD\s1_PAD\s2_engine\s2_engine		3507240
+	427506041	slowtime	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\slowtime_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\slowtime\slowtime\slowtime		1242788
+	454727253	s3_plucks2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_plucks2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\PLUCKS\s1PLUCKS\s3_plucks1\s3_plucks2		6749256
+	473341384	s1_bass3	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_bass3_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\BASS\s1BASS\s1_bass1\s1_bass3		3323440
+	556771638	s3_guitar	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_guitar_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\GUITAR\s1GUITAR\s3_guitar\s3_guitar		6318376
+	576577722	s1_bass2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_bass2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\BASS\s1BASS\s1_bass1\s1_bass2		3290288
+	600193801	s2_drums4	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_drums4_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s2_drums1\s2_drums4		3574660
+	629591569	impact3	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\impact3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact3		351864
+	678696029	s1_plucks1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_plucks1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\PLUCKS\s1PLUCKS\s1_plucks1\s1_plucks1		3763956
+	695709199	s1_drums1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_drums1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s1_drums\s1_drums1		3072064
+	696160913	s1_plucks2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_plucks2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\PLUCKS\s1PLUCKS\s1_plucks1\s1_plucks2		3579604
+	704082341	magnet	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\magnet_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\magnet\magnet\magnet		1176064
+	705595235	s2_drums1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_drums1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s2_drums1\s2_drums1		3357992
+	733407512	autopilot1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\autopilot1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilot1		1994208
+	774448436	UIclick	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\UIclick_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIclick		69556
+	781285813	s2_drums2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_drums2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s2_drums1\s2_drums2		3601384
+	793530142	impact4	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\impact4_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact4		365616
+	796066990	s1_bass1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_bass1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\BASS\s1BASS\s1_bass1\s1_bass1		3377072
+	816385963	impact2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\impact2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact2		399640
+	825199187	s3_stabs1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_stabs1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\STABS\s1STABS\s3_stabs1\s3_stabs1		6318376
+	842059455	s3_wood	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_wood_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\ARPS\s1ARPS\s3_arp\s3_wood		6822632
+	847692359	s2_bass	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_bass_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\BASS\s1BASS\s2_bass\s2_bass		3292904
+	853067935	s1_woods	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_woods_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\ARPS\s1ARPS\s1_arp\s1_woods		4710676
+	899396544	s2_stabs	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_stabs_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\STABS\s1STABS\s2_stabs\s2_stabs		4328204
+	932846871	s3_plucks1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_plucks1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\PLUCKS\s1PLUCKS\s3_plucks1\s3_plucks1		6973608
+	937691303	s3_engine	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_engine_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\PAD\s1_PAD\s3_engine\s3_engine		6822632
+	950844031	x2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\x2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\x2		359732
+	967749208	s1_arp	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_arp_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\ARPS\s1ARPS\s1_arp\s1_arp		4710676
+	967789095	s3_stabs2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s3_stabs2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\STABS\s1STABS\s3_stabs1\s3_stabs2		6786244
+	973476727	s1_stabs2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_stabs2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\STABS\s1STABS\s1_stabs1\s1_stabs2		3072064
+	1009618198	s2_drums3	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s2_drums3_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s2_drums1\s2_drums3		3584936
+	1015603165	s1_guitar	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_guitar_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\GUITAR\s1GUITAR\s1_guitar\s1_guitar		3842544
+	1019355250	s1_drums2	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_drums2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\DRUMS\s1DRUMS\s1_drums\s1_drums2		3168664
+	1040992048	s1_stabs1	Y:\Documents\UnityProjects\GravityRacer\GravityRacer_WwiseProject\.cache\iOS\SFX\s1_stabs1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\STABS\s1STABS\s1_stabs1\s1_stabs1		3246000
+

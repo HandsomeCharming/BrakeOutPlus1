@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" SchemaVersion="85">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="startaudio" ID="{2DC549EB-2455-4B25-B3F1-88608115F8D1}">
+					<ChildrenList>
+						<Action Name="" ID="{728046C1-A11B-45FD-9182-9D638717B55A}" ShortID="962215569">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="music" ID="{878612B5-D1EF-46B1-8B18-3D2598C5A1BF}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{2B233FC9-76CA-4750-8B15-1EB518EF1E89}" ShortID="925291777">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="move" ID="{B2FAC688-7551-4183-97F1-0115C241377B}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{12498E4C-7901-4035-82BB-5AAE11321643}" ShortID="800193797">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="magnet" ID="{F6BE4DC5-1307-4596-841F-E33CE7FAC643}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{DA76B5C7-31E1-44B2-A900-EFEF2D8A21CF}" ShortID="976948213">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="magnet" ID="{00930505-EA14-494D-8095-98AE3A7EB638}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{912FB391-B25B-40B3-9ADF-9F018C246C47}" ShortID="988639445">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="slowtime" ID="{72538BD0-1208-43C1-B7F1-414AFCF0B466}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{496E088D-E86B-4625-90CC-09CA1E9FA7D9}" ShortID="778779957">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="slowtime" ID="{8E7BCB62-D904-4B0B-87DF-5030671029FB}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{D2C55D7C-86D0-4BE7-97E7-A1C332D400AE}" ShortID="473783853">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot" ID="{945D3611-18E7-42D8-88F2-9914FF0FC475}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{725146FC-47F1-40B4-AD5B-DB313CAE5282}" ShortID="601539323">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot1" ID="{7C729CCA-F01A-44CA-B097-B6552BC104AD}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{657CDDFB-B670-41D5-8ADA-A0B0884D6752}" ShortID="169648169">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot2" ID="{D735B85D-8854-4824-A7B3-1ED2040E1CE6}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{42A3856C-B805-431B-A704-2BC4B5AF0031}" ShortID="628848153">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilotclose" ID="{4FBBE15F-7E56-481C-8E9A-C56B8D3E0FD5}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="magnetstart" ID="{98635283-DC62-4147-8FD4-B69DBFB937AA}">
+					<ChildrenList>
+						<Action Name="" ID="{12FD4549-5BEA-4FC7-8388-D101D4BA6D89}" ShortID="430154689">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="magnet" ID="{00930505-EA14-494D-8095-98AE3A7EB638}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="magnetstop" ID="{CC6D0B51-7E83-4DE8-A77F-172C8A16DE60}">
+					<ChildrenList>
+						<Action Name="" ID="{80F02E66-B4DE-4021-A6E1-167A16C237B0}" ShortID="304435764">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="magnet" ID="{00930505-EA14-494D-8095-98AE3A7EB638}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="crash" ID="{B0621EBF-2C76-42B7-A8EB-8A3B1A4DDD62}">
+					<ChildrenList>
+						<Action Name="" ID="{4CF3BBCB-A7C8-4D3D-B13B-AA4F4832BA5C}" ShortID="530254264">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="crash" ID="{1E1DE6E8-4DFA-45DB-9643-3281FE502EAB}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="wall" ID="{EAD8AA8E-F50C-4F82-82EF-601623DECC9E}">
+					<ChildrenList>
+						<Action Name="" ID="{A924B2DE-2AD8-4115-AA7C-1A18DFA914CF}" ShortID="856354230">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wall" ID="{E3E70659-00B6-4F09-9605-EC3F7247C646}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="fall" ID="{F14809AA-5E13-40C1-B276-3307601238BE}">
+					<ChildrenList>
+						<Action Name="" ID="{57C34F34-7CE3-404F-AA7C-E733DA1F3D54}" ShortID="29364769">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="falling" ID="{C994EB7F-9AF2-4BCC-95E7-5440F8422D2C}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="x2" ID="{F30ECE26-6CC9-4871-854B-F83FACAE38CF}">
+					<ChildrenList>
+						<Action Name="" ID="{74B17507-D889-4679-B8D1-1D4AC7F2D57D}" ShortID="692750548">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="x2" ID="{E5AD0DE9-43D6-4696-831F-77670C470940}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="shield" ID="{6B8BC105-9B88-41E4-91CC-120153C91F13}">
+					<ChildrenList>
+						<Action Name="" ID="{C8DDF386-DC76-496C-AFFB-A6D1C9AEE719}" ShortID="406515737">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="shield" ID="{788C172C-0A89-438B-8B22-42153C360CC1}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="click" ID="{65E93DFD-6718-43D5-A5D1-8E4CBD6C6F06}">
+					<ChildrenList>
+						<Action Name="" ID="{015217E1-6D71-4773-9EE2-C1781D993468}" ShortID="73331200">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UIclick" ID="{41224CB5-8630-40F3-A7B7-5F974E481A53}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="slowtimestart" ID="{7F7901C6-51F6-4C61-8D73-0B34F1D51B0F}">
+					<ChildrenList>
+						<Action Name="" ID="{5D6D53E9-B6CF-4C0F-87A9-AD1D708AB1D5}" ShortID="621955360">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="slowtime" ID="{8E7BCB62-D904-4B0B-87DF-5030671029FB}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{C88CC8A2-0C9A-4C66-9666-44668E8A37B6}" ShortID="421326579">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="slowtimeclose" ID="{914138D0-13B3-4B36-9874-5EDA76190111}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{58905041-80C8-4170-8D13-A019DA0405F8}" ShortID="781587784">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LOWPASS" ID="{AAAFC142-64C8-4634-8446-5603359F890F}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="slowtimestop" ID="{7470D043-40C5-4931-B6B4-5521C2225A24}">
+					<ChildrenList>
+						<Action Name="" ID="{6459CEA0-9726-4C5D-B8AD-E17B14739BDE}" ShortID="377780739">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="slowtime" ID="{8E7BCB62-D904-4B0B-87DF-5030671029FB}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A105ABD4-5FF1-43E2-8423-02E2607443EB}" ShortID="372784506">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="GameParameterValue" Type="Real64" Value="100"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LOWPASS" ID="{AAAFC142-64C8-4634-8446-5603359F890F}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="autopilotstart" ID="{0025DD9F-F3FD-4E22-A265-A7A540EEF91C}">
+					<ChildrenList>
+						<Action Name="" ID="{4004025A-F469-49DA-8347-1E07D980029A}" ShortID="345957997">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+								<Property Name="Volume" Type="Real64" Value="-5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot1" ID="{7C729CCA-F01A-44CA-B097-B6552BC104AD}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{D0A531D5-64FD-49A4-9DF0-F33078E7F24B}" ShortID="819232665">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot1" ID="{538E9BD8-737C-436A-8CBC-31BC661B7475}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{89C8AFEF-F0AA-4F7E-8932-AC42A4CA0C65}" ShortID="255806337">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot2" ID="{D735B85D-8854-4824-A7B3-1ED2040E1CE6}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{49B8EC29-8BC6-402F-9058-F5F7673E2027}" ShortID="1017079472">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilotclose" ID="{4FBBE15F-7E56-481C-8E9A-C56B8D3E0FD5}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{9945580C-33DB-44D5-98F1-F9B48B4D2E96}" ShortID="138974572">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="GameParameterValue" Type="Real64" Value="39"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LOWPASS" ID="{AAAFC142-64C8-4634-8446-5603359F890F}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="autopilotstop" ID="{77FA9060-D522-4B34-9BCB-5CABA41D2152}">
+					<ChildrenList>
+						<Action Name="" ID="{0E1E7391-B3B0-4186-A4B5-98CE76841824}" ShortID="770072591">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+								<Property Name="Volume" Type="Real64" Value="-96"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot1" ID="{7C729CCA-F01A-44CA-B097-B6552BC104AD}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="autopilotclose" ID="{1ABF32B5-AFF1-481C-A370-1C918E646CC8}">
+					<ChildrenList>
+						<Action Name="" ID="{1B0E8461-476A-4838-BEBD-87A79CC50120}" ShortID="1024378978">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+								<Property Name="Volume" Type="Real64" Value="-14"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot1" ID="{538E9BD8-737C-436A-8CBC-31BC661B7475}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{69161A27-7217-42D9-BB03-67D61AF4F276}" ShortID="464163181">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilot2" ID="{D735B85D-8854-4824-A7B3-1ED2040E1CE6}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{3354E8FC-AA1A-48E2-846C-E92C9D328AF3}" ShortID="890116082">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="autopilotclose" ID="{4FBBE15F-7E56-481C-8E9A-C56B8D3E0FD5}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{D075AEEE-14BD-40B5-939E-E0DF2DE9B0E4}" ShortID="219188249">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="GameParameterValue" Type="Real64" Value="100"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LOWPASS" ID="{AAAFC142-64C8-4634-8446-5603359F890F}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="yellowcoin" ID="{60F81F98-5581-4186-8E6D-07D3F8ED9B63}">
+					<ChildrenList>
+						<Action Name="" ID="{F02E48EF-4BFD-44A1-AC5E-983A941DC256}" ShortID="370708073">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="yellowcoin" ID="{FE2A2259-D97A-4AFC-A412-38CB5FA2CD2F}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="redcoin" ID="{F9A6E38C-BF7B-42B7-A3F2-159CA43CC4EF}">
+					<ChildrenList>
+						<Action Name="" ID="{BA7F20B1-AB47-4143-88A4-027466C9994F}" ShortID="703182375">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="redcoin" ID="{EFAAE208-B775-4E71-B500-4E3BA832F33C}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="slowtimeclose" ID="{B0C930B0-7C76-4978-A0E0-19A268718EF3}">
+					<ChildrenList>
+						<Action Name="" ID="{93392DE3-8171-41BA-95C5-22665162B352}" ShortID="627867059">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="12"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="slowtimeclose" ID="{914138D0-13B3-4B36-9874-5EDA76190111}" WorkUnitID="{E6D1024C-3752-4384-8804-0C962141741B}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="glidestart" ID="{F32311A5-7659-40E6-9F78-0EB908E0D632}">
+					<ChildrenList>
+						<Action Name="" ID="{A2E8ACD4-CBB2-4130-A78A-74CBC9FDD88D}" ShortID="11089099">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="glidingv2" ID="{D8F81660-57EC-4105-8888-ECFFC1924906}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{6703A600-CA50-4C29-8DB1-F29A670E2DF7}" ShortID="259277541">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="GameParameterValue" Type="Real64" Value="100"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="HIPASS" ID="{489B6750-1E3A-47E6-A6EB-81F4565E10FF}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="glidestop" ID="{1B5EB427-5F03-4D2B-92C4-139FFF277FA7}">
+					<ChildrenList>
+						<Action Name="" ID="{6CD58E7C-68BB-4B8D-927E-3D28ACED1E38}" ShortID="954945085">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.25"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="glidingv2" ID="{D8F81660-57EC-4105-8888-ECFFC1924906}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{CE9206E0-2F68-4AB9-A640-33E3EE13E0B7}" ShortID="613865440">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="38"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="HIPASS" ID="{489B6750-1E3A-47E6-A6EB-81F4565E10FF}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

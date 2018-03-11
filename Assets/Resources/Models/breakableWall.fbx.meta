@@ -1,0 +1,517 @@
+fileFormatVersion: 2
+guid: d1a96e12e36d54507853dd73cfac1984
+timeCreated: 1519771517
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Body1
+    100002: Body1 1
+    100004: Body1 10
+    100006: Body1 11
+    100008: Body1 12
+    100010: Body1 13
+    100012: Body1 14
+    100014: Body1 15
+    100016: Body1 16
+    100018: Body1 17
+    100020: Body1 18
+    100022: Body1 19
+    100024: Body1 2
+    100026: Body1 20
+    100028: Body1 21
+    100030: Body1 22
+    100032: Body1 23
+    100034: Body1 24
+    100036: Body1 25
+    100038: Body1 26
+    100040: Body1 27
+    100042: Body1 28
+    100044: Body1 29
+    100046: Body1 3
+    100048: Body1 30
+    100050: Body1 31
+    100052: Body1 32
+    100054: Body1 33
+    100056: Body1 34
+    100058: Body1 35
+    100060: Body1 36
+    100062: Body1 37
+    100064: Body1 38
+    100066: Body1 39
+    100068: Body1 4
+    100070: Body1 40
+    100072: Body1 41
+    100074: Body1 42
+    100076: Body1 43
+    100078: Body1 44
+    100080: Body1 45
+    100082: Body1 46
+    100084: Body1 5
+    100086: Body1 6
+    100088: Body1 7
+    100090: Body1 8
+    100092: Body1 9
+    100094: //RootNode
+    100096: brealing wall
+    100098: brealing wall:1
+    100100: Part 1
+    100102: Part 10
+    100104: Part 10:1
+    100106: Part 11
+    100108: Part 11:1
+    100110: Part 12
+    100112: Part 12:1
+    100114: Part 13
+    100116: Part 13:1
+    100118: Part 14
+    100120: Part 14:1
+    100122: Part 15
+    100124: Part 15:1
+    100126: Part 16
+    100128: Part 16:1
+    100130: Part 17
+    100132: Part 17:1
+    100134: Part 18
+    100136: Part 18:1
+    100138: Part 19
+    100140: Part 19:1
+    100142: Part 1:1
+    100144: Part 2
+    100146: Part 20
+    100148: Part 20:1
+    100150: Part 21
+    100152: Part 21:1
+    100154: Part 22
+    100156: Part 22:1
+    100158: Part 23
+    100160: Part 23:1
+    100162: Part 24
+    100164: Part 24:1
+    100166: Part 25
+    100168: Part 25:1
+    100170: Part 26
+    100172: Part 26:1
+    100174: Part 27
+    100176: Part 27:1
+    100178: Part 28
+    100180: Part 28:1
+    100182: Part 29
+    100184: Part 29:1
+    100186: Part 2:1
+    100188: Part 3
+    100190: Part 30
+    100192: Part 30:1
+    100194: Part 31
+    100196: Part 31:1
+    100198: Part 32
+    100200: Part 32:1
+    100202: Part 33
+    100204: Part 33:1
+    100206: Part 34
+    100208: Part 34:1
+    100210: Part 35
+    100212: Part 35:1
+    100214: Part 36
+    100216: Part 36:1
+    100218: Part 37
+    100220: Part 37:1
+    100222: Part 38
+    100224: Part 38:1
+    100226: Part 39
+    100228: Part 39:1
+    100230: Part 3:1
+    100232: Part 4
+    100234: Part 40
+    100236: Part 40:1
+    100238: Part 41
+    100240: Part 41:1
+    100242: Part 42
+    100244: Part 42:1
+    100246: Part 43
+    100248: Part 43:1
+    100250: Part 44
+    100252: Part 44:1
+    100254: Part 45
+    100256: Part 45:1
+    100258: Part 46
+    100260: Part 46:1
+    100262: Part 47
+    100264: Part 47:1
+    100266: Part 4:1
+    100268: Part 5
+    100270: Part 5:1
+    100272: Part 6
+    100274: Part 6:1
+    100276: Part 7
+    100278: Part 7:1
+    100280: Part 8
+    100282: Part 8:1
+    100284: Part 9
+    100286: Part 9:1
+    400000: Body1
+    400002: Body1 1
+    400004: Body1 10
+    400006: Body1 11
+    400008: Body1 12
+    400010: Body1 13
+    400012: Body1 14
+    400014: Body1 15
+    400016: Body1 16
+    400018: Body1 17
+    400020: Body1 18
+    400022: Body1 19
+    400024: Body1 2
+    400026: Body1 20
+    400028: Body1 21
+    400030: Body1 22
+    400032: Body1 23
+    400034: Body1 24
+    400036: Body1 25
+    400038: Body1 26
+    400040: Body1 27
+    400042: Body1 28
+    400044: Body1 29
+    400046: Body1 3
+    400048: Body1 30
+    400050: Body1 31
+    400052: Body1 32
+    400054: Body1 33
+    400056: Body1 34
+    400058: Body1 35
+    400060: Body1 36
+    400062: Body1 37
+    400064: Body1 38
+    400066: Body1 39
+    400068: Body1 4
+    400070: Body1 40
+    400072: Body1 41
+    400074: Body1 42
+    400076: Body1 43
+    400078: Body1 44
+    400080: Body1 45
+    400082: Body1 46
+    400084: Body1 5
+    400086: Body1 6
+    400088: Body1 7
+    400090: Body1 8
+    400092: Body1 9
+    400094: //RootNode
+    400096: brealing wall
+    400098: brealing wall:1
+    400100: Part 1
+    400102: Part 10
+    400104: Part 10:1
+    400106: Part 11
+    400108: Part 11:1
+    400110: Part 12
+    400112: Part 12:1
+    400114: Part 13
+    400116: Part 13:1
+    400118: Part 14
+    400120: Part 14:1
+    400122: Part 15
+    400124: Part 15:1
+    400126: Part 16
+    400128: Part 16:1
+    400130: Part 17
+    400132: Part 17:1
+    400134: Part 18
+    400136: Part 18:1
+    400138: Part 19
+    400140: Part 19:1
+    400142: Part 1:1
+    400144: Part 2
+    400146: Part 20
+    400148: Part 20:1
+    400150: Part 21
+    400152: Part 21:1
+    400154: Part 22
+    400156: Part 22:1
+    400158: Part 23
+    400160: Part 23:1
+    400162: Part 24
+    400164: Part 24:1
+    400166: Part 25
+    400168: Part 25:1
+    400170: Part 26
+    400172: Part 26:1
+    400174: Part 27
+    400176: Part 27:1
+    400178: Part 28
+    400180: Part 28:1
+    400182: Part 29
+    400184: Part 29:1
+    400186: Part 2:1
+    400188: Part 3
+    400190: Part 30
+    400192: Part 30:1
+    400194: Part 31
+    400196: Part 31:1
+    400198: Part 32
+    400200: Part 32:1
+    400202: Part 33
+    400204: Part 33:1
+    400206: Part 34
+    400208: Part 34:1
+    400210: Part 35
+    400212: Part 35:1
+    400214: Part 36
+    400216: Part 36:1
+    400218: Part 37
+    400220: Part 37:1
+    400222: Part 38
+    400224: Part 38:1
+    400226: Part 39
+    400228: Part 39:1
+    400230: Part 3:1
+    400232: Part 4
+    400234: Part 40
+    400236: Part 40:1
+    400238: Part 41
+    400240: Part 41:1
+    400242: Part 42
+    400244: Part 42:1
+    400246: Part 43
+    400248: Part 43:1
+    400250: Part 44
+    400252: Part 44:1
+    400254: Part 45
+    400256: Part 45:1
+    400258: Part 46
+    400260: Part 46:1
+    400262: Part 47
+    400264: Part 47:1
+    400266: Part 4:1
+    400268: Part 5
+    400270: Part 5:1
+    400272: Part 6
+    400274: Part 6:1
+    400276: Part 7
+    400278: Part 7:1
+    400280: Part 8
+    400282: Part 8:1
+    400284: Part 9
+    400286: Part 9:1
+    2100000: Steel - Satin
+    2300000: Body1
+    2300002: Body1 1
+    2300004: Body1 10
+    2300006: Body1 11
+    2300008: Body1 12
+    2300010: Body1 13
+    2300012: Body1 14
+    2300014: Body1 15
+    2300016: Body1 16
+    2300018: Body1 17
+    2300020: Body1 18
+    2300022: Body1 19
+    2300024: Body1 2
+    2300026: Body1 20
+    2300028: Body1 21
+    2300030: Body1 22
+    2300032: Body1 23
+    2300034: Body1 24
+    2300036: Body1 25
+    2300038: Body1 26
+    2300040: Body1 27
+    2300042: Body1 28
+    2300044: Body1 29
+    2300046: Body1 3
+    2300048: Body1 30
+    2300050: Body1 31
+    2300052: Body1 32
+    2300054: Body1 33
+    2300056: Body1 34
+    2300058: Body1 35
+    2300060: Body1 36
+    2300062: Body1 37
+    2300064: Body1 38
+    2300066: Body1 39
+    2300068: Body1 4
+    2300070: Body1 40
+    2300072: Body1 41
+    2300074: Body1 42
+    2300076: Body1 43
+    2300078: Body1 44
+    2300080: Body1 45
+    2300082: Body1 46
+    2300084: Body1 5
+    2300086: Body1 6
+    2300088: Body1 7
+    2300090: Body1 8
+    2300092: Body1 9
+    3300000: Body1
+    3300002: Body1 1
+    3300004: Body1 10
+    3300006: Body1 11
+    3300008: Body1 12
+    3300010: Body1 13
+    3300012: Body1 14
+    3300014: Body1 15
+    3300016: Body1 16
+    3300018: Body1 17
+    3300020: Body1 18
+    3300022: Body1 19
+    3300024: Body1 2
+    3300026: Body1 20
+    3300028: Body1 21
+    3300030: Body1 22
+    3300032: Body1 23
+    3300034: Body1 24
+    3300036: Body1 25
+    3300038: Body1 26
+    3300040: Body1 27
+    3300042: Body1 28
+    3300044: Body1 29
+    3300046: Body1 3
+    3300048: Body1 30
+    3300050: Body1 31
+    3300052: Body1 32
+    3300054: Body1 33
+    3300056: Body1 34
+    3300058: Body1 35
+    3300060: Body1 36
+    3300062: Body1 37
+    3300064: Body1 38
+    3300066: Body1 39
+    3300068: Body1 4
+    3300070: Body1 40
+    3300072: Body1 41
+    3300074: Body1 42
+    3300076: Body1 43
+    3300078: Body1 44
+    3300080: Body1 45
+    3300082: Body1 46
+    3300084: Body1 5
+    3300086: Body1 6
+    3300088: Body1 7
+    3300090: Body1 8
+    3300092: Body1 9
+    4300000: Body1
+    4300002: Body1
+    4300004: Body1
+    4300006: Body1
+    4300008: Body1
+    4300010: Body1
+    4300012: Body1
+    4300014: Body1
+    4300016: Body1
+    4300018: Body1
+    4300020: Body1
+    4300022: Body1
+    4300024: Body1
+    4300026: Body1
+    4300028: Body1
+    4300030: Body1
+    4300032: Body1
+    4300034: Body1
+    4300036: Body1
+    4300038: Body1
+    4300040: Body1
+    4300042: Body1
+    4300044: Body1
+    4300046: Body1
+    4300048: Body1
+    4300050: Body1
+    4300052: Body1
+    4300054: Body1
+    4300056: Body1
+    4300058: Body1
+    4300060: Body1
+    4300062: Body1
+    4300064: Body1
+    4300066: Body1
+    4300068: Body1
+    4300070: Body1
+    4300072: Body1
+    4300074: Body1
+    4300076: Body1
+    4300078: Body1
+    4300080: Body1
+    4300082: Body1
+    4300084: Body1
+    4300086: Body1
+    4300088: Body1
+    4300090: Body1
+    4300092: Body1
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 50
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

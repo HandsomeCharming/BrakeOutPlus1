@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9ABE29C0-AC99-4E59-8D4D-A21DF27EA0BD}" SchemaVersion="85">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{9ABE29C0-AC99-4E59-8D4D-A21DF27EA0BD}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Brakeout_Soundbank" ID="{B0D818FA-1133-45A1-A8F5-2B6B94DC77B0}">
+					<ObjectInclusionList>
+						<ObjectRef Name="fall" ID="{F14809AA-5E13-40C1-B276-3307601238BE}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="glidestart" ID="{F32311A5-7659-40E6-9F78-0EB908E0D632}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="magnetstart" ID="{98635283-DC62-4147-8FD4-B69DBFB937AA}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="yellowcoin" ID="{60F81F98-5581-4186-8E6D-07D3F8ED9B63}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="shield" ID="{6B8BC105-9B88-41E4-91CC-120153C91F13}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="crash" ID="{B0621EBF-2C76-42B7-A8EB-8A3B1A4DDD62}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="redcoin" ID="{F9A6E38C-BF7B-42B7-A3F2-159CA43CC4EF}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="click" ID="{65E93DFD-6718-43D5-A5D1-8E4CBD6C6F06}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="autopilotclose" ID="{1ABF32B5-AFF1-481C-A370-1C918E646CC8}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="x2" ID="{F30ECE26-6CC9-4871-854B-F83FACAE38CF}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="slowtimestop" ID="{7470D043-40C5-4931-B6B4-5521C2225A24}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="slowtimeclose" ID="{B0C930B0-7C76-4978-A0E0-19A268718EF3}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="startaudio" ID="{2DC549EB-2455-4B25-B3F1-88608115F8D1}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="autopilotstop" ID="{77FA9060-D522-4B34-9BCB-5CABA41D2152}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="slowtimestart" ID="{7F7901C6-51F6-4C61-8D73-0B34F1D51B0F}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="glidestop" ID="{1B5EB427-5F03-4D2B-92C4-139FFF277FA7}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="magnetstop" ID="{CC6D0B51-7E83-4DE8-A77F-172C8A16DE60}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="autopilotstart" ID="{0025DD9F-F3FD-4E22-A265-A7A540EEF91C}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="wall" ID="{EAD8AA8E-F50C-4F82-82EF-601623DECC9E}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
