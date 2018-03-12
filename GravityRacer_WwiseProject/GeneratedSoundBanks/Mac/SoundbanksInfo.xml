@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="11" SoundbankVersion="128">
+	<RootPaths>
+		<ProjectRoot>D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\GeneratedSoundBanks\Mac\</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3298724948" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Brakeout_Soundbank</ObjectPath>
+			<ShortName>Brakeout_Soundbank</ShortName>
+			<Path>Brakeout_Soundbank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1440041138" Name="autopilotclose" ObjectPath="\Events\Default Work Unit\autopilotclose" MaxAttenuation="0.000000"/>
+				<Event Id="750560166" Name="autopilotstart" ObjectPath="\Events\Default Work Unit\autopilotstart" MaxAttenuation="0.000000"/>
+				<Event Id="1974659302" Name="autopilotstop" ObjectPath="\Events\Default Work Unit\autopilotstop" MaxAttenuation="0.000000"/>
+				<Event Id="1584507803" Name="click" ObjectPath="\Events\Default Work Unit\click"/>
+				<Event Id="3048106310" Name="crash" ObjectPath="\Events\Default Work Unit\crash"/>
+				<Event Id="2512384458" Name="fall" ObjectPath="\Events\Default Work Unit\fall"/>
+				<Event Id="3241391456" Name="glidestart" ObjectPath="\Events\Default Work Unit\glidestart"/>
+				<Event Id="748153228" Name="glidestop" ObjectPath="\Events\Default Work Unit\glidestop" MaxAttenuation="0.000000"/>
+				<Event Id="254420377" Name="magnetstart" ObjectPath="\Events\Default Work Unit\magnetstart" MaxAttenuation="0.000000"/>
+				<Event Id="2147734643" Name="magnetstop" ObjectPath="\Events\Default Work Unit\magnetstop" MaxAttenuation="0.000000"/>
+				<Event Id="3334102693" Name="redcoin" ObjectPath="\Events\Default Work Unit\redcoin"/>
+				<Event Id="1161967626" Name="shield" ObjectPath="\Events\Default Work Unit\shield"/>
+				<Event Id="3949140775" Name="slowtimeclose" ObjectPath="\Events\Default Work Unit\slowtimeclose" MaxAttenuation="0.000000"/>
+				<Event Id="4245713047" Name="slowtimestart" ObjectPath="\Events\Default Work Unit\slowtimestart" MaxAttenuation="0.000000"/>
+				<Event Id="1849998205" Name="slowtimestop" ObjectPath="\Events\Default Work Unit\slowtimestop" MaxAttenuation="0.000000"/>
+				<Event Id="3212360787" Name="startaudio" ObjectPath="\Events\Default Work Unit\startaudio"/>
+				<Event Id="2108779961" Name="wall" ObjectPath="\Events\Default Work Unit\wall"/>
+				<Event Id="1500973335" Name="x2" ObjectPath="\Events\Default Work Unit\x2"/>
+				<Event Id="1586452650" Name="yellowcoin" ObjectPath="\Events\Default Work Unit\yellowcoin"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="13604129" Language="SFX">
+					<ShortName>wallv2_3.wav</ShortName>
+					<Path>SFX\wallv2_3_1C9C67B2.wem</Path>
+				</File>
+				<File Id="16513959" Language="SFX">
+					<ShortName>s1_l8#.2.wav</ShortName>
+					<Path>SFX\s1_l8#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="17309205" Language="SFX">
+					<ShortName>autopilot2.wav</ShortName>
+					<Path>SFX\autopilot2_F17FB28C.wem</Path>
+				</File>
+				<File Id="31831561" Language="SFX">
+					<ShortName>s1_l6#.10.wav</ShortName>
+					<Path>SFX\s1_l6#.10_F17FB28C.wem</Path>
+				</File>
+				<File Id="40467238" Language="SFX">
+					<ShortName>wallv2_2.wav</ShortName>
+					<Path>SFX\wallv2_2_1C9C67B2.wem</Path>
+				</File>
+				<File Id="41281032" Language="SFX">
+					<ShortName>falling.wav</ShortName>
+					<Path>SFX\falling_1C9C67B2.wem</Path>
+				</File>
+				<File Id="92767240" Language="SFX">
+					<ShortName>impact1.wav</ShortName>
+					<Path>SFX\impact1_1C9C67B2.wem</Path>
+				</File>
+				<File Id="153814299" Language="SFX">
+					<ShortName>shield.wav</ShortName>
+					<Path>SFX\shield_1C9C67B2.wem</Path>
+				</File>
+				<File Id="177744442" Language="SFX">
+					<ShortName>impact5.wav</ShortName>
+					<Path>SFX\impact5_1C9C67B2.wem</Path>
+				</File>
+				<File Id="280193016" Language="SFX">
+					<ShortName>yellowcoin3.wav</ShortName>
+					<Path>SFX\yellowcoin3_1C9C67B2.wem</Path>
+				</File>
+				<File Id="296840312" Language="SFX">
+					<ShortName>yellowcoin2.wav</ShortName>
+					<Path>SFX\yellowcoin2_1C9C67B2.wem</Path>
+				</File>
+				<File Id="301932103" Language="SFX">
+					<ShortName>s1_l5#.10.wav</ShortName>
+					<Path>SFX\s1_l5#.10_F17FB28C.wem</Path>
+				</File>
+				<File Id="304447943" Language="SFX">
+					<ShortName>s1_l8#.6.wav</ShortName>
+					<Path>SFX\s1_l8#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="337550722" Language="SFX">
+					<ShortName>s1_l3#.10.wav</ShortName>
+					<Path>SFX\s1_l3#.10_F17FB28C.wem</Path>
+				</File>
+				<File Id="363046768" Language="SFX">
+					<ShortName>redcoin3.wav</ShortName>
+					<Path>SFX\redcoin3_1C9C67B2.wem</Path>
+				</File>
+				<File Id="373212312" Language="SFX">
+					<ShortName>s1_l5#.6.wav</ShortName>
+					<Path>SFX\s1_l5#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="403831451" Language="SFX">
+					<ShortName>s2_wood.wav</ShortName>
+					<Path>SFX\s2_wood_F17FB28C.wem</Path>
+				</File>
+				<File Id="419150087" Language="SFX">
+					<ShortName>autopilotclose.wav</ShortName>
+					<Path>SFX\autopilotclose_F17FB28C.wem</Path>
+				</File>
+				<File Id="420104218" Language="SFX">
+					<ShortName>yellowcoin1.wav</ShortName>
+					<Path>SFX\yellowcoin1_1C9C67B2.wem</Path>
+				</File>
+				<File Id="427506041" Language="SFX">
+					<ShortName>slowtime.wav</ShortName>
+					<Path>SFX\slowtime_F17FB28C.wem</Path>
+				</File>
+				<File Id="464693520" Language="SFX">
+					<ShortName>s1_l2#.10.wav</ShortName>
+					<Path>SFX\s1_l2#.10_F17FB28C.wem</Path>
+				</File>
+				<File Id="479575978" Language="SFX">
+					<ShortName>s1_l2#.6.wav</ShortName>
+					<Path>SFX\s1_l2#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="482017083" Language="SFX">
+					<ShortName>movev4.wav</ShortName>
+					<Path>SFX\movev4_F17FB28C.wem</Path>
+				</File>
+				<File Id="485923688" Language="SFX">
+					<ShortName>wallv2_4.wav</ShortName>
+					<Path>SFX\wallv2_4_1C9C67B2.wem</Path>
+				</File>
+				<File Id="504397293" Language="SFX">
+					<ShortName>s1_l1#.10.wav</ShortName>
+					<Path>SFX\s1_l1#.10_F17FB28C.wem</Path>
+				</File>
+				<File Id="514244258" Language="SFX">
+					<ShortName>s1_l4#.10.wav</ShortName>
+					<Path>SFX\s1_l4#.10_F17FB28C.wem</Path>
+				</File>
+				<File Id="540799318" Language="SFX">
+					<ShortName>wallv2_1.wav</ShortName>
+					<Path>SFX\wallv2_1_1C9C67B2.wem</Path>
+				</File>
+				<File Id="552897409" Language="SFX">
+					<ShortName>x2_v2.wav</ShortName>
+					<Path>SFX\x2_v2_1C9C67B2.wem</Path>
+				</File>
+				<File Id="624297125" Language="SFX">
+					<ShortName>redcoin2.wav</ShortName>
+					<Path>SFX\redcoin2_1C9C67B2.wem</Path>
+				</File>
+				<File Id="625367327" Language="SFX">
+					<ShortName>s1_l7#.10.wav</ShortName>
+					<Path>SFX\s1_l7#.10_F17FB28C.wem</Path>
+				</File>
+				<File Id="629591569" Language="SFX">
+					<ShortName>impact3.wav</ShortName>
+					<Path>SFX\impact3_1C9C67B2.wem</Path>
+				</File>
+				<File Id="674963848" Language="SFX">
+					<ShortName>s1_l8#.10.wav</ShortName>
+					<Path>SFX\s1_l8#.10_F17FB28C.wem</Path>
+				</File>
+				<File Id="693182511" Language="SFX">
+					<ShortName>s1_l1#.6.wav</ShortName>
+					<Path>SFX\s1_l1#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="704082341" Language="SFX">
+					<ShortName>magnet.wav</ShortName>
+					<Path>SFX\magnet_F17FB28C.wem</Path>
+				</File>
+				<File Id="733407512" Language="SFX">
+					<ShortName>autopilot1.wav</ShortName>
+					<Path>SFX\autopilot1_F17FB28C.wem</Path>
+				</File>
+				<File Id="735192962" Language="SFX">
+					<ShortName>s1_l4#.2.wav</ShortName>
+					<Path>SFX\s1_l4#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="759056848" Language="SFX">
+					<ShortName>s1_l4#.6.wav</ShortName>
+					<Path>SFX\s1_l4#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="774448436" Language="SFX">
+					<ShortName>UIclick.wav</ShortName>
+					<Path>SFX\UIclick_1C9C67B2.wem</Path>
+				</File>
+				<File Id="793530142" Language="SFX">
+					<ShortName>impact4.wav</ShortName>
+					<Path>SFX\impact4_1C9C67B2.wem</Path>
+				</File>
+				<File Id="793980733" Language="SFX">
+					<ShortName>s1_l2#.2.wav</ShortName>
+					<Path>SFX\s1_l2#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="805584263" Language="SFX">
+					<ShortName>glidingv2.wav</ShortName>
+					<Path>SFX\glidingv2_F17FB28C.wem</Path>
+				</File>
+				<File Id="816385963" Language="SFX">
+					<ShortName>impact2.wav</ShortName>
+					<Path>SFX\impact2_1C9C67B2.wem</Path>
+				</File>
+				<File Id="842059455" Language="SFX">
+					<ShortName>s3_wood.wav</ShortName>
+					<Path>SFX\s3_wood_F17FB28C.wem</Path>
+				</File>
+				<File Id="853067935" Language="SFX">
+					<ShortName>s1_woods.wav</ShortName>
+					<Path>SFX\s1_woods_F17FB28C.wem</Path>
+				</File>
+				<File Id="858482414" Language="SFX">
+					<ShortName>s1_l3#.2.wav</ShortName>
+					<Path>SFX\s1_l3#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="888458382" Language="SFX">
+					<ShortName>redcoin1.wav</ShortName>
+					<Path>SFX\redcoin1_1C9C67B2.wem</Path>
+				</File>
+				<File Id="898054080" Language="SFX">
+					<ShortName>s1_l1#.2.wav</ShortName>
+					<Path>SFX\s1_l1#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="953675186" Language="SFX">
+					<ShortName>s1_l6#.6.wav</ShortName>
+					<Path>SFX\s1_l6#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="985160453" Language="SFX">
+					<ShortName>s1_l7#.2.wav</ShortName>
+					<Path>SFX\s1_l7#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="989798264" Language="SFX">
+					<ShortName>s1_l5#.2.wav</ShortName>
+					<Path>SFX\s1_l5#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="1008209201" Language="SFX">
+					<ShortName>s1_l6#.2.wav</ShortName>
+					<Path>SFX\s1_l6#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="1008294273" Language="SFX">
+					<ShortName>slowtimeclose.wav</ShortName>
+					<Path>SFX\slowtimeclose_F17FB28C.wem</Path>
+				</File>
+				<File Id="1043510067" Language="SFX">
+					<ShortName>s1_l3#.6.wav</ShortName>
+					<Path>SFX\s1_l3#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="1058053890" Language="SFX">
+					<ShortName>s1_l7#.6.wav</ShortName>
+					<Path>SFX\s1_l7#.6_F17FB28C.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

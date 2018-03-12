@@ -1,0 +1,18 @@
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1685747766	LOWPASS			\Default Work Unit\LOWPASS	
+	2724886111	HIPASS			\Default Work Unit\HIPASS	
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	1502772432	SFX Bus			\Default Work Unit\Master Audio Bus\SFX Bus	
+	3127962312	Music Bus			\Default Work Unit\Master Audio Bus\Music Bus	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Effect plug-ins	ID	Name	Type				Notes
+	418265525	Gentle_Program_Compressor_Minus_14dB_RMS	Wwise Compressor			
+	1008402193	Low_Pass_20KHz	Wwise Parametric EQ			
+
+Audio Devices	ID	Name	Type				Notes
+	530303819	Communication	Communication			
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+
