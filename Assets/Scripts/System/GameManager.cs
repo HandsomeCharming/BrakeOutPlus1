@@ -163,14 +163,17 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame()
     {
-        Player.current.Launch();
-        //Player.current.playerState = Player.PlayerState.Playing;
-        print("Running");
-        state = GameState.Running;
-        Time.timeScale = 1.0f;
-        ChallengeManager.current.startTime = Time.time;
-        ChallengeManager.current.getHardTimeRemain = 15.0f;
-        UIManager.current.ChangeStateByGameState();
+        if (GameManager.current.state == GameManager.GameState.Start)
+        {
+            Player.current.Launch();
+            //Player.current.playerState = Player.PlayerState.Playing;
+            print("Running");
+            state = GameState.Running;
+            Time.timeScale = 1.0f;
+            ChallengeManager.current.startTime = Time.time;
+            ChallengeManager.current.getHardTimeRemain = 15.0f;
+            UIManager.current.ChangeStateByGameState();
+        }
     }
 
     public void StartCutScene()
