@@ -220,9 +220,9 @@ public class Player : MonoBehaviour {
     void DecreaseHealth()
     {
         m_Health--;
-        if(GetComponent<ShieldOnPlayer>())
+        if(ShieldOnPlayer.current != null)
         {
-            GetComponent<ShieldOnPlayer>().PlayPopAnim();
+            ShieldOnPlayer.current.PlayPopAnim();
         }
         if (m_Health <= 0)
         {

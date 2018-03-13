@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class ShieldOnPlayer : MonoBehaviour {
 
-    public float m_Time;
+    public static ShieldOnPlayer current;
+
+    public float m_Time = 10.0f;
 
     private void Awake()
     {
+        current = this;
     }
 
-    public void SetTimer(float time)
+    public void Init(float time)
     {
         this.m_Time = time;
+        print(time);
         transform.parent = Player.current.transform;
         transform.localPosition = new Vector3(0, 0.97f, -0.4f);
+
+        if (Player.current.m_Health == 1)
+            Player.current.m_Health++;
     }
 
     void PopHealth()
@@ -27,11 +34,6 @@ public class ShieldOnPlayer : MonoBehaviour {
     {
         m_Time = 10.0f;
         Destroy(gameObject, 0.1f);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        PlayPopAnim();
     }
 
     private void Update()

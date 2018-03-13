@@ -15,9 +15,15 @@ public class ShieldBall : ItemSuper
     {
         if (other.tag == "Player")
         {
-            GameObject go = (GameObject)Instantiate(Resources.Load(prefabName));
-            go.GetComponent<ShieldOnPlayer>().SetTimer(ItemManager.GetItemDuration(ItemType.Shield));
-            Player.current.m_Health++;
+            if (ShieldOnPlayer.current == null)
+            {
+                GameObject go = (GameObject)Instantiate(Resources.Load(prefabName));
+                go.GetComponent<ShieldOnPlayer>().Init(ItemManager.GetItemDuration(ItemType.Shield));
+            }
+            else
+            {
+                ShieldOnPlayer.current.m_Time += ItemManager.GetItemDuration(ItemType.Shield);
+            }
             Destroy(gameObject);
         }
     }
