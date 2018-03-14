@@ -13,6 +13,8 @@ public class ObstacleDataObject : ScriptableObject {
 
     public float m_GlideDistance;
     public float m_GlideHeight;
+    public float m_GlideCoinGap;
 
     public GameObject BoostSignPrefab;
+    public GameObject[] m_GliderCoins;
 }
