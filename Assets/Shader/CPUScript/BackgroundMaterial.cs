@@ -25,6 +25,10 @@ public class BackgroundMaterial : MonoBehaviour {
     Color m_CurrentTop;
     Color m_CurrentDown;
     Color m_CurrentFloor;
+
+    TopDownColor m_SharpLerpTarget;
+    TopDownColor blackColor;
+    bool m_SharpLerpToBlack = false;
     //int FloorColAIndex;
     //int FloorColBIndex;
 
@@ -38,6 +42,11 @@ public class BackgroundMaterial : MonoBehaviour {
          mat = GetComponent<Image>().material;
         mat.SetFloat("_ScreenSizeX", Screen.width);
         mat.SetFloat("_ScreenSizeY", Screen.height);
+
+        blackColor = new TopDownColor();
+        blackColor.downColor = Color.black;
+        blackColor.topColor = Color.black;
+        blackColor.floorColor = Color.black;
 
         lerpTime = m_Storer.lerpTime;
         //floorBeforeTime = m_Storer.floorBeforeSec;
@@ -113,7 +122,7 @@ public class BackgroundMaterial : MonoBehaviour {
 
     public Color GetCurrentFloorColor()
     {
-        if (m_SharpLerpTime > 0)
+        if (m_SharpLerpTime > 0 || m_SharpLerpToBlack)
            return GetSharpLerpFloorColor();
         else
             return Color.Lerp(m_CurrentColor.colors[ColorAIndex].floorColor, m_CurrentColor.colors[ColorBIndex].floorColor,
@@ -123,7 +132,8 @@ public class BackgroundMaterial : MonoBehaviour {
     Color GetSharpLerpFloorColor()
     {
         float lerpAmount = 1 - m_SharpLerpTime / m_Storer.sharpLerpTime;
-        Color col = Color.Lerp(m_CurrentFloor, m_CurrentColor.colors[ColorAIndex].floorColor, lerpAmount);
+        Color col = Color.Lerp(m_CurrentFloor, m_SharpLerpTarget.floorColor, lerpAmount);
+        print(col);
         return col;
     }
 
@@ -142,8 +152,33 @@ public class BackgroundMaterial : MonoBehaviour {
         ColorBIndex = (ColorAIndex + 1) % m_CurrentColor.colors.Length;
         mat.SetColor("_ColorUpB", m_CurrentColor.colors[ColorAIndex].topColor);
         mat.SetColor("_ColorDownB", m_CurrentColor.colors[ColorAIndex].downColor);
+        m_SharpLerpTarget = m_CurrentColor.colors[ColorAIndex];
 
         mat.SetFloat("_ColorLerp", 0);
+
+        m_SharpLerpToBlack = false;
+    }
+
+    public void StartSharpLerpToBlack()
+    {
+        m_CurrentFloor = GetCurrentFloorColor();
+        m_SharpLerpTime = m_Storer.sharpLerpTime;
+        float lerpAmount = time / lerpTime;
+        m_CurrentTop = Color.Lerp(m_CurrentColor.colors[ColorAIndex].topColor, m_CurrentColor.colors[ColorBIndex].topColor, lerpAmount);
+        m_CurrentDown = Color.Lerp(m_CurrentColor.colors[ColorAIndex].downColor, m_CurrentColor.colors[ColorBIndex].downColor, lerpAmount);
+
+        mat.SetColor("_ColorUpA", m_CurrentTop);
+        mat.SetColor("_ColorDownA", m_CurrentDown);
+
+        ///ColorAIndex = (ColorAIndex + 1) % m_CurrentColor.colors.Length;// Random.Range(0, m_CurrentColor.colors.Length);
+        //ColorBIndex = (ColorAIndex + 1) % m_CurrentColor.colors.Length;
+        mat.SetColor("_ColorUpB", Color.black); // m_CurrentColor.colors[ColorAIndex].topColor);
+        mat.SetColor("_ColorDownB", Color.black); // m_CurrentColor.colors[ColorAIndex].downColor);
+        m_SharpLerpTarget = blackColor;
+
+        mat.SetFloat("_ColorLerp", 0);
+
+        m_SharpLerpToBlack = true;
     }
 
     void Update () {
@@ -152,12 +187,21 @@ public class BackgroundMaterial : MonoBehaviour {
         if(m_SharpLerpTime > 0)
         {
             float lerpAmount = 1 - m_SharpLerpTime / m_Storer.sharpLerpTime;
-            mat.SetFloat("_ColorLerp", lerpAmount);
+            mat.SetFloat("_ColorLerp", lerpAmount); 
             m_SharpLerpTime -= Time.deltaTime;
-            if(m_SharpLerpTime <= 0)
+            FloorBuilder.current.ChangeFloorColor();
+            if (m_SharpLerpTime <= 0)
             {
-                SetColorA(m_CurrentColor.colors[ColorAIndex]);
-                SetColorB(m_CurrentColor.colors[ColorBIndex]);
+                if(m_SharpLerpToBlack)
+                {
+                    SetColorA(blackColor);
+                    SetColorB(blackColor);
+                }
+                else
+                {
+                    SetColorA(m_CurrentColor.colors[ColorAIndex]);
+                    SetColorB(m_CurrentColor.colors[ColorBIndex]);
+                }
                 mat.SetFloat("_ColorLerp", 0);
                 time = 0;
                 FloorBuilder.current.ChangeFloorColor();

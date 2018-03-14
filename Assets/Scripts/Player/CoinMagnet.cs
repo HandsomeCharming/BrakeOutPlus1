@@ -10,7 +10,14 @@ public class CoinMagnet : MonoBehaviour {
     {
         if(other.CompareTag("Coin"))
         {
-            other.GetComponent<Coin>().StartMagneting();
+            Coin coin = other.GetComponent<Coin>();
+            if (coin != null)
+                coin.StartMagneting();
+            else
+            {
+                CoinNoPool c = other.GetComponent<CoinNoPool>();
+                c.StartMagneting();
+            }
         }
     }
 

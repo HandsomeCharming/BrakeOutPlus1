@@ -20,6 +20,13 @@ public class CoinNoPool : MonoBehaviour {
         }
     }
 
+    public void StartMagneting()
+    {
+        isMagneting = true;
+        GetComponent<BoxCollider>().enabled = false;
+        m_MagSpeed = 0;
+    }
+
     public void TouchedByPlayer()
     {
         GameManager.current.AddCoin(m_CoinAmount);
