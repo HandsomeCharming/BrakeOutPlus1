@@ -275,17 +275,20 @@ public class ObstacleBuilder : MonoBehaviour {
                         Vector3 left = Vector3.Cross(dir, Vector3.up);
                         float offset = Random.Range(1.0f, 5.0f);
 
-                        float gap = 6.0f;
+                        float gap = m_Storer.m_GlideCoinGap;
                         int count = (int) (dist / gap);
-
+                        
                         for(int i=0; i < count; ++i)
                         {
                             float ii = (float)i;
-                            Coin coin = CoinGenerator.current.GetNextCoin();
-                            coin.transform.position = prevPos + dir * ii * gap + left * offset * Mathf.Sin(ii /freq) ;
-                            coin.gameObject.SetActive(true);
-                            coin.StartAnim();
-                            coin.m_LifeTime = 20.0f;
+                            GameObject coins = Instantiate(m_Storer.m_GliderCoins[Random.Range(0, m_Storer.m_GliderCoins.Length)]);
+                            //Coin coin = CoinGenerator.current.GetNextCoin();
+                            coins.transform.position = prevPos + dir * ii * gap + left * offset * Mathf.Sin(ii /freq);
+                            coins.transform.forward = dir;
+                            coins.gameObject.SetActive(true);
+                            coins.GetComponent<ItemSuper>().StartAnim();
+                            //coin.m_LifeTime = 20.0f;
+                            Destroy(coins, 20.0f);
                         }
                     }
                      
