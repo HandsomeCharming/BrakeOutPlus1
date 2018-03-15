@@ -50,7 +50,7 @@ public class GlideOnPlayer : MonoBehaviour {
         {
             playerRB.velocity = m_Player.transform.forward * m_GlideMinSpeed;
         }
-        BackgroundMaterial.current.StartSharpLerpToBlack();
+        //BackgroundMaterial.current.StartSharpLerpToBlack();
     }
 
     public void EndGliding()
