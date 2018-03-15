@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID AUTOPILOTSTART = 750560166U;
         static const AkUniqueID AUTOPILOTSTOP = 1974659302U;
         static const AkUniqueID CLICK = 1584507803U;
+        static const AkUniqueID CLICK2 = 1206986035U;
         static const AkUniqueID CRASH = 3048106310U;
         static const AkUniqueID FALL = 2512384458U;
         static const AkUniqueID GLIDESTART = 3241391456U;
@@ -24,11 +25,15 @@ namespace AK
         static const AkUniqueID MAGNETSTART = 254420377U;
         static const AkUniqueID MAGNETSTOP = 2147734643U;
         static const AkUniqueID REDCOIN = 3334102693U;
+        static const AkUniqueID SCROLL = 454121546U;
         static const AkUniqueID SHIELD = 1161967626U;
         static const AkUniqueID SLOWTIMECLOSE = 3949140775U;
         static const AkUniqueID SLOWTIMESTART = 4245713047U;
         static const AkUniqueID SLOWTIMESTOP = 1849998205U;
         static const AkUniqueID STARTAUDIO = 3212360787U;
+        static const AkUniqueID TAB1 = 3005416231U;
+        static const AkUniqueID TAB2 = 3005416228U;
+        static const AkUniqueID TAB3 = 3005416229U;
         static const AkUniqueID WALL = 2108779961U;
         static const AkUniqueID X2 = 1500973335U;
         static const AkUniqueID YELLOWCOIN = 1586452650U;
