@@ -514,6 +514,76 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="click2" ID="{E99F5ED7-C32D-4028-9FB7-713D02903809}">
+					<ChildrenList>
+						<Action Name="" ID="{8737F820-9B9D-4AF7-B3B0-84D0CADDDC0E}" ShortID="690333939">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UIclick2" ID="{CE007ECC-E463-44D2-8B15-60CA248938D0}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="scroll" ID="{EB63657B-0FD2-49E0-9F99-B6E27AC8FFF2}">
+					<ChildrenList>
+						<Action Name="" ID="{2E4E1CCE-6AAF-4340-A593-751245A2C5C3}" ShortID="367638768">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="scroll" ID="{F3940BD8-3F7C-4C88-A4E7-D301C0BFA18A}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="tab1" ID="{AE1EC0C6-5AFC-4B90-828B-DDAF638368AE}">
+					<ChildrenList>
+						<Action Name="" ID="{69F66FF3-7E48-4CC0-B24B-1266B1F25EBE}" ShortID="700946904">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="tab1" ID="{0EDD2970-49D0-45BB-B4F3-AAA2DCC0EE1A}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="tab2" ID="{959C36AC-FAE3-4B85-B48F-B673506A8B00}">
+					<ChildrenList>
+						<Action Name="" ID="{21BAD2D9-6095-4484-9BAE-EED78F0981FC}" ShortID="731479540">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="tab2" ID="{28EA0F09-8607-45D0-9135-7EF9FD7F07C8}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="tab3" ID="{97777D0A-545E-4D99-8ED3-5BEF53DA7DE6}">
+					<ChildrenList>
+						<Action Name="" ID="{C939A904-D7E0-4C15-9F2F-B931CFA050D7}" ShortID="421863272">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="tab3" ID="{78A5BD3B-954A-4A92-B87D-FC7760034540}" WorkUnitID="{A2D92DA7-E775-4581-B982-5E5449E11171}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

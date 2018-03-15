@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="85">
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Effects\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Effects\Factory Effects.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Events\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\GravityRacer_WwiseProject.crossover.wsettings" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\GravityRacer_WwiseProject.wproj" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1521041169" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Presets\Default Work Unit.wwu" DateLow="1521041174" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1521041174" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Queries\Factory Queries.wwu" DateLow="1521041174" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1521041174" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1521041174" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\States\Default Work Unit.wwu" DateLow="1521041174" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Switches\Default Work Unit.wwu" DateLow="1521041174" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1521041174" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Documents\GitHub\BrakeOutLFS\GravityRacer_WwiseProject\Virtual Acoustics\Default Work Unit.wwu" DateLow="1521041174" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\Documents\GitHub\GravityRacer\GravityRacer_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1519939479" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\Documents\GitHub\GravityRacer\GravityRacer_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1519098407" DateHigh="0"/>
 	<ValidationCacheItem File="Y:\Documents\GitHub\GravityRacer\GravityRacer_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1519098407" DateHigh="0"/>

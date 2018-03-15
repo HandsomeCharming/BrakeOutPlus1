@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="Brakeout_Soundbank" ID="{B0D818FA-1133-45A1-A8F5-2B6B94DC77B0}">
 					<ObjectInclusionList>
+						<ObjectRef Name="click2" ID="{E99F5ED7-C32D-4028-9FB7-713D02903809}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="fall" ID="{F14809AA-5E13-40C1-B276-3307601238BE}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="glidestart" ID="{F32311A5-7659-40E6-9F78-0EB908E0D632}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="magnetstart" ID="{98635283-DC62-4147-8FD4-B69DBFB937AA}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
@@ -17,10 +18,14 @@
 						<ObjectRef Name="x2" ID="{F30ECE26-6CC9-4871-854B-F83FACAE38CF}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="slowtimestop" ID="{7470D043-40C5-4931-B6B4-5521C2225A24}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="slowtimeclose" ID="{B0C930B0-7C76-4978-A0E0-19A268718EF3}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="scroll" ID="{EB63657B-0FD2-49E0-9F99-B6E27AC8FFF2}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="startaudio" ID="{2DC549EB-2455-4B25-B3F1-88608115F8D1}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="autopilotstop" ID="{77FA9060-D522-4B34-9BCB-5CABA41D2152}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="tab2" ID="{959C36AC-FAE3-4B85-B48F-B673506A8B00}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="tab1" ID="{AE1EC0C6-5AFC-4B90-828B-DDAF638368AE}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="slowtimestart" ID="{7F7901C6-51F6-4C61-8D73-0B34F1D51B0F}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="glidestop" ID="{1B5EB427-5F03-4D2B-92C4-139FFF277FA7}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="tab3" ID="{97777D0A-545E-4D99-8ED3-5BEF53DA7DE6}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="magnetstop" ID="{CC6D0B51-7E83-4DE8-A77F-172C8A16DE60}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="autopilotstart" ID="{0025DD9F-F3FD-4E22-A265-A7A540EEF91C}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="wall" ID="{EAD8AA8E-F50C-4F82-82EF-601623DECC9E}" WorkUnitID="{9021D91B-6DC4-4F30-8E67-9635D2FB0965}" Filter="7" Origin="Manual"/>
