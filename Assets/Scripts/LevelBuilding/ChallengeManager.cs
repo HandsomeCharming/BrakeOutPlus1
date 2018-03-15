@@ -48,8 +48,9 @@ public class ChallengeManager : MonoBehaviour {
         {
             currentDifficulty++;
             GameManager.current.m_DiffMultiplier = floorData[currentDifficulty].multiplier;
+            GameManager.current.AddNormalTimeScale(floorData[currentDifficulty].m_Timescale - 1.0f);
 
-            if(ChallengeManager.current.floorData[currentDifficulty].useGlideTransition)
+            if (ChallengeManager.current.floorData[currentDifficulty].useGlideTransition)
                 FloorBuilder.current.AddGlidingAtEnd(); 
         }
 
@@ -79,7 +80,6 @@ public class ChallengeManager : MonoBehaviour {
     {
         if (GameManager.current && GameManager.current.state == GameManager.GameState.Running)
         {
-            getHardTimeRemain -= Time.deltaTime;
             if(GameManager.current.scoreForDifficulty - 100.0f > m_LastWidthDecreaseScore)
             {
                 FloorBuilder.current.m_GlobalWidth = FloorBuilder.current.m_InitWidth - (widthDecreasePerHundredScore/100.0f * (GameManager.current.scoreForDifficulty));
@@ -87,11 +87,13 @@ public class ChallengeManager : MonoBehaviour {
                     FloorBuilder.current.m_GlobalWidth = FloorBuilder.current.m_MinWidth;
                 m_LastWidthDecreaseScore = GameManager.current.scoreForDifficulty;
             }
+            
+            /*getHardTimeRemain -= Time.deltaTime;
             if (getHardTimeRemain <= 0)
             {
                 addDifficultyByTime();
                 getHardTimeRemain = 40.0f;
-            }
+            }*/
         }
     }
 
