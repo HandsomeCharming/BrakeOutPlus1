@@ -15,6 +15,8 @@ public class MakeFloorTypeActionTask : ActionTask
     public BBParameter<int> minCoinCount;
     public BBParameter<int> maxCoinCount;
 
+    public BBParameter<float> coinShowProb; // should be 0-1
+    
     public BBParameter<ObstacleType> obstacleType;
     public BBParameter<int> minObstacleCount;
     public BBParameter<int> maxObstacleCount;
@@ -26,7 +28,8 @@ public class MakeFloorTypeActionTask : ActionTask
         FloorTypeData data = new FloorTypeData();
         
         data.SetFloorCount(Random.Range(minFloorCount.value, maxFloorCount.value));
-        data.coinCount = Random.Range(minCoinCount.value, maxCoinCount.value);
+        bool hasCoin = Random.value < coinShowProb.value;
+        data.coinCount = hasCoin ? Random.Range(minCoinCount.value, maxCoinCount.value) : 0;
         data.coinStartIndex = Random.Range(0, data.floorCount - data.coinCount);
         data.floorTurningAngle = (Random.Range(0.0f, 1.0f) > 0.5f ? 1 : -1) * Random.Range(minFloorTurningAngle.value, maxFloorTurningAngle.value);
         //data.floorWidth = floorWidth;
