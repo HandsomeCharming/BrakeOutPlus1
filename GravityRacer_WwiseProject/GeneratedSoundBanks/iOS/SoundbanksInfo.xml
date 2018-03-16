@@ -83,6 +83,10 @@
 					<ShortName>shield.wav</ShortName>
 					<Path>SFX/shield_1C9C67B2.wem</Path>
 				</File>
+				<File Id="164408871" Language="SFX">
+					<ShortName>speed1.wav</ShortName>
+					<Path>SFX/speed1_F17FB28C.wem</Path>
+				</File>
 				<File Id="177744442" Language="SFX">
 					<ShortName>impact5.wav</ShortName>
 					<Path>SFX/impact5_1C9C67B2.wem</Path>
@@ -114,10 +118,6 @@
 				<File Id="373212312" Language="SFX">
 					<ShortName>s1_l5#.6.wav</ShortName>
 					<Path>SFX/s1_l5#.6_F17FB28C.wem</Path>
-				</File>
-				<File Id="403831451" Language="SFX">
-					<ShortName>s2_wood.wav</ShortName>
-					<Path>SFX/s2_wood_F17FB28C.wem</Path>
 				</File>
 				<File Id="419150087" Language="SFX">
 					<ShortName>autopilotclose.wav</ShortName>
@@ -243,17 +243,13 @@
 					<ShortName>scroll2.wav</ShortName>
 					<Path>SFX/scroll2_1C9C67B2.wem</Path>
 				</File>
-				<File Id="842059455" Language="SFX">
-					<ShortName>s3_wood.wav</ShortName>
-					<Path>SFX/s3_wood_F17FB28C.wem</Path>
-				</File>
-				<File Id="853067935" Language="SFX">
-					<ShortName>s1_woods.wav</ShortName>
-					<Path>SFX/s1_woods_F17FB28C.wem</Path>
-				</File>
 				<File Id="858482414" Language="SFX">
 					<ShortName>s1_l3#.2.wav</ShortName>
 					<Path>SFX/s1_l3#.2_F17FB28C.wem</Path>
+				</File>
+				<File Id="878077974" Language="SFX">
+					<ShortName>speed2.wav</ShortName>
+					<Path>SFX/speed2_F17FB28C.wem</Path>
 				</File>
 				<File Id="888458382" Language="SFX">
 					<ShortName>redcoin1.wav</ShortName>
@@ -290,6 +286,10 @@
 				<File Id="1043510067" Language="SFX">
 					<ShortName>s1_l3#.6.wav</ShortName>
 					<Path>SFX/s1_l3#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="1045701587" Language="SFX">
+					<ShortName>speed3.wav</ShortName>
+					<Path>SFX/speed3_F17FB28C.wem</Path>
 				</File>
 				<File Id="1058053890" Language="SFX">
 					<ShortName>s1_l7#.6.wav</ShortName>
