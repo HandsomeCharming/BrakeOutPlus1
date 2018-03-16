@@ -42,13 +42,13 @@
 	<Platform GUID="{E94526C6-1339-4BC1-A771-ED3892F7962F}">
 		<Banks>
 			<Language ID="393239870">
-				<File Name="Brakeout_Soundbank" Hash="1149467886" Timestamp="1521145802"/>
+				<File Name="Brakeout_Soundbank" Hash="1149467886" Timestamp="1521156181"/>
 				<File Name="Init" Hash="1616743340" Timestamp="1521145802"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="1026664669" Timestamp="1521145802"/>
+				<File Name="" Hash="1026664669" Timestamp="1521156181"/>
 			</Language>
 		</XMLInfo>
 	</Platform>
