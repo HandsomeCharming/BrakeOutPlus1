@@ -47,10 +47,11 @@ public class CoinGenerator : MonoBehaviour {
         }
 
         FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
+        
         coin.meshIndex = meshIndex;
         GameObject obj = coin.gameObject;
         Vector3 cross = Vector3.Cross(floorMesh.prevDir, floorMesh.dir);
-        int slot = cross.y < 0 ? 0 : floorMesh.GetMaxSlot();
+        int slot = floorMesh.floorTypeData.coinSlot; // cross.y < 0 ? 0 : floorMesh.GetMaxSlot();
         floorMesh.PutItemOnSlot(coin, slot);
 
         //print(dot);
