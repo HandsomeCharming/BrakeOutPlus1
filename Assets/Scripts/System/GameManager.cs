@@ -338,11 +338,21 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(scene.name);
     }
 
+    public void SetNormalTimeScale(float timeScale)
+    {
+        m_OldTimescale = timeScale;
+        // Change it when it's not slow motion
+        if (Time.timeScale >= 1.0f)
+        {
+            Time.timeScale = m_OldTimescale;
+        }
+    }
+
     public void AddNormalTimeScale(float addedTimeScale)
     {
         m_OldTimescale += addedTimeScale;
         // Change it when it's not slow motion
-        if(Time.timeScale > 1.0f)
+        if(Time.timeScale >= 1.0f)
         {
             Time.timeScale = m_OldTimescale;
         }

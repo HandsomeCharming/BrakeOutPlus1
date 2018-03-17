@@ -278,7 +278,7 @@ public class ObstacleBuilder : MonoBehaviour {
                         float gap = m_Storer.m_GlideCoinGap;
                         int count = (int) (dist / gap);
                         
-                        for(int i=0; i < count; ++i)
+                        for(int i=1; i < count - 1; ++i)
                         {
                             float ii = (float)i;
                             GameObject coins = Instantiate(m_Storer.m_GliderCoins[Random.Range(0, m_Storer.m_GliderCoins.Length)]);

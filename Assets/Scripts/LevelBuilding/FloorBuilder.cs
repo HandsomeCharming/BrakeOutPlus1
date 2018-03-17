@@ -47,12 +47,14 @@ public class FloorTypeData
     public float floorTurningAngle;
     public int coinCount;
     public int coinStartIndex;
+    public int coinSlot = -1;
     public ArrayList obstacles;
     public float floorWidth;
 
     public FloorTypeData()
     {
         obstacles = new ArrayList();
+        coinSlot = -1;
     }
 
     public void AddObstacleByType(ObstacleType type, int count = 1, int startIndex = 0)
@@ -265,7 +267,7 @@ public class FloorBuilder : MonoBehaviour {
     public void meshCollided(int index)
     {
                 
-		if (index - collidingIndex > -99 && index - collidingIndex < 99) 
+		if (Mathf.Abs(index - collidingIndex) < 99 ) 
 		{
 			//collidedCount += (index - collidingIndex)>0? (index - collidingIndex): collidingIndex - index;
             GameManager.current.AddScore((index - collidingIndex) > 0 ? (index - collidingIndex) : collidingIndex - index);
@@ -326,8 +328,12 @@ public class FloorBuilder : MonoBehaviour {
         }
 
         floorTypeData.coinStartIndex--;
-        if (floorTypeData.coinStartIndex < 0 && -floorTypeData.coinStartIndex <= floorTypeData.coinCount)
+        if (floorTypeData.coinStartIndex < 0 && -floorTypeData.coinStartIndex <= floorTypeData.coinCount && !hasObstacle)
         {
+            if(fm.floorTypeData.coinSlot == -1)
+            {
+                fm.floorTypeData.coinSlot = Random.Range(1, fm.GetMaxSlot());
+            }
             CoinGenerator.current.putCoin(startIndex);
         }
         endIndex = startIndex;
