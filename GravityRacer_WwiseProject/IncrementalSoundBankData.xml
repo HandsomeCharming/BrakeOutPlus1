@@ -3,52 +3,52 @@
 	<Platform GUID="{EA40FBBB-1657-436F-8590-905E3218DA83}">
 		<Banks>
 			<Language ID="393239870">
-				<File Name="Brakeout_Soundbank" Hash="173901434" Timestamp="1521217257"/>
+				<File Name="Brakeout_Soundbank" Hash="1050967576" Timestamp="1521244038"/>
 				<File Name="Init" Hash="3107174818" Timestamp="1521145796"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="181065994" Timestamp="1521217257"/>
+				<File Name="" Hash="2443610785" Timestamp="1521244038"/>
 			</Language>
 		</XMLInfo>
 	</Platform>
 	<Platform GUID="{F8A7B4E7-DA68-4397-99B4-DEEF9FFAB53A}">
 		<Banks>
 			<Language ID="393239870">
-				<File Name="Brakeout_Soundbank" Hash="173901434" Timestamp="1521217259"/>
+				<File Name="Brakeout_Soundbank" Hash="1050967576" Timestamp="1521244040"/>
 				<File Name="Init" Hash="133463144" Timestamp="1521145798"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="596177072" Timestamp="1521217259"/>
+				<File Name="" Hash="592966055" Timestamp="1521244040"/>
 			</Language>
 		</XMLInfo>
 	</Platform>
 	<Platform GUID="{A2851567-288F-4BA2-914E-43A98C145A4E}">
 		<Banks>
 			<Language ID="393239870">
-				<File Name="Brakeout_Soundbank" Hash="173901434" Timestamp="1521217262"/>
+				<File Name="Brakeout_Soundbank" Hash="1050967576" Timestamp="1521244044"/>
 				<File Name="Init" Hash="734789622" Timestamp="1521145805"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="82655936" Timestamp="1521217262"/>
+				<File Name="" Hash="457186935" Timestamp="1521244044"/>
 			</Language>
 		</XMLInfo>
 	</Platform>
 	<Platform GUID="{E94526C6-1339-4BC1-A771-ED3892F7962F}">
 		<Banks>
 			<Language ID="393239870">
-				<File Name="Brakeout_Soundbank" Hash="173901434" Timestamp="1521217260"/>
+				<File Name="Brakeout_Soundbank" Hash="1050967576" Timestamp="1521244042"/>
 				<File Name="Init" Hash="1616743340" Timestamp="1521145802"/>
 			</Language>
 		</Banks>
 		<XMLInfo>
 			<Language ID="-1">
-				<File Name="" Hash="3569284942" Timestamp="1521217260"/>
+				<File Name="" Hash="2594019349" Timestamp="1521244042"/>
 			</Language>
 		</XMLInfo>
 	</Platform>

@@ -83,10 +83,6 @@
 					<ShortName>shield.wav</ShortName>
 					<Path>SFX/shield_1C9C67B2.wem</Path>
 				</File>
-				<File Id="164408871" Language="SFX">
-					<ShortName>speed1.wav</ShortName>
-					<Path>SFX/speed1_F17FB28C.wem</Path>
-				</File>
 				<File Id="177744442" Language="SFX">
 					<ShortName>impact5.wav</ShortName>
 					<Path>SFX/impact5_1C9C67B2.wem</Path>
@@ -247,10 +243,6 @@
 					<ShortName>s1_l3#.2.wav</ShortName>
 					<Path>SFX/s1_l3#.2_F17FB28C.wem</Path>
 				</File>
-				<File Id="878077974" Language="SFX">
-					<ShortName>speed2.wav</ShortName>
-					<Path>SFX/speed2_F17FB28C.wem</Path>
-				</File>
 				<File Id="888458382" Language="SFX">
 					<ShortName>redcoin1.wav</ShortName>
 					<Path>SFX/redcoin1_1C9C67B2.wem</Path>
@@ -266,6 +258,10 @@
 				<File Id="953675186" Language="SFX">
 					<ShortName>s1_l6#.6.wav</ShortName>
 					<Path>SFX/s1_l6#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="976598164" Language="SFX">
+					<ShortName>speed4.wav</ShortName>
+					<Path>SFX/speed4_F17FB28C.wem</Path>
 				</File>
 				<File Id="985160453" Language="SFX">
 					<ShortName>s1_l7#.2.wav</ShortName>
@@ -286,10 +282,6 @@
 				<File Id="1043510067" Language="SFX">
 					<ShortName>s1_l3#.6.wav</ShortName>
 					<Path>SFX/s1_l3#.6_F17FB28C.wem</Path>
-				</File>
-				<File Id="1045701587" Language="SFX">
-					<ShortName>speed3.wav</ShortName>
-					<Path>SFX/speed3_F17FB28C.wem</Path>
 				</File>
 				<File Id="1058053890" Language="SFX">
 					<ShortName>s1_l7#.6.wav</ShortName>
