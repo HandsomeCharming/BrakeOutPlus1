@@ -11,24 +11,30 @@ ModelImporter:
     100006: Lamp
     100008: Balloon
     100010: chamber
+    100012: Tailwings
     400000: //RootNode
     400002: Camera
     400004: Cylinder.001
     400006: Lamp
     400008: Balloon
     400010: chamber
+    400012: Tailwings
     2000000: Camera
     2100000: Body
     2100002: Balloon
+    2100004: No Name
     2300000: Cylinder.001
     2300002: Balloon
     2300004: chamber
+    2300006: Tailwings
     3300000: Cylinder.001
     3300002: Balloon
     3300004: chamber
+    3300006: Tailwings
     4300000: Cylinder.001
     4300002: Balloon
     4300004: chamber
+    4300006: Tailwings
     10800000: Lamp
   externalObjects: {}
   materials:
