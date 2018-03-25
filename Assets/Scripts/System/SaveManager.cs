@@ -7,7 +7,7 @@ using System.IO;
 [System.Serializable]
 public class CarSave
 {
-
+    List<CarData> m_Cars;
 }
 
 [System.Serializable]
@@ -16,6 +16,7 @@ public class GameSave
     public int coin;
     public int star;
     public int highScore;
+    public CarSave m_Cars;
 
     public GameSave()
     {

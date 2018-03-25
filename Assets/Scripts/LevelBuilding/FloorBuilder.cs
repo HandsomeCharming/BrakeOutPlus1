@@ -418,4 +418,22 @@ public class FloorBuilder : MonoBehaviour {
         //floorTypeData = ChallengeManager.current.refreshFloorType(); 
     }
 
+    public void ChangeAllFloorMaterials(Material mat)
+    {
+        foreach(var fm in floorMeshes)
+        {
+            fm.GetComponent<MeshRenderer>().material = mat;
+            print("change");
+        }
+    }
+
+    public void EnableAllFloorMaterials(bool enable)
+    {
+        foreach (var fm in floorMeshes)
+        {
+            fm.GetComponent<MeshRenderer>().enabled = enable;
+            print("change");
+        }
+
+    }
 }

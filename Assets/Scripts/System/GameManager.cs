@@ -134,6 +134,17 @@ public class GameManager : MonoBehaviour {
         player = Instantiate(m_PlayerPrefab);
     }
 
+    public void ReloadCar(GameObject carPrefab)
+    {
+        if (player) Destroy(player);
+        player = Instantiate(carPrefab);
+    }
+
+    public void ChangeBackground(BackgroundEnum back)
+    {
+        BackgroundManager.current.ChangeBackground(back);
+    }
+
     public void AddCoin(int coinCount)
     {
         gameCoins += coinCount;
@@ -174,6 +185,11 @@ public class GameManager : MonoBehaviour {
             ChallengeManager.current.getHardTimeRemain = 15.0f;
             UIManager.current.ChangeStateByGameState();
         }
+    }
+
+    public void ChangeScene()
+    {
+
     }
 
     public void StartCutScene()

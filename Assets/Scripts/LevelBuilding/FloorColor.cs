@@ -39,12 +39,14 @@ public class FloorColor : MonoBehaviour {
         {
             m_Renderer.material.color = FloorColorController.current.NextColor();
         }*/
-
-        if(BackgroundMaterial.current)
+        if(BackgroundManager.GetBackgroundState() == BackgroundEnum.Color)
         {
-            Color col = BackgroundMaterial.current.GetCurrentFloorColor();
-            m_Renderer.sharedMaterial.color = col;
-            m_Renderer.sharedMaterial.SetColor("_EmissionColor", col / 3.0f);
+            if (BackgroundMaterial.current && BackgroundMaterial.current.gameObject.activeSelf)
+            {
+                Color col = BackgroundMaterial.current.GetCurrentFloorColor();
+                m_Renderer.sharedMaterial.color = col;
+                m_Renderer.sharedMaterial.SetColor("_EmissionColor", col / 3.0f);
+            }
         }
     }
 }

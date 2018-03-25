@@ -38,7 +38,7 @@ public class FloorMesh : MonoBehaviour {
     public void ResetMesh()
     {
         lifeTime = 0;
-        GetComponent<MeshRenderer>().enabled = false;
+        //GetComponent<MeshRenderer>().enabled = false;
 
         if (destroyOnRemake != null)
             Destroy(destroyOnRemake);
@@ -56,12 +56,12 @@ public class FloorMesh : MonoBehaviour {
         {
             DestroyImmediate(GetComponent<MeshCollider>());
         }
-        GetComponent<FloorColor>().ResetColor();
+        GetComponent<FloorColor>().DrawColor();
     }
 
     public void makeMeshNoColor()
     {
-        GetComponent<MeshRenderer>().enabled = true;
+        //GetComponent<MeshRenderer>().enabled = true;
 
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;

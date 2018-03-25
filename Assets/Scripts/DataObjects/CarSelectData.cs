@@ -2,6 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CarClass
+{
+    Basic,
+    Fast,
+    GoodTurn,
+    Boost,
+    Slow
+}
+
+[System.Serializable]
+public class SceneCars
+{
+    public string name;
+    public List<SingleCarSelectData> carData;
+}
+
 [System.Serializable]
 public class MinMaxData
 {
@@ -17,6 +33,16 @@ public class SingleCarSelectData
     [Header("Prefabs")]
     public GameObject CarInGamePrefab;
     public GameObject CarForViewPrefab;
+
+    [Header("Class")]
+    public CarClass carClass;
+}
+
+[System.Serializable]
+public class CarClassData
+{
+    public string name;
+    public CarClass carClass;
 
     [Header("Display Settings")]
     [Range(0, 1.0f)]
@@ -39,13 +65,24 @@ public class SingleCarSelectData
 
     [Header("Physics Settings")]
     public MinMaxData m_BoostForce;
-    public MinMaxData m_RotateSpeed;
-    public MinMaxData m_BoostRotateSpeed;
+    public MinMaxData m_MinRotateSpeed;
+    public MinMaxData m_MaxRotateSpeed;
+    public MinMaxData m_MinBoostRotateSpeed;
+    public MinMaxData m_MaxBoostRotateSpeed;
     public float timeToReachMaxRotateSpeed;
+}
+
+public class CarData
+{
+    public string m_Name;
+    public int m_AccLevel;
+    public int m_HandlingLevel;
+    public int m_BoostLevel;
 }
 
 [CreateAssetMenu(fileName = "CarSelectData", menuName = "Custom/CarSelect", order = 1)]
 public class CarSelectData : ScriptableObject
 {
-    public List<SingleCarSelectData> data;
+    public List<SceneCars> sceneData;
+    public List<CarClassData> classData;
 }
