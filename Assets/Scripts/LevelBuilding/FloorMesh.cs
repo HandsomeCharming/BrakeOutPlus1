@@ -16,7 +16,7 @@ public class FloorMesh : MonoBehaviour {
     public GameObject rightRim;
     public GameObject carDetectTrigger;
 
-    public GameObject destroyOnRemake;
+    public List<GameObject> destroyOnRemake;
      
     public Vector3 prevPos1, prevPos2; //1 left, 2 right
     public Vector3 dir, prevDir;
@@ -35,13 +35,24 @@ public class FloorMesh : MonoBehaviour {
 
     Mesh mesh;
 
+    private void Awake()
+    {
+        destroyOnRemake = new List<GameObject>();
+    }
+
     public void ResetMesh()
     {
         lifeTime = 0;
         //GetComponent<MeshRenderer>().enabled = false;
 
-        if (destroyOnRemake != null)
-            Destroy(destroyOnRemake);
+        if (destroyOnRemake.Count > 0)
+        {
+            foreach(var go in destroyOnRemake)
+            {
+                Destroy(go);
+            }
+            destroyOnRemake.Clear();
+        }
 
         foreach (var item in m_ItemsOnMesh)
         {

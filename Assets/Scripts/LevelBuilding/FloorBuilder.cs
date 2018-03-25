@@ -397,7 +397,10 @@ public class FloorBuilder : MonoBehaviour {
         end.AddObstacleByType(ObstacleType.AutoPilotEnd);
         m_UpcomingFloorDatas.Enqueue(end);
 
-        m_UpcomingFloorDatas.Enqueue(GetStraightFloorData(28));
+        FloorTypeData straight = GetStraightFloorData(28);
+        straight.coinCount = Random.Range(4, 10);
+        straight.coinStartIndex = Random.Range(4, 15);
+        m_UpcomingFloorDatas.Enqueue(straight);
     }
 
     public int GenerateStraightPath(int length)

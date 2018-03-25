@@ -52,7 +52,7 @@ public class ObstacleBuilder : MonoBehaviour {
         obstacle.transform.position = prevPosMid;
         obstacle.transform.forward = floorMesh.prevDir;
 
-        floorMesh.destroyOnRemake = obstacle;
+        floorMesh.destroyOnRemake.Add(obstacle);
     }
 
     //Return has made mesh
@@ -83,7 +83,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     obstacle.transform.forward = floorMesh.prevDir;
                     obstacle.GetComponent<CubeObstacle>().StartAnim();
 
-                    floorMesh.destroyOnRemake = obstacle;
+                    floorMesh.destroyOnRemake.Add(obstacle);
                     break;
                 }
             case ObstacleType.Jump:
@@ -93,7 +93,20 @@ public class ObstacleBuilder : MonoBehaviour {
                     floorMesh.prevPos2 = floorMesh.prevPos2 + floorMesh.dir * m_Storer.m_JumpDistance; // * floorMesh.length * 6.2f;
                     floorMesh.prevPos1.y -= m_Storer.m_JumpHeight; //6.5f;
                     floorMesh.prevPos2.y -= m_Storer.m_JumpHeight;  //6.5f;
+
                     floorMesh.makeMesh();
+
+                    Vector3 end1 = floorMesh.prevPos1;
+                    Vector3 end2 = floorMesh.prevPos2;
+                    GameObject rim = Instantiate(m_Storer.m_RimPrefab, null);
+                    rim.transform.position = (end1 + end2) / 2.0f;
+                    rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
+                    rim.transform.forward = (end1 - end2).normalized;
+                    rim.GetComponent<ItemSuper>().StartAnim();
+
+                    //rim.transform.parent = floorMesh.transform;
+                    floorMesh.destroyOnRemake.Add(rim);
+
                     madeMesh = true;
                     break;
                 }
@@ -104,7 +117,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     if (signIndex < 0) signIndex = FloorBuilder.current.floorMeshes.Length - 1;
                     FloorMesh signMesh = FloorBuilder.current.floorMeshes[signIndex];
 
-
+                    //add boost sign
                     GameObject sign = Instantiate(m_Storer.BoostSignPrefab); ;
 
                     Vector3 prevPosMid = (signMesh.prevPos1 + signMesh.prevPos2) / 2.0f;
@@ -113,12 +126,25 @@ public class ObstacleBuilder : MonoBehaviour {
                     sign.transform.forward = signMesh.prevDir;
                     sign.transform.Rotate(90.0f, 0, 0);
                     sign.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(sign);
 
                     Vector3 dir = floorMesh.dir;
                     dir.z = -dir.z;
                     floorMesh.makeMesh();
                     //floorMesh.changeTexture("RedWhiteStripe");
                     //floorMesh.changeNormalByDir(Vector3.Cross(dir, new Vector3(dir.z, 0, -dir.x)));
+                    
+                    Vector3 end1 = floorMesh.endPos1;
+                    Vector3 end2 = floorMesh.endPos2;
+                    GameObject rim = Instantiate(m_Storer.m_RimPrefab, null);
+                    rim.transform.position = (end1 + end2) / 2.0f;
+                    rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
+                    rim.transform.forward = (end1 - end2).normalized;
+                    rim.GetComponent<ItemSuper>().StartAnim();
+
+                    //rim.transform.parent = floorMesh.transform;
+                    floorMesh.destroyOnRemake.Add(rim);
+
                     madeMesh = true;
                     break;
                 }
@@ -157,7 +183,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     obstacle.transform.forward = floorMesh.prevDir;
                     obstacle.GetComponent<Obstacle>().StartAnim();
 
-                    floorMesh.destroyOnRemake = obstacle;
+                    floorMesh.destroyOnRemake.Add(obstacle);
                     break;
                 }
             case ObstacleType.MovingCube:
@@ -178,7 +204,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     obstacle.GetComponent<MovingCubeObstacle>().movePos[0] = pos1;
                     obstacle.GetComponent<MovingCubeObstacle>().movePos[1] = pos2;
 
-                    floorMesh.destroyOnRemake = obstacle;
+                    floorMesh.destroyOnRemake.Add(obstacle);
                     break;
                 }
             case ObstacleType.MovingWall:
@@ -199,7 +225,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     obstacle.GetComponent<MovingCubeObstacle>().movePos[0] = pos1;
                     obstacle.GetComponent<MovingCubeObstacle>().movePos[1] = pos2;
 
-                    floorMesh.destroyOnRemake = obstacle;
+                    floorMesh.destroyOnRemake.Add(obstacle);
                     break;
                 }
             case ObstacleType.WallLeftCube:
@@ -232,13 +258,14 @@ public class ObstacleBuilder : MonoBehaviour {
                     obstacle.transform.forward = floorMesh.prevDir;
                     obstacle.GetComponent<CubeObstacle>().StartAnim();
 
-                    floorMesh.destroyOnRemake = obstacle;
+                    floorMesh.destroyOnRemake.Add(obstacle);
                     break;
                 }
             case ObstacleType.GlidingStart:
                 {
                     FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
                     float scale = Vector3.Distance(floorMesh.prevPos1, floorMesh.prevPos2);
+                    floorMesh.makeMesh();
 
                     GameObject trigger = Instantiate(GlidingTriggerPrefab);
                     Vector3 endPosMid = (floorMesh.prevPos1 + floorMesh.prevPos2) / 2.0f;
@@ -246,8 +273,20 @@ public class ObstacleBuilder : MonoBehaviour {
                     trigger.transform.position = endPosMid;
                     trigger.transform.forward = floorMesh.prevDir;
 
-                    floorMesh.destroyOnRemake = trigger;
+                    floorMesh.destroyOnRemake.Add(trigger);
                     
+                    Vector3 end1 = floorMesh.endPos1;
+                    Vector3 end2 = floorMesh.endPos2;
+                    GameObject rim = Instantiate(m_Storer.m_RimPrefab, null);
+                    rim.transform.position = (end1 + end2) / 2.0f;
+                    rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
+                    rim.transform.forward = (end1 - end2).normalized;
+                    rim.GetComponent<ItemSuper>().StartAnim();
+
+                    //rim.transform.parent = floorMesh.transform;
+                    floorMesh.destroyOnRemake.Add(rim);
+
+                    madeMesh = true;
                     break;
                 }
             case ObstacleType.GlidingEnd:
@@ -291,7 +330,15 @@ public class ObstacleBuilder : MonoBehaviour {
                             Destroy(coins, 20.0f);
                         }
                     }
-                     
+                    
+                    Vector3 end1 = floorMesh.prevPos1;
+                    Vector3 end2 = floorMesh.prevPos2;
+                    GameObject rim = Instantiate(m_Storer.m_RimPrefab, null);
+                    rim.transform.position = (end1 + end2) / 2.0f;
+                    rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
+                    rim.transform.forward = (end1 - end2).normalized;
+                    rim.GetComponent<ItemSuper>().StartAnim();
+
                     madeMesh = true;
                     break;
                 }
@@ -306,7 +353,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     trigger.transform.position = endPosMid;
                     trigger.transform.forward = floorMesh.prevDir;
 
-                    floorMesh.destroyOnRemake = trigger;
+                    floorMesh.destroyOnRemake.Add(trigger);
 
                     break;
                 }
@@ -328,7 +375,7 @@ public class ObstacleBuilder : MonoBehaviour {
         obstacle.transform.forward = floorMesh.prevDir;
         obstacle.GetComponent<WallObstacle>().StartAnim();
 
-        floorMesh.destroyOnRemake = obstacle;
+        floorMesh.destroyOnRemake.Add(obstacle);
     }
 
     // Update is called once per frame
