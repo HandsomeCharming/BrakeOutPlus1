@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 9b290bf3644c74147837bd569a4170e2
+timeCreated: 1521938345
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Airship1A_001
+    100002: Balloon1A_001
+    100004: Barrel1A_001
+    100006: Box1A_001
+    100008: Castle1A_001
+    100010: Coin1A_001
+    100012: Lantern1A_001
+    100014: //RootNode
+    100016: Rock1A_001
+    400000: Airship1A_001
+    400002: Balloon1A_001
+    400004: Barrel1A_001
+    400006: Box1A_001
+    400008: Castle1A_001
+    400010: Coin1A_001
+    400012: Lantern1A_001
+    400014: //RootNode
+    400016: Rock1A_001
+    2100000: Barrel1A
+    2100002: Box1A
+    2100004: Coin1A
+    2100006: Rock1A
+    2100008: Airship1A
+    2100010: Balloon1A
+    2100012: Lantern1A
+    2100014: Castle1A
+    2300000: Airship1A_001
+    2300002: Balloon1A_001
+    2300004: Barrel1A_001
+    2300006: Box1A_001
+    2300008: Castle1A_001
+    2300010: Coin1A_001
+    2300012: Lantern1A_001
+    2300014: Rock1A_001
+    3300000: Airship1A_001
+    3300002: Balloon1A_001
+    3300004: Barrel1A_001
+    3300006: Box1A_001
+    3300008: Castle1A_001
+    3300010: Coin1A_001
+    3300012: Lantern1A_001
+    3300014: Rock1A_001
+    4300000: Barrel1A_001
+    4300002: Box1A_001
+    4300004: Coin1A_001
+    4300006: Rock1A_001
+    4300008: Airship1A_001
+    4300010: Balloon1A_001
+    4300012: Lantern1A_001
+    4300014: Castle1A_001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Airship1A
+    second: {fileID: 2100000, guid: 91d4db392b1ef1f4daf17fa490bc2df1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Balloon1A
+    second: {fileID: 2100000, guid: 79f674b426878944889d50bc41069602, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel1A
+    second: {fileID: 2100000, guid: 069672b38f0380a4b99c7e07d41ecd98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Box1A
+    second: {fileID: 2100000, guid: 977df712124db544fbb66d215cbfee75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Castle1A
+    second: {fileID: 2100000, guid: ff3f1521537a7864abac4ccc2bf4e289, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Coin1A
+    second: {fileID: 2100000, guid: f9018eca94650ae41b05a77d81da9369, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lantern1A
+    second: {fileID: 2100000, guid: 5946625796f053d4f8cc2350b836fde3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock1A
+    second: {fileID: 2100000, guid: 3169c1ac1362ca348945e947d9b8d095, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

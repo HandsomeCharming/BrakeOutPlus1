@@ -7,6 +7,7 @@ public class BackgroundMaterial : MonoBehaviour {
 
     public static BackgroundMaterial current;
 
+    [HideInInspector]
     public Material mat;
     public DifficultyColorDataObject m_Storer;
 
@@ -39,7 +40,7 @@ public class BackgroundMaterial : MonoBehaviour {
         time = 0;
         m_Increasing = true;
         m_SharpLerpTime = 0;
-         mat = GetComponent<Image>().material;
+        mat = GetComponent<Image>().material;
         mat.SetFloat("_ScreenSizeX", Screen.width);
         mat.SetFloat("_ScreenSizeY", Screen.height);
 
