@@ -7622,7 +7622,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-4</Value>
+								<Value>-11</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -7827,6 +7827,13 @@
 									</SequenceList>
 								</MusicTrack>
 								<MusicTrack Name="speed4" ID="{31CEF619-1E32-428A-9219-C56BF4B4A8C9}" ShortID="438062868">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
@@ -7856,6 +7863,83 @@
 														<Property Name="FadeOutMode" Type="int16" Value="0"/>
 													</PropertyList>
 													<AudioSourceRef Name="speed4" ID="{74B0538E-D487-47B7-9C34-8723CC1FCD89}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+								<MusicTrack Name="speed5" ID="{41D63676-3262-4FC1-8070-E6B68EBB27D9}" ShortID="478038738">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="speed5" ID="{7FE73789-8368-4AD5-96EB-46FFC96A7F1C}" ShortID="1016667494">
+											<Language>SFX</Language>
+											<AudioFile>speed5.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{B817FCB3-4D02-43BE-A8C5-320F8F76F5DB}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{A9FCB70A-92C8-414D-8CDE-9D37FF4BACCE}">
+											<ClipList>
+												<MusicClip Name="speed5" ID="{08EFAEB1-3167-4FF1-AE10-C356E17DB9BC}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="7060.125"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="speed5" ID="{7FE73789-8368-4AD5-96EB-46FFC96A7F1C}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+								<MusicTrack Name="speed6" ID="{18EE2293-BEAB-4945-B5BE-95CCC5BD1D41}" ShortID="664082266">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="speed6" ID="{A4F4E040-D292-4BD6-BF9C-F19FA13B3365}" ShortID="376228521">
+											<Language>SFX</Language>
+											<AudioFile>speed6.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{809496FE-086A-49CD-B510-8A2CB9C387B6}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{86870804-3B6C-4163-83C3-D4CA6DAFFF2E}">
+											<ClipList>
+												<MusicClip Name="speed6" ID="{CFFA93A1-2CBA-4A17-8634-87F857815713}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="7800.45833333333"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="speed6" ID="{A4F4E040-D292-4BD6-BF9C-F19FA13B3365}"/>
 												</MusicClip>
 											</ClipList>
 										</MusicTrackSequence>
