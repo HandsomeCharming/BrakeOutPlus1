@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="128">
 	<RootPaths>
-		<ProjectRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/Documents/UnityProjects/BrakeOutLFS/GravityRacer_WwiseProject/</ProjectRoot>
-		<SourceFilesRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/Documents/UnityProjects/BrakeOutLFS/GravityRacer_WwiseProject/.cache/Windows/</SourceFilesRoot>
-		<SoundBanksRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/Documents/UnityProjects/BrakeOutLFS/GravityRacer_WwiseProject/GeneratedSoundBanks/Windows/</SoundBanksRoot>
+		<ProjectRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/BrakeOutLFS/GravityRacer_WwiseProject/</ProjectRoot>
+		<SourceFilesRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/BrakeOutLFS/GravityRacer_WwiseProject/.cache/Windows/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/BrakeOutLFS/GravityRacer_WwiseProject/GeneratedSoundBanks/Windows/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/Documents/UnityProjects/BrakeOutLFS/GravityRacer_WwiseProject/GeneratedSoundBanks/Windows/</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/Allenz/Library/Application Support/Wwise2017/Bottles/wwise/dosdevices/y:/BrakeOutLFS/GravityRacer_WwiseProject/GeneratedSoundBanks/Windows/</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -114,6 +114,10 @@
 				<File Id="373212312" Language="SFX">
 					<ShortName>s1_l5#.6.wav</ShortName>
 					<Path>SFX/s1_l5#.6_F17FB28C.wem</Path>
+				</File>
+				<File Id="376228521" Language="SFX">
+					<ShortName>speed6.wav</ShortName>
+					<Path>SFX/speed6_F17FB28C.wem</Path>
 				</File>
 				<File Id="419150087" Language="SFX">
 					<ShortName>autopilotclose.wav</ShortName>
@@ -258,10 +262,6 @@
 				<File Id="953675186" Language="SFX">
 					<ShortName>s1_l6#.6.wav</ShortName>
 					<Path>SFX/s1_l6#.6_F17FB28C.wem</Path>
-				</File>
-				<File Id="976598164" Language="SFX">
-					<ShortName>speed4.wav</ShortName>
-					<Path>SFX/speed4_F17FB28C.wem</Path>
 				</File>
 				<File Id="985160453" Language="SFX">
 					<ShortName>s1_l7#.2.wav</ShortName>

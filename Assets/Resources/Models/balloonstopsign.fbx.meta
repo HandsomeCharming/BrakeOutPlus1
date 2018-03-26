@@ -1,45 +1,34 @@
 fileFormatVersion: 2
-guid: a86aea44681544ed48c06eb9d85e6e8e
-timeCreated: 1521603301
+guid: e8d124b9684b14fd4817f0bca5217182
+timeCreated: 1522100097
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     100002: Camera
-    100004: Cylinder.001
-    100006: Lamp
-    100008: Balloon
-    100010: chamber
-    100012: Tailwings
-    100014: backwing
+    100004: Cube
+    100006: Cylinder
+    100008: Cylinder.001
+    100010: Lamp
     400000: //RootNode
     400002: Camera
-    400004: Cylinder.001
-    400006: Lamp
-    400008: Balloon
-    400010: chamber
-    400012: Tailwings
-    400014: backwing
+    400004: Cube
+    400006: Cylinder
+    400008: Cylinder.001
+    400010: Lamp
     2000000: Camera
-    2100000: Body
-    2100002: Balloon
-    2100004: No Name
-    2300000: Cylinder.001
-    2300002: Balloon
-    2300004: chamber
-    2300006: Tailwings
-    2300008: backwing
-    3300000: Cylinder.001
-    3300002: Balloon
-    3300004: chamber
-    3300006: Tailwings
-    3300008: backwing
+    2100000: No Name
+    2100002: Material
+    2300000: Cube
+    2300002: Cylinder
+    2300004: Cylinder.001
+    3300000: Cube
+    3300002: Cylinder
+    3300004: Cylinder.001
     4300000: Cylinder.001
-    4300002: Balloon
-    4300004: chamber
-    4300006: Tailwings
-    4300008: backwing
+    4300002: Cylinder
+    4300004: Cube
     10800000: Lamp
   externalObjects: {}
   materials:
