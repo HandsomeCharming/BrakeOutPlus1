@@ -19,4 +19,8 @@ public class ObstacleDataObject : ScriptableObject {
     public GameObject[] m_GliderCoins;
 
     public GameObject m_RimPrefab;
+
+    public GameObject m_BoostSignPrefab;
+    public GameObject m_GlideSignPrefab;
+    public GameObject m_StopSignPrefab;
 }

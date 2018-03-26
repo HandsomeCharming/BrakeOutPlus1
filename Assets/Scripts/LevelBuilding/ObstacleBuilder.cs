@@ -131,9 +131,8 @@ public class ObstacleBuilder : MonoBehaviour {
                     Vector3 dir = floorMesh.dir;
                     dir.z = -dir.z;
                     floorMesh.makeMesh();
-                    //floorMesh.changeTexture("RedWhiteStripe");
-                    //floorMesh.changeNormalByDir(Vector3.Cross(dir, new Vector3(dir.z, 0, -dir.x)));
                     
+                    // add rim
                     Vector3 end1 = floorMesh.endPos1;
                     Vector3 end2 = floorMesh.endPos2;
                     GameObject rim = Instantiate(m_Storer.m_RimPrefab, null);
@@ -141,9 +140,20 @@ public class ObstacleBuilder : MonoBehaviour {
                     rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
                     rim.transform.forward = (end1 - end2).normalized;
                     rim.GetComponent<ItemSuper>().StartAnim();
-
-                    //rim.transform.parent = floorMesh.transform;
                     floorMesh.destroyOnRemake.Add(rim);
+
+                    // add sign
+                    GameObject signpost1 = Instantiate(m_Storer.m_BoostSignPrefab, null);
+                    signpost1.transform.position = end1;
+                    signpost1.transform.forward = signMesh.prevDir;
+                    signpost1.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(signpost1);
+
+                    GameObject signpost2 = Instantiate(m_Storer.m_BoostSignPrefab, null);
+                    signpost2.transform.position = end2;
+                    signpost2.transform.forward = signMesh.prevDir;
+                    signpost2.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(signpost2);
 
                     madeMesh = true;
                     break;
@@ -275,6 +285,7 @@ public class ObstacleBuilder : MonoBehaviour {
 
                     floorMesh.destroyOnRemake.Add(trigger);
                     
+                    // Add rim
                     Vector3 end1 = floorMesh.endPos1;
                     Vector3 end2 = floorMesh.endPos2;
                     GameObject rim = Instantiate(m_Storer.m_RimPrefab, null);
@@ -282,6 +293,19 @@ public class ObstacleBuilder : MonoBehaviour {
                     rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
                     rim.transform.forward = (end1 - end2).normalized;
                     rim.GetComponent<ItemSuper>().StartAnim();
+
+                    // Add sign
+                    GameObject signpost1 = Instantiate(m_Storer.m_GlideSignPrefab, null);
+                    signpost1.transform.position = end1;
+                    signpost1.transform.forward = floorMesh.prevDir;
+                    signpost1.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(signpost1);
+
+                    GameObject signpost2 = Instantiate(m_Storer.m_GlideSignPrefab, null);
+                    signpost2.transform.position = end2;
+                    signpost2.transform.forward = floorMesh.prevDir;
+                    signpost2.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(signpost2);
 
                     //rim.transform.parent = floorMesh.transform;
                     floorMesh.destroyOnRemake.Add(rim);
@@ -354,6 +378,30 @@ public class ObstacleBuilder : MonoBehaviour {
                     trigger.transform.forward = floorMesh.prevDir;
 
                     floorMesh.destroyOnRemake.Add(trigger);
+
+                    break;
+                }
+            case ObstacleType.AutoPilotStopSign:
+                {
+                    FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
+                    float scale = Vector3.Distance(floorMesh.prevPos1, floorMesh.prevPos2);
+
+                    // Add sign
+                    Vector3 end1 = floorMesh.prevPos1;
+                    Vector3 end2 = floorMesh.prevPos2;
+                    GameObject signpost1 = Instantiate(m_Storer.m_StopSignPrefab, null);
+                    signpost1.transform.position = end1;
+                    signpost1.transform.forward = floorMesh.prevDir;
+                    signpost1.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(signpost1);
+
+                    GameObject signpost2 = Instantiate(m_Storer.m_StopSignPrefab, null);
+                    signpost2.transform.position = end2;
+                    signpost2.transform.forward = floorMesh.prevDir;
+                    signpost2.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(signpost2);
+
+                    print("sign");
 
                     break;
                 }

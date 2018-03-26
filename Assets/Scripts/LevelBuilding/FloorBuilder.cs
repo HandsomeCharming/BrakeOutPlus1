@@ -29,7 +29,8 @@ public enum ObstacleType
     RandomPlacedCube,
     GlidingStart,
     GlidingEnd,
-    AutoPilotEnd
+    AutoPilotEnd,
+    AutoPilotStopSign
 }
 
 public class ObstacleData
@@ -397,10 +398,20 @@ public class FloorBuilder : MonoBehaviour {
         end.AddObstacleByType(ObstacleType.AutoPilotEnd);
         m_UpcomingFloorDatas.Enqueue(end);
 
-        FloorTypeData straight = GetStraightFloorData(28);
+        FloorTypeData straight = GetStraightFloorData(15);
         straight.coinCount = Random.Range(4, 10);
         straight.coinStartIndex = Random.Range(4, 15);
         m_UpcomingFloorDatas.Enqueue(straight);
+        
+        FloorTypeData stop = GetStraightFloorData(1);
+        stop.AddObstacleByType(ObstacleType.AutoPilotStopSign);
+        m_UpcomingFloorDatas.Enqueue(stop);
+
+        FloorTypeData ss = GetStraightFloorData(10);
+        ss.coinCount = Random.Range(4, 10);
+        ss.coinStartIndex = Random.Range(4, 15);
+        ss.AddObstacleByType(ObstacleType.Cube, Random.Range(1,4));
+        m_UpcomingFloorDatas.Enqueue(ss);
     }
 
     public int GenerateStraightPath(int length)
