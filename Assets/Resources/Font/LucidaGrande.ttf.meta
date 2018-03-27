@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
-  includeFontData: 1
+  includeFontData: 0
   fontName: Lucida Grande
   fontNames:
   - Lucida Grande
