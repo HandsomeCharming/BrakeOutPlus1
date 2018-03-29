@@ -7,7 +7,47 @@ using System.IO;
 [System.Serializable]
 public class CarSave
 {
-    List<CarData> m_Cars;
+    List<CarSaveData> m_Cars;
+    Dictionary<string, CarSaveData> m_CarDict;
+
+    public CarSelectData Storer
+    {
+        get
+        {
+            if(m_Storer == null)
+            {
+                m_Storer = (CarSelectData)Resources.Load(m_DataPath);
+            }
+            return m_Storer;
+        }
+        set
+        {}
+    }
+    CarSelectData m_Storer;
+
+    const string m_DataPath = "ScriptableObjects/CarSelectData";
+
+    public CarSave()
+    {
+        m_Cars = new List<CarSaveData>();
+        m_CarDict = new Dictionary<string, CarSaveData>();
+    }
+
+    public void BuyCar(int carIndex, int sceneIndex)
+    {
+        CarSaveData first = new CarSaveData();
+        first.m_CarIndex = carIndex;
+        first.m_SceneIndex = sceneIndex;
+        first.m_Name = Storer.GetCarData(carIndex, sceneIndex).name;
+
+        m_Cars.Add(first);
+        m_CarDict.Add(first.m_Name, first);
+    }
+
+    public bool HasCar(string name)
+    {
+        return m_CarDict.ContainsKey(name);
+    }
 }
 
 [System.Serializable]
@@ -17,12 +57,17 @@ public class GameSave
     public int star;
     public int highScore;
     public CarSave m_Cars;
+    public string version;
 
     public GameSave()
     {
         coin = 0;
         star = 0;
         highScore = 0;
+
+        // init first car save
+        m_Cars = new CarSave();
+        m_Cars.BuyCar(0, 0);
     }
 }
 
@@ -75,14 +120,27 @@ public class SaveManager {
                 m_Data = new GameSave();
 			}
 			file.Close();
+
+            if(m_Data.m_Cars == null)
+            {
+                m_Data.m_Cars = new CarSave();
+                m_Data.m_Cars.BuyCar(0, 0);
+            }
         }
         else
         {
             Debug.Log("Load new ");
             m_Data = new GameSave();
-            m_Data.coin = 0;
-            m_Data.star = 0;
-            m_Data.highScore = 0;
         }
+    }
+
+    public bool HasCar(string name)
+    {
+        return m_Data.m_Cars.HasCar(name);
+    }
+
+    public void BuyCar(string name)
+    {
+
     }
 }

@@ -26,7 +26,17 @@ public class SelectCarManager : MonoBehaviour {
         //m_CurrentCarName = m_CarNames[m_CarIndex];
         //m_Menu.SetText(m_CurrentCarName);
     }
+
+    public SingleCarSelectData GetCurrentCarData()
+    {
+        return m_CurrentCars[m_CarIndex];
+    }
     
+    public bool isCurrentCarAvailable()
+    {
+        return SaveManager.instance.HasCar(m_CurrentCars[m_CarIndex].name);
+    }
+
     public void NextCar()
     {
         m_CarIndex++;
@@ -36,7 +46,10 @@ public class SelectCarManager : MonoBehaviour {
         }
         //m_CurrentCarName = m_CarNames[m_CarIndex];
         //AppManager.instance.SetCarName(m_CurrentCarName);
-        GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
+        if(isCurrentCarAvailable())
+        {
+            GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
+        }
     }
 
     public void PrevCar()
@@ -48,7 +61,10 @@ public class SelectCarManager : MonoBehaviour {
         }
         //m_CurrentCarName = m_CarNames[m_CarIndex];
         //AppManager.instance.SetCarName(m_CurrentCarName);
-        GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
+        if (isCurrentCarAvailable())
+        {
+            GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
+        }
     }
 
     public void SelectScene(int index)

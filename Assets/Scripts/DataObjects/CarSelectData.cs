@@ -34,6 +34,11 @@ public class SingleCarSelectData
     public GameObject CarInGamePrefab;
     public GameObject CarForViewPrefab;
 
+    public bool customViewPos;
+    public Vector3 ViewPos;
+    public bool customViewRot;
+    public Vector3 ViewRot;
+
     [Header("Class")]
     public CarClass carClass;
 }
@@ -72,12 +77,15 @@ public class CarClassData
     public float timeToReachMaxRotateSpeed;
 }
 
-public class CarData
+[System.Serializable]
+public class CarSaveData
 {
     public string m_Name;
-    public int m_AccLevel;
-    public int m_HandlingLevel;
-    public int m_BoostLevel;
+    public int m_CarIndex;
+    public int m_SceneIndex;
+    public int m_AccLevel = 0;
+    public int m_HandlingLevel = 0;
+    public int m_BoostLevel = 0;
 }
 
 [CreateAssetMenu(fileName = "CarSelectData", menuName = "Custom/CarSelect", order = 1)]
@@ -85,4 +93,9 @@ public class CarSelectData : ScriptableObject
 {
     public List<SceneCars> sceneData;
     public List<CarClassData> classData;
+
+    public SingleCarSelectData GetCarData(int carIndex, int sceneIndex)
+    {
+        return sceneData[sceneIndex].carData[carIndex];
+    }
 }
