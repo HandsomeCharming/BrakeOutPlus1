@@ -27,6 +27,7 @@ public class SelectCarManager : MonoBehaviour {
         SelectScene(m_CurrentSceneIndex);
         //m_CurrentCarName = m_CarNames[m_CarIndex];
         //m_Menu.SetText(m_CurrentCarName);
+        m_Menu.enabled = true;
     }
 
     public SingleCarSelectData GetCurrentCarData()
@@ -82,7 +83,6 @@ public class SelectCarManager : MonoBehaviour {
         GameManager.current.ChangeBackground(back);
         m_Menu.RefreshForManager();
         m_Menu.ChangeSceneGO(m_CurrentSceneIndex);
-        
     }
 
     public void BuyCurrentCar()
