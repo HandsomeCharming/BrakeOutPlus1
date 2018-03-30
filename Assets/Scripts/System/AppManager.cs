@@ -11,7 +11,6 @@ public class PlayerData
 public class AppManager : MonoBehaviour {
 
     public static AppManager instance;
-    public string m_CarPrefabName = "Prefabs/Car/Trimid";
     public int m_Coins;
 
 	void Awake () {
@@ -22,7 +21,6 @@ public class AppManager : MonoBehaviour {
         }
         instance = this;
         DontDestroyOnLoad(transform.gameObject);
-        m_CarPrefabName = "Prefabs/Car/Trimid";
 
         // Init localization
         if(GetComponent<LocalizationManager>() == null)
@@ -38,15 +36,6 @@ public class AppManager : MonoBehaviour {
         if (GetComponent<NetworkManager>() == null)
         {
             gameObject.AddComponent<NetworkManager>();
-        }
-    }
-	
-    public void SetCarName(string carName)
-    {
-        GameObject go = (GameObject) Resources.Load("Prefabs/Car/" + carName);
-        if(go != null)
-        {
-            m_CarPrefabName = "Prefabs/Car/" + carName;
         }
     }
 

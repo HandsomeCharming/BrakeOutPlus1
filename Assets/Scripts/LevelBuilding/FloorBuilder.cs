@@ -437,7 +437,7 @@ public class FloorBuilder : MonoBehaviour {
         foreach(var fm in floorMeshes)
         {
             fm.GetComponent<MeshRenderer>().material = mat;
-            print("change");
+            //print("change");
         }
     }
 
@@ -446,7 +446,7 @@ public class FloorBuilder : MonoBehaviour {
         foreach (var fm in floorMeshes)
         {
             fm.GetComponent<MeshRenderer>().enabled = enable;
-            print("change");
+            //print("change");
         }
 
     }

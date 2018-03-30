@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager current;
     public static int m_NextAdTime = 0;
 
-    public bool m_LoadFromAppManager = true;
+    public bool m_LoadFromDefault = true;
     public GameObject m_PlayerPrefab;
     public GameObject player;
 
@@ -42,6 +42,26 @@ public class GameManager : MonoBehaviour {
     public int dayHighScore;
     const string LastDateName = "HSLastDate";
     const string DayHighScoreName = "DayHighScore";
+
+    public int m_DefaultCarIndex;
+    public int m_DefaultSceneIndex;
+
+    public CarSelectData CarStorer
+    {
+        get
+        {
+            if (m_CarStorer == null)
+            {
+                m_CarStorer = (CarSelectData)Resources.Load(m_DataPath);
+            }
+            return m_CarStorer;
+        }
+        set
+        { }
+    }
+    CarSelectData m_CarStorer;
+
+    const string m_DataPath = "ScriptableObjects/CarSelectData";
 
     public enum GameState
     {
@@ -106,9 +126,6 @@ public class GameManager : MonoBehaviour {
         m_DiffMultiplier = 1.0f;
         m_ItemMultiplier = 1.0f;
 
-        if (m_LoadFromAppManager || m_PlayerPrefab == null)
-            m_PlayerPrefab = (GameObject) Resources.Load(AppManager.instance.m_CarPrefabName);
-        player = Instantiate(m_PlayerPrefab);
         //ChallengeManager.current.currentFloorData = 0;
 
         foreach (GameObject obj in m_InitSequence)
@@ -126,10 +143,16 @@ public class GameManager : MonoBehaviour {
         }*/
     }
 
+    public void StartLoadCar()
+    {
+        if (m_LoadFromDefault || m_PlayerPrefab == null)
+            LoadDefaultCar();
+        if (player == null) // shouldn't come to here
+            player = Instantiate(m_PlayerPrefab);
+    }
+
     public void ReloadCar()
     {
-        if (m_LoadFromAppManager || m_PlayerPrefab == null)
-            m_PlayerPrefab = (GameObject)Resources.Load(AppManager.instance.m_CarPrefabName);
         if (player) Destroy(player);
         player = Instantiate(m_PlayerPrefab);
     }
@@ -138,6 +161,22 @@ public class GameManager : MonoBehaviour {
     {
         if (player) Destroy(player);
         player = Instantiate(carPrefab);
+    }
+
+    public void SetDefaultCar(int carIndex, int sceneIndex)
+    {
+        PlayerPrefs.SetInt("DefaultCar", carIndex);
+        PlayerPrefs.SetInt("DefaultScene", sceneIndex);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadDefaultCar()
+    {
+        //meh, default car is 0,0
+        m_DefaultCarIndex = PlayerPrefs.GetInt("DefaultCar", 0);
+        m_DefaultSceneIndex = PlayerPrefs.GetInt("DefaultScene", 0);
+        ReloadCar(CarStorer.GetCarData(m_DefaultCarIndex, m_DefaultSceneIndex).CarInGamePrefab);
+        ChangeBackground((BackgroundEnum)m_DefaultSceneIndex);
     }
 
     public void ChangeBackground(BackgroundEnum back)

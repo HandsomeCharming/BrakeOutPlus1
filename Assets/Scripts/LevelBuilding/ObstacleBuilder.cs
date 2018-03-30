@@ -144,7 +144,7 @@ public class ObstacleBuilder : MonoBehaviour {
 
                     // add sign
                     GameObject signpost1 = Instantiate(m_Storer.m_BoostSignPrefab, null);
-                    signpost1.transform.position = Vector3.Lerp(end1, end2, 0.7f);
+                    signpost1.transform.position = Vector3.Lerp(end1, end2, 0.8f);
                     signpost1.transform.forward = signMesh.prevDir;
                     signpost1.GetComponent<ItemSuper>().StartAnim();
                     floorMesh.destroyOnRemake.Add(signpost1);
@@ -296,7 +296,7 @@ public class ObstacleBuilder : MonoBehaviour {
 
                     // Add sign
                     GameObject signpost1 = Instantiate(m_Storer.m_GlideSignPrefab, null);
-                    signpost1.transform.position = Vector3.Lerp (end1, end2, 0.7f);
+                    signpost1.transform.position = Vector3.Lerp (end1, end2, 0.8f);
                     signpost1.transform.forward = floorMesh.prevDir;
                     signpost1.GetComponent<ItemSuper>().StartAnim();
                     floorMesh.destroyOnRemake.Add(signpost1);
@@ -390,7 +390,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     Vector3 end1 = floorMesh.prevPos1;
                     Vector3 end2 = floorMesh.prevPos2;
                     GameObject signpost1 = Instantiate(m_Storer.m_StopSignPrefab, null);
-                    signpost1.transform.position = Vector3.Lerp(end1, end2, 0.7f);
+                    signpost1.transform.position = Vector3.Lerp(end1, end2, 0.8f);
                     signpost1.transform.forward = floorMesh.prevDir;
                     signpost1.GetComponent<ItemSuper>().StartAnim();
                     floorMesh.destroyOnRemake.Add(signpost1);

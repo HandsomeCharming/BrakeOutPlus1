@@ -53,8 +53,13 @@ public class BackgroundManager : MonoBehaviour {
         current = this;
         m_NextObjectTime = Random.Range(m_Storer.m_SkyNewObjectTime.min, m_Storer.m_SkyNewObjectTime.max);
     }
-	
-	void Update () {
+
+    private void Start()
+    {
+        GameManager.current.StartLoadCar();
+    }
+
+    void Update () {
 		if(GameManager.GetGameState() == GameManager.GameState.Running && m_Background == BackgroundEnum.SkyCity)
         {
             m_NextObjectTime -= Time.deltaTime;

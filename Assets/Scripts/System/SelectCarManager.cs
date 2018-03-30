@@ -19,10 +19,12 @@ public class SelectCarManager : MonoBehaviour {
 	void Awake ()
     {
         m_Menu.m_Manager = this;
-        m_CarIndex = 0;
-        m_CurrentSceneIndex = 0;
+        m_CarIndex = GameManager.current.m_DefaultCarIndex;
+        m_CurrentSceneIndex = GameManager.current.m_DefaultSceneIndex;
         m_CurrentScene = m_Storer.sceneData[m_CurrentSceneIndex];
         m_CurrentCars = m_CurrentScene.carData;
+
+        SelectScene(m_CurrentSceneIndex);
         //m_CurrentCarName = m_CarNames[m_CarIndex];
         //m_Menu.SetText(m_CurrentCarName);
     }
@@ -49,6 +51,7 @@ public class SelectCarManager : MonoBehaviour {
         if(isCurrentCarAvailable())
         {
             GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
+            GameManager.current.SetDefaultCar(m_CarIndex, m_CurrentSceneIndex);
         }
     }
 
@@ -64,6 +67,7 @@ public class SelectCarManager : MonoBehaviour {
         if (isCurrentCarAvailable())
         {
             GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
+            GameManager.current.SetDefaultCar(m_CarIndex, m_CurrentSceneIndex);
         }
     }
 
@@ -76,6 +80,15 @@ public class SelectCarManager : MonoBehaviour {
         GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
         BackgroundEnum back = (BackgroundEnum)m_CurrentSceneIndex;
         GameManager.current.ChangeBackground(back);
+        m_Menu.RefreshForManager();
+        m_Menu.ChangeSceneGO(m_CurrentSceneIndex);
+        
+    }
+
+    public void BuyCurrentCar()
+    {
+        SaveManager.instance.BuyCar(m_CarIndex, m_CurrentSceneIndex);
+        SaveManager.instance.Save();
         m_Menu.RefreshForManager();
     }
 
