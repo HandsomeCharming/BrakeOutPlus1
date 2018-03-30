@@ -38,7 +38,7 @@ public class SelectMenuUI : MonoBehaviour {
         m_TopRight = RectTransformUtility.WorldToScreenPoint(Camera.main, m_CarRotTopRight.position);
         print(m_BotLeft);
         print(m_TopRight);
-        m_RotatingPreview = true;
+        m_RotatingPreview = false;
     }
 	
     public void ChangeSceneGO(int index)
@@ -171,6 +171,7 @@ public class SelectMenuUI : MonoBehaviour {
                 Vector2 pos = touch.position;
                 if (touch.phase == TouchPhase.Began && isInBox(m_BotLeft, m_TopRight, pos))
                 {
+                    print(pos);
                     m_RotatingPreview = true;
                     m_LastTouchPos = Input.mousePosition;
                 }
