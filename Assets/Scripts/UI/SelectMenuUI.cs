@@ -27,9 +27,11 @@ public class SelectMenuUI : MonoBehaviour {
     float m_PreviewRotSpeed;
 
     // Use this for initialization
-    void Awake ()
+    void Start ()
     {
+        m_NextButton.onClick.RemoveAllListeners();
         m_NextButton.onClick.AddListener(NextCar);
+        m_PrevButton.onClick.RemoveAllListeners();
         m_PrevButton.onClick.AddListener(PrevCar);
 
         RefreshCarUI();
