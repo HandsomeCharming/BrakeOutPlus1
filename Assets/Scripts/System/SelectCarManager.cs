@@ -81,7 +81,7 @@ public class SelectCarManager : MonoBehaviour {
         m_CurrentScene = m_Storer.sceneData[m_CurrentSceneIndex];
         m_CurrentCars = m_CurrentScene.carData;
         m_CarIndex = 0;
-        GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
+        GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
         BackgroundEnum back = (BackgroundEnum)m_CurrentSceneIndex;
         GameManager.current.ChangeBackground(back);
         m_Menu.RefreshForManager();
