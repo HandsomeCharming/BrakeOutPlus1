@@ -16,6 +16,7 @@ public class SceneCars
 {
     public string name;
     public List<SingleCarSelectData> carData;
+    public List<TrailSelectData> trailData;
 }
 
 [System.Serializable]
@@ -26,9 +27,29 @@ public class MinMaxData
 }
 
 [System.Serializable]
+public class TrailSelectData
+{
+    public string name;
+    public int price;
+
+    [Header("Prefabs")]
+    public GameObject TrailDisplayPrefab;
+}
+
+[System.Serializable]
+public class TrailOnCarData
+{
+    public string name;
+
+    [Header("Prefabs")]
+    public GameObject TrailPrefab;
+}
+
+[System.Serializable]
 public class SingleCarSelectData
 {
     public string name;
+    public int price;
 
     [Header("Prefabs")]
     public GameObject CarInGamePrefab;
@@ -41,6 +62,10 @@ public class SingleCarSelectData
 
     [Header("Class")]
     public CarClass carClass;
+
+    [Header("Trail")]
+    public bool CanChangeTrail = true;
+    public List<TrailOnCarData> m_Trails;
 }
 
 [System.Serializable]
@@ -97,5 +122,64 @@ public class CarSelectData : ScriptableObject
     public SingleCarSelectData GetCarData(int carIndex, int sceneIndex)
     {
         return sceneData[sceneIndex].carData[carIndex];
+    }
+}
+
+public class CarSelectDataReader
+{
+    public static CarSelectDataReader Instance
+    {
+        get
+        {
+            if(m_Instance == null)
+            {
+                m_Instance = new CarSelectDataReader();
+            }
+            return m_Instance;
+        }
+        set
+        {
+
+        }
+    }
+    static CarSelectDataReader m_Instance;
+    public CarSelectData m_CarStorer;
+    public Dictionary<string, SingleCarSelectData> m_CarDict;
+    public Dictionary<string, TrailSelectData> m_TrailSelectDict;
+
+    CarSelectDataReader()
+    {
+        m_CarStorer = (CarSelectData)Resources.Load(m_DataPath);
+        m_CarDict = new Dictionary<string, SingleCarSelectData>();
+        m_TrailSelectDict = new Dictionary<string, TrailSelectData>();
+
+        foreach (var cars in m_CarStorer.sceneData)
+        {
+            foreach(var car in cars.carData)
+            {
+                m_CarDict.Add(car.name, car);
+            }
+            foreach(var trail in cars.trailData)
+            {
+                m_TrailSelectDict.Add(trail.name, trail);
+            }
+        }
+    }
+
+    const string m_DataPath = "ScriptableObjects/CarSelectData";
+
+    public SingleCarSelectData GetCarData(int carIndex, int sceneIndex)
+    {
+        return m_CarStorer.sceneData[sceneIndex].carData[carIndex];
+    }
+
+    public SingleCarSelectData GetCarData(string name)
+    {
+        return m_CarDict[name];
+    }
+
+    public TrailSelectData GetTrailSelectData(string name)
+    {
+        return m_TrailSelectDict[name];
     }
 }

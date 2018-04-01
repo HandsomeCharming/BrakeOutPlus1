@@ -16,12 +16,24 @@ public class CarSave
 }
 
 [System.Serializable]
+public class TrailSave
+{
+    public List<string> m_TrailNames;
+
+    public TrailSave()
+    {
+        m_TrailNames = new List<string>();
+    }
+}
+
+[System.Serializable]
 public class GameSave
 {
     public int coin;
     public int star;
     public int highScore;
     public CarSave m_Cars;
+    public TrailSave m_Trails;
     public string version;
 
     public GameSave()
@@ -32,6 +44,7 @@ public class GameSave
 
         // init first car save
         m_Cars = new CarSave();
+        m_Trails = new TrailSave();
     }
 }
 
@@ -48,6 +61,7 @@ public class SaveManager {
     }
     public GameSave m_Data;
 
+    // Purchased cars
     Dictionary<string, CarSaveData> m_CarDict;
 
     public CarSelectData CarStorer
@@ -124,28 +138,70 @@ public class SaveManager {
                     }
                 }
             }
+
+            if (m_Data.m_Trails == null)
+            {
+                m_Data.m_Trails = new TrailSave();
+                BuyTrail("Line");
+                BuyTrail("LineSky");
+            }
         }
         else
         {
             Debug.Log("Load new ");
             m_Data = new GameSave();
-            BuyCar(0, 0);
+            GetDefaultCarAndTrails();
         }
     }
 
-    public void BuyCar(int carIndex, int sceneIndex)
+    public void GetDefaultCarAndTrails()
     {
-        CarSaveData first = new CarSaveData();
-        first.m_CarIndex = carIndex;
-        first.m_SceneIndex = sceneIndex;
-        first.m_Name = CarStorer.GetCarData(carIndex, sceneIndex).name;
+        BuyCar(0, 0);
+        BuyTrail("Line");
+        BuyTrail("LineSky");
+    }
 
-        m_Data.m_Cars.m_Cars.Add(first);
-        m_CarDict.Add(first.m_Name, first);
+    public bool BuyCar(int carIndex, int sceneIndex)
+    {
+        if (GameManager.current.gameCoins >= CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).price )
+        {
+            CarSaveData first = new CarSaveData();
+            first.m_CarIndex = carIndex;
+            first.m_SceneIndex = sceneIndex;
+            first.m_Name = CarStorer.GetCarData(carIndex, sceneIndex).name;
+
+            m_Data.m_Cars.m_Cars.Add(first);
+            m_CarDict.Add(first.m_Name, first);
+
+            Save();
+
+            return true;
+        }
+        return false;
+    }
+
+    public bool BuyTrail(string name)
+    {
+        if(GameManager.current.gameCoins >= CarSelectDataReader.Instance.GetTrailSelectData(name).price)
+        {
+            if (!m_Data.m_Trails.m_TrailNames.Contains(name))
+            {
+                m_Data.m_Trails.m_TrailNames.Add(name);
+
+                Save();
+            }
+            return true;
+        }
+        return false;
     }
 
     public bool HasCar(string name)
     {
         return m_CarDict.ContainsKey(name);
+    }
+
+    public bool HasTrail(string name)
+    {
+        return m_Data.m_Trails.m_TrailNames.Contains(name);
     }
 }
