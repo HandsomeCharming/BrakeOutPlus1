@@ -174,12 +174,15 @@ public class ItemUpgradeCard : MonoBehaviour {
 
     public void BuyItem()
     {
-		if (m_Level == 4)
-		{
-			m_ItemImage.GetComponent<Animator>().Play("ItemImageEnlarge");
-		}
 
-		ItemManager.current.UpgradeItem(m_Type);
-        RefreshUI();
+		if(ItemManager.current.UpgradeItem(m_Type))
+        {
+            if (m_Level == 4)
+            {
+                m_ItemImage.GetComponent<Animator>().Play("ItemImageEnlarge");
+            }
+
+            RefreshUI();
+        }
     }
 }

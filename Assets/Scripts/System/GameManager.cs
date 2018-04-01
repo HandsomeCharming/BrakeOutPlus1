@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour {
     public bool m_LoadFromDefault = true;
     public GameObject m_PlayerPrefab;
     public GameObject player;
+    public GameObject m_CurrentTrail;
+
+    public int m_CurrentCarIndex;
+    public int m_CurrentSceneIndex;
 
     public float gameScore;
     public float scoreForDifficulty;
@@ -45,24 +49,8 @@ public class GameManager : MonoBehaviour {
 
     public int m_DefaultCarIndex;
     public int m_DefaultSceneIndex;
-
-    public CarSelectData CarStorer
-    {
-        get
-        {
-            if (m_CarStorer == null)
-            {
-                m_CarStorer = (CarSelectData)Resources.Load(m_DataPath);
-            }
-            return m_CarStorer;
-        }
-        set
-        { }
-    }
-    CarSelectData m_CarStorer;
-
-    const string m_DataPath = "ScriptableObjects/CarSelectData";
-
+    public string m_DefaultTrailName;
+    
     public enum GameState
     {
         Start,
@@ -146,7 +134,7 @@ public class GameManager : MonoBehaviour {
     public void StartLoadCar()
     {
         if (m_LoadFromDefault || m_PlayerPrefab == null)
-            LoadDefaultCar();
+            LoadDefaultCarAndTrail();
         if (player == null) // shouldn't come to here
             player = Instantiate(m_PlayerPrefab);
     }
@@ -163,6 +151,34 @@ public class GameManager : MonoBehaviour {
         player = Instantiate(carPrefab);
     }
 
+    public void ReloadCar(int carIndex, int sceneIndex)
+    {
+        m_CurrentCarIndex = carIndex;
+        m_CurrentSceneIndex = sceneIndex;
+
+        ReloadCar(CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).CarInGamePrefab);
+        SetDefaultCar(carIndex, sceneIndex);
+    }
+
+    public void ReloadTrail(string name)
+    {
+        if(m_CurrentTrail != null)
+        {
+            Destroy(m_CurrentTrail);
+        }
+
+        var trails = CarSelectDataReader.Instance.GetCarData(m_CurrentCarIndex, m_CurrentSceneIndex).m_Trails;
+        print(name);
+        foreach (var trail in trails)
+        {
+            if (trail.name == name)
+            {
+                m_CurrentTrail = Instantiate(trail.TrailPrefab, player.GetComponent<Player>().vehicle.transform);
+                SetDefaultTrail(name);
+            }
+        }
+    }
+
     public void SetDefaultCar(int carIndex, int sceneIndex)
     {
         PlayerPrefs.SetInt("DefaultCar", carIndex);
@@ -170,12 +186,21 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
-    public void LoadDefaultCar()
+    public void SetDefaultTrail(string name)
+    {
+        PlayerPrefs.SetString("DefaultTrail", name);
+
+        PlayerPrefs.Save();
+    }
+
+    public void LoadDefaultCarAndTrail()
     {
         //meh, default car is 0,0
         m_DefaultCarIndex = PlayerPrefs.GetInt("DefaultCar", 0);
         m_DefaultSceneIndex = PlayerPrefs.GetInt("DefaultScene", 0);
-        ReloadCar(CarStorer.GetCarData(m_DefaultCarIndex, m_DefaultSceneIndex).CarInGamePrefab);
+        m_DefaultTrailName = PlayerPrefs.GetString("DefaultTrail", "Line");
+        ReloadCar(m_DefaultCarIndex, m_DefaultSceneIndex);
+        ReloadTrail(m_DefaultTrailName);
         ChangeBackground((BackgroundEnum)m_DefaultSceneIndex);
     }
 

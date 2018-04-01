@@ -5,10 +5,12 @@ using UnityEngine;
 public class SelectCarManager : MonoBehaviour {
 
     public SelectMenuUI m_Menu;
-    
+    public SelectTrailUI m_TrailMenu;
+
     public int m_CurrentSceneIndex;
 
     int m_CarIndex;
+    string m_CurrentTrailName;
 
     public CarSelectData m_Storer;
 
@@ -51,8 +53,8 @@ public class SelectCarManager : MonoBehaviour {
         //AppManager.instance.SetCarName(m_CurrentCarName);
         if(isCurrentCarAvailable())
         {
-            GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
-            GameManager.current.SetDefaultCar(m_CarIndex, m_CurrentSceneIndex);
+            GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
+            //GameManager.current.SetDefaultCar(m_CarIndex, m_CurrentSceneIndex);
         }
     }
 
@@ -67,13 +69,14 @@ public class SelectCarManager : MonoBehaviour {
         //AppManager.instance.SetCarName(m_CurrentCarName);
         if (isCurrentCarAvailable())
         {
-            GameManager.current.ReloadCar(m_CurrentCars[m_CarIndex].CarInGamePrefab);
-            GameManager.current.SetDefaultCar(m_CarIndex, m_CurrentSceneIndex);
+            GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
+            //GameManager.current.SetDefaultCar(m_CarIndex, m_CurrentSceneIndex);
         }
     }
 
     public void SelectScene(int index)
     {
+        if (m_CurrentSceneIndex == index) return;
         m_CurrentSceneIndex = index;
         m_CurrentScene = m_Storer.sceneData[m_CurrentSceneIndex];
         m_CurrentCars = m_CurrentScene.carData;
@@ -87,13 +90,32 @@ public class SelectCarManager : MonoBehaviour {
 
     public void BuyCurrentCar()
     {
-        SaveManager.instance.BuyCar(m_CarIndex, m_CurrentSceneIndex);
-        SaveManager.instance.Save();
-        m_Menu.RefreshForManager();
+        if(SaveManager.instance.BuyCar(m_CarIndex, m_CurrentSceneIndex))
+        {
+            SaveManager.instance.Save();
+            m_Menu.RefreshForManager();
+        }
     }
 
     public string GetCurrentCarName()
     {
         return m_CurrentCars[m_CarIndex].name;
+    }
+
+    public void OpenTrail()
+    {
+        m_TrailMenu.gameObject.SetActive(true);
+        m_TrailMenu.RefreshUI(m_CurrentScene.trailData);
+    }
+
+    public void SelectTrail(string name)
+    {
+        GameManager.current.ReloadTrail(name);
+    }
+
+    private void OnDisable()
+    {
+        m_TrailMenu.gameObject.SetActive(false);
+
     }
 }

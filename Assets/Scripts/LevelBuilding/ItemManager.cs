@@ -252,7 +252,7 @@ public class ItemManager {
         return m_Storer.GetPriceByTypeAndLevel(type, level);
     }
     
-    public void UpgradeItem(ItemType type)
+    public bool UpgradeItem(ItemType type)
     {
         int price = GetItemPrice(type);
         if(GameManager.current.gameCoins >= price)
@@ -260,12 +260,17 @@ public class ItemManager {
             GameManager.current.AddCoin(-price);
 
             int level = GetItemLevel(type);
-            if (level == 5) return;
+            if (level == 5) return false;
 
             level++;
             m_ItemLevelDict[type] = level;
             m_Save.UpgradeItem(type);
             Save();
+            return true;
+        }
+        else
+        {
+            return false;
         }
 
     }

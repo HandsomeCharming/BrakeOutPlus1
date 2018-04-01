@@ -10,6 +10,7 @@ public class SelectMenuUI : MonoBehaviour {
     public Button m_PrevButton;
     public Text m_CarText;
     public GameObject m_BuyButton;
+    public GameObject m_TrailButton;
     public GameObject[] m_SceneGOs;
     public RectTransform m_CarRotBotLeft;
     public RectTransform m_CarRotTopRight;
@@ -62,11 +63,14 @@ public class SelectMenuUI : MonoBehaviour {
         {
             m_CurrentLocked = true;
             m_BuyButton.SetActive(true);
+            m_TrailButton.SetActive(false);
         }
         else
         {
             m_CurrentLocked = false;
             m_BuyButton.SetActive(false);
+            if(m_Manager.GetCurrentCarData().CanChangeTrail)
+                m_TrailButton.SetActive(true);
         }
 
         LoadCurrentCarPreview();
