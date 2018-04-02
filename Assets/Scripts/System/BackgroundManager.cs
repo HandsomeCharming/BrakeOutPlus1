@@ -72,7 +72,9 @@ public class BackgroundManager : MonoBehaviour {
                 GameObject go = Instantiate(m_Storer.m_SkyPrefabs[Random.Range(0, m_Storer.m_SkyPrefabs.Count)], 
                     pos, Quaternion.identity);
                 go.transform.Rotate(0, Random.Range(0, 360.0f), 0);
-                if(go.GetComponent<ItemSuper>() != null)
+                float scale = Random.Range(m_Storer.m_SkyNewObjectScale.min, m_Storer.m_SkyNewObjectScale.max);
+                go.transform.localScale = new Vector3(scale, scale, scale);
+                if (go.GetComponent<ItemSuper>() != null)
                 {
                     go.GetComponent<ItemSuper>().StartAnim();
                 }
