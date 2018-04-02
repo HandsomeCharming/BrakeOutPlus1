@@ -18,6 +18,7 @@ public class BackgroundManager : MonoBehaviour {
     public static BackgroundManager current;
 
     float m_NextObjectTime;
+    float m_NextObjectByRoadTime;
 
     public static BackgroundEnum GetBackgroundState()
     {
@@ -59,10 +60,22 @@ public class BackgroundManager : MonoBehaviour {
         GameManager.current.StartLoadCar();
     }
 
+    public SkyByRoadPrefab NextObjectByRoad()
+    {
+        if(m_NextObjectByRoadTime <= 0)
+        {
+            m_NextObjectByRoadTime = Random.Range(m_Storer.m_SkyNewObjectByRoadTime.min, m_Storer.m_SkyNewObjectByRoadTime.max);
+            return m_Storer.m_SkyByRoadPrefabs[Random.Range(0, m_Storer.m_SkyByRoadPrefabs.Length)];
+        }
+        return null;
+    }
+
     void Update () {
 		if(GameManager.GetGameState() == GameManager.GameState.Running && m_Background == BackgroundEnum.SkyCity)
         {
             m_NextObjectTime -= Time.deltaTime;
+            if(m_NextObjectByRoadTime > 0)
+                m_NextObjectByRoadTime -= Time.deltaTime;
             if(m_NextObjectTime <= 0)
             {
                 float degree = Random.Range(90.0f, 270.0f);
@@ -78,6 +91,7 @@ public class BackgroundManager : MonoBehaviour {
                 {
                     go.GetComponent<BackgroundObject>().Invoke("Fly", 60.0f);
                 }
+                go.AddComponent<BackgroundKeepDistance>();
 
                 m_NextObjectTime = Random.Range(m_Storer.m_SkyNewObjectTime.min, m_Storer.m_SkyNewObjectTime.max);
             }

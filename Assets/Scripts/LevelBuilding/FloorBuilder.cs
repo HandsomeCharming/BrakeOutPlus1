@@ -328,6 +328,7 @@ public class FloorBuilder : MonoBehaviour {
             }
         }
 
+        //Coin
         floorTypeData.coinStartIndex--;
         if (floorTypeData.coinStartIndex < 0 && -floorTypeData.coinStartIndex <= floorTypeData.coinCount && !hasObstacle)
         {
@@ -337,6 +338,23 @@ public class FloorBuilder : MonoBehaviour {
             }
             CoinGenerator.current.putCoin(startIndex);
         }
+
+        //only in sky
+        if(GameManager.current.m_CurrentSceneIndex == 1)
+        {
+            SkyByRoadPrefab obj = BackgroundManager.current.NextObjectByRoad();
+            if (obj != null)
+            {
+                GameObject skyObj = Instantiate(obj.Prefab);
+                float dist = Random.Range(obj.m_Distance.min, obj.m_Distance.max) * (Random.value < 0.5f? -1.0f: 1.0f);
+                skyObj.transform.position = (fm.prevPos1 + fm.prevPos2)/2.0f + Vector3.Cross(fm.dir, Vector3.up) * dist;
+                skyObj.transform.Rotate(0, Random.Range(0, 360.0f), 0);
+                float scale = Random.Range(obj.m_Scale.min, obj.m_Scale.max);
+                skyObj.transform.localScale = new Vector3(scale, scale, scale);
+                skyObj.GetComponent<ItemSuper>().StartAnim();
+            }
+        }
+
         endIndex = startIndex;
         startIndex = (startIndex + 1) % floorMeshCount;
     }
