@@ -65,14 +65,20 @@ public class BackgroundManager : MonoBehaviour {
             m_NextObjectTime -= Time.deltaTime;
             if(m_NextObjectTime <= 0)
             {
+                float degree = Random.Range(90.0f, 270.0f);
+                float distance = Random.Range(m_Storer.m_SkyNewObjectDistance.min, m_Storer.m_SkyNewObjectDistance.max);
+                Vector3 pos = Player.current.transform.position + Quaternion.Euler(0, degree, 0) * Player.current.transform.forward * distance;
+                pos.y -= Random.Range(m_Storer.m_SkyNewObjectHeight.min, m_Storer.m_SkyNewObjectHeight.max);
                 GameObject go = Instantiate(m_Storer.m_SkyPrefabs[Random.Range(0, m_Storer.m_SkyPrefabs.Count)], 
-                    Player.current.transform.position - Player.current.transform.forward * 
-                    Random.Range(m_Storer.m_SkyNewObjectDistance.min, m_Storer.m_SkyNewObjectDistance.max), Quaternion.identity);
-                if(go.GetComponent<ItemSuper>() != null)
+                    pos, Quaternion.identity);
+                go.transform.Rotate(0, Random.Range(0, 360.0f), 0);
+                float scale = Random.Range(m_Storer.m_SkyNewObjectScale.min, m_Storer.m_SkyNewObjectScale.max);
+                go.transform.localScale = new Vector3(scale, scale, scale);
+                if (go.GetComponent<ItemSuper>() != null)
                 {
                     go.GetComponent<ItemSuper>().StartAnim();
                 }
-                Destroy(go, 20.0f);
+                Destroy(go, 30.0f);
 
                 m_NextObjectTime = Random.Range(m_Storer.m_SkyNewObjectTime.min, m_Storer.m_SkyNewObjectTime.max);
             }

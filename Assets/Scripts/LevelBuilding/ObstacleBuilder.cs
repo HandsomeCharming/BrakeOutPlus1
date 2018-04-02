@@ -19,6 +19,22 @@ public class ObstacleBuilder : MonoBehaviour {
     GameObject AutoPilotTriggerPrefab;
 
     const float WallWidth = 10.0f;
+    
+    public const string Cube = "Cube";
+    public const string Wall = "Wall";
+    public const string Blackhole = "Blackhole";
+    public const string MovingCube = "MovingCube";
+    public const string MovingWall = "MovingWall";
+    public const string WallLeftCube = "WallLeftCube";
+    public const string WallRightCube = "WallRightCube";
+    public const string WallMidCube = "WallMidCube";
+    public const string GlidingTrigger = "GlidingTrigger";
+    public const string AutoPilotTrigger = "AutoPilotTrigger";
+
+    public const string BoostGroundSign = "BoostGroundSign";
+    public const string BoostSign = "BoostSign";
+    public const string GlideSign = "GlideSign";
+    public const string StopSign = "StopSign";
 
     private void Awake()
     {
@@ -60,11 +76,12 @@ public class ObstacleBuilder : MonoBehaviour {
     {
         //print(obstacleType);
         bool madeMesh = false;
+        int sceneIndex = GameManager.current.m_CurrentSceneIndex;
         switch(obstacleType)
         {
             case ObstacleType.Cube:
                 {
-                    GameObject obstacle = Instantiate(CubePrefab);
+                    GameObject obstacle = Instantiate(ObstacleDataReader.GetObstaclePrefab(Cube));
                     FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
                     float posScale = 0.8f;
                     if (floorMesh.prevDir == floorMesh.dir)
@@ -118,7 +135,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     FloorMesh signMesh = FloorBuilder.current.floorMeshes[signIndex];
 
                     //add boost sign
-                    GameObject sign = Instantiate(m_Storer.BoostSignPrefab); ;
+                    GameObject sign = Instantiate(m_Storer.BoostGroundSignPrefab); ;
 
                     Vector3 prevPosMid = (signMesh.prevPos1 + signMesh.prevPos2) / 2.0f;
                     prevPosMid.y += 0.1f;
@@ -143,7 +160,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     floorMesh.destroyOnRemake.Add(rim);
 
                     // add sign
-                    GameObject signpost1 = Instantiate(m_Storer.m_BoostSignPrefab, null);
+                    GameObject signpost1 = Instantiate(ObstacleDataReader.GetObstaclePrefab(BoostSign), null);
                     signpost1.transform.position = Vector3.Lerp(end1, end2, 0.8f);
                     signpost1.transform.forward = signMesh.prevDir;
                     signpost1.GetComponent<ItemSuper>().StartAnim();
@@ -174,13 +191,13 @@ public class ObstacleBuilder : MonoBehaviour {
                 }
             case ObstacleType.Wall:
                 {
-                    GameObject obstacle = Instantiate(WallPrefab) as GameObject;
+                    GameObject obstacle = Instantiate(ObstacleDataReader.GetObstaclePrefab(Wall)) as GameObject;
                     MakeWall(obstacle, meshIndex);
                     break;
                 }
             case ObstacleType.BlackHole:
                 {
-                    GameObject obstacle = Instantiate(BlackholePrefab) as GameObject;
+                    GameObject obstacle = Instantiate(ObstacleDataReader.GetObstaclePrefab(Blackhole)) as GameObject;
                     FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
                     Vector3 cross = Vector3.Cross(floorMesh.prevDir, floorMesh.dir);
                     bool left = cross.y > 0;
@@ -199,7 +216,7 @@ public class ObstacleBuilder : MonoBehaviour {
             case ObstacleType.MovingCube:
                 {
                     print("make cube");
-                    GameObject obstacle = Instantiate<GameObject>(MovingCubePrefab) as GameObject;
+                    GameObject obstacle = Instantiate<GameObject>(ObstacleDataReader.GetObstaclePrefab(MovingCube)) as GameObject;
                     FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
                     Vector3 cross = Vector3.Cross(floorMesh.prevDir, floorMesh.dir);
 
@@ -220,7 +237,7 @@ public class ObstacleBuilder : MonoBehaviour {
             case ObstacleType.MovingWall:
                 {
                     print("make cube");
-                    GameObject obstacle = Instantiate<GameObject>(MovingWallPrefab) as GameObject;
+                    GameObject obstacle = Instantiate<GameObject>(ObstacleDataReader.GetObstaclePrefab(MovingWall)) as GameObject;
                     FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
                     Vector3 cross = Vector3.Cross(floorMesh.prevDir, floorMesh.dir);
 
@@ -240,25 +257,25 @@ public class ObstacleBuilder : MonoBehaviour {
                 }
             case ObstacleType.WallLeftCube:
                 {
-                    GameObject obstacle = Instantiate(WallLeftCubePrefab) as GameObject;
+                    GameObject obstacle = Instantiate(ObstacleDataReader.GetObstaclePrefab(WallLeftCube)) as GameObject;
                     MakeWall(obstacle, meshIndex);
                     break;
                 }
             case ObstacleType.WallRightCube:
                 {
-                    GameObject obstacle = Instantiate(WallRightCubePrefab) as GameObject;
+                    GameObject obstacle = Instantiate(ObstacleDataReader.GetObstaclePrefab(WallRightCube)) as GameObject;
                     MakeWall(obstacle, meshIndex);
                     break;
                 }
             case ObstacleType.WallMidCube:
                 {
-                    GameObject obstacle = Instantiate(WallMidCubePrefab) as GameObject;
+                    GameObject obstacle = Instantiate(ObstacleDataReader.GetObstaclePrefab(WallMidCube)) as GameObject;
                     MakeWall(obstacle, meshIndex);
                     break;
                 }
             case ObstacleType.RandomPlacedCube:
                 {
-                    GameObject obstacle = Instantiate(CubePrefab);
+                    GameObject obstacle = Instantiate(ObstacleDataReader.GetObstaclePrefab(Cube));
                     FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
                     float posScale = Random.Range(0.1f, 0.9f);
                     Vector3 prevPosMid = floorMesh.prevPos1 + (floorMesh.prevPos2 - floorMesh.prevPos1) * posScale;
@@ -277,7 +294,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     float scale = Vector3.Distance(floorMesh.prevPos1, floorMesh.prevPos2);
                     floorMesh.makeMesh();
 
-                    GameObject trigger = Instantiate(GlidingTriggerPrefab);
+                    GameObject trigger = Instantiate(ObstacleDataReader.GetObstaclePrefab(GlidingTrigger));
                     Vector3 endPosMid = (floorMesh.prevPos1 + floorMesh.prevPos2) / 2.0f;
                     trigger.transform.localScale = new Vector3(scale, 5, 1);
                     trigger.transform.position = endPosMid;
@@ -295,7 +312,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     rim.GetComponent<ItemSuper>().StartAnim();
 
                     // Add sign
-                    GameObject signpost1 = Instantiate(m_Storer.m_GlideSignPrefab, null);
+                    GameObject signpost1 = Instantiate(ObstacleDataReader.GetObstaclePrefab(GlideSign), null);
                     signpost1.transform.position = Vector3.Lerp (end1, end2, 0.8f);
                     signpost1.transform.forward = floorMesh.prevDir;
                     signpost1.GetComponent<ItemSuper>().StartAnim();
@@ -371,7 +388,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
                     float scale = Vector3.Distance(floorMesh.prevPos1, floorMesh.prevPos2);
 
-                    GameObject trigger = Instantiate(AutoPilotTriggerPrefab);
+                    GameObject trigger = Instantiate(ObstacleDataReader.GetObstaclePrefab(AutoPilotTrigger));
                     Vector3 endPosMid = (floorMesh.prevPos1 + floorMesh.prevPos2) / 2.0f;
                     trigger.transform.localScale = new Vector3(scale, 5, 1);
                     trigger.transform.position = endPosMid;
@@ -389,7 +406,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     // Add sign
                     Vector3 end1 = floorMesh.prevPos1;
                     Vector3 end2 = floorMesh.prevPos2;
-                    GameObject signpost1 = Instantiate(m_Storer.m_StopSignPrefab, null);
+                    GameObject signpost1 = Instantiate(ObstacleDataReader.GetObstaclePrefab(StopSign), null);
                     signpost1.transform.position = Vector3.Lerp(end1, end2, 0.8f);
                     signpost1.transform.forward = floorMesh.prevDir;
                     signpost1.GetComponent<ItemSuper>().StartAnim();

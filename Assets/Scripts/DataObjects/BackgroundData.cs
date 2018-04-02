@@ -10,4 +10,6 @@ public class BackgroundData : ScriptableObject {
     public List<GameObject> m_SkyPrefabs;
     public MinMaxData m_SkyNewObjectTime;
     public MinMaxData m_SkyNewObjectDistance;
+    public MinMaxData m_SkyNewObjectHeight;
+    public MinMaxData m_SkyNewObjectScale;
 }
