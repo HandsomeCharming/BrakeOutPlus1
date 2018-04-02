@@ -300,6 +300,10 @@ public class EasyBreakable : MonoBehaviour {
 				//We disable the rigidbody last so we dont lose any velocity and the break effect looks more convincing.
 			}
 
+            if(GetComponentInParent<WallObstacle>())
+            {
+                GetComponentInParent<WallObstacle>().enabled = false;
+            }
 		}
 	}
 
