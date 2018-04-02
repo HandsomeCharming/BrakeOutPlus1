@@ -210,7 +210,7 @@ public class SelectMenuUI : MonoBehaviour {
             if(!m_RotatingPreview && m_PreviewRotSpeed != 0)
             {
                 m_CurrentCarPreview.transform.Rotate(0, m_PreviewRotSpeed, 0);
-                m_PreviewRotSpeed = Mathf.Lerp(m_PreviewRotSpeed, 0, 0.1f);
+                m_PreviewRotSpeed = Mathf.Lerp(m_PreviewRotSpeed, 0, 0.2f);
                 if(Mathf.Abs(m_PreviewRotSpeed) < 0.01f)
                 {
                     m_PreviewRotSpeed = 0;
