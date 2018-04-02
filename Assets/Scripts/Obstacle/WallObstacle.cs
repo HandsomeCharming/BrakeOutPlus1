@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallObstacle : Obstacle {
 
     Rigidbody[] childRigidBodies;
-    const float m_DestroyTime = 1.0f;
+    const float m_DestroyTime = 2.0f;
 
     private void Awake()
     {
@@ -41,14 +41,16 @@ public class WallObstacle : Obstacle {
 
     void HitEffect()
     {
-        foreach (var rb in childRigidBodies)
+        /*foreach (var rb in childRigidBodies)
         {
             //rb.gameObject.GetComponent<Collider>().enabled = false;
             rb.AddExplosionForce(0.07f, transform.position, 10.0f, 0.2f, ForceMode.Impulse);
             rb.AddTorque(Random.value, Random.value, Random.value, ForceMode.Impulse);
             rb.gameObject.GetComponent<Collider>().enabled = true;
             rb.useGravity = true;
-        }
+        }*/
+        transform.GetComponentInChildren<EasyBreakable>().Damage(100);
+
         CameraEffectManager.Bloom(2.0f, 0.1f);
         CameraFollow.current.StartShaking(0.2f, 0.3f);
         if (Player.current.m_Health >= 0)

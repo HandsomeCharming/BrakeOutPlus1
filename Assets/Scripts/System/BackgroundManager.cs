@@ -74,11 +74,10 @@ public class BackgroundManager : MonoBehaviour {
                 go.transform.Rotate(0, Random.Range(0, 360.0f), 0);
                 float scale = Random.Range(m_Storer.m_SkyNewObjectScale.min, m_Storer.m_SkyNewObjectScale.max);
                 go.transform.localScale = new Vector3(scale, scale, scale);
-                if (go.GetComponent<ItemSuper>() != null)
+                if (go.GetComponent<BackgroundObject>() != null)
                 {
-                    go.GetComponent<ItemSuper>().StartAnim();
+                    go.GetComponent<BackgroundObject>().Invoke("Fly", 60.0f);
                 }
-                Destroy(go, 30.0f);
 
                 m_NextObjectTime = Random.Range(m_Storer.m_SkyNewObjectTime.min, m_Storer.m_SkyNewObjectTime.max);
             }

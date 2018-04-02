@@ -8,7 +8,12 @@ public class BackgroundObject : ItemSuper {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(!fly)
+        Fly();
+    }
+
+    public void Fly()
+    {
+        if (!fly)
         {
             GetComponent<Collider>().enabled = false;
             fly = true;
@@ -18,9 +23,11 @@ public class BackgroundObject : ItemSuper {
 
     IEnumerator FlyUp()
     {
+        GetComponent<Collider>().enabled = false;
+        Destroy(GetComponent<Rigidbody>());
         float scaleTime = 0.2f;
         float flyTime = 2.0f;
-        float speed = 300.0f;
+        float speed = 1500.0f;
         Vector3 scale = transform.localScale;
         Vector3 targetScale = scale;
         targetScale.x *= 0.2f;

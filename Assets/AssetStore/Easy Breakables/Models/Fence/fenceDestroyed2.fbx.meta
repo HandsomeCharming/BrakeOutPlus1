@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: 6b9f13f07bb79954889668216bba0110
+timeCreated: 1439797282
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Fence_Post1_001
+    100002: Fence_Post2
+    100004: Fence_Wall_001_cell
+    100006: Fence_Wall_001_cell_001
+    100008: Fence_Wall_001_cell_002
+    100010: Fence_Wall_001_cell_003
+    100012: Fence_Wall_001_cell_004
+    100014: Fence_Wall_001_cell_005
+    100016: Fence_Wall_cell_002
+    100018: Fence_Wall_cell_003
+    100020: Fence_Wall_cell_004
+    100022: Fence_Wall_cell_005
+    100024: //RootNode
+    400000: Fence_Post1_001
+    400002: Fence_Post2
+    400004: Fence_Wall_001_cell
+    400006: Fence_Wall_001_cell_001
+    400008: Fence_Wall_001_cell_002
+    400010: Fence_Wall_001_cell_003
+    400012: Fence_Wall_001_cell_004
+    400014: Fence_Wall_001_cell_005
+    400016: Fence_Wall_cell_002
+    400018: Fence_Wall_cell_003
+    400020: Fence_Wall_cell_004
+    400022: Fence_Wall_cell_005
+    400024: //RootNode
+    2300000: Fence_Post1_001
+    2300002: Fence_Post2
+    2300004: Fence_Wall_001_cell
+    2300006: Fence_Wall_001_cell_001
+    2300008: Fence_Wall_001_cell_002
+    2300010: Fence_Wall_001_cell_003
+    2300012: Fence_Wall_001_cell_004
+    2300014: Fence_Wall_001_cell_005
+    2300016: Fence_Wall_cell_002
+    2300018: Fence_Wall_cell_003
+    2300020: Fence_Wall_cell_004
+    2300022: Fence_Wall_cell_005
+    3300000: Fence_Post1_001
+    3300002: Fence_Post2
+    3300004: Fence_Wall_001_cell
+    3300006: Fence_Wall_001_cell_001
+    3300008: Fence_Wall_001_cell_002
+    3300010: Fence_Wall_001_cell_003
+    3300012: Fence_Wall_001_cell_004
+    3300014: Fence_Wall_001_cell_005
+    3300016: Fence_Wall_cell_002
+    3300018: Fence_Wall_cell_003
+    3300020: Fence_Wall_cell_004
+    3300022: Fence_Wall_cell_005
+    4300000: Fence_Wall_001_cell_005
+    4300002: Fence_Wall_001_cell_004
+    4300004: Fence_Wall_001_cell_003
+    4300006: Fence_Wall_001_cell_002
+    4300008: Fence_Wall_001_cell_001
+    4300010: Fence_Wall_001_cell
+    4300012: Fence_Wall_cell_005
+    4300014: Fence_Wall_cell_004
+    4300016: Fence_Wall_cell_003
+    4300018: Fence_Wall_cell_002
+    4300020: Fence_Post2
+    4300022: Fence_Post1_001
+    6400000: Fence_Post1_001
+    6400002: Fence_Post2
+    6400004: Fence_Wall_001_cell
+    6400006: Fence_Wall_001_cell_001
+    6400008: Fence_Wall_001_cell_002
+    6400010: Fence_Wall_001_cell_003
+    6400012: Fence_Wall_001_cell_004
+    6400014: Fence_Wall_001_cell_005
+    6400016: Fence_Wall_cell_002
+    6400018: Fence_Wall_cell_003
+    6400020: Fence_Wall_cell_004
+    6400022: Fence_Wall_cell_005
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

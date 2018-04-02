@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: 00b5f6b4e678d6343ad15b7e4e61e0f4
+timeCreated: 1439454709
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: damagedPanel2-1_cell
+    100004: damagedPanel2-1_cell_002
+    100006: damagedPanel2-1_cell_003
+    100008: damagedPanel2-1_cell_004
+    100010: damagedPanel2-1_cell_005
+    100012: damagedPanel2-1_cell_006
+    100014: damagedPanel2-1_cell_007
+    100016: damagedPanel2-1_cell_008
+    100018: damagedPanel2-1_cell_010
+    100020: damagedPanel2-1_cell_011
+    100022: damagedPanel2-1_cell_012
+    100024: damagedPanel2-1_cell_013
+    400000: //RootNode
+    400002: damagedPanel2-1_cell
+    400004: damagedPanel2-1_cell_002
+    400006: damagedPanel2-1_cell_003
+    400008: damagedPanel2-1_cell_004
+    400010: damagedPanel2-1_cell_005
+    400012: damagedPanel2-1_cell_006
+    400014: damagedPanel2-1_cell_007
+    400016: damagedPanel2-1_cell_008
+    400018: damagedPanel2-1_cell_010
+    400020: damagedPanel2-1_cell_011
+    400022: damagedPanel2-1_cell_012
+    400024: damagedPanel2-1_cell_013
+    2300000: damagedPanel2-1_cell
+    2300002: damagedPanel2-1_cell_002
+    2300004: damagedPanel2-1_cell_003
+    2300006: damagedPanel2-1_cell_004
+    2300008: damagedPanel2-1_cell_005
+    2300010: damagedPanel2-1_cell_006
+    2300012: damagedPanel2-1_cell_007
+    2300014: damagedPanel2-1_cell_008
+    2300016: damagedPanel2-1_cell_010
+    2300018: damagedPanel2-1_cell_011
+    2300020: damagedPanel2-1_cell_012
+    2300022: damagedPanel2-1_cell_013
+    3300000: damagedPanel2-1_cell
+    3300002: damagedPanel2-1_cell_002
+    3300004: damagedPanel2-1_cell_003
+    3300006: damagedPanel2-1_cell_004
+    3300008: damagedPanel2-1_cell_005
+    3300010: damagedPanel2-1_cell_006
+    3300012: damagedPanel2-1_cell_007
+    3300014: damagedPanel2-1_cell_008
+    3300016: damagedPanel2-1_cell_010
+    3300018: damagedPanel2-1_cell_011
+    3300020: damagedPanel2-1_cell_012
+    3300022: damagedPanel2-1_cell_013
+    4300000: damagedPanel2-1_cell_013
+    4300002: damagedPanel2-1_cell_012
+    4300004: damagedPanel2-1_cell_011
+    4300006: damagedPanel2-1_cell_010
+    4300008: damagedPanel2-1_cell_008
+    4300010: damagedPanel2-1_cell_007
+    4300012: damagedPanel2-1_cell_006
+    4300014: damagedPanel2-1_cell_005
+    4300016: damagedPanel2-1_cell_004
+    4300018: damagedPanel2-1_cell_003
+    4300020: damagedPanel2-1_cell_002
+    4300022: damagedPanel2-1_cell
+    6400000: damagedPanel2-1_cell
+    6400002: damagedPanel2-1_cell_002
+    6400004: damagedPanel2-1_cell_003
+    6400006: damagedPanel2-1_cell_004
+    6400008: damagedPanel2-1_cell_005
+    6400010: damagedPanel2-1_cell_006
+    6400012: damagedPanel2-1_cell_007
+    6400014: damagedPanel2-1_cell_008
+    6400016: damagedPanel2-1_cell_010
+    6400018: damagedPanel2-1_cell_011
+    6400020: damagedPanel2-1_cell_012
+    6400022: damagedPanel2-1_cell_013
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

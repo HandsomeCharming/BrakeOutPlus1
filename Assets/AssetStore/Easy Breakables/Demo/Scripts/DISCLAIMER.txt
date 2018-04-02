@@ -1,0 +1,3 @@
+The included SmoothMouseLook.cs script is not created by Gampixi, but has been taken from http://wiki.unity3d.com/index.php/SmoothMouseLook
+
+All credits go to the author which is listed in the Unity Community Wiki - asteins.

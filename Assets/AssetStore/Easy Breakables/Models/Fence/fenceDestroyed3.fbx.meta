@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: fa9f861a1420ebc47bfd74284912d07c
+timeCreated: 1439797282
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Fence_Post1_001_cell
+    100002: Fence_Post1_001_cell_001
+    100004: Fence_Post1_001_cell_003
+    100006: Fence_Post1_001_cell_004
+    100008: Fence_Post2_cell_002
+    100010: Fence_Post2_cell_003
+    100012: Fence_Post2_cell_004
+    100014: Fence_Post2_cell_005
+    100016: Fence_Post2_cell_006
+    100018: Fence_Post2_cell_007
+    100020: Fence_Wall_001_cell
+    100022: Fence_Wall_001_cell_001
+    100024: Fence_Wall_001_cell_002
+    100026: Fence_Wall_001_cell_003
+    100028: Fence_Wall_001_cell_004
+    100030: Fence_Wall_001_cell_005
+    100032: Fence_Wall_cell_002
+    100034: Fence_Wall_cell_003
+    100036: Fence_Wall_cell_004
+    100038: Fence_Wall_cell_005
+    100040: //RootNode
+    400000: Fence_Post1_001_cell
+    400002: Fence_Post1_001_cell_001
+    400004: Fence_Post1_001_cell_003
+    400006: Fence_Post1_001_cell_004
+    400008: Fence_Post2_cell_002
+    400010: Fence_Post2_cell_003
+    400012: Fence_Post2_cell_004
+    400014: Fence_Post2_cell_005
+    400016: Fence_Post2_cell_006
+    400018: Fence_Post2_cell_007
+    400020: Fence_Wall_001_cell
+    400022: Fence_Wall_001_cell_001
+    400024: Fence_Wall_001_cell_002
+    400026: Fence_Wall_001_cell_003
+    400028: Fence_Wall_001_cell_004
+    400030: Fence_Wall_001_cell_005
+    400032: Fence_Wall_cell_002
+    400034: Fence_Wall_cell_003
+    400036: Fence_Wall_cell_004
+    400038: Fence_Wall_cell_005
+    400040: //RootNode
+    2300000: Fence_Post1_001_cell
+    2300002: Fence_Post1_001_cell_001
+    2300004: Fence_Post1_001_cell_003
+    2300006: Fence_Post1_001_cell_004
+    2300008: Fence_Post2_cell_002
+    2300010: Fence_Post2_cell_003
+    2300012: Fence_Post2_cell_004
+    2300014: Fence_Post2_cell_005
+    2300016: Fence_Post2_cell_006
+    2300018: Fence_Post2_cell_007
+    2300020: Fence_Wall_001_cell
+    2300022: Fence_Wall_001_cell_001
+    2300024: Fence_Wall_001_cell_002
+    2300026: Fence_Wall_001_cell_003
+    2300028: Fence_Wall_001_cell_004
+    2300030: Fence_Wall_001_cell_005
+    2300032: Fence_Wall_cell_002
+    2300034: Fence_Wall_cell_003
+    2300036: Fence_Wall_cell_004
+    2300038: Fence_Wall_cell_005
+    3300000: Fence_Post1_001_cell
+    3300002: Fence_Post1_001_cell_001
+    3300004: Fence_Post1_001_cell_003
+    3300006: Fence_Post1_001_cell_004
+    3300008: Fence_Post2_cell_002
+    3300010: Fence_Post2_cell_003
+    3300012: Fence_Post2_cell_004
+    3300014: Fence_Post2_cell_005
+    3300016: Fence_Post2_cell_006
+    3300018: Fence_Post2_cell_007
+    3300020: Fence_Wall_001_cell
+    3300022: Fence_Wall_001_cell_001
+    3300024: Fence_Wall_001_cell_002
+    3300026: Fence_Wall_001_cell_003
+    3300028: Fence_Wall_001_cell_004
+    3300030: Fence_Wall_001_cell_005
+    3300032: Fence_Wall_cell_002
+    3300034: Fence_Wall_cell_003
+    3300036: Fence_Wall_cell_004
+    3300038: Fence_Wall_cell_005
+    4300000: Fence_Post1_001_cell_004
+    4300002: Fence_Post1_001_cell_003
+    4300004: Fence_Post1_001_cell_001
+    4300006: Fence_Post1_001_cell
+    4300008: Fence_Post2_cell_007
+    4300010: Fence_Post2_cell_006
+    4300012: Fence_Post2_cell_005
+    4300014: Fence_Post2_cell_004
+    4300016: Fence_Post2_cell_003
+    4300018: Fence_Post2_cell_002
+    4300020: Fence_Wall_001_cell_005
+    4300022: Fence_Wall_001_cell_004
+    4300024: Fence_Wall_001_cell_003
+    4300026: Fence_Wall_001_cell_002
+    4300028: Fence_Wall_001_cell_001
+    4300030: Fence_Wall_001_cell
+    4300032: Fence_Wall_cell_005
+    4300034: Fence_Wall_cell_004
+    4300036: Fence_Wall_cell_003
+    4300038: Fence_Wall_cell_002
+    6400000: Fence_Post1_001_cell
+    6400002: Fence_Post1_001_cell_001
+    6400004: Fence_Post1_001_cell_003
+    6400006: Fence_Post1_001_cell_004
+    6400008: Fence_Post2_cell_002
+    6400010: Fence_Post2_cell_003
+    6400012: Fence_Post2_cell_004
+    6400014: Fence_Post2_cell_005
+    6400016: Fence_Post2_cell_006
+    6400018: Fence_Post2_cell_007
+    6400020: Fence_Wall_001_cell
+    6400022: Fence_Wall_001_cell_001
+    6400024: Fence_Wall_001_cell_002
+    6400026: Fence_Wall_001_cell_003
+    6400028: Fence_Wall_001_cell_004
+    6400030: Fence_Wall_001_cell_005
+    6400032: Fence_Wall_cell_002
+    6400034: Fence_Wall_cell_003
+    6400036: Fence_Wall_cell_004
+    6400038: Fence_Wall_cell_005
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
