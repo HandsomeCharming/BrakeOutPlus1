@@ -26,10 +26,13 @@ public class AudioSystem : MonoBehaviour {
     public static AudioSystem current;
     public AkAmbient BGMEvent;
 
+    public bool m_PlayAudio;
+
     const string BGMPrefabName = "Prefabs/Audio/BGM";
     const string SFXPrefabName = "Prefabs/Audio/SFX";
     const string BankName = "Brakeout_Soundbank";
 
+    const string PlayAudioPrefName = "PlayAudio";
 
     GameObject bgm;
     GameObject sfx;
@@ -37,6 +40,7 @@ public class AudioSystem : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         current = this;
+        m_PlayAudio = PlayerPrefs.GetInt(PlayAudioPrefName, 1) == 1? true : false;
 
         print("Audio awake");
 
@@ -66,8 +70,10 @@ public class AudioSystem : MonoBehaviour {
         {
             bgm = Instantiate((GameObject)Resources.Load(BGMPrefabName));
             DontDestroyOnLoad(bgm);
-            AkSoundEngine.PostEvent(AudioSystemEvents.StartAudioName, bgm);
-
+            if(m_PlayAudio)
+            {
+                StartInitialSound();
+            }
         }
 
         if (sfx == null)
@@ -78,6 +84,11 @@ public class AudioSystem : MonoBehaviour {
 
         Invoke("LaterInit", 0.5f);
 
+    }
+
+    public void StartInitialSound()
+    {
+        AkSoundEngine.PostEvent(AudioSystemEvents.StartAudioName, bgm);
     }
 
 
@@ -96,32 +107,67 @@ public class AudioSystem : MonoBehaviour {
 
     public void SetScore(float score)
     {
-        AkSoundEngine.SetRTPCValue("SCORE", score, bgm);
+        if (m_PlayAudio)
+        {
+            AkSoundEngine.SetRTPCValue("SCORE", score, bgm);
+        }
     }
 
     //0 - 100
     public void SetSpeed(float speed)
     {
-        AkSoundEngine.SetRTPCValue("SPEED", speed, bgm);
+        if (m_PlayAudio)
+        {
+            AkSoundEngine.SetRTPCValue("SPEED", speed, bgm);
+        }
     }
 
     public void PlayCrash()
     {
-        AkSoundEngine.PostEvent(AudioSystemEvents.CrashEventName, sfx);
+        if (m_PlayAudio)
+        {
+            AkSoundEngine.PostEvent(AudioSystemEvents.CrashEventName, sfx);
+        }
     }
 
     public void PlayCoin()
     {
-        AkSoundEngine.PostEvent(AudioSystemEvents.CoinEventName, sfx);
+        if (m_PlayAudio)
+        {
+            AkSoundEngine.PostEvent(AudioSystemEvents.CoinEventName, sfx);
+        }
     }
 
     public void PlayEvent(string eventName)
     {
-        AkSoundEngine.PostEvent(eventName, bgm);
+        if(m_PlayAudio)
+        {
+            AkSoundEngine.PostEvent(eventName, bgm);
+        }
     }
 
     void LaterInit()
     {
 
     }
+    
+    public void StopAllSound()
+    {
+        m_PlayAudio = false;
+        AkSoundEngine.StopAll();
+
+        PlayerPrefs.SetInt(PlayAudioPrefName, 0);
+        PlayerPrefs.Save();
+    }
+    
+    public void StartAllSound()
+    {
+        m_PlayAudio = true;
+
+        StartInitialSound();
+
+        PlayerPrefs.SetInt(PlayAudioPrefName, 1);
+        PlayerPrefs.Save();
+    }
+   
 }

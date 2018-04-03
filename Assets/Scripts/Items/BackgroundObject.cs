@@ -8,7 +8,7 @@ public class BackgroundObject : ItemSuper {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Fly();
+        //Fly();
     }
 
     public void Fly()

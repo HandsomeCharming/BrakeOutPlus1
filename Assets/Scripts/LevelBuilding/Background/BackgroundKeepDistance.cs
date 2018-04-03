@@ -20,6 +20,10 @@ public class BackgroundKeepDistance : MonoBehaviour {
 	
 	void Update () {
         if(Player.current != null)
-            transform.position = Player.current.transform.position + dist;
+        {
+            Vector3 pos = Player.current.transform.position + dist;
+            pos.y = transform.position.y;
+            transform.position = pos;
+        }
     }
 }

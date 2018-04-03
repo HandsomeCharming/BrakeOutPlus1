@@ -352,6 +352,8 @@ public class FloorBuilder : MonoBehaviour {
                 float scale = Random.Range(obj.m_Scale.min, obj.m_Scale.max);
                 skyObj.transform.localScale = new Vector3(scale, scale, scale);
                 skyObj.GetComponent<ItemSuper>().StartAnim();
+
+                fm.destroyOnRemake.Add(skyObj);
             }
         }
 

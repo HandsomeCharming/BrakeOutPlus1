@@ -149,6 +149,7 @@ public class GameManager : MonoBehaviour {
     {
         if (player) Destroy(player);
         player = Instantiate(carPrefab);
+        Player.current = player.GetComponent<Player>();
     }
 
     public void ReloadCar(int carIndex, int sceneIndex)
