@@ -15,7 +15,7 @@ public class BackgroundObject : ItemSuper {
     {
         if (!fly)
         {
-            GetComponent<Collider>().enabled = false;
+            //GetComponent<Collider>().enabled = false;
             fly = true;
             StartCoroutine(FlyUp());
         }
@@ -24,7 +24,7 @@ public class BackgroundObject : ItemSuper {
     IEnumerator FlyUp()
     {
         GetComponent<Collider>().enabled = false;
-        Destroy(GetComponent<Rigidbody>());
+        //Destroy(GetComponent<Rigidbody>());
         float scaleTime = 0.2f;
         float flyTime = 2.0f;
         float speed = 1500.0f;
