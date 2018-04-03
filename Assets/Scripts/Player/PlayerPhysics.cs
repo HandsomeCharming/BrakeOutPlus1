@@ -30,11 +30,15 @@ public class PlayerPhysics : MonoBehaviour {
     public float timeToReachMaxRotateSpeed;
     public float timeToReachMaxBoost;
 
-    public float MinHoverDistance = 2.0f;
+    /*public float MinHoverDistance = 2.0f;
     public float MaxHoverDistance = 4.0f;
     public float ResetYHoverDistance = 0.5f;
-    public float MaxHoverForce = 25.0f;
+    public float MaxHoverForce = 25.0f;*/
+
     public float GravityDetectRadius = 2.0f;
+
+    public float boostPercentage = 0.0f;
+
     float rotateSpeed;
     float rotateTime;
     float boostTime;
@@ -184,7 +188,7 @@ public class PlayerPhysics : MonoBehaviour {
         }
     }
 
-    void ApplyHover()
+    /*void ApplyHover()
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, -Vector3.up);
@@ -208,7 +212,7 @@ public class PlayerPhysics : MonoBehaviour {
             float force = fractionalPosition * MaxHoverForce;
             gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force);
         }
-    }
+    }*/
 
     void ApplyGravityIfOffTrack()
     {
@@ -282,7 +286,7 @@ public class PlayerPhysics : MonoBehaviour {
     public virtual void RotateLeft(float m_RotatePercentage = 1.0f)
     {
         rotating = true;
-        float boostPercentage = boostTime / timeToReachMaxBoost;
+        boostPercentage = boostTime / timeToReachMaxBoost;
         float minRotSpeed = Mathf.Lerp(minRotateSpeed * m_RotatePercentage, minBoostRotateSpeed * m_RotatePercentage, boostPercentage);
         float maxRotSpeed = Mathf.Lerp(maxRotateSpeed * m_RotatePercentage, maxBoostRotateSpeed * m_RotatePercentage, boostPercentage);
 
@@ -293,7 +297,7 @@ public class PlayerPhysics : MonoBehaviour {
     public virtual void RotateRight(float m_RotatePercentage = 1.0f)
     {
         rotating = true;
-        float boostPercentage = boostTime / timeToReachMaxBoost;
+        boostPercentage = boostTime / timeToReachMaxBoost;
         float minRotSpeed = Mathf.Lerp(minRotateSpeed * m_RotatePercentage, minBoostRotateSpeed * m_RotatePercentage, boostPercentage);
         float maxRotSpeed = Mathf.Lerp(maxRotateSpeed * m_RotatePercentage, maxBoostRotateSpeed * m_RotatePercentage, boostPercentage);
 

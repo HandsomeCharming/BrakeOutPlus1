@@ -20,8 +20,10 @@ public class CameraFollow : MonoBehaviour {
 
 	[SerializeField]
 	private float distance = 10.0f;
-	// the height we want the camera to be above the target
-	[SerializeField]
+    [SerializeField]
+    private float boostDistance = 13.0f;
+    // the height we want the camera to be above the target
+    [SerializeField]
 	private float height = 5.0f;
 
 	[SerializeField]
@@ -34,6 +36,8 @@ public class CameraFollow : MonoBehaviour {
     public bool zoom;
     public float zoomVelocityLowThreshold;
     public float zoomOutWeight;
+
+    float boostTime;
 
     bool shaking = false;
     float m_ShakeTime;
@@ -106,7 +110,8 @@ public class CameraFollow : MonoBehaviour {
 				// Set the position of the camera on the x-z plane to:
 				// distance meters behind the target
 				transform.position = foPos;//target.position;
-				transform.position -= currentRotation * Vector3.forward * distance;
+                float dist = distance; // Mathf.Lerp(distance, boostDistance, Player.current.physics.boostPercentage);
+				transform.position -= currentRotation * Vector3.forward * dist;
 
 				// Set the height of the camera
 				transform.position = new Vector3(transform.position.x ,currentHeight , transform.position.z);

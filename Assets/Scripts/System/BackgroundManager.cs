@@ -8,20 +8,25 @@ public enum BackgroundEnum
     SkyCity
 }
 
+[System.Serializable]
+public class SceneObjects
+{
+    public GameObject[] objects;
+}
+
 public class BackgroundManager : MonoBehaviour {
 
     public BackgroundEnum m_Background;
     public GameObject m_ColorCanvas;
 
     public BackgroundData m_Storer;
+    public SceneObjects[] m_SceneObjects;
 
     public static BackgroundManager current;
 
     float m_NextObjectTime;
     float m_NextObjectByRoadTime;
 
-    public List<GameObject> m_ColorGameObjects;
-    public List<GameObject> m_SkyGameObjects;
 
     List<GameObject> m_CurrentBackgroundObjects;
 
@@ -50,6 +55,8 @@ public class BackgroundManager : MonoBehaviour {
                 m_ColorCanvas.SetActive(true);
                 FloorBuilder.current.EnableAllFloorMaterials(true);
                 FloorBuilder.current.ChangeAllFloorMaterials(m_Storer.floorColorMat);
+                
+                ChangeSceneObject();
                 break;
             case BackgroundEnum.SkyCity:
                 Camera.main.clearFlags = CameraClearFlags.Skybox;
@@ -77,10 +84,24 @@ public class BackgroundManager : MonoBehaviour {
                     go.AddComponent<BackgroundKeepDistance>();
                     m_CurrentBackgroundObjects.Add(go);
                 }
+                ChangeSceneObject();
 
                 break;
             default:
                 break;
+        }
+    }
+
+    void ChangeSceneObject()
+    {
+        int back = (int)m_Background;
+        for (int i = 0; i < m_SceneObjects.Length; ++i)
+        {
+            bool f = i == back;
+            foreach (var go in m_SceneObjects[i].objects)
+            {
+                go.SetActive(f);
+            }
         }
     }
 

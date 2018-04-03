@@ -23,7 +23,7 @@ public class BackgroundObject : ItemSuper {
 
     IEnumerator FlyUp()
     {
-        GetComponent<Collider>().enabled = false;
+        //GetComponent<Collider>().enabled = false;
         //Destroy(GetComponent<Rigidbody>());
         float scaleTime = 0.2f;
         float flyTime = 2.0f;
