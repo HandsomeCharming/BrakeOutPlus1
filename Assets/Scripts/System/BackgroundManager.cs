@@ -20,6 +20,11 @@ public class BackgroundManager : MonoBehaviour {
     float m_NextObjectTime;
     float m_NextObjectByRoadTime;
 
+    public List<GameObject> m_ColorGameObjects;
+    public List<GameObject> m_SkyGameObjects;
+
+    List<GameObject> m_CurrentBackgroundObjects;
+
     public static BackgroundEnum GetBackgroundState()
     {
         return current != null ? current.m_Background: BackgroundEnum.Color;
@@ -29,6 +34,14 @@ public class BackgroundManager : MonoBehaviour {
     {
         if (m_Background == background) return;
         m_Background = background;
+        if(m_CurrentBackgroundObjects.Count > 0)
+        {
+            foreach(var go in m_CurrentBackgroundObjects)
+            {
+                Destroy(go, 0.1f);
+            }
+            m_CurrentBackgroundObjects.Clear();
+        }
 
         switch (m_Background)
         {
@@ -62,6 +75,7 @@ public class BackgroundManager : MonoBehaviour {
                         go.GetComponent<BackgroundObject>().Invoke("Fly", 60.0f);
                     }
                     go.AddComponent<BackgroundKeepDistance>();
+                    m_CurrentBackgroundObjects.Add(go);
                 }
 
                 break;
@@ -77,6 +91,7 @@ public class BackgroundManager : MonoBehaviour {
 
     private void Start()
     {
+        m_CurrentBackgroundObjects = new List<GameObject>();
         GameManager.current.StartLoadCar();
     }
 
