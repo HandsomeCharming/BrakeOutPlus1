@@ -17,11 +17,11 @@ public class MusicToggleButton : MonoBehaviour {
     {
         if (!AudioSystem.current.m_PlayAudio)
         {
-            text.text = "Off";
+            text.text = "OFF";
         }
         else
         {
-            text.text = "On";
+            text.text = "ON";
         }
     }
 
