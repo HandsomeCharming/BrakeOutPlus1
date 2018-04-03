@@ -98,21 +98,10 @@ public class GameManager : MonoBehaviour {
         //QualitySettings.antiAliasing = 0;
         //QualitySettings.shadowCascades = 2;
         //QualitySettings.shadowDistance = 150;
-        gameHighScore = PlayerPrefs.GetInt("High Score");
-        if (DiffScoreOption == DiffScoreUsage.ScaleOffHighest)
-            scoreForDifficulty = gameHighScore * scoreForDiffScale;
-        else if(DiffScoreOption == DiffScoreUsage.Normal)
-            scoreForDifficulty = 0;
-        // else is haha
-            
+
+        ResetSceneStats();
+
         print(scoreForDifficulty);
-        Time.timeScale = 1.0f;
-        m_SlowmotionFactor = 1.0f;
-        m_OldTimescale = 1.0f;
-        state = GameState.AssembleTrack;
-        m_BoostMultiplier = 1.0f;
-        m_DiffMultiplier = 1.0f;
-        m_ItemMultiplier = 1.0f;
 
         //ChallengeManager.current.currentFloorData = 0;
 
@@ -129,6 +118,25 @@ public class GameManager : MonoBehaviour {
             m_NextAdTime = 1;
             //AdManager.Instance.ShowBannerAd();
         }*/
+    }
+
+    void ResetSceneStats()
+    {
+        gameHighScore = PlayerPrefs.GetInt("High Score");
+        gameScore = 0;
+        if (DiffScoreOption == DiffScoreUsage.ScaleOffHighest)
+            scoreForDifficulty = gameHighScore * scoreForDiffScale;
+        else if (DiffScoreOption == DiffScoreUsage.Normal)
+            scoreForDifficulty = 0;
+        // else is haha
+
+        Time.timeScale = 1.0f;
+        m_SlowmotionFactor = 1.0f;
+        m_OldTimescale = 1.0f;
+        state = GameState.AssembleTrack;
+        m_BoostMultiplier = 1.0f;
+        m_DiffMultiplier = 1.0f;
+        m_ItemMultiplier = 1.0f;
     }
 
     public void StartLoadCar()
@@ -415,8 +423,13 @@ public class GameManager : MonoBehaviour {
         SaveGame();
         SetHighScore();
 
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        state = GameState.AssembleTrack;
+        LoadDefaultCarAndTrail();
+        FloorBuilder.current.RebuildFloor();
+        ResetSceneStats();
+        UIManager.current.ChangeStateByGameState();
+        //Scene scene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(scene.name);
     }
 
     public void SetNormalTimeScale(float timeScale)

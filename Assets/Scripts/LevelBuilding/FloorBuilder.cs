@@ -267,8 +267,7 @@ public class FloorBuilder : MonoBehaviour {
     
     public void meshCollided(int index)
     {
-                
-		if (Mathf.Abs(index - collidingIndex) < 99 ) 
+		if (Mathf.Abs(index - collidingIndex) < 90 ) 
 		{
 			//collidedCount += (index - collidingIndex)>0? (index - collidingIndex): collidingIndex - index;
             GameManager.current.AddScore((index - collidingIndex) > 0 ? (index - collidingIndex) : collidingIndex - index);
