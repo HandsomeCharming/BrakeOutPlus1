@@ -23,12 +23,12 @@ public class NetworkManager : MonoBehaviour {
     void Start()
     {
         current = this; 
-        m_ID = PlayerPrefs.GetInt(PlayerIDPrefStr);
+        /*m_ID = PlayerPrefs.GetInt(PlayerIDPrefStr);
         print(m_ID);
         if(m_ID == 0)
         {
             StartCoroutine(Login());
-        }
+        }*/
     }
 
     IEnumerator Login()

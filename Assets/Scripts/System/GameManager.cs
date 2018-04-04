@@ -424,11 +424,12 @@ public class GameManager : MonoBehaviour {
         SaveGame();
         SetHighScore();
 
-        state = GameState.AssembleTrack;
+		state = GameState.AssembleTrack;
+		ResetSceneStats();
         LoadDefaultCarAndTrail();
         FloorBuilder.current.RebuildFloor();
-        ResetSceneStats();
         UIManager.current.ChangeStateByGameState();
+		CameraFollow.current.SnapBack ();
         //Scene scene = SceneManager.GetActiveScene();
         //SceneManager.LoadScene(scene.name);
     }
