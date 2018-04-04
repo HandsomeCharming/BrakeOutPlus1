@@ -110,7 +110,6 @@ public class GameManager : MonoBehaviour {
             obj.SetActive(true);
         }
 
-        m_ReviveCount = 0;
         //Show ad every 3 games
         /*m_NextAdTime--;
         if(m_NextAdTime < 0)
@@ -137,6 +136,8 @@ public class GameManager : MonoBehaviour {
         m_BoostMultiplier = 1.0f;
         m_DiffMultiplier = 1.0f;
         m_ItemMultiplier = 1.0f;
+
+		m_ReviveCount = 0;
     }
 
     public void StartLoadCar()
