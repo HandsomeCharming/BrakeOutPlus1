@@ -40,6 +40,7 @@ public class FloorDataBeforeScore
     public bool useGlideTransition;
     public float redCoinChance = 0.01f;
     public float m_Timescale = 1.0f;
+    public float m_Width = 15.0f;
 }
 
 public class FloorDataConfig  {

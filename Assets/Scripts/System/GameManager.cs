@@ -427,6 +427,7 @@ public class GameManager : MonoBehaviour {
 		state = GameState.AssembleTrack;
 		ResetSceneStats();
         LoadDefaultCarAndTrail();
+        ChallengeManager.current.Reset();
         FloorBuilder.current.RebuildFloor();
         UIManager.current.ChangeStateByGameState();
 		CameraFollow.current.SnapBack ();
