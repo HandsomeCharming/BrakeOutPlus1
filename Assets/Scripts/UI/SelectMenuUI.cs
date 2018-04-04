@@ -11,10 +11,13 @@ public class SelectMenuUI : MonoBehaviour {
     public Text m_CarText;
     public GameObject m_BuyButton;
     public GameObject m_TrailButton;
+    public GameObject m_Foreground;
     public GameObject[] m_SceneGOs;
+    public GameObject[] m_SceneButtons;
     public RectTransform m_CarRotBotLeft;
     public RectTransform m_CarRotTopRight;
     public float m_RotSpeed;
+    public float m_RotRecoverSpeed = 1.0f;
 
     [HideInInspector]
     public GameObject m_CurrentCarPreview;
@@ -26,6 +29,10 @@ public class SelectMenuUI : MonoBehaviour {
     bool m_RotatingPreview;
     Vector2 m_LastTouchPos;
     float m_PreviewRotSpeed;
+    Vector3 m_CurrentRot;
+    Quaternion m_InitRot;
+    Quaternion m_EndTouchRot;
+    float m_RotSlerpAmount;
 
     // Use this for initialization
     void Start ()
@@ -53,6 +60,19 @@ public class SelectMenuUI : MonoBehaviour {
             else
                 m_SceneGOs[i].SetActive(true);
         }
+    }
+
+    public void ChangeScene(int index)
+    {
+        print("change scene");
+        for(int i=0; i< m_SceneButtons.Length; ++i)
+        {
+            if (i == index)
+                m_SceneButtons[i].transform.localScale = Vector3.one;
+            else
+                m_SceneButtons[i].transform.localScale = Vector3.one * 0.9f;
+        }
+        ChangeSceneGO(index);
     }
 
     public void RefreshCarUI()
@@ -107,12 +127,17 @@ public class SelectMenuUI : MonoBehaviour {
             else
                 m_CurrentCarPreview.transform.localPosition = data.ViewPos;
 
-
+            Vector3 rot = Vector3.one;
             if (!data.customViewRot)
-                m_CurrentCarPreview.transform.localRotation = Quaternion.Euler(0, 180.0f, 0);
+                rot = new Vector3(0, 180.0f, 0);
             else
-                m_CurrentCarPreview.transform.localRotation = Quaternion.Euler(data.ViewRot);
+                rot = data.ViewRot;
+
+            m_CurrentCarPreview.transform.localEulerAngles = rot;
+            m_CurrentRot = m_CurrentCarPreview.transform.localEulerAngles;
+            m_InitRot = m_CurrentCarPreview.transform.localRotation;
         }
+
     }
 
     public void SetText(string str)
@@ -161,6 +186,21 @@ public class SelectMenuUI : MonoBehaviour {
         return touch;
     }
 
+    public void OpenTrailMenu()
+    {
+        //RefreshCarUI();
+        m_Foreground.SetActive(false);
+        m_BuyButton.SetActive(false);
+        m_CurrentCarPreview.SetActive(false);
+    }
+
+    public void CloseTrailMenu()
+    {
+        RefreshCarUI();
+        m_Foreground.SetActive(true); 
+        m_CurrentCarPreview.SetActive(true);
+    }
+
     // Update is called once per frame
     void Update () {
 		if(!m_CurrentLocked)
@@ -185,7 +225,11 @@ public class SelectMenuUI : MonoBehaviour {
                 {
                     if (/*isInBox(m_BotLeft, m_TopRight, pos) &&*/ touch.phase != TouchPhase.Ended)
                     {
-                        m_CurrentCarPreview.transform.Rotate(0, (m_LastTouchPos.x - pos.x) * m_RotSpeed, 0);
+                        //m_CurrentCarPreview.transform.Rotate((m_LastTouchPos.y - pos.y) * m_RotSpeed, (m_LastTouchPos.x - pos.x) * m_RotSpeed, 0);
+                        m_CurrentRot.x += (m_LastTouchPos.y - pos.y) * m_RotSpeed;
+                        m_CurrentRot.y += (m_LastTouchPos.x - pos.x) * m_RotSpeed;
+                        m_CurrentCarPreview.transform.localEulerAngles = m_CurrentRot;
+
                         m_LastTouchPos = pos;
                     }
                     else
@@ -203,18 +247,22 @@ public class SelectMenuUI : MonoBehaviour {
             {
                 m_CurrentCarPreview.transform.Rotate(0, (m_LastTouchPos.x - Input.mousePosition.x) * m_RotSpeed, 0);
                 m_LastTouchPos = Input.mousePosition;
-            }
+            }*/
             if (Input.GetMouseButtonUp(0))
             {
-            }*/
-            if(!m_RotatingPreview && m_PreviewRotSpeed != 0)
+                EndTouchRot(Input.mousePosition);
+            }
+            if(!m_RotatingPreview && m_EndTouchRot != m_InitRot)
             {
-                m_CurrentCarPreview.transform.Rotate(0, m_PreviewRotSpeed, 0);
+                /*m_CurrentCarPreview.transform.Rotate(0, m_PreviewRotSpeed, 0);
                 m_PreviewRotSpeed = Mathf.Lerp(m_PreviewRotSpeed, 0, 0.2f);
                 if(Mathf.Abs(m_PreviewRotSpeed) < 0.01f)
                 {
                     m_PreviewRotSpeed = 0;
-                }
+                }*/
+                m_CurrentRot = m_CurrentCarPreview.transform.localEulerAngles;
+                m_RotSlerpAmount += m_RotRecoverSpeed * Time.deltaTime;
+                m_CurrentCarPreview.transform.localRotation = Quaternion.Lerp(m_EndTouchRot, m_InitRot, m_RotSlerpAmount);
             }
         }
 	}
@@ -222,8 +270,10 @@ public class SelectMenuUI : MonoBehaviour {
     void EndTouchRot(Vector2 pos)
     {
         m_PreviewRotSpeed = (m_LastTouchPos.x - pos.x) * m_RotSpeed;
-        m_CurrentCarPreview.transform.Rotate(0, m_PreviewRotSpeed, 0);
+        //m_CurrentCarPreview.transform.Rotate(0, m_PreviewRotSpeed, 0);
         m_LastTouchPos = pos;
+        m_EndTouchRot = m_CurrentCarPreview.transform.localRotation;
+        m_RotSlerpAmount = 0;
         m_RotatingPreview = false;
     }
 }

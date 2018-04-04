@@ -26,10 +26,10 @@ public class SelectCarManager : MonoBehaviour {
         m_CurrentScene = m_Storer.sceneData[m_CurrentSceneIndex];
         m_CurrentCars = m_CurrentScene.carData;
 
-        SelectScene(m_CurrentSceneIndex);
+        m_Menu.enabled = true;
+        SelectScene(m_CurrentSceneIndex, true);
         //m_CurrentCarName = m_CarNames[m_CarIndex];
         //m_Menu.SetText(m_CurrentCarName);
-        m_Menu.enabled = true;
     }
 
     public SingleCarSelectData GetCurrentCarData()
@@ -76,7 +76,12 @@ public class SelectCarManager : MonoBehaviour {
 
     public void SelectScene(int index)
     {
-        if (m_CurrentSceneIndex == index) return;
+        SelectScene(index, false);
+    }
+
+    public void SelectScene(int index, bool forced)
+    {
+        if (m_CurrentSceneIndex == index && !forced) return;
         m_CurrentSceneIndex = index;
         m_CurrentScene = m_Storer.sceneData[m_CurrentSceneIndex];
         m_CurrentCars = m_CurrentScene.carData;
@@ -85,7 +90,7 @@ public class SelectCarManager : MonoBehaviour {
         BackgroundEnum back = (BackgroundEnum)m_CurrentSceneIndex;
         GameManager.current.ChangeBackground(back);
         m_Menu.RefreshForManager();
-        m_Menu.ChangeSceneGO(m_CurrentSceneIndex);
+        m_Menu.ChangeScene(m_CurrentSceneIndex);
     }
 
     public void BuyCurrentCar()
@@ -103,10 +108,17 @@ public class SelectCarManager : MonoBehaviour {
         return m_CurrentCars[m_CarIndex].name;
     }
 
-    public void OpenTrail()
+    public void OpenTrailMenu()
     {
+        m_Menu.OpenTrailMenu();
+
         m_TrailMenu.gameObject.SetActive(true);
         m_TrailMenu.RefreshUI(m_CurrentScene.trailData);
+    }
+
+    public void CloseTrailMenu()
+    {
+        m_Menu.CloseTrailMenu();
     }
 
     public void SelectTrail(string name)

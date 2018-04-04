@@ -141,9 +141,9 @@ public class FloorBuilder : MonoBehaviour {
         m_UpcomingFloorDatas = new Queue<FloorTypeData>();
         m_InitWidth = m_GlobalWidth;
         m_ActualWidth = m_GlobalWidth;
-        m_MadeMeshDict = new HashSet<ObstacleType>();
+        /*m_MadeMeshDict = new HashSet<ObstacleType>();
         m_MadeMeshDict.Add(ObstacleType.Jump);
-        m_MadeMeshDict.Add(ObstacleType.HalfRoad);
+        m_MadeMeshDict.Add(ObstacleType.HalfRoad);*/
 
         GameManager.current.state = GameManager.GameState.AssembleTrack;
 
@@ -195,7 +195,7 @@ public class FloorBuilder : MonoBehaviour {
         m_UpcomingFloorDatas.Clear();
 
         floorTypeData = new FloorTypeData();
-        floorTypeData.SetFloorCount(initialStraightLength + 10);
+        floorTypeData.SetFloorCount(initialStraightLength);
         floorTypeData.maxFloorCount = floorTypeData.floorCount;
         floorTypeData.floorTurningAngle = 0;
         floorTypeData.floorWidth = m_ActualWidth; // width;
