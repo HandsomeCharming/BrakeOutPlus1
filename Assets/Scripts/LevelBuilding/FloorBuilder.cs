@@ -190,6 +190,7 @@ public class FloorBuilder : MonoBehaviour {
 
     public void RebuildFloor()
     {
+        m_GlobalWidth = m_InitWidth;
         m_ActualWidth = m_GlobalWidth;
         CoinGenerator.current.ResetAllCoins();
         m_UpcomingFloorDatas.Clear();

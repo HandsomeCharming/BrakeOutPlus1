@@ -33,7 +33,6 @@ public class ChallengeManager : MonoBehaviour {
     public void Reset()
     {
         currentDifficulty = 0;
-        FloorBuilder.current.m_GlobalWidth = floorData[currentDifficulty].m_Width;
     }
 
     // Use this for initialization
@@ -53,7 +52,6 @@ public class ChallengeManager : MonoBehaviour {
         if (currentDifficulty < floorData.Length - 1 && GameManager.current.scoreForDifficulty > floorData[currentDifficulty + 1].activateScore)
         {
             currentDifficulty++;
-            FloorBuilder.current.m_GlobalWidth = floorData[currentDifficulty].m_Width;
             GameManager.current.m_DiffMultiplier = floorData[currentDifficulty].multiplier;
             GameManager.current.SetNormalTimeScale(floorData[currentDifficulty].m_Timescale);
 
@@ -85,7 +83,7 @@ public class ChallengeManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        /*if (GameManager.current && GameManager.current.state == GameManager.GameState.Running)
+        if (GameManager.current && GameManager.current.state == GameManager.GameState.Running)
         {
             if(GameManager.current.scoreForDifficulty - 100.0f > m_LastWidthDecreaseScore)
             {
@@ -93,15 +91,15 @@ public class ChallengeManager : MonoBehaviour {
                 if (FloorBuilder.current.m_GlobalWidth < FloorBuilder.current.m_MinWidth)
                     FloorBuilder.current.m_GlobalWidth = FloorBuilder.current.m_MinWidth;
                 m_LastWidthDecreaseScore = GameManager.current.scoreForDifficulty;
-            }*/
+            }
             
             /*getHardTimeRemain -= Time.deltaTime;
             if (getHardTimeRemain <= 0)
             {
                 addDifficultyByTime();
                 getHardTimeRemain = 40.0f;
-            }
-        }*/
+            }*/
+        }
     }
 
 
