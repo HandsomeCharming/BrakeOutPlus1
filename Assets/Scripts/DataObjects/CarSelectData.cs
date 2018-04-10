@@ -94,12 +94,14 @@ public class CarClassData
     public float[] m_BoostPrice;
 
     [Header("Physics Settings")]
-    public MinMaxData m_BoostForce;
-    public MinMaxData m_MinRotateSpeed;
-    public MinMaxData m_MaxRotateSpeed;
-    public MinMaxData m_MinBoostRotateSpeed;
-    public MinMaxData m_MaxBoostRotateSpeed;
-    public float timeToReachMaxRotateSpeed;
+    public float m_PushForce;
+    public float m_BoostForce;
+    public float m_LaunchForce;
+    public float m_Gravity;
+    public MinMaxData m_RotateSpeed;
+    public MinMaxData m_BoostRotateSpeed;
+    public float m_CameraGoFarTime;
+    public float m_CameraGoNearTime;
 }
 
 [System.Serializable]

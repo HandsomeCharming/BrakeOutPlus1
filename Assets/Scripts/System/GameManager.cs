@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour {
     
     public enum GameState
     {
+        Login,
         Start,
         Menu,
         AssembleTrack,

@@ -14,7 +14,8 @@ public class UIManager : MonoBehaviour {
     public DeadMenuUI m_DeadMenu;
     public PauseMenuUI m_PauseMenu;
     public ConsistantUI m_ConsistantUI;
-    
+    public LoginUI m_LoginUI;
+
     bool showMain;
 
     public static UIManager current;
@@ -27,6 +28,7 @@ public class UIManager : MonoBehaviour {
         m_UIs.Add(m_ReviveMenu);
         m_UIs.Add(m_DeadMenu);
         m_UIs.Add(m_PauseMenu);
+        m_UIs.Add(m_LoginUI);
         ChangeStateByGameState();
     }
 
@@ -48,6 +50,10 @@ public class UIManager : MonoBehaviour {
         else if (GameManager.current.state == GameManager.GameState.ReviveMenu)
         {
             ShowRevive();
+        }
+        else if (GameManager.current.state == GameManager.GameState.Login)
+        {
+
         }
 
         if (GameManager.current.state == GameManager.GameState.Dead)
@@ -87,6 +93,12 @@ public class UIManager : MonoBehaviour {
         DisableAll();
         m_ReviveMenu.m_Countdown = 5.0f;
         m_ReviveMenu.gameObject.SetActive(true);
+    }
+
+    void StartLoggingIn()
+    {
+        DisableAll();
+
     }
 
     void Pause()
