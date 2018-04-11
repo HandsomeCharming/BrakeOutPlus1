@@ -85,7 +85,7 @@
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
 							<GameParameterRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}"/>
-							<Value>0</Value>
+							<Value>10000</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="LOWPASS" ID="{AAAFC142-64C8-4634-8446-5603359F890F}"/>
@@ -97,7 +97,7 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="SPEED" ID="{8853B442-1301-4F77-90A4-178A3CCA0846}"/>
-							<Value>73</Value>
+							<Value>68</Value>
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true"/>

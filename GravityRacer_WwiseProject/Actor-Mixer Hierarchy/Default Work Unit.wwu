@@ -111,6 +111,13 @@
 					</ChildrenList>
 				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="wall" ID="{E3E70659-00B6-4F09-9605-EC3F7247C646}" ShortID="75637760">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9703D2A9-34D1-4216-ADED-8EAAB95A124A}"/>
@@ -121,6 +128,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="wallv2_1" ID="{A595316A-5018-474A-8591-341E31D80021}" ShortID="941811374">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9703D2A9-34D1-4216-ADED-8EAAB95A124A}"/>
@@ -140,6 +154,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="wallv2_2" ID="{866CDEB7-B128-4AF2-B754-548FAEC02CB0}" ShortID="1043648269">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9703D2A9-34D1-4216-ADED-8EAAB95A124A}"/>
@@ -159,6 +180,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="wallv2_3" ID="{ECF5CD0E-1BBA-4C95-8B65-EE2CDFF8DF01}" ShortID="957132600">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9703D2A9-34D1-4216-ADED-8EAAB95A124A}"/>
@@ -178,6 +206,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="wallv2_4" ID="{E0D28C43-1454-4A5B-B5D2-059FD62DC63E}" ShortID="641462487">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9703D2A9-34D1-4216-ADED-8EAAB95A124A}"/>
@@ -194,6 +229,44 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="wallv2_4" ID="{9861FB42-8023-4902-851A-FA3A991FF6FF}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="wall_v3_1#_2" ID="{0AFE71C1-BB8A-4D6D-8E58-3098747F16A8}" ShortID="484206055">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9703D2A9-34D1-4216-ADED-8EAAB95A124A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="wall_v3_1#_2" ID="{9E64555A-5545-4AF3-AD17-BA3D0D4DF726}" ShortID="468277978">
+									<Language>SFX</Language>
+									<AudioFile>wall_v3_1#.2.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="wall_v3_1#_2" ID="{9E64555A-5545-4AF3-AD17-BA3D0D4DF726}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="wall_v3_2#_2" ID="{E149F4C6-B624-4C3F-82D1-22C69725D662}" ShortID="773714244">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9703D2A9-34D1-4216-ADED-8EAAB95A124A}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="wall_v3_2#_2" ID="{77BE0F66-C2F6-4030-BEC8-4C82085580FC}" ShortID="434613612">
+									<Language>SFX</Language>
+									<AudioFile>wall_v3_2#.2.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="wall_v3_2#_2" ID="{77BE0F66-C2F6-4030-BEC8-4C82085580FC}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
