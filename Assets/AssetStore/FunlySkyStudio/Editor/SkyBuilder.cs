@@ -16,7 +16,7 @@ namespace Funly.SkyStudio
     public float starLayer2Density;
     public float starLayer3Density;
 
-    private int m_ImageSize = 512;
+    private int m_ImageSize = 256;
     private int m_BusyRenderingCount;
     private bool m_IsCancelled;
 
@@ -46,16 +46,38 @@ namespace Funly.SkyStudio
       m_BusyRenderingCount = CountToRender();
 
       if (starLayer1Enabled) {
-        RebuildStarLayer("1", starLayer1Density);
+        RebuildStarLayer(TextureNameForStarLayer(1), starLayer1Density);
+      }
+      else
+      {
+        RemoveAllObjectsWithName(TextureNameForStarLayer(1), skyboxMaterial);
       }
 
       if (starLayer2Enabled) {
-        RebuildStarLayer("2", starLayer2Density);
+        RebuildStarLayer(TextureNameForStarLayer(2), starLayer2Density);
+      }
+      else
+      {
+        RemoveAllObjectsWithName(TextureNameForStarLayer(2), skyboxMaterial);
       }
 
       if (starLayer3Enabled) {
-        RebuildStarLayer("3", starLayer3Density);
+        RebuildStarLayer(TextureNameForStarLayer(3), starLayer3Density);
       }
+      else
+      {
+        RemoveAllObjectsWithName(TextureNameForStarLayer(3), skyboxMaterial);
+      }
+    }
+
+    public string TextureNameForStarLayer(int layerId)
+    {
+      return TextureNameForStarLayer(layerId.ToString());
+    }
+
+    public string TextureNameForStarLayer(string layerId)
+    {
+      return layerId.ToString();
     }
 
     public void CancelBuild()
@@ -154,7 +176,7 @@ namespace Funly.SkyStudio
         return;
       }
 
-      RemoveAllObjectsWithName(renderer.layerId, skyboxMaterial);
+      RemoveAllObjectsWithName(TextureNameForStarLayer(renderer.layerId), skyboxMaterial);
 
       AssetDatabase.Refresh();
 

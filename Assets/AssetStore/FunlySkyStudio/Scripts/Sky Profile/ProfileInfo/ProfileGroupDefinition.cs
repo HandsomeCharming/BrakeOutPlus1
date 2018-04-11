@@ -12,7 +12,8 @@ namespace Funly.SkyStudio
       None,
       Color,
       Number,
-      Texture
+      Texture,
+      SpherePoint
     }
 
     public enum FormatStyle
@@ -34,6 +35,7 @@ namespace Funly.SkyStudio
     public string propertyKey;
     public string groupName;
     public Color color;
+    public SpherePoint spherePoint;
     public float minimumValue = -1.0f;
     public float maximumValue = -1.0f;
     public float value = -1.0f;
@@ -98,6 +100,30 @@ namespace Funly.SkyStudio
       def.rebuildType = rebuildType;
       def.dependsOnKeyword = dependsOnKeyword;
       def.dependsOnValue = dependsOnValue;
+
+      return def;
+    }
+
+    public static ProfileGroupDefinition SpherePointGroupDefinition(string groupName, string propKey,
+      float horizontalRotation, float verticalRotation, string tooltip)
+    {
+      return SpherePointGroupDefinition(groupName, propKey, horizontalRotation, verticalRotation, RebuildType.None,
+        null, false, tooltip);
+    }
+
+    public static ProfileGroupDefinition SpherePointGroupDefinition(string groupName, string propKey, 
+      float horizontalRotation, float verticalRotation, RebuildType rebuildType, string dependsOnKeyword, bool dependsOnValue, string tooltip)
+    {
+      ProfileGroupDefinition def = new ProfileGroupDefinition();
+
+      def.type = GroupType.SpherePoint;
+      def.propertyKey = propKey;
+      def.groupName = groupName;
+      def.tooltip = tooltip;
+      def.rebuildType = rebuildType;
+      def.dependsOnKeyword = dependsOnKeyword;
+      def.dependsOnValue = dependsOnValue;
+      def.spherePoint = new SpherePoint(horizontalRotation, verticalRotation);
 
       return def;
     }

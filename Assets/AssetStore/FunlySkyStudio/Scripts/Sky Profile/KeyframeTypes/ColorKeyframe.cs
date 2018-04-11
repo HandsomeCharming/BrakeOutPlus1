@@ -18,6 +18,8 @@ namespace Funly.SkyStudio
     public ColorKeyframe(ColorKeyframe keyframe) : base(keyframe.time)
     {
       this.color = keyframe.color;
+      interpolationCurve = keyframe.interpolationCurve;
+      interpolationDirection = keyframe.interpolationDirection;
     }
   }
 }

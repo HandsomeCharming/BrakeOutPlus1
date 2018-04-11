@@ -20,6 +20,9 @@ namespace Funly.SkyStudio
     [SerializeField]
     private TextureGroupDictionary m_TextureGroup = new TextureGroupDictionary();
 
+    [SerializeField]
+    private SpherePointGroupDictionary m_SpherePointGroup = new SpherePointGroupDictionary();
+
     public IKeyframeGroup this[string aKey]
     {
       get { return m_Groups[aKey]; }
@@ -49,6 +52,11 @@ namespace Funly.SkyStudio
         return m_Groups[propertyName] as T;
       }
 
+      if (typeof(T) == typeof(SpherePointGroupDictionary))
+      {
+        return m_Groups[propertyName] as T;
+      }
+
       return null;
     }
     
@@ -58,16 +66,27 @@ namespace Funly.SkyStudio
       m_ColorGroup.Clear();
       m_NumberGroup.Clear();
       m_TextureGroup.Clear();
+      m_SpherePointGroup.Clear();
 
-      foreach (string key in m_Groups.Keys) {
+      foreach (string key in m_Groups.Keys)
+      {
         IKeyframeGroup obj = m_Groups[key];
 
-        if (obj is ColorKeyframeGroup) {
+        if (obj is ColorKeyframeGroup)
+        {
           m_ColorGroup[key] = obj as ColorKeyframeGroup;
-        } else if (obj is NumberKeyframeGroup) {
+        }
+        else if (obj is NumberKeyframeGroup)
+        {
           m_NumberGroup[key] = obj as NumberKeyframeGroup;
-        } else if (obj is TextureKeyframeGroup) {
+        }
+        else if (obj is TextureKeyframeGroup)
+        {
           m_TextureGroup[key] = obj as TextureKeyframeGroup;
+        }
+        else if (obj is SpherePointKeyframeGroup)
+        {
+          m_SpherePointGroup[key] = obj as SpherePointKeyframeGroup;
         }
       }
     }
@@ -77,16 +96,24 @@ namespace Funly.SkyStudio
     {
       m_Groups.Clear();
 
-      foreach (string key in m_ColorGroup.dict.Keys) {
+      foreach (string key in m_ColorGroup.dict.Keys)
+      {
         m_Groups[key] = m_ColorGroup[key];
       }
 
-      foreach (string key in m_NumberGroup.dict.Keys) {
+      foreach (string key in m_NumberGroup.dict.Keys)
+      {
         m_Groups[key] = m_NumberGroup[key];
       }
 
-      foreach (string key in m_TextureGroup.dict.Keys) {
+      foreach (string key in m_TextureGroup.dict.Keys)
+      {
         m_Groups[key] = m_TextureGroup[key];
+      }
+
+      foreach (string key in m_SpherePointGroup.dict.Keys)
+      {
+        m_Groups[key] = m_SpherePointGroup[key];
       }
     }
 

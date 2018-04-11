@@ -71,17 +71,8 @@ namespace Funly.SkyStudio
       NumberKeyframe before = GetKeyframe(beforeKeyIndex);
       NumberKeyframe after = GetKeyframe(afterKeyIndex);
 
-      float blendPercent = ProgressBetweenSurroundingKeyframes(time, before, after);
-
-      // For orbit cycles we need to force them to interpolate in positive direction.
-      if (before.curveType == CurveType.OrbitBodyForwardComplete && after.value < before.value) {
-        float interpolatedValue = Mathf.Lerp(before.value, 1.0f + after.value, blendPercent);
-        return interpolatedValue - ((int)interpolatedValue);
-      } else
-      {
-        float curveAdjustedTime = CurveAdjustedBlendingTime(before.curveType, blendPercent);
-				return Mathf.Lerp(before.value, after.value, curveAdjustedTime);
-			}
+      return InterpolateFloat(before.interpolationCurve, before.interpolationDirection, time,
+        before.time, after.time, before.value, after.value, minValue, maxValue);
     }
   }
 }

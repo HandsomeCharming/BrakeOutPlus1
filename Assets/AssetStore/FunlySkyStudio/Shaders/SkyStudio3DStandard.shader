@@ -37,7 +37,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
     _StarLayer1SpriteDimensions("Star Layer 1 Sprite Dimensions", Vector) = (0, 0, 0, 0)        // Dimensions of columns (x), and rows (y) in sprite sheet.
     _StarLayer1SpriteItemCount("Star Layer 1 Sprite Total Items", int) = 1                      // Total number of items in sprite sheet.
     _StarLayer1SpriteAnimationSpeed("Star Layer 1 Sprite Speed", int) = 1                       // Speed of the sprite sheet animation.
-    [NoScaleOffset]_StarLayer1DataTex("Star Layer 1 - Data Image", 2D) = "black" {}           // Data image with star positions.
+    [NoScaleOffset]_StarLayer1DataTex("Star Layer 1 - Data Image", 2D) = "black" {}             // Data image with star positions.
     
     // Star Layer 2. - See property descriptions from star layer 1.
     [NoScaleOffset]_StarLayer2Tex("Star 2 Texture", 2D) = "white" {}
@@ -67,7 +67,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
     _StarLayer3SpriteDimensions("Star Layer 3 Sprite Dimensions", Vector) = (0, 0, 0, 0)
     _StarLayer3SpriteItemCount("Star Layer 3 Sprite Total Items", int) = 1
     _StarLayer3SpriteAnimationSpeed("Star Layer 3 Sprite Speed", int) = 1
-    [NoScaleOffset]_StarLayer3DataTex("Star Layer 1 - Data Image", 2D) = "black" {}
+    [NoScaleOffset]_StarLayer3DataTex("Star Layer 3 - Data Image", 2D) = "black" {}
 
     // Moon properties.
     [NoScaleOffset]_MoonTex("Moon Texture", 2D) = "white" {}               // Moon image.
@@ -78,20 +78,18 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
     _MoonSpriteDimensions("Moon Sprite Dimensions", Vector) = (0, 0, 0, 0) // Dimensions of columns (x), and rows (y) in sprite sheet.
     _MoonSpriteItemCount("Moon Sprite Total Items", int) = 1               // Total number of items in sprite sheet.
     _MoonSpriteAnimationSpeed("Moon Sprite Speed", int) = 1                // Speed of the sprite sheet animation.
-    _MoonComputedPositionData("Moon Position Data" , Vector) = (0, 0, 0, 0)  // Precomputed position data.
-    _MoonComputedRotationData("Moon Rotation Data", Vector) = (0, 0, 0, 0)   // Precomputed rotation data.
+    _MoonPosition("Moon Position" , Vector) = (0, 0, 0, 0)                 // Moon Position.
 
     // Sun properties.
-    [NoScaleOffset]_SunTex("Sun Texture", 2D) = "white" {}               // Sun image.
-    _SunColor("Sun Color", Color) = (.66, .65, .55, 1)                   // Sun tint color.
-    _SunRadius("Sun Size", Range(0, 1)) = .1                             // Radius of the Sun.
-    _SunEdgeFade("Sun Edge Feathering", Range(0.0001, .9999)) = .3       // Soften edges of Sun texture.
-    _SunHDRBoost("Sun HDR Bloom Boost", Range(1, 10)) = 1                // Control brightness for HDR bloom filter.
-    _SunSpriteDimensions("Sun Sprite Dimensions", Vector) = (0, 0, 0, 0) // Dimensions of columns (x), and rows (y) in sprite sheet.
-    _SunSpriteItemCount("Sun Sprite Total Items", int) = 1               // Total number of items in sprite sheet.
-    _SunSpriteAnimationSpeed("Sun Sprite Speed", int) = 1                // Speed of the sprite sheet animation.
-    _SunComputedPositionData("Sun Position Data" , Vector) = (0, 0, 0, 0)  // Precomputed position data.
-    _SunComputedRotationData("Sun Rotation Data", Vector) = (0, 0, 0, 0)   // Precomputed rotation data.
+    [NoScaleOffset]_SunTex("Sun Texture", 2D) = "white" {}                // Sun image.
+    _SunColor("Sun Color", Color) = (.66, .65, .55, 1)                    // Sun tint color.
+    _SunRadius("Sun Size", Range(0, 1)) = .1                              // Radius of the Sun.
+    _SunEdgeFade("Sun Edge Feathering", Range(0.0001, .9999)) = .3        // Soften edges of Sun texture.
+    _SunHDRBoost("Sun HDR Bloom Boost", Range(1, 10)) = 1                 // Control brightness for HDR bloom filter.
+    _SunSpriteDimensions("Sun Sprite Dimensions", Vector) = (0, 0, 0, 0)  // Dimensions of columns (x), and rows (y) in sprite sheet.
+    _SunSpriteItemCount("Sun Sprite Total Items", int) = 1                // Total number of items in sprite sheet.
+    _SunSpriteAnimationSpeed("Sun Sprite Speed", int) = 1                 // Speed of the sprite sheet animation.
+    _SunPosition("Sun Position Data" , Vector) = (0, 0, 0, 0)             // Sun position.
 
     // Cloud properties.
     [NoScaleOffset]_CloudNoiseTexture("Cloud Texture", 2D) = "white" {}         // Cloud texture.
@@ -108,6 +106,9 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
     _HorizonFogColor("Fog Color", Color) = (1, 1, 1, 1)               // Fog color.
     _HorizonFogDensity("Fog Density", Range(0, 1)) = .12              // Density and visibility of the fog.
     _HorizonFogLength("Fog Height", Range(.03, 1)) = .1               // Height the fog reaches up into the skybox.
+
+    _DebugPointsCount("Debug Points Count", Range(0, 100)) = 0       // Used for visualizing orbit paths in editor only.
+    _DebugPointRadius("Debug Point Radius", Range(0, .1)) = .03      // Size of sphere point dots when visualized.
   }
 
   SubShader {
@@ -143,12 +144,14 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
       #pragma shader_feature SUN_ROTATION
       #pragma shader_feature MOON_ALPHA_BLEND
       #pragma shader_feature MOON_ROTATION
+      #pragma shader_feature RENDER_DEBUG_POINTS
 
       #pragma vertex vert
       #pragma fragment frag
 
       #include "UnityCG.cginc"
-
+      #include "Utility/SkyMathUtilities.cginc"
+       
       struct appdata {
         float4 vertex : POSITION;
         float3 normal : NORMAL;
@@ -272,8 +275,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
       float _MoonRadius;
       float _MoonEdgeFade;
       float _MoonHDRBoost;
-      float4 _MoonComputedPositionData;
-      float4 _MoonComputedRotationData;
+      float4 _MoonPosition;
 #endif
 
 #ifdef SUN
@@ -291,8 +293,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
       float _SunRadius;
       float _SunEdgeFade;
       float _SunHDRBoost;
-      float4 _SunComputedPositionData;
-      float4 _SunComputedRotationData;
+      float4 _SunPosition;
 #endif
 
 #ifdef CLOUDS
@@ -314,9 +315,13 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
       float _HorizonFogLength;
 #endif
 
-      #define _PI 3.14159265358
-      #define _PI_2 (_PI / 2)
-      #define _2_PI (_PI * 2)
+#if RENDER_DEBUG_POINTS
+      // This is only used in the editor for debugging and will get compiled out.
+      float4 _DebugPoints[100];
+      int _DebugPointsCount;
+      float _DebugPointRadius;
+#endif
+
       #define _MAX_CLOUD_COVERAGE 7
       #define _CLOUD_HEIGHT_LIMITS float2(30, 100)
 
@@ -330,41 +335,23 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
         // Additive overlap with star scaled using alpha.
         return background + (starColor * starFadeAmount);
       }
-      
-      inline float2 Rotate2d(float2 p, float angle) {
-        return mul(float2x2(cos(angle), -sin(angle),
-                            sin(angle), cos(angle)),
-                   p);
+
+      float2 CalculateStarRotation(float3 star)
+      {
+        float3 starPos = float3(star.x, star.y, star.z);
+
+        float yRotationAngle = AngleToReachTarget(starPos.xz, UNITY_HALF_PI);
+
+        starPos = RotateAroundYAxis(starPos, yRotationAngle);
+
+        float xRotationAngle = AngleToReachTarget(starPos.zy, 0.0f);
+
+        return float2(xRotationAngle, yRotationAngle);
       }
 
-      float Atan2Positive(float y, float x) {
-        float angle = atan2(y, x);
-        
-        // This is the same as: angle = (angle > 0) ? angle : _PI + (_PI + angle)
-        float isPositive = step(0, angle);
-        float posAngle = angle * isPositive;
-        float negAngle = (_PI + (_PI + angle)) * !isPositive;
-
-        return posAngle + negAngle;
-      }
-
-      float3 RotateAroundXAxis(float3 p, float angle) {
-        float2 rotation = Rotate2d(p.zy, angle);
-        return float3(p.x, rotation.y, rotation.x);
-      }
-
-      float3 RotateAroundYAxis(float3 p, float angle) {
-        float2 rotation = Rotate2d(p.xz, angle);
-        return float3(rotation.x, p.y, rotation.y);
-      }
-
-      float3 RotatePoint(float3 p, float xAxisRotation, float yAxisRotation) {
-        float3 rotated = RotateAroundYAxis(p, yAxisRotation);
-        return RotateAroundXAxis(rotated, xAxisRotation);
-      }
-
-      float2 GetUVsForSpherePoint(float3 fragPos, float radius, float2 pointRotation) {
-        float3 projectedPosition = RotatePoint(fragPos, pointRotation.x, pointRotation.y);
+      float2 GetUVsForSpherePoint(float3 fragPos, float radius, float3 targetPoint) {
+        float2 bodyRotations = CalculateStarRotation(targetPoint);
+        float3 projectedPosition = RotatePoint(fragPos, bodyRotations.x, bodyRotations.y);
 
         // Find our UV position.
         return clamp(float2(
@@ -372,18 +359,10 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
           (projectedPosition.y + radius) / (2.0 * radius)), 0, 1);
       }
 
-      float2 Calculate2DCords(float3 spherePoint) {
-        float yPercent = spherePoint.y / 2.0 + .5;
-        float anglePercent = Atan2Positive(spherePoint.z, spherePoint.x) / _2_PI;
-        return float2(anglePercent, yPercent);
-      }
-
-      inline float4 GetStarMetadata(float2 cords, sampler2D starData) {
-        return tex2D(starData, float2(.5 + .5 * cords.x, .5 + .5 * cords.y));
-      }
-
-      inline float4 NearbyStarPoint(sampler2D nearbyStarTexture, float2 cords) {
-        return tex2D(nearbyStarTexture, float2(.5 * cords.x, .5 + .5 * cords.y));
+      inline float4 GetStarDataFromTexture(sampler2D nearbyStarTexture, float2 uv) {
+        float4 percentData = tex2D(nearbyStarTexture, uv);
+        float2 sphericalCoord = ConvertPercentToSphericalCoordinate(percentData.xy);
+        return float4(sphericalCoord.x, sphericalCoord.y, percentData.z, 1.0f);
       }
 
       float2 AnimateStarRotation(float2 starUV, float rotationSpeed, float scale, float2 pivot) {
@@ -453,7 +432,6 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
 
       half4 StarColorNoTexture(
           float3 pos,
-          float2 starCoords,
           float4 starColorTint,
           float starDensity,
           float radius,
@@ -462,7 +440,6 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
           float edgeFade,
           sampler2D nearbyStarsTexture,
           float4 gridPointWithNoise) {
-        float4 starInfo = GetStarMetadata(starCoords, nearbyStarsTexture);
         float3 gridPoint = normalize(gridPointWithNoise.xyz);
 
         float distanceToCenter = distance(pos, gridPoint);
@@ -481,18 +458,26 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
       }
 
       half4 StarColorFromAllGrids(float3 pos) {
-        float2 starCoords = Calculate2DCords(pos);
         float4 nearbyStar = float4(0, 0, 0, 0);
         float4 allStarColors = float4(0, 0, 0, 0);
 
+        // Nearby star is unpacked direction and noise.
+        float2 sphereFragCoord = DirectionToSphericalCoordinate(pos);
+        float2 starTextureUV = ConvertSphericalCoordateToUV(sphereFragCoord);
+        float4 nearbySphericalStar = float4(0, 0, 0, 0);
+        float3 nearbyStarDirection = float3(0, 0, 0);
+
 #ifdef STAR_LAYER_3
-        nearbyStar = NearbyStarPoint(_StarLayer3DataTex, starCoords);
+        nearbySphericalStar = GetStarDataFromTexture(_StarLayer3DataTex, starTextureUV);
+
+        nearbyStarDirection = SphericalCoordinateToDirection(nearbySphericalStar.xy);
+        nearbyStar = float4(nearbyStarDirection.x, nearbyStarDirection.y, nearbyStarDirection.z, nearbySphericalStar.z);
+        
         if (distance(pos, nearbyStar) <= _StarLayer3MaxRadius) {
           float radius = GetStarRadius(nearbyStar.w, _StarLayer3MaxRadius, _StarLayer3TwinkleAmount);
-          float4 starInfo = GetStarMetadata(starCoords, _StarLayer3DataTex);
 
   #ifdef STAR_LAYER_3_CUSTOM_TEXTURE
-          float2 texUV = GetUVsForSpherePoint(pos, radius, starInfo.xy);
+          float2 texUV = GetUVsForSpherePoint(pos, radius, nearbyStar.xyz);
           float2 pivot = float2(.5f, .5f);
     #if STAR_LAYER_3_SPRITE_SHEET
           uint spriteFrameIndex = GetSpriteTargetIndex(_StarLayer3SpriteItemCount, _StarLayer3SpriteAnimationSpeed, nearbyStar.w);
@@ -502,10 +487,10 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
           pivot = GetSpriteRotationOrigin(spriteFrameIndex, _StarLayer3SpriteDimensions, spriteItemSize);
     #endif
           texUV = AnimateStarRotation(texUV, _StarLayer3RotationSpeed * nearbyStar.w, 1, pivot);
-
+          
           return StarColorWithTexture(
             pos,
-            starCoords,
+            starTextureUV,
             texUV,
             _StarLayer3Tex,
             _StarLayer3Color,
@@ -521,7 +506,6 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
   #else
           return StarColorNoTexture(
             pos,
-            starCoords,
             _StarLayer3Color,
             _StarLayer3Density,
             radius,
@@ -533,28 +517,33 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
   #endif      
         }
 #endif
-        
+
+
+
 #ifdef STAR_LAYER_2
-        nearbyStar = NearbyStarPoint(_StarLayer2DataTex, starCoords);
+        nearbySphericalStar = GetStarDataFromTexture(_StarLayer2DataTex, starTextureUV);
+
+        nearbyStarDirection = SphericalCoordinateToDirection(nearbySphericalStar.xy);
+        nearbyStar = float4(nearbyStarDirection.x, nearbyStarDirection.y, nearbyStarDirection.z, nearbySphericalStar.z);
+        
         if (distance(pos, nearbyStar) <= _StarLayer2MaxRadius) {
           float radius = GetStarRadius(nearbyStar.w, _StarLayer2MaxRadius, _StarLayer2TwinkleAmount);
-          float4 starInfo = GetStarMetadata(starCoords, _StarLayer2DataTex);
 
-#ifdef STAR_LAYER_2_CUSTOM_TEXTURE
-          float2 texUV = GetUVsForSpherePoint(pos, radius, starInfo.xy);
+  #ifdef STAR_LAYER_2_CUSTOM_TEXTURE
+          float2 texUV = GetUVsForSpherePoint(pos, radius, nearbyStar.xyz);
           float2 pivot = float2(.5f, .5f);
-#if STAR_LAYER_2_SPRITE_SHEET
+    #if STAR_LAYER_2_SPRITE_SHEET
           uint spriteFrameIndex = GetSpriteTargetIndex(_StarLayer2SpriteItemCount, _StarLayer2SpriteAnimationSpeed, nearbyStar.w);
           float2 spriteItemSize = GetSpriteItemSize(_StarLayer2SpriteDimensions);
 
           texUV = GetSpriteSheetCoords(texUV, _StarLayer2SpriteDimensions, spriteFrameIndex, spriteItemSize, _StarLayer2SpriteItemCount);
-          pivot = GetSpriteRotationOrigin(spriteFrameIndex, _StarLayer2SpriteDimensions, spriteItemSize);   
-#endif
+          pivot = GetSpriteRotationOrigin(spriteFrameIndex, _StarLayer2SpriteDimensions, spriteItemSize);
+    #endif
           texUV = AnimateStarRotation(texUV, _StarLayer2RotationSpeed * nearbyStar.w, 1, pivot);
-
+          
           return StarColorWithTexture(
             pos,
-            starCoords,
+            starTextureUV,
             texUV,
             _StarLayer2Tex,
             _StarLayer2Color,
@@ -566,11 +555,10 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
             _StarLayer2EdgeFade,
             _StarLayer2DataTex,
             nearbyStar) * _StarLayer2HDRBoost;
-
-#else
+            
+  #else
           return StarColorNoTexture(
             pos,
-            starCoords,
             _StarLayer2Color,
             _StarLayer2Density,
             radius,
@@ -579,31 +567,35 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
             _StarLayer2EdgeFade,
             _StarLayer2DataTex,
             nearbyStar) * _StarLayer2HDRBoost;
-#endif      
+  #endif      
         }
 #endif
+       
 
 #ifdef STAR_LAYER_1
-        nearbyStar = NearbyStarPoint(_StarLayer1DataTex, starCoords);
+        nearbySphericalStar = GetStarDataFromTexture(_StarLayer1DataTex, starTextureUV);
+
+        nearbyStarDirection = SphericalCoordinateToDirection(nearbySphericalStar.xy);
+        nearbyStar = float4(nearbyStarDirection.x, nearbyStarDirection.y, nearbyStarDirection.z, nearbySphericalStar.z);
+        
         if (distance(pos, nearbyStar) <= _StarLayer1MaxRadius) {
           float radius = GetStarRadius(nearbyStar.w, _StarLayer1MaxRadius, _StarLayer1TwinkleAmount);
-          float4 starInfo = GetStarMetadata(starCoords, _StarLayer1DataTex);
 
-#ifdef STAR_LAYER_1_CUSTOM_TEXTURE
-          float2 texUV = GetUVsForSpherePoint(pos, radius, starInfo.xy);
+  #ifdef STAR_LAYER_1_CUSTOM_TEXTURE
+          float2 texUV = GetUVsForSpherePoint(pos, radius, nearbyStar.xyz);
           float2 pivot = float2(.5f, .5f);
-#if STAR_LAYER_1_SPRITE_SHEET
+    #if STAR_LAYER_1_SPRITE_SHEET
           uint spriteFrameIndex = GetSpriteTargetIndex(_StarLayer1SpriteItemCount, _StarLayer1SpriteAnimationSpeed, nearbyStar.w);
           float2 spriteItemSize = GetSpriteItemSize(_StarLayer1SpriteDimensions);
 
           texUV = GetSpriteSheetCoords(texUV, _StarLayer1SpriteDimensions, spriteFrameIndex, spriteItemSize, _StarLayer1SpriteItemCount);
           pivot = GetSpriteRotationOrigin(spriteFrameIndex, _StarLayer1SpriteDimensions, spriteItemSize);
-#endif
+    #endif
           texUV = AnimateStarRotation(texUV, _StarLayer1RotationSpeed * nearbyStar.w, 1, pivot);
-
+          
           return StarColorWithTexture(
             pos,
-            starCoords,
+            starTextureUV,
             texUV,
             _StarLayer1Tex,
             _StarLayer1Color,
@@ -615,11 +607,10 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
             _StarLayer1EdgeFade,
             _StarLayer1DataTex,
             nearbyStar) * _StarLayer1HDRBoost;
-
-#else
+            
+  #else
           return StarColorNoTexture(
             pos,
-            starCoords,
             _StarLayer1Color,
             _StarLayer1Density,
             radius,
@@ -628,7 +619,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
             _StarLayer1EdgeFade,
             _StarLayer1DataTex,
             nearbyStar) * _StarLayer1HDRBoost;
-#endif      
+  #endif      
         }
 #endif
         return allStarColors;
@@ -650,19 +641,19 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
         o.smoothVertex = v.vertex;
 
 #ifdef CLOUDS
-				float3 cloudUVs = normalize(mul((float3x3)unity_ObjectToWorld, v.vertex.xyz));
+        float3 cloudWorldVertex = normalize(mul((float3x3)unity_ObjectToWorld, v.vertex.xyz));
 
         float computedHeight = lerp(_CLOUD_HEIGHT_LIMITS.x, _CLOUD_HEIGHT_LIMITS.y, 1 - _CloudHeight);
-        cloudUVs.y  *= dot(float3(0, computedHeight, 0), float3(0, .2f, 0));
+        cloudWorldVertex.y  *= dot(float3(0, computedHeight, 0), float3(0, .2f, 0));
 
         // Apply the rotation for cloud direction.
-				cloudUVs.xz  = Rotate2d(cloudUVs.xz, _CloudDirection);
-        cloudUVs = normalize(cloudUVs);
+        cloudWorldVertex.xz  = Rotate2d(cloudWorldVertex.xz, _CloudDirection);
+        cloudWorldVertex = normalize(cloudWorldVertex);
 
 				float cloudSpeed = _CloudSpeed * _Time;
 
-				o.cloudUVs.xy = (cloudUVs.xz * 0.25f)  - (0.005f) + float2(cloudSpeed / 20, cloudSpeed);
-				o.cloudUVs.zw = (cloudUVs.xz * 0.35f)  - (0.0065f) + float2(cloudSpeed / 20, cloudSpeed);
+				o.cloudUVs.xy = (cloudWorldVertex.xz * 0.25f)  - (0.005f) + float2(cloudSpeed / 20, cloudSpeed);
+				o.cloudUVs.zw = (cloudWorldVertex.xz * 0.35f)  - (0.0065f) + float2(cloudSpeed / 20, cloudSpeed);
 #endif
 
 #ifdef HORIZON_FOG
@@ -673,7 +664,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
         return o;
       }
 
-      half4 OrbitBodyColorWithTextureUV(float3 pos, float3 orbitBodyPosition, float2 orbitBodyRotation, 
+      half4 OrbitBodyColorWithTextureUV(float3 pos, float3 orbitBodyPosition, 
           half4 orbitBodyTintColor, float orbitBodyRadius, float orbitBodyEdgeFade, sampler2D orbitBodyTex, float2 bodyUVs) {
         half4 color = tex2D(orbitBodyTex, bodyUVs) * orbitBodyTintColor;
         
@@ -685,9 +676,8 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
       }
 
       // Alpha premultiplied into color.
-      half4 OrbitBodyColorNoTexture(float3 pos, float3 orbitBodyPosition, float2 orbitBodyRotation, 
+      half4 OrbitBodyColorNoTexture(float3 pos, float3 orbitBodyPosition, 
           half4 orbitBodyColor, float orbitBodyRadius, float orbitBodyEdgeFade) {
-        float2 bodyUVs = GetUVsForSpherePoint(pos, orbitBodyRadius, orbitBodyRotation);
         half4 color = orbitBodyColor;
         
         float fragDistance = distance(orbitBodyPosition, pos);
@@ -701,7 +691,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
         half4 sunColor = half4(0, 0, 0, 0);
 
         #ifdef SUN_CUSTOM_TEXTURE
-          float2 texUV = GetUVsForSpherePoint(pos, _SunRadius, _SunComputedRotationData.xy);
+          float2 texUV = GetUVsForSpherePoint(pos, _SunRadius, _SunPosition.xyz);
           float2 pivot = float2(.5f, .5f);
 
         #if SUN_SPRITE_SHEET
@@ -715,8 +705,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
           #ifdef SUN_ROTATION
             texUV = AnimateStarRotation(texUV, _SunRotationSpeed, 1, pivot);
             sunColor = OrbitBodyColorWithTextureUV(pos,
-              _SunComputedPositionData.xyz,
-              _SunComputedRotationData.xy,
+              _SunPosition.xyz,
               _SunColor,
               _SunRadius,
               _SunEdgeFade,
@@ -724,8 +713,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
               texUV) * _SunHDRBoost;
           #else
             sunColor = OrbitBodyColorWithTextureUV(pos,
-              _SunComputedPositionData.xyz,
-              _SunComputedRotationData.xy,
+              _SunPosition.xyz,
               _SunColor,
               _SunRadius,
               _SunEdgeFade,
@@ -734,8 +722,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
           #endif
         #else
         sunColor = OrbitBodyColorNoTexture(pos,
-            _SunComputedPositionData.xyz,
-            _SunComputedRotationData.xy,
+            _SunPosition.xyz,
             _SunColor,
             _SunRadius,
             _SunEdgeFade) * _SunHDRBoost;
@@ -750,7 +737,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
         half4 moonColor = half4(0, 0, 0, 0);
 
         #ifdef MOON_CUSTOM_TEXTURE
-          float2 texUV = GetUVsForSpherePoint(pos, _MoonRadius, _MoonComputedRotationData.xy);
+          float2 texUV = GetUVsForSpherePoint(pos, _MoonRadius, _MoonPosition.xyz);
           float2 pivot = float2(.5f, .5f);
 
           #if MOON_SPRITE_SHEET
@@ -765,8 +752,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
           texUV = AnimateStarRotation(texUV, _MoonRotationSpeed, 1, pivot);
 
           moonColor = OrbitBodyColorWithTextureUV(pos,
-            _MoonComputedPositionData.xyz,
-            _MoonComputedRotationData.xy,
+            _MoonPosition.xyz,
             _MoonColor,
             _MoonRadius,
             _MoonEdgeFade,
@@ -774,8 +760,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
             texUV) * _MoonHDRBoost;
           #else
             moonColor = OrbitBodyColorWithTextureUV(pos,
-              _MoonComputedPositionData.xyz,
-              _MoonComputedRotationData.xy,
+              _MoonPosition.xyz,
               _MoonColor,
               _MoonRadius,
               _MoonEdgeFade,
@@ -784,8 +769,7 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
           #endif
         #else
         moonColor = OrbitBodyColorNoTexture(pos,
-            _MoonComputedPositionData.xyz,
-            _MoonComputedRotationData.xy,
+            _MoonPosition.xyz,
             _MoonColor,
             _MoonRadius,
             _MoonEdgeFade) * _MoonHDRBoost;
@@ -821,23 +805,21 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
 				// Cloud noise.
 				float4 tex1  = tex2D(_CloudNoiseTexture, cloudUVs.xy);
 				float4 tex2  = tex2D(_CloudNoiseTexture, cloudUVs.zw);
-        
+
         float noise1 = pow(tex1.g + tex2.g, 0.25);
 				float noise2 = pow(tex2.b * tex1.r, 0.5);
 
-        // Progress in the fadeout (0 means no fadeout, 1 means full fadeout - no clouds)
+        // Percent in the fadeout (0 means no fadeout, 1 means full fadeout - no clouds)
         float fadeOutPercent = smoothstep(_CloudFadePosition, 1, length(vertexPos.xz));
 
-				// Color fix.
 				_CloudColor1.rgb = pow(_CloudColor1.rgb, 2.2);
         _CloudColor2.rgb = pow(_CloudColor2.rgb, 2.2);
 
-				//Cloud finalization.
 				float3 cloud1 = lerp(float3(0, 0, 0), _CloudColor2.rgb, noise1);
 				float3 cloud2 = lerp(float3(0, 0, 0), _CloudColor1.rgb, noise2) * 1.5;
 				float3 cloud  = lerp(cloud1, cloud2, noise1 * noise2);
 
-        //Cloud alpha.
+        // Cloud alpha.
         float outColorAlpha = 1.0f;
         float expandedDensity = _MAX_CLOUD_COVERAGE * (1 - _CloudDensity);
 				float cloudAlpha = saturate(pow(noise1 * noise2, expandedDensity)) * pow(outColorAlpha, 0.35);
@@ -846,6 +828,29 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
         float3 outColor = lerp(backgroundColor, cloud, cloudAlpha);
 
         return half4(outColor, 1.0f);
+      }
+#endif
+
+#ifdef RENDER_DEBUG_POINTS
+      // Debug points are used for visualized spherical point keyframes in the editor only.
+      half4 RenderDebugPoints(float3 pos) {
+        half4 pointColor = half4(1, 0, 0, 1);
+        half4 selectedPointColor = half4(0, 1, 0, 1);
+
+        for (int i = 0; i < _DebugPointsCount; i++) {
+          float4 debugPoint = _DebugPoints[i];
+          float radius = debugPoint.w;
+          if (distance(debugPoint.xyz, pos) <= _DebugPointRadius) {
+            half4 color = pointColor;
+            if (debugPoint.w > 0) {
+              return selectedPointColor;
+            } else {
+              return pointColor;
+            }
+          }
+        }
+
+        return half4(0, 0, 0, 0);
       }
 #endif
 
@@ -882,25 +887,39 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
         half4 moonColor = half4(0, 0, 0, 0);
 #ifdef MOON
         // Check for moon at fragment.
-        isMoonPixel = distance(i.smoothVertex, _MoonComputedPositionData.xyz) <= _MoonRadius;
+        isMoonPixel = distance(i.smoothVertex, _MoonPosition.xyz) <= _MoonRadius;
         moonColor = CalculateMoonColor(normalizedSmoothVertex);
         moonColor *= isMoonPixel;
 #endif
 
 #ifdef SUN
-        isSunPixel = distance(i.smoothVertex, _SunComputedPositionData.xyz) <= _SunRadius;
+        isSunPixel = distance(i.smoothVertex, _SunPosition.xyz) <= _SunRadius;
         sunColor = CalculateSunColor(normalizedSmoothVertex);
         sunColor *= isSunPixel;
 #endif
 
         // Star color at current position.
         half4 starColor = StarColorFromAllGrids(normalize(i.smoothVertex));
-        if (isSunPixel || isMoonPixel) {
-          starColor *= 0;
-        }
+
+        // Additive images shouldn't blend with stars since they may look transparent.
+#if defined(MOON) && !defined(MOON_ALPHA_BLEND)
+        starColor *= !isMoonPixel;
+#endif
+
+#if defined(SUN) && !defined(SUN_ALPHA_BLEND)
+        starColor *= !isSunPixel;
+#endif
 
         // Fade stars over the horizon.
         starColor = FadeStarsColor(i.verticalPosition, starColor);
+
+#ifdef RENDER_DEBUG_POINTS
+        half4 debugPointColor = RenderDebugPoints(normalize(i.smoothVertex.xyz));
+        bool useDebugColor = step(.1f, length(debugPointColor));
+        debugPointColor *= useDebugColor;
+        background *= !useDebugColor;
+        background = background + debugPointColor;
+#endif
 
         // Merge the stars over the background color.
         half4 upperSkyColor = MergeStarIntoBackground(background, starColor);
@@ -929,7 +948,6 @@ Shader "Funly/Sky Studio/Skybox/3D Standard" {
         UNITY_APPLY_FOG(i.fogCoord, finalColor);
   #endif
 #endif
-
         return finalColor;
       }
       ENDCG

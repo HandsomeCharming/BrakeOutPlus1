@@ -20,6 +20,7 @@ namespace Funly.SkyStudio
     private const float k_IconSize = 20.0f;
     private const int k_TitleSize = 12;
     private const int k_HeaderHeight = 20;
+    private string m_SpherePointSelectionToken;
 
     // The setup window will set this value to force the first load rebuild.
     public static int forceRebuildProfileId;
@@ -33,6 +34,18 @@ namespace Funly.SkyStudio
 
       // Make the sure the profile's features are in sync with shader material.
       ApplyKeywordsToMaterial();
+
+      SceneView.onSceneGUIDelegate += OnSceneGUI;
+    }
+
+    private void OnDisable()
+    {
+      SceneView.onSceneGUIDelegate -= OnSceneGUI;
+    }
+
+    private void OnSceneGUI(SceneView sceneView)
+    {
+      //SpherePointGUI.RenderSpherePointSceneSelection(ref m_SpherePointSelectionToken);
     }
 
     public override void OnInspectorGUI()
@@ -259,8 +272,10 @@ namespace Funly.SkyStudio
       else
       {
         EditorGUI.BeginChangeCheck();
+        List<string> timelineTitles = GetTitlesForGroups(onTimeline);
+
         StringTableListGUI.RenderTableList(
-          GetTitlesForGroups(onTimeline),
+          timelineTitles,
           out deleteIndex,
           out didSwapRows,
           out swapIndex1,
@@ -270,12 +285,24 @@ namespace Funly.SkyStudio
         if (EditorGUI.EndChangeCheck()) {
           if (deleteIndex != -1) {
             string deleteGroupKey = onTimeline[deleteIndex].propertyKey;
+
+            IKeyframeGroup group = m_Profile.GetGroup(deleteGroupKey);
+            if (SkyEditorUtility.IsGroupSelectedOnTimeline(group.id)) {
+              TimelineSelection.Clear();
+
+              // If we deleted a sphere point group make sure to hide the debug dots.
+              if (group is SpherePointKeyframeGroup && m_Profile.skyboxMaterial != null) {
+                m_Profile.skyboxMaterial.DisableKeyword(ShaderKeywords.RenderDebugPoints);
+              }
+            }
+
             m_Profile.timelineManagedKeys.Remove(deleteGroupKey);
             m_Profile.TrimGroupToSingleKeyframe(deleteGroupKey);
           } else if (didSwapRows) {
             string tmp = m_Profile.timelineManagedKeys[swapIndex2];
             m_Profile.timelineManagedKeys[swapIndex2] = m_Profile.timelineManagedKeys[swapIndex1];
             m_Profile.timelineManagedKeys[swapIndex1] = tmp;
+            EditorUtility.SetDirty(m_Profile);
           }
         }
       }
@@ -353,13 +380,16 @@ namespace Funly.SkyStudio
       bool valueChanged = false;
       if (groupDefinition.type == ProfileGroupDefinition.GroupType.Color)
       {
-        valueChanged = RenderColorGroupProperty(groupDefinition.propertyKey);
+        valueChanged = RenderColorGroupProperty(groupDefinition);
       } else if (groupDefinition.type == ProfileGroupDefinition.GroupType.Number)
       {
-        valueChanged = RenderNumericGroupProperty(groupDefinition.propertyKey);
+        valueChanged = RenderNumericGroupProperty(groupDefinition);
       } else if (groupDefinition.type == ProfileGroupDefinition.GroupType.Texture)
       {
-        valueChanged = RenderTextureGroupProperty(groupDefinition.propertyKey);
+        valueChanged = RenderTextureGroupProperty(groupDefinition);
+      } else if (groupDefinition.type == ProfileGroupDefinition.GroupType.SpherePoint)
+      {
+        valueChanged = RenderSpherePointPropertyGroup(groupDefinition);
       }
 
       // Check if this property needs to rebuild the sky.
@@ -375,24 +405,26 @@ namespace Funly.SkyStudio
     }
 
     // Render color property.
-    public bool RenderColorGroupProperty(string propertyKey)
+    public bool RenderColorGroupProperty(ProfileGroupDefinition def)
     {
       EditorGUILayout.BeginHorizontal();
 
-      ColorKeyframeGroup group = m_Profile.GetGroup<ColorKeyframeGroup>(propertyKey);
-      EditorGUILayout.PrefixLabel(new GUIContent(group.name));
+      ColorKeyframeGroup group = m_Profile.GetGroup<ColorKeyframeGroup>(def.propertyKey);
+      EditorGUILayout.PrefixLabel(new GUIContent(group.name, def.tooltip));
       bool valueChanged = false;
 
-      if (m_Profile.IsManagedByTimeline(propertyKey)) {
-        GUIStyle style = new GUIStyle(GUI.skin.label);
-        style.fontStyle = FontStyle.Italic;
-        EditorGUILayout.LabelField("Managed on timeline", style);
-      } else {
+      if (m_Profile.IsManagedByTimeline(def.propertyKey))
+      {
+        RenderManagedOnTimlineMessage();
+      }
+      else
+      {
         ColorKeyframe frame = group.GetKeyframe(0);
 
         EditorGUI.BeginChangeCheck();
         Color selectedColor = EditorGUILayout.ColorField(frame.color);
-        if (EditorGUI.EndChangeCheck()) {
+        if (EditorGUI.EndChangeCheck())
+        {
           Undo.RecordObject(m_Profile, "Changed color keyframe value");
           frame.color = selectedColor;
           valueChanged = true;
@@ -404,28 +436,29 @@ namespace Funly.SkyStudio
     }
 
     // Render numeric properties with a slider.
-    public bool RenderNumericGroupProperty(string propertyKey)
+    public bool RenderNumericGroupProperty(ProfileGroupDefinition def)
     {
       EditorGUILayout.BeginHorizontal();
-      ProfileGroupDefinition def = m_Profile.GetGroupDefinitionForKey(propertyKey);
-      NumberKeyframeGroup group = m_Profile.GetGroup<NumberKeyframeGroup>(propertyKey);
-      EditorGUILayout.PrefixLabel(new GUIContent(group.name));
+      NumberKeyframeGroup group = m_Profile.GetGroup<NumberKeyframeGroup>(def.propertyKey);
+      EditorGUILayout.PrefixLabel(new GUIContent(group.name, def.tooltip));
       bool valueChanged = false;
 
-      if (m_Profile.IsManagedByTimeline(propertyKey)) {
-        GUIStyle style = new GUIStyle(GUI.skin.label);
-        style.fontStyle = FontStyle.Italic;
-        EditorGUILayout.LabelField("Managed on timeline", style);
-      } else {
+      if (m_Profile.IsManagedByTimeline(def.propertyKey))
+      {
+        RenderManagedOnTimlineMessage();
+      }
+      else
+      {
         NumberKeyframe frame = group.GetKeyframe(0);
 
         if (def.formatStyle == ProfileGroupDefinition.FormatStyle.Integer)
         {
           EditorGUI.BeginChangeCheck();
-          int value = EditorGUILayout.IntField((int)frame.value);
-          if (EditorGUI.EndChangeCheck()) {
+          int value = EditorGUILayout.IntField((int) frame.value);
+          if (EditorGUI.EndChangeCheck())
+          {
             Undo.RecordObject(m_Profile, "Changed int keyframe value");
-            frame.value = (int)Mathf.Clamp(value, group.minValue, group.maxValue);
+            frame.value = (int) Mathf.Clamp(value, group.minValue, group.maxValue);
             valueChanged = true;
           }
         }
@@ -433,13 +466,14 @@ namespace Funly.SkyStudio
         {
           EditorGUI.BeginChangeCheck();
           float value = EditorGUILayout.Slider(frame.value, group.minValue, group.maxValue);
-          if (EditorGUI.EndChangeCheck()) {
+          if (EditorGUI.EndChangeCheck())
+          {
             Undo.RecordObject(m_Profile, "Changed float keyframe value");
             frame.value = value;
             valueChanged = true;
           }
         }
-        
+
       }
 
       EditorGUILayout.EndHorizontal();
@@ -448,21 +482,20 @@ namespace Funly.SkyStudio
     }
 
     // Render texture property.
-    public bool RenderTextureGroupProperty(string propertyKey)
+    public bool RenderTextureGroupProperty(ProfileGroupDefinition def)
     {
       EditorGUILayout.BeginHorizontal();
 
-      TextureKeyframeGroup group = m_Profile.GetGroup<TextureKeyframeGroup>(propertyKey);
-      EditorGUILayout.PrefixLabel(new GUIContent(group.name));
+      TextureKeyframeGroup group = m_Profile.GetGroup<TextureKeyframeGroup>(def.propertyKey);
+      EditorGUILayout.PrefixLabel(new GUIContent(group.name + ":", def.tooltip));
       bool valueChanged = false;
 
-      if (m_Profile.IsManagedByTimeline(propertyKey))
+      if (m_Profile.IsManagedByTimeline(def.propertyKey))
       {
-        GUIStyle style = new GUIStyle(GUI.skin.label);
-        style.fontStyle = FontStyle.Italic;
-        EditorGUILayout.LabelField("Managed on timeline", style);
+        RenderManagedOnTimlineMessage();
       }
-      else {
+      else
+      {
         TextureKeyframe frame = group.GetKeyframe(0);
         EditorGUI.BeginChangeCheck();
         Texture assignedTexture = (Texture) EditorGUILayout.ObjectField(frame.texture, typeof(Texture), true);
@@ -476,6 +509,54 @@ namespace Funly.SkyStudio
 
       EditorGUILayout.EndHorizontal();
       return valueChanged;
+    }
+
+    private bool RenderSpherePointPropertyGroup(ProfileGroupDefinition def)
+    {
+      EditorGUILayout.BeginHorizontal();
+      bool valueChanged = false;
+
+      SpherePointKeyframeGroup group = m_Profile.GetGroup<SpherePointKeyframeGroup>(def.propertyKey);
+
+      if (m_Profile.IsManagedByTimeline(def.propertyKey))
+      {
+        EditorGUILayout.PrefixLabel(new GUIContent(def.groupName, def.tooltip));
+        RenderManagedOnTimlineMessage();
+      }
+      else
+      {
+        SpherePointKeyframe frame = group.GetKeyframe(0);
+
+        EditorGUILayout.BeginVertical();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField(new GUIContent(group.name, def.tooltip));
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUI.BeginChangeCheck();
+        EditorGUI.indentLevel += 1;
+        SpherePoint selectedPoint = SpherePointGUI.SpherePointField(
+          frame.spherePoint, true, frame.id);
+        EditorGUI.indentLevel -= 1;
+        if (EditorGUI.EndChangeCheck())
+        {
+          Undo.RecordObject(m_Profile, "Changed sphere point");
+          frame.spherePoint = selectedPoint;
+        }
+
+        EditorGUILayout.EndVertical();
+      }
+
+      EditorGUILayout.EndHorizontal();
+      return valueChanged;
+    }
+
+    private void RenderManagedOnTimlineMessage()
+    {
+      GUIStyle style = new GUIStyle(GUI.skin.label);
+      style.fontStyle = FontStyle.Italic;
+      EditorGUILayout.LabelField("Managed on timeline", style);
     }
 
     private void RenderSectionTitle(string title, string iconName)

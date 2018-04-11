@@ -38,7 +38,7 @@ namespace Funly.SkyStudio
       ColorKeyframe afterKey = GetKeyframe(afterKeyIndex);
 
       float blendPercent = ProgressBetweenSurroundingKeyframes(time, beforeKey, afterKey);
-      float curvedBlendPercent = CurveAdjustedBlendingTime(beforeKey.curveType, blendPercent);
+      float curvedBlendPercent = CurveAdjustedBlendingTime(beforeKey.interpolationCurve, blendPercent);
       return Color.Lerp(beforeKey.color, afterKey.color, curvedBlendPercent);
     }
   }

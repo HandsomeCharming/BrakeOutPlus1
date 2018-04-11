@@ -16,8 +16,7 @@ namespace Funly.SkyStudio {
 		public static bool RenderTableList(
       List<string> list, out int deleteIndex, out bool didSwapRows, out int swapIndex1, out int swapIndex2)
 		{
-      List<string> listCopy = new List<string>(list);
-      bool didModifyList = false;
+		  bool didModifyList = false;
 
       deleteIndex = -1;
 
@@ -30,9 +29,9 @@ namespace Funly.SkyStudio {
       GUIStyle rowStyle = new GUIStyle(GUI.skin.label);
 		  const float buttonHeight = 15.0f;
 
-      for (int i = 0; i < listCopy.Count; i++)
+      for (int i = 0; i < list.Count; i++)
       {
-        string item = listCopy[i];
+        string item = list[i];
 
         EditorGUILayout.BeginVertical();
         EditorGUILayout.BeginHorizontal(rowStyle);
@@ -61,26 +60,37 @@ namespace Funly.SkyStudio {
         GUI.contentColor = GUI.skin.label.normal.textColor;
 
         // Move row up.
-        if (i - 1 >= 0 && GUILayout.Button(new GUIContent(_upRowIcon), GUILayout.Height(buttonHeight)))
+        if (i - 1 >= 0)
         {
-          // Swap with row above.
-          swapIndex1 = i;
-          swapIndex2 = i - 1;
-          didSwapRows = true;
-          didModifyList = true;
+          EditorGUI.BeginChangeCheck();
+          GUILayout.Button(new GUIContent(_upRowIcon), GUILayout.Height(buttonHeight));
+          if (EditorGUI.EndChangeCheck()) {
+            // Swap with row above.
+            swapIndex1 = i;
+            swapIndex2 = i - 1;
+            didSwapRows = true;
+            didModifyList = true;
+          }
         }
 
         // Move row down.
-        if (i + 1 < listCopy.Count && GUILayout.Button(new GUIContent(_downRowIcon), GUILayout.Height(buttonHeight)))
+        if (i + 1 < list.Count)
         {
-          swapIndex1 = i;
-          swapIndex2 = i + 1;
-          didSwapRows = true;
-          didModifyList = true;
+          EditorGUI.BeginChangeCheck();
+          GUILayout.Button(new GUIContent(_downRowIcon), GUILayout.Height(buttonHeight));
+          if (EditorGUI.EndChangeCheck()) {
+            swapIndex1 = i;
+            swapIndex2 = i + 1;
+            didSwapRows = true;
+            didModifyList = true;
+          }
         }
+        
 
         // Delete this row.
-				if (GUILayout.Button(new GUIContent(_deleteRowIcon), GUILayout.Height(buttonHeight)))
+        EditorGUI.BeginChangeCheck();
+        GUILayout.Button(new GUIContent(_deleteRowIcon), GUILayout.Height(buttonHeight));
+        if (EditorGUI.EndChangeCheck())
 				{
           didModifyList = true;
           deleteIndex = i;
@@ -91,7 +101,7 @@ namespace Funly.SkyStudio {
 				EditorGUILayout.EndHorizontal();
 
         // Draw a divider between rows.
-        if (i != listCopy.Count - 1)
+        if (i != list.Count - 1)
         {
           Rect dividerRect = EditorGUILayout.GetControlRect(false, 1.0f);
           EditorGUI.DrawRect(dividerRect, Color.gray);

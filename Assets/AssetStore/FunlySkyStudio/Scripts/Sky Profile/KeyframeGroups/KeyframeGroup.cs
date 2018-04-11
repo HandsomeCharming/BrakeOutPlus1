@@ -50,6 +50,16 @@ namespace Funly.SkyStudio
       SortKeyframes();
     }
 
+    public void RemoveKeyFrame(IBaseKeyframe keyframe)
+    {
+      RemoveKeyFrame((T)keyframe);
+    }
+
+    public int GetKeyFrameCount()
+    {
+      return keyframes.Count;
+    }
+
     public T GetKeyframe(int index)
     {
       return keyframes[index];
@@ -60,12 +70,12 @@ namespace Funly.SkyStudio
       keyframes.Sort();
     }
 
-    public float CurveAdjustedBlendingTime(CurveType curve, float t)
+    public float CurveAdjustedBlendingTime(InterpolationCurve curve, float t)
     {
-      if (curve == CurveType.Linear)
+      if (curve == InterpolationCurve.Linear)
       {
         return t;
-      } else if (curve == CurveType.EaseInEaseOut)
+      } else if (curve == InterpolationCurve.EaseInEaseOut)
       {
         float curveTime = t < .5f ? 2 * t * t : -1 + (4 - 2 * t) * t;
         return Mathf.Clamp01(curveTime);
@@ -183,6 +193,120 @@ namespace Funly.SkyStudio
         return;
       }
       keyframes.RemoveRange(1, keyframes.Count - 1);
+    }
+
+
+    // Returns -1 to move reverse direction, +1 to move in positive direction only.
+    public InterpolationDirection GetShortestInterpolationDirection(float previousKeyValue, float nextKeyValue, float minValue, float maxValue)
+    {
+      // forward means values can only count upwards to next keyframe. Reverse assumes values can only go downards.
+      float forwardDistance;
+      float reverseDistance;
+
+      CalculateCircularDistances(previousKeyValue, nextKeyValue, minValue, maxValue, out forwardDistance, out reverseDistance);
+
+      if (reverseDistance > forwardDistance) {
+        return InterpolationDirection.Reverse;
+      } else {
+        return InterpolationDirection.Foward;
+      }
+    }
+
+    public void CalculateCircularDistances(float previousKeyValue, float nextKeyValue, float minValue, float maxValue, out float forwardDistance, out float reverseDistance)
+    {
+      if (nextKeyValue < previousKeyValue) {
+        forwardDistance = (maxValue - previousKeyValue) + (nextKeyValue - minValue);
+      } else {
+        forwardDistance = nextKeyValue - previousKeyValue;
+      }
+
+      reverseDistance = (minValue + maxValue) - forwardDistance;
+    }
+
+    // This will consider the direction, and curve type to return a float value that's interpolated.
+    public float InterpolateFloat(InterpolationCurve curve, InterpolationDirection direction,
+      float time, float beforeTime, float nextTime,
+      float previousKeyValue, float nextKeyValue,
+      float minValue, float maxValue)
+    {
+      float progressBetweenFrames = ProgressBetweenSurroundingKeyframes(time, beforeTime, nextTime);
+      float curvedTime = CurveAdjustedBlendingTime(curve, progressBetweenFrames);
+
+      // Auto.
+      if (direction == InterpolationDirection.Auto) {
+        return AutoInterpolation(curvedTime, previousKeyValue, nextKeyValue);
+      }
+
+      InterpolationDirection moveDirection = direction;
+
+      float forwardDistance;
+      float reverseDistance;
+      CalculateCircularDistances(previousKeyValue, nextKeyValue, minValue, maxValue, out forwardDistance, out reverseDistance);
+
+      // Shortest path.
+      if (moveDirection == InterpolationDirection.ShortestPath) {
+        if (reverseDistance > forwardDistance) {
+          moveDirection = InterpolationDirection.Foward;
+        } else {
+          moveDirection = InterpolationDirection.Reverse;
+        }
+      }
+
+      // Forward.
+      if (moveDirection == InterpolationDirection.Foward) {
+        return ForwardInterpolation(curvedTime, previousKeyValue, nextKeyValue, minValue, maxValue, forwardDistance);
+      }
+
+      // Reverse.
+      if (moveDirection == InterpolationDirection.Reverse) {
+        return ReverseInterpolation(curvedTime, previousKeyValue, nextKeyValue, minValue, maxValue, reverseDistance);
+      }
+
+      Debug.LogError("Unhandled interpolation direction: " + moveDirection + ", returning min value.");
+
+      return minValue;
+    }
+
+    // Standard interpolation without wrap around.
+    public float AutoInterpolation(float curvedTime, float previousValue, float nextValue)
+    {
+      return Mathf.Lerp(previousValue, nextValue, curvedTime);
+    }
+
+    // Force values forward with wrap around.
+    public float ForwardInterpolation(float time, float previousKeyValue, float nextKeyValue, float minValue, float maxValue, float distance)
+    {
+      if (previousKeyValue <= nextKeyValue) {
+        return Mathf.Lerp(previousKeyValue, nextKeyValue, time);
+      }
+
+      // We know this is gonna rollover now to a lower value.
+      float currentDistance = time * distance;
+      float toMaxDistance = maxValue - previousKeyValue;
+
+      // return before hitting the max rollover.
+      if (currentDistance <= toMaxDistance) {
+        return previousKeyValue + currentDistance;
+      }
+
+      return minValue + (currentDistance - toMaxDistance);
+    }
+
+    // Force values backwards with wrap around.
+    public float ReverseInterpolation(float time, float previousKeyValue, float nextKeyValue, float minValue, float maxValue, float distance)
+    {
+      if (nextKeyValue <= previousKeyValue) {
+        return Mathf.Lerp(previousKeyValue, nextKeyValue, time);
+      }
+
+      float currentDistance = time * distance;
+      float toMinDistance = previousKeyValue - minValue;
+
+      if (currentDistance <= toMinDistance) {
+        return previousKeyValue - currentDistance;
+      }
+
+      return maxValue - (currentDistance - toMinDistance);
     }
   }
 }

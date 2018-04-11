@@ -551,7 +551,7 @@ namespace Funly.SkyStudio
       get { return _moonDirection; }
       set {
         _moonDirection = value.normalized;
-        UpdateMoonPositionData(_moonDirection);
+        SkyboxMaterial.SetVector("_MoonPosition", _moonDirection);
       }
     }
 
@@ -666,7 +666,7 @@ namespace Funly.SkyStudio
       get { return _sunDirection; }
       set {
         _sunDirection = value.normalized;
-        UpdateSunPositionData(_sunDirection);
+        SkyboxMaterial.SetVector("_SunPosition", _sunDirection);
       }
     }
 
@@ -902,48 +902,6 @@ namespace Funly.SkyStudio
         _fogHeight = value;
         SkyboxMaterial.SetFloat("_HorizonFogLength", _fogHeight);
       }
-    }
-
-    void ComputeOrbitingBodyData(Vector3 bodyPosition, out Vector4 positionData, out Vector4 rotationData)
-    {
-      float xRotation;
-      float yRotation;
-
-      SphereUtility.CalculateStarRotation(bodyPosition, out xRotation, out yRotation);
-
-      positionData = new Vector4(bodyPosition.x, bodyPosition.y, bodyPosition.z, 0);
-      rotationData = new Vector4(xRotation, yRotation, 0, 0);
-    }
-
-    void UpdateMoonPositionData(Vector3 moonPoint)
-    {
-      if (SkyboxMaterial == null)
-      {
-        return;
-      }
-
-      Vector4 positionData;
-      Vector4 rotationData;
-
-      ComputeOrbitingBodyData(moonPoint, out positionData, out rotationData);
-
-      SkyboxMaterial.SetVector("_MoonComputedPositionData", positionData);
-      SkyboxMaterial.SetVector("_MoonComputedRotationData", rotationData);
-    }
-
-    void UpdateSunPositionData(Vector3 sunPoint)
-    {
-      if (SkyboxMaterial == null) {
-        return;
-      }
-
-      Vector4 positionData;
-      Vector4 rotationData;
-
-      ComputeOrbitingBodyData(sunPoint, out positionData, out rotationData);
-
-      SkyboxMaterial.SetVector("_SunComputedPositionData", positionData);
-      SkyboxMaterial.SetVector("_SunComputedRotationData", rotationData);
     }
 
     private void ApplyGradientValuesOnMaterial()

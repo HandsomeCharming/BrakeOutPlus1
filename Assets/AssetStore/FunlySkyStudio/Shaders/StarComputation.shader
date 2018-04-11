@@ -3,104 +3,94 @@
 
 Shader "Hidden/Funly/Sky Studio/Computation/Stars"
 {
-	Properties
-	{
-	}
-	SubShader
-	{
-		Tags { "RenderType"="Opaque" }
-		LOD 100
+  Properties
+  {
+  }
+  SubShader
+  {
+    Tags{"RenderType" = "Opaque"} LOD 100
 
-		Pass
-		{
-			CGPROGRAM
+        Pass
+    {
+      CGPROGRAM
 
-			#pragma vertex vert
-			#pragma fragment frag
-			#pragma shader_feature LINEAR
-      #pragma shader_feature EASE_IN_OUT
+      #pragma vertex vert
+      #pragma fragment frag
 
-			#include "UnityCG.cginc"
+      #include "UnityCG.cginc"
+      #include "SkyMathUtilities.cginc"
 
-			struct appdata
-			{
-				float4 vertex : POSITION;
-				float2 uv : TEXCOORD0;
-			};
+      struct appdata
+      {
+        float4 vertex : POSITION;
+        float2 uv : TEXCOORD0;
+      };
 
-			struct v2f
-			{
-				float2 uv : TEXCOORD0;
-				float4 vertex : SV_POSITION;
-			};
-      
+      struct v2f
+      {
+        float2 uv : TEXCOORD0;
+        float4 vertex : SV_POSITION;
+      };
+
       float _StarDensity;
       float _ImageWidth;
       float _ImageHeight;
       int _NumStarPoints;
       float4 _RandomSeed;
 
-      #define _PI 3.14159265358
-      #define _PI_2 (_PI / 2)
-      #define _2_PI (_PI * 2)
+      v2f vert(appdata v)
+      {
+        v2f o;
+        o.vertex = UnityObjectToClipPos(v.vertex);
+        o.uv = v.uv;
 
-			v2f vert (appdata v)
-			{
-				v2f o;
-				o.vertex = UnityObjectToClipPos(v.vertex);
-				o.uv = v.uv;
-
-				return o;
-			}
-         
-      float rand(float2 co){
-        return frac(sin(dot(co.xy ,float2(12.9898,78.233))) * 43758.5453);
+        return o;
       }
 
-      float rangWithNeg(float2 co) {
-        float valueForNeg = rand(co * 1.234123f);
-        float valueSign = frac(valueForNeg) < .5 ? -1.0f : 1.0f;
-        return rand(co) * valueSign;
+      float RangedRandom(float2 randomSeed, float minValue, float maxValue) {
+        float dist = maxValue - minValue;
+        float percent = rand(randomSeed);
+
+        return minValue + (dist * percent);
       }
 
-      float4 GenerateNextStarPoint(int i, float2 uv) {
-        float xRand = rangWithNeg(float2(uv.x + i, i + frac(uv.y)));
-        float yRand = rangWithNeg(float2(uv.x + xRand, uv.y + xRand));
-        float zRand = rangWithNeg(float2(uv.x + yRand, uv.y + xRand));
-        float noise = frac(abs(rand(uv * i)));
+      float3 RandomUnitSpherePoint(float2 randomSeed)
+      {
+        float z = RangedRandom(randomSeed * .81239f, -1.0f, 1.0f);
+        float a = RangedRandom(randomSeed * .12303f, 0.0f, UNITY_TWO_PI);
 
-        return float4(normalize(float3(xRand, yRand, zRand)), noise);
+        float r = sqrt(1.0f - z * z);
+
+        float x = r * cos(a);
+        float y = r * sin(a);
+
+        return normalize(float3(x, y, z));
+      }
+      
+      // Returns normalized point on sphere, with w noise.
+      float4 GenerateNextStarPoint(float i, float2 seed)
+      {
+        float noise = RangedRandom(seed * i * .98347f, .2f, .8f);
+
+        float3 randomPoint = RandomUnitSpherePoint(seed * i);
+
+        return float4(randomPoint.x, randomPoint.y, randomPoint.z, noise);
       }
 
-      float3 RadiusAtHeight(float yPosition) {
-        return abs(cos(asin(yPosition)));
-      }
+      // Get position of the closest star point.
+      float4 GetClosestStarPoint(float2 uv)
+      {
+        float4 closestStarPoint = float4(0, 0, 0, 0);
+        float2 fragSphericalCoord = ConvertUVToSphericalCoordinate(uv);
+        float3 fragPoint = SphericalCoordinateToDirection(fragSphericalCoord);
+        float shortestDistance = 0;
 
-      float3 SphericalCoordToPoint(float yPosition, float radAngle) {
-        float radius = RadiusAtHeight(yPosition);
-      }
-
-      float3 GetSpherePointForUV(float2 uv) {
-        float xAngle = uv.x * 6.2831853f;
-        float yPosition = lerp(-1.0f, 1.0f, uv.y);
-        float radius = RadiusAtHeight(yPosition);
-
-        return normalize(float3(
-          radius * cos(xAngle),
-          yPosition,
-          radius * sin(xAngle)
-        ));
-      }
-
-      float4 GetClosestStarPoint(float2 uv) {
-        float4 closestStarPoint = float4(100, 100, 100, 0);
-        float3 fragPoint = GetSpherePointForUV(uv);
-        float shortestDistance = 100.0f;
-
-        for (int i = 0; i < _NumStarPoints; i++) {
+        for (int i = 0; i < _NumStarPoints; i++)
+        {
           float4 randomStarPoint = GenerateNextStarPoint(i + 1, _RandomSeed.xyz);
           float currentStarDistance = distance(randomStarPoint.xyz, fragPoint);
-          if (currentStarDistance <= shortestDistance) {
+          if (i == 0 || currentStarDistance < shortestDistance)
+          {
             closestStarPoint = randomStarPoint;
             shortestDistance = currentStarDistance;
           }
@@ -109,87 +99,21 @@ Shader "Hidden/Funly/Sky Studio/Computation/Stars"
         return closestStarPoint;
       }
 
-      float4 RenderNearbyStarImage(float2 uv) {
-        float2 areaUV = float2(
-          uv.x * 2.0f,
-          (uv.y - .5f) * 2);
+      float4 frag(v2f i) : SV_Target
+      {
+        float4 starPosition = GetClosestStarPoint(i.uv);
+        float2 sphericalCoord = DirectionToSphericalCoordinate(starPosition);
+        float2 percents = ConvertSphericalCoordinateToPercentage(sphericalCoord);
 
-        return GetClosestStarPoint(areaUV);
+        float4 starData = float4(
+            percents.x,       // Azimuth rotation percent.
+            percents.y,       // Altitude rotation percent.
+            starPosition.w,   // Noise.
+            1.0f);            // Unused.
+
+        return starData;
       }
-
-      float Atan2Positive(float y, float x) {
-        float angle = atan2(y, x);
-        
-        // This is the same as: angle = (angle > 0) ? angle : _PI + (_PI + angle)
-        float isPositive = step(0, angle);
-        float posAngle = angle * isPositive;
-        float negAngle = (_PI + (_PI + angle)) * !isPositive;
-
-        return posAngle + negAngle;
-      }
-
-      float AngleToReachTarget(float2 spot, float targetAngle) {
-        float angle = Atan2Positive(spot.y, spot.x);
-        return (_2_PI - angle) + targetAngle;
-      }
-
-      inline float2 Rotate2d(float2 p, float angle) {
-        return mul(float2x2(cos(angle), -sin(angle),
-                            sin(angle), cos(angle)),
-                   p);
-      }
-
-      float3 RotateAroundYAxis(float3 p, float angle) {
-        float2 rotation = Rotate2d(p.xz, angle);
-        return float3(rotation.x, p.y, rotation.y);
-      }
-
-      float2 CalculateStarRotation(float3 starPoint) {
-        float3 starPos = float3(starPoint);
-
-        float yRotationAngle = AngleToReachTarget(
-          float2(starPos.x, starPos.z), _PI_2);
-
-        starPos = RotateAroundYAxis(starPos, yRotationAngle);
-
-        float xRotationAngle = AngleToReachTarget(
-          float2(starPos.z, starPos.y), 0.0f);
-
-        return float2(xRotationAngle, yRotationAngle);
-      }
-
-      float2 GetStarPointRotation(float2 uv) {
-        float3 starPoint = GetClosestStarPoint(uv);        
-        return CalculateStarRotation(starPoint);
-      }
-
-      float4 RenderStarRotationImage(float2 uv) {
-        float2 areaUV = float2(
-          (uv.x - .5f) * 2.0f,
-          (uv.y - .5f) * 2.0f);
-      
-        float2 starRot = GetStarPointRotation(areaUV);
-
-        return float4(starRot.x, starRot.y, 0, 1);
-      }
-
-			float4 frag (v2f i) : SV_Target
-			{
-        // Bottom is currently unused.
-        if (i.uv.y < .5f) {
-          return float4(0, 0, 0, 0);
-        }
-        
-        float4 col;
-        if (i.uv.x <= .5f) {
-          col = RenderNearbyStarImage(i.uv);
-        } else {
-          col = RenderStarRotationImage(i.uv);
-        }
-        
-				return col;
-			}
-			ENDCG
-		}
-	}
+      ENDCG
+    }
+  }
 }

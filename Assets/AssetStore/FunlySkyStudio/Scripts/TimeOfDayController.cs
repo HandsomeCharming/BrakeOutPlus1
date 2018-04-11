@@ -11,7 +11,7 @@ namespace Funly.SkyStudio
   public class TimeOfDayController : MonoBehaviour
   {
     // Get access to the most recently created TimeOfDayController.
-    static public TimeOfDayController instance { get; private set; }
+    public static TimeOfDayController instance { get; private set; }
 
     [Tooltip("Sky profile defines the skyColors configuration for times of day. " +
       "This script will animate between those skyColors values based on the time of day.")]
@@ -106,6 +106,55 @@ namespace Funly.SkyStudio
       DynamicGI.UpdateEnvironment();
     }
 
+    private void SynchronizeAllShaderKeywords()
+    {
+      SynchronizedShaderKeyword(ShaderKeywords.Gradient);
+      SynchronizedShaderKeyword(ShaderKeywords.Moon);
+      SynchronizedShaderKeyword(ShaderKeywords.MoonCustomTexture);
+      SynchronizedShaderKeyword(ShaderKeywords.MoonSpriteSheet);
+      SynchronizedShaderKeyword(ShaderKeywords.MoonAlphaBlend);
+      SynchronizedShaderKeyword(ShaderKeywords.MoonRotation);
+      SynchronizedShaderKeyword(ShaderKeywords.Sun);
+      SynchronizedShaderKeyword(ShaderKeywords.SunCustomTexture);
+      SynchronizedShaderKeyword(ShaderKeywords.SunSpriteSheet);
+      SynchronizedShaderKeyword(ShaderKeywords.SunAlphaBlend);
+      SynchronizedShaderKeyword(ShaderKeywords.SunRotation);
+      SynchronizedShaderKeyword(ShaderKeywords.Clouds);
+      SynchronizedShaderKeyword(ShaderKeywords.Fog);
+      SynchronizedShaderKeyword(ShaderKeywords.GlobalFog);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer1);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer2);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer3);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer1CustomTexture);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer2CustomTexture);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer3CustomTexture);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer1SpriteSheet);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer2SpriteSheet);
+      SynchronizedShaderKeyword(ShaderKeywords.StarLayer3SpriteSheet);
+    }
+
+    private void SynchronizedShaderKeyword(string shaderKeyword)
+    {
+      if (skyProfile == null || skyProfile.skyboxMaterial == null)
+      {
+        return;
+      }
+
+      if (skyProfile.GetShaderKeywordValue(shaderKeyword))
+      {
+        if (!skyProfile.skyboxMaterial.IsKeywordEnabled(shaderKeyword))
+        {
+          skyProfile.skyboxMaterial.EnableKeyword(shaderKeyword);
+        }
+      }
+      else
+      {
+        if (skyProfile.skyboxMaterial.IsKeywordEnabled(shaderKeyword))
+        {
+          skyProfile.skyboxMaterial.DisableKeyword(shaderKeyword);
+        }
+      }
+    }
     public void UpdateSkyForCurrentTime()
     {
       if (skyProfile == null)
@@ -133,6 +182,8 @@ namespace Funly.SkyStudio
       {
         RenderSettings.skybox = skyProfile.skyboxMaterial;
       }
+
+      SynchronizeAllShaderKeywords();
 
       // Sky.
       m_SkyMaterialController.SkyColor = skyProfile.SkyUpperColor.ColorForTime(timeOfDay);
@@ -171,10 +222,7 @@ namespace Funly.SkyStudio
       // Sun.
       if (skyProfile.GetShaderKeywordValue(ShaderKeywords.Sun) && sunOrbit)
       {
-        sunOrbit.orbitRotation = skyProfile.SunOrbitRotation.NumericValueAtTime(timeOfDay);
-        sunOrbit.orbitTilt = skyProfile.SunOrbitTilt.NumericValueAtTime(timeOfDay);
-        sunOrbit.bodyPosition = skyProfile.SunOrbitProgress.NumericValueAtTime(timeOfDay, true);
-        sunOrbit.LayoutOribit();
+        sunOrbit.spherePoint = skyProfile.SunPosition.SpherePointForTime(timeOfDay);
 
         m_SkyMaterialController.SunDirection = sunOrbit.BodyGlobalDirection;
         m_SkyMaterialController.SunColor = skyProfile.SunColor.ColorForTime(timeOfDay);
@@ -212,14 +260,8 @@ namespace Funly.SkyStudio
       // Moon.
       if (skyProfile.GetShaderKeywordValue(ShaderKeywords.Moon) && moonOrbit)
       {
-        float moonSpeed = skyProfile.MoonOrbitSpeed.NumericValueAtTime(timeOfDay);
-        float moonTime = skyTime * moonSpeed;
+        moonOrbit.spherePoint = skyProfile.MoonPosition.SpherePointForTime(timeOfDay);
 
-        moonOrbit.orbitRotation = skyProfile.MoonOrbitRotation.NumericValueAtTime(timeOfDay);
-        moonOrbit.orbitTilt = skyProfile.MoonOrbitTilt.NumericValueAtTime(timeOfDay);
-        moonOrbit.bodyPosition = skyProfile.MoonOrbitProgress.NumericValueAtTime(moonTime, true);
-        moonOrbit.LayoutOribit();
-        
         m_SkyMaterialController.MoonDirection = moonOrbit.BodyGlobalDirection;
         m_SkyMaterialController.MoonColor = skyProfile.MoonColor.ColorForTime(timeOfDay);
         m_SkyMaterialController.MoonTexture = skyProfile.MoonTexture.TextureForTime(timeOfDay);

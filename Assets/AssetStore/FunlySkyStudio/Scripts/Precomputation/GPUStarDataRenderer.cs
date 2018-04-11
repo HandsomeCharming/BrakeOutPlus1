@@ -16,7 +16,7 @@ namespace Funly.SkyStudio
         (int)imageSize,
         (int)imageSize,
         0,
-        RenderTextureFormat.ARGBFloat,
+        RenderTextureFormat.ARGB32,
         RenderTextureReadWrite.Linear);
 
       rt.filterMode = FilterMode.Point;
@@ -42,7 +42,7 @@ namespace Funly.SkyStudio
       mat.SetFloat("_ImageHeight", imageSize);
       mat.SetFloat("_NumStarPoints", numStars);
       mat.SetVector("_RandomSeed", randomSeed);
-
+      
       Graphics.Blit(null, rt, mat);
 
       Texture2D tex = ConvertToTexture2D(rt);
@@ -57,7 +57,7 @@ namespace Funly.SkyStudio
 
     private Texture2D ConvertToTexture2D(RenderTexture rt)
     {
-      Texture2D tex = new Texture2D((int)imageSize, (int)imageSize, TextureFormat.RGBAFloat, false);
+      Texture2D tex = new Texture2D((int)imageSize, (int)imageSize, TextureFormat.RGBA32, false);
       tex.name = layerId;
       tex.filterMode = FilterMode.Point;
       tex.wrapMode = TextureWrapMode.Clamp;
@@ -66,7 +66,7 @@ namespace Funly.SkyStudio
 
       return tex;
     }
-
+     
     StarPoint NearestStarPoint(Vector3 spot, List<StarPoint> starPoints)
     {
       StarPoint nearbyPoint = new StarPoint(Vector3.zero, 0, 0, 0);
@@ -80,7 +80,7 @@ namespace Funly.SkyStudio
       for (int i = 0; i < starPoints.Count; i++) {
         StarPoint starPoint = starPoints[i];
         float distance = Vector3.Distance(spot, starPoint.position);
-        if (nearbyDistance == -1 || distance < nearbyDistance) {
+        if (nearbyDistance == -1.0f || distance < nearbyDistance) {
           nearbyPoint = starPoint;
           nearbyDistance = distance;
         }

@@ -18,7 +18,8 @@ namespace Funly.SkyStudio
     public NumberKeyframe(NumberKeyframe keyframe) : base(keyframe.time)
     {
       this.value = keyframe.value;
-      this.curveType = keyframe.curveType;
+      interpolationCurve = keyframe.interpolationCurve;
+      interpolationDirection = keyframe.interpolationDirection;
     }
   }
 }

@@ -6,51 +6,53 @@ namespace Funly.SkyStudio
 {
   public class OrbitingBody : MonoBehaviour
   {
-    [HideInInspector, Range(0, 1)]
-    public float orbitRotation = 0;
-
-    [HideInInspector, Range(-1, 1)]
-    public float orbitTilt = 0;
-
-    [HideInInspector, Range(0, 1)]
-    public float bodyPosition = 0;
-
-    // Direction to orbiting body.
-    public Vector3 BodyGlobalDirection { get { return transform.right; } }
-
-    [HideInInspector]
-    public bool drawOrbitDebugGizmos = false;
-
-    private Light m_bodyLight;
-    public Light BodyLight
+    // Position of the orbiting body.
+    private SpherePoint m_SpherePoint = new SpherePoint(0, 0);
+    public SpherePoint spherePoint
     {
-      get {
-        if (m_bodyLight == null) {
-          m_bodyLight = transform.GetComponentInChildren<Light>();
+      get { return m_SpherePoint; }
+      set
+      {
+        if (m_SpherePoint == null)
+        {
+          m_SpherePoint = new SpherePoint(0, 0);
+        }
+        else
+        {
+          m_SpherePoint = value;
         }
 
-        return m_bodyLight;
+        m_CachedWorldDirection = m_SpherePoint.GetWorldDirection();
+        LayoutOribit();
       }
     }
 
-    void OnDrawGizmos()
-    {
-      if (drawOrbitDebugGizmos) {
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, transform.position + (transform.up * 5.0f));
+    // Direction to orbiting body.
+    private Vector3 m_CachedWorldDirection = Vector3.right;
+    public Vector3 BodyGlobalDirection { get { return m_CachedWorldDirection; } }
 
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position + (transform.right * 5.0f));
+    private Light m_BodyLight;
+    public Light BodyLight
+    {
+      get {
+        if (m_BodyLight == null) {
+          m_BodyLight = transform.GetComponentInChildren<Light>();
+          if (m_BodyLight != null)
+          {
+            // Reset in case it was rotated from older prefab or developer.
+            m_BodyLight.transform.localRotation = Quaternion.identity;
+          }
+        }
+
+        return m_BodyLight;
       }
     }
 
     public void LayoutOribit()
     {
-      transform.localPosition = Vector3.zero;
-      transform.localRotation = Quaternion.identity;
-      transform.localRotation = Quaternion.Euler(orbitTilt * 180.0f, 0, 0);
-      transform.localRotation *= Quaternion.AngleAxis(orbitRotation * 360.0f, Vector3.up);
-      transform.localRotation *= Quaternion.AngleAxis(bodyPosition * 360.0f, Vector3.forward);
+      transform.position = Vector3.zero;
+      transform.rotation = Quaternion.identity;
+      transform.forward = BodyGlobalDirection * -1.0f;
     }
 
     void OnValidate()

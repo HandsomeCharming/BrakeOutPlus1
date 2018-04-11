@@ -29,5 +29,6 @@ namespace Funly.SkyStudio
     public static string StarLayer1SpriteSheet = "STAR_LAYER_1_SPRITE_SHEET";
     public static string StarLayer2SpriteSheet = "STAR_LAYER_2_SPRITE_SHEET";
     public static string StarLayer3SpriteSheet = "STAR_LAYER_3_SPRITE_SHEET";
+    public static string RenderDebugPoints = "RENDER_DEBUG_POINTS";
   }
 }

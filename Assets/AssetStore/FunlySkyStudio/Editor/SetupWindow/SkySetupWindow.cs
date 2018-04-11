@@ -111,7 +111,7 @@ namespace Funly.SkyStudio
         string presetName = ObjectNames.NicifyVariableName(Path.GetFileNameWithoutExtension(presetPath));
         string menuName = Path.GetDirectoryName(presetPath) + "/" + presetName;
 
-        string presetDirPrefix = "Assets/" + SkyEditorUtility.PACKAGE_DIR_NAME + "/Presets/";
+        string presetDirPrefix = "Assets/" + SkyEditorUtility.PACKAGE_DIR_NAME + "/Internal/Presets/";
         if (menuName.StartsWith(presetDirPrefix))
         {
           menuName = menuName.Remove(0, presetDirPrefix.Length);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Reflection;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,9 +29,7 @@ namespace Funly.SkyStudio
     public const string SunColorIntensityKey = "SunColorIntensityKey";
     public const string SunLightColorKey = "SunLightColorKey";
     public const string SunLightIntensityKey = "SunLightIntensityKey";
-    public const string SunOrbitRotation = "SunOrbitRotation";
-    public const string SunOrbitTilt = "SunOrbitTilt";
-    public const string SunOrbitProgress = "SunOrbitProgress";
+    public const string SunPositionKey = "SunPositionKey";
     public const string SunSpriteRowCount = "SunSpriteRowCountKey";
     public const string SunSpriteColumnCount = "SunSpriteColumnCountKey";
     public const string SunSpriteItemCount = "SunSpriteItemCount";
@@ -45,9 +44,7 @@ namespace Funly.SkyStudio
     public const string MoonColorIntensityKey = "MoonColorIntensityKey";
     public const string MoonLightColorKey = "MoonLightColorKey";
     public const string MoonLightIntensityKey = "MoonLightIntensityKey";
-    public const string MoonOrbitRotation = "MoonOrbitRotation";
-    public const string MoonOrbitTilt = "MoonOrbitTilt";
-    public const string MoonOrbitProgress = "MoonOrbitProgress";
+    public const string MoonPositionKey = "MoonPositionKey";
     public const string MoonOrbitSpeed = "MoonOrbitSpeed";
     public const string MoonSpriteRowCount = "MoonSpriteRowCountKey";
     public const string MoonSpriteColumnCount = "MoonSpriteColumnCountKey";
@@ -114,5 +111,23 @@ namespace Funly.SkyStudio
     public const string FogDensityKey = "FogDensityKey";
     public const string FogColorKey = "FogColorKey";
     public const string FogLengthKey = "FogLengthKey";
+
+
+    public static HashSet<string> GetPropertyKeysSet()
+    {
+      FieldInfo[] fields = typeof(ProfilePropertyKeys).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+      HashSet<string> validPropertyKeys = new HashSet<string>();
+
+      foreach (FieldInfo field in fields) {
+        if (!field.IsLiteral) {
+          continue;
+        }
+
+        string propKey = field.GetValue(null) as string;
+        validPropertyKeys.Add(propKey);
+      }
+
+      return validPropertyKeys;
+    }
   }
 }

@@ -7,7 +7,7 @@ using UnityEditor;
 
 namespace Funly.SkyStudio
 {
-  // The timeline window is an editor for SkyProfile animation keyframes.
+  // The timeline window is an animation editor for SkyProfiles.
   public class SkyTimelineWindow : EditorWindow
   {
     private const float TIME_HEADER_HEIGHT = 50.0f;
@@ -16,6 +16,7 @@ namespace Funly.SkyStudio
     private const float CURSOR_LINE_WIDTH = 8.0f;
     private const float NAME_COLUMN_WIDTH = 225.0f;
     private const float COLOR_ROW_HEIGHT = 30.0f;
+    private const float SPHERE_POINT_ROW_HEIGHT = 30.0f;
     private const float NUMBER_ROW_HEIGHT = 45.0f;
     private const float ROW_PADDING = 22.0f;
     private const float MIN_WINDOW_WIDTH = 580.0f;
@@ -32,7 +33,6 @@ namespace Funly.SkyStudio
     private Vector2 m_ScrollPosition = Vector2.zero;
     private Texture2D m_PlayheadTexture;
     private List<ProfileGroupDefinition> m_TimelineDefinitions;
-    private string m_SelectedGroupInfoKey;
     private SkyProfile m_ActiveSkyProfile;
     private TimeOfDayController m_ActiveTimeController;
     private GUIStyle m_ButtonStyle;
@@ -61,6 +61,11 @@ namespace Funly.SkyStudio
     private void OnEnable()
     {
       ConfigureWindow();
+    }
+
+    private void OnDisable()
+    {
+      HideDebugPoints();
     }
 
     private void OnDestroy()
@@ -158,6 +163,7 @@ namespace Funly.SkyStudio
 
       int colorRowCount = 0;
       int numericRowCount = 0;
+      int spherePointRowCount = 0;
 
       foreach (ProfileGroupDefinition groupInfo in m_TimelineDefinitions) {
         if (profile.IsManagedByTimeline(groupInfo.propertyKey) == false) {
@@ -168,12 +174,16 @@ namespace Funly.SkyStudio
           numericRowCount += 1;
         } else if (groupInfo.type == ProfileGroupDefinition.GroupType.Color) {
           colorRowCount += 1;
+        } else if (groupInfo.type == ProfileGroupDefinition.GroupType.SpherePoint)
+        {
+          spherePointRowCount += 1;
         }
       }
 
       float colorsHeight = colorRowCount * (COLOR_ROW_HEIGHT + ROW_PADDING);
       float numbersHeight = numericRowCount * (NUMBER_ROW_HEIGHT + ROW_PADDING);
-      float contentHeight =  colorsHeight + numbersHeight + TIME_HEADER_HEIGHT;
+      float spherePointHeight = spherePointRowCount * (SPHERE_POINT_ROW_HEIGHT + ROW_PADDING);
+      float contentHeight =  colorsHeight + numbersHeight + spherePointHeight + TIME_HEADER_HEIGHT;
 
       return contentHeight;
     }
@@ -235,6 +245,7 @@ namespace Funly.SkyStudio
       // Render all the content rows.
       Rect rowsRect = new Rect(rect.x, 0, rect.width, 0);
       RenderAllRows(rowsRect, timeController.skyProfile);
+      RenderSpherePointGroupDebugPointsIfSelected();
 
       GUI.EndScrollView();
 
@@ -242,6 +253,25 @@ namespace Funly.SkyStudio
       Rect cursorRect = new Rect(
         valueColMinX, rect.y, valueColWidth - VALUE_COLUMN_INSET, fullContentHeight);
       RenderTimelineCursor(cursorRect, timeController);
+    }
+
+    // If sphere point group is selected, we render dots in the skybox to help user position things.
+    private void RenderSpherePointGroupDebugPointsIfSelected()
+    {
+      if (m_ActiveSkyProfile == null || TimelineSelection.selectedGroupUUID == null)
+      {
+        return;
+      }
+
+      IKeyframeGroup group = m_ActiveSkyProfile.GetGroupWithId(TimelineSelection.selectedGroupUUID);
+      if (group is SpherePointKeyframeGroup)
+      {
+        ShowSpherePointKeyframesInSkybox(group as SpherePointKeyframeGroup);
+      }
+      else
+      {
+        HideDebugPoints();
+      }
     }
 
     private void RenderNeedsSkySetupLayout() {
@@ -407,10 +437,17 @@ namespace Funly.SkyStudio
 
       Undo.RecordObject(tc.skyProfile, "Keyframe inserted into group.");
 
-      if (selectedGroup is ColorKeyframeGroup) {
+      if (selectedGroup is ColorKeyframeGroup)
+      {
         InsertKeyframeInColorGroup(tc.timeOfDay, selectedGroup as ColorKeyframeGroup);
-      } else if (selectedGroup is NumberKeyframeGroup) {
+      }
+      else if (selectedGroup is NumberKeyframeGroup)
+      {
         InsertKeyframeInNumericGroup(tc.timeOfDay, selectedGroup as NumberKeyframeGroup);
+      }
+      else if (selectedGroup is SpherePointKeyframeGroup)
+      {
+        InsertKeyframeInSpherePointGroup(tc.timeOfDay, selectedGroup as SpherePointKeyframeGroup);
       }
 
       EditorUtility.SetDirty(tc.skyProfile);
@@ -425,7 +462,8 @@ namespace Funly.SkyStudio
       newKeyFrame.time = time;
       group.AddKeyFrame(newKeyFrame);
 
-      KeyframeInspectorWindow.SetColorKeyFrame(newKeyFrame, group);
+      KeyframeInspectorWindow.SetKeyframeData(
+        newKeyFrame, group, KeyframeInspectorWindow.KeyType.Color, m_ActiveSkyProfile);
     }
 
     private void InsertKeyframeInNumericGroup(float time, NumberKeyframeGroup group)
@@ -435,7 +473,19 @@ namespace Funly.SkyStudio
       newKeyFrame.time = time;
       group.AddKeyFrame(newKeyFrame);
 
-      KeyframeInspectorWindow.SetNumericKeyFrame(newKeyFrame, group);
+      KeyframeInspectorWindow.SetKeyframeData(
+        newKeyFrame, group, KeyframeInspectorWindow.KeyType.Numeric, m_ActiveSkyProfile);
+    }
+
+    private void InsertKeyframeInSpherePointGroup(float time, SpherePointKeyframeGroup group)
+    {
+      SpherePointKeyframe previousKeyFrame = group.GetPreviousKeyFrame(time);
+      SpherePointKeyframe newKeyFrame = new SpherePointKeyframe(previousKeyFrame);
+      newKeyFrame.time = time;
+      group.AddKeyFrame(newKeyFrame);
+
+      KeyframeInspectorWindow.SetKeyframeData(
+        newKeyFrame, group, KeyframeInspectorWindow.KeyType.SpherePoint, m_ActiveSkyProfile);
     }
 
     private void RenderTimeRuler(Rect rect, float currentTime)
@@ -530,6 +580,7 @@ namespace Funly.SkyStudio
       {
         float percent = Mathf.Clamp((Event.current.mousePosition.x - rect.x) / rect.width, 0, MAX_TIME_VALUE);
         timeController.skyTime = percent;
+        EditorUtility.SetDirty(timeController);
       }
 
       if (Event.current.type != EventType.Repaint)
@@ -613,14 +664,23 @@ namespace Funly.SkyStudio
         }
 
         if (groupInfo.type == ProfileGroupDefinition.GroupType.Number) {
-          RenderNumericRowAndAdvance(ref rowRect, 
+          RenderNumericRowAndAdvance(
+            ref rowRect, 
             profile, 
             profile.GetGroup<NumberKeyframeGroup>(groupInfo.propertyKey),
             groupInfo);
         } else if (groupInfo.type == ProfileGroupDefinition.GroupType.Color) {
-          RenderGradientRowAndAdvance(ref rowRect, 
+          RenderGradientRowAndAdvance(
+            ref rowRect, 
             profile,
             profile.GetGroup<ColorKeyframeGroup>(groupInfo.propertyKey),
+            groupInfo);
+        } else if (groupInfo.type == ProfileGroupDefinition.GroupType.SpherePoint)
+        {
+          RenderSpherePointRowAndAdvance(
+            ref rowRect,
+            profile,
+            profile.GetGroup<SpherePointKeyframeGroup>(groupInfo.propertyKey),
             groupInfo);
         }
       }
@@ -640,7 +700,7 @@ namespace Funly.SkyStudio
         ProfileGroupDefinition groupDefinition = profile.GetGroupDefinitionForKey(groupKey);
         if (groupDefinition == null)
         {
-          Debug.LogError("Failed to get group definition for key: " + groupKey);
+          //Debug.LogError("Failed to get group definition for key: " + groupKey);
           continue;
         }
 
@@ -669,7 +729,28 @@ namespace Funly.SkyStudio
       LoadRowInformation(ref rect, group.id, COLOR_ROW_HEIGHT, out valueRowRect, out nameRowRect, out isActive);
 
       RenderRowTitle(nameRowRect, group.name, isActive, groupDefinition);
-      SkyEditorGradient.KeyFrameGradient(valueRowRect, profile, group);
+      ColorTimelineRow.RenderColorGroupRow(valueRowRect, profile, group);
+    }
+
+    // Render a timeline of sphere point keyframes.
+    private void RenderSpherePointRowAndAdvance(ref Rect rect, SkyProfile profile, SpherePointKeyframeGroup group, ProfileGroupDefinition groupDefinition)
+    {
+      rect.height = SPHERE_POINT_ROW_HEIGHT;
+      UpdateActiveSelectedRow(rect, group.id, groupDefinition.propertyKey);
+
+      Rect valueRowRect;
+      Rect nameRowRect;
+      bool isActive;
+      LoadRowInformation(ref rect, group.id, SPHERE_POINT_ROW_HEIGHT, out valueRowRect, out nameRowRect, out isActive);
+
+      // Render debug points if this is active.
+      if (isActive)
+      {
+        ShowSpherePointKeyframesInSkybox(group);
+      }
+
+      RenderRowTitle(nameRowRect, group.name, isActive, groupDefinition);
+      SpherePointTimelineRow.RenderSpherePointRow(valueRowRect, profile, group);
     }
 
     // Render a timeline of numeric keyframe positions.
@@ -684,7 +765,7 @@ namespace Funly.SkyStudio
       LoadRowInformation(ref rect, group.id, NUMBER_ROW_HEIGHT, out valueRowRect, out nameRowRect, out isActive);
 
       RenderRowTitle(nameRowRect, group.name, isActive, groupDefinition);
-      SkyEditorNumeric.RenderNumberGroup(valueRowRect, profile, group);
+      NumberTimelineRow.RenderNumberGroup(valueRowRect, profile, group);
     }
 
     private void UpdateActiveSelectedRow(Rect rect, string groupUUID, string propertyKey)
@@ -770,6 +851,45 @@ namespace Funly.SkyStudio
     {
       GroupHelpWindow.SetHelpItem(m_ActiveSkyProfile, propertyKey, false);
     }
-	}
+
+    private void ShowSpherePointKeyframesInSkybox(SpherePointKeyframeGroup group)
+    {
+      List<Vector4> points = new List<Vector4>(0);
+
+      foreach (SpherePointKeyframe keyframe in group.keyframes)
+      {
+        Vector3 direction = keyframe.spherePoint.GetWorldDirection();
+        float isActiveKeyframe = SkyEditorUtility.IsKeyframeActiveInInspector(keyframe) ? 1.0f : 0.0f;
+        Vector4 pointData = new Vector4(direction.x, direction.y, direction.z, isActiveKeyframe);
+        points.Add(pointData);
+      }
+
+      ShowDebugPoints(points);
+    }
+
+    private void ShowDebugPoints(List<Vector4> points)
+    {
+      if (m_ActiveSkyProfile == null || m_ActiveSkyProfile.skyboxMaterial == null || points == null)
+      {
+        return;
+      }
+
+      m_ActiveSkyProfile.skyboxMaterial.EnableKeyword(ShaderKeywords.RenderDebugPoints);
+
+      m_ActiveSkyProfile.skyboxMaterial.SetInt("_DebugPointsCount", points.Count);
+      m_ActiveSkyProfile.skyboxMaterial.SetVectorArray("_DebugPoints", points);
+    }
+
+    private void HideDebugPoints()
+    {
+      if (m_ActiveSkyProfile == null || m_ActiveSkyProfile.skyboxMaterial == null)
+      {
+        return;
+      }
+
+      m_ActiveSkyProfile.skyboxMaterial.SetInt("_DebugPointsCount", 0);
+      m_ActiveSkyProfile.skyboxMaterial.DisableKeyword(ShaderKeywords.RenderDebugPoints);
+    }
+  }
 }
 

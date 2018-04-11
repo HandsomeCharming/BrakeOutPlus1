@@ -17,6 +17,18 @@ namespace Funly.SkyStudio
 
     public static Dictionary<string, Texture2D> _imageCache = new Dictionary<string, Texture2D>();
 
+    // Keyframe time is pretty much zero.
+    public static bool IsKeyFrameAtStart(IBaseKeyframe keyframe)
+    {
+      return keyframe.time >= 0 && keyframe.time < .00001f;
+    }
+
+    // Keyframe time is pretty much 1.0f.
+    public static bool IsKeyFrameAtEnd(IBaseKeyframe keyframe)
+    {
+      return keyframe.time >= .99999f;
+    }
+
     public static float GetWidthBetweenTimes(Rect rect, float fromTime, float toTime)
     {
       if (toTime < fromTime) {
@@ -57,6 +69,14 @@ namespace Funly.SkyStudio
     public static void CancelTimelineDrags() {
       TimelineSelection.selectedControlUUID = null;
       TimelineSelection.isDraggingTimeline = false;
+    }
+
+    public static bool IsKeyframeSelected(IBaseKeyframe keyframe) {
+      if (keyframe == null || TimelineSelection.selectedControlUUID == null ||
+          TimelineSelection.selectedControlUUID != keyframe.id) {
+        return false;
+      }
+      return true;
     }
 
     // Sticks to bottom of rect, and can slide horizontally only.
@@ -193,11 +213,21 @@ namespace Funly.SkyStudio
 
     // True if the keyframe is shown in the inspector window.
     public static bool IsKeyframeActiveInInspector(BaseKeyframe keyFrame) {
-			if (KeyframeInspectorWindow.IsEnabled && KeyframeInspectorWindow.GetActiveKeyframeId() == keyFrame.id)
+			if (KeyframeInspectorWindow.inspectorEnabled && KeyframeInspectorWindow.GetActiveKeyframeId() == keyFrame.id)
 			{
         return true;
-			}
-      return false;
+      } else {
+        return false;
+      }
+    }
+
+    // True if group is selected on timeline.
+    public static bool IsGroupSelectedOnTimeline(string groupId) {
+      if (TimelineSelection.selectedGroupUUID != null && TimelineSelection.selectedGroupUUID == groupId) {
+        return true;
+      } else {
+        return false;
+      }
     }
 
     public static void DrawKeyMarker(Rect rect, bool isActive)
@@ -206,7 +236,6 @@ namespace Funly.SkyStudio
       {
         return;
       }
-
 
       Texture2D gripTexture = null;
       if (isActive) {

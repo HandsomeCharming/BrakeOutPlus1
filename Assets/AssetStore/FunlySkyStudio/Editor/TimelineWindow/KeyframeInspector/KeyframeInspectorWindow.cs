@@ -8,33 +8,24 @@ namespace Funly.SkyStudio
 {
   public class KeyframeInspectorWindow : EditorWindow
   {
-    public static SkyProfile profile;
-
-    // Color key frame info.
-    public static ColorKeyframe colorKeyFrame;
-    public static ColorKeyframeGroup colorGroup;
-
-    // Numeric key frame info.
-    public static NumberKeyframe numberKeyframe;
-    public static NumberKeyframeGroup numberGroup;
-
-    private static bool _isEnabled;
-    public static bool IsEnabled { get { return _isEnabled; } }
-
-    private static KeyframeInspectorWindow _instance;
-
-    private static float k_MinWidth = 350.0f;
-    private static float k_MinHeight = 125.0f;
-
     public enum KeyType
     {
       None,
       Color,
-      Numeric
+      Numeric,
+      SpherePoint
     }
 
-    public static KeyType keyType = KeyType.None;
+    public static bool inspectorEnabled { get; private set; }
+    public static SkyProfile profile { get; private set; }
+    public static KeyType keyType { get; private set; }
+    public static IKeyframeGroup group { get; private set; }
+    public static IBaseKeyframe keyframe { get; private set; }
 
+    private static KeyframeInspectorWindow _instance;
+    private static float k_MinWidth = 350.0f;
+    private static float k_MinHeight = 150.0f;
+    
     public static void ShowWindow()
     {
       if (_instance == null) {
@@ -48,12 +39,12 @@ namespace Funly.SkyStudio
 
     private void OnEnable()
     {
-      _isEnabled = true;
+      inspectorEnabled = true;
     }
 
     private void OnDisable()
     {
-      _isEnabled = false;
+      inspectorEnabled = false;
     }
 
     public void ForceRepaint()
@@ -63,27 +54,28 @@ namespace Funly.SkyStudio
 
     private void Update()
     {
+      // Make sure we only have 1 utility window open.
+      if (this != _instance) {
+        this.Close();
+        return;
+      }
+      
       Repaint();
     }
 
-    public static void SetColorKeyFrame(ColorKeyframe keyFrame, ColorKeyframeGroup group)
+    public static void SetKeyframeData(IBaseKeyframe keyframe, IKeyframeGroup group, KeyType keyType, SkyProfile profile)
     {
-      colorKeyFrame = keyFrame;
-      colorGroup = group;
-      keyType = KeyType.Color;
-    }
-
-    public static void SetNumericKeyFrame(NumberKeyframe keyFrame, NumberKeyframeGroup group)
-    {
-      numberKeyframe = keyFrame;
-      numberGroup = group;
-      keyType = KeyType.Numeric;
+      KeyframeInspectorWindow.keyframe = keyframe;
+      KeyframeInspectorWindow.@group = group;
+      KeyframeInspectorWindow.keyType = keyType;
+      KeyframeInspectorWindow.profile = profile;
     }
 
     private void OnGUI()
     {
-      if (keyType == KeyType.None)
+      if (keyType == KeyType.None || keyframe == null)
       {
+        keyType = KeyType.None;
         ShowEmptyState();
         return;
       }
@@ -93,25 +85,23 @@ namespace Funly.SkyStudio
 
       bool didModifyProfile = false;
 
+      // Render time.
+      didModifyProfile = RenderTimeValue();
+
+      // Animation curve.
+      didModifyProfile = RenderInterpolationCurveType();
+
       // Core layout for this type of keyframe.
       if (keyType == KeyType.Color)
       {
         didModifyProfile = RenderColorGUI();
-      } else if (keyType == KeyType.Numeric)
+      }
+      else if (keyType == KeyType.Numeric)
       {
         didModifyProfile = RenderNumericGUI();
-      }
-
-      // Time position.
-      if (RenderTimeValue())
+      } else if (keyType == KeyType.SpherePoint)
       {
-        didModifyProfile = true;
-      }
-
-      // Curve type applies to all keyframes.
-      if (RenderBlendingCurveType())
-      {
-        didModifyProfile = true;
+        didModifyProfile = RenderSpherePointGUI();
       }
 
       GUILayout.FlexibleSpace();
@@ -121,14 +111,13 @@ namespace Funly.SkyStudio
 
       if (KeyFrameCount() > 1)
       {
-        if (GUILayout.Button("Delete Keyframe")) {
+        if (GUILayout.Button("Delete Keyframe"))
+        {
           Undo.RecordObject(profile, "Deleting keyframe");
 
-          if (keyType == KeyType.Color) {
-            colorGroup.RemoveKeyFrame(colorKeyFrame);
-          } else if (keyType == KeyType.Numeric) {
-            numberGroup.RemoveKeyFrame(numberKeyframe);
-          }
+          @group.RemoveKeyFrame(keyframe);
+          keyframe = null;
+          
 
           didModifyProfile = true;
           Close();
@@ -141,6 +130,7 @@ namespace Funly.SkyStudio
       {
         Close();
       }
+
       GUILayout.EndHorizontal();
 
       GUILayout.Space(5);
@@ -148,8 +138,7 @@ namespace Funly.SkyStudio
 
       if (didModifyProfile)
       {
-        IKeyframeGroup group = GetActiveGroup();
-        group.SortKeyframes();
+        @group.SortKeyframes();
         EditorUtility.SetDirty(profile);
       }
     }
@@ -161,28 +150,18 @@ namespace Funly.SkyStudio
 
     private int KeyFrameCount()
     {
-      if (colorGroup != null)
-      {
-        return colorGroup.keyframes.Count;
-      }
-
-      if (numberGroup != null)
-      {
-        return numberGroup.keyframes.Count;
-      }
-
-      Debug.LogError("Can't get keyframe count");
-
-      return 0;
+      return @group.GetKeyFrameCount();
     }
 
     private bool RenderColorGUI()
     {
-      bool didModify = false;
-      if (colorKeyFrame == null || colorGroup == null)
+      ColorKeyframe colorKeyFrame = keyframe as ColorKeyframe;
+      if (colorKeyFrame == null)
       {
-        return didModify;
+        return false;
       }
+
+      bool didModify = false;
 
       EditorGUI.BeginChangeCheck();
       Color selectedColor = EditorGUILayout.ColorField(new GUIContent("Color"), colorKeyFrame.color);
@@ -197,11 +176,19 @@ namespace Funly.SkyStudio
 
     private bool RenderNumericGUI()
     {
-      bool didModify = false;
-      if (numberKeyframe == null || numberGroup == null)
+      NumberKeyframe numberKeyframe = keyframe as NumberKeyframe;
+      if (numberKeyframe == null)
       {
-        return didModify;
+        return false;
       }
+
+      NumberKeyframeGroup numberGroup = @group as NumberKeyframeGroup;
+      if (numberGroup == null)
+      {
+        return false;
+      }
+
+      bool didModify = false;
 
       EditorGUI.BeginChangeCheck();
       float value = EditorGUILayout.FloatField(new GUIContent("Value"), numberKeyframe.value);
@@ -215,20 +202,73 @@ namespace Funly.SkyStudio
       return didModify;
     }
 
-    public bool RenderBlendingCurveType()
+    private bool RenderSpherePointGUI()
     {
-      IBaseKeyframe keyframe = GetActiveKeyframe();
+      bool didModify = false;
 
+      SpherePointKeyframe spherePointKeyframe = keyframe as SpherePointKeyframe;
+      if (spherePointKeyframe == null)
+      {
+        return false;
+      }
+
+      EditorGUILayout.BeginHorizontal();
+      EditorGUI.BeginChangeCheck();
+      SpherePoint selectedSpherePoint = SpherePointGUI.SpherePointField(spherePointKeyframe.spherePoint, true, keyframe.id);
+      if (EditorGUI.EndChangeCheck())
+      {
+        spherePointKeyframe.spherePoint = selectedSpherePoint;
+        didModify = true;
+      }
+      EditorGUILayout.EndHorizontal();
+
+      EditorGUILayout.BeginHorizontal();
+      EditorGUI.BeginChangeCheck();
+      GUIStyle style = GUI.skin.button;
+      EditorGUILayout.PrefixLabel(
+        new GUIContent("Normalize Speed", 
+                       "Adjust all keyframes so that there is a constant speed of animation between them."));
+      GUILayout.Button(new GUIContent("Reposition All Keyframes..."), style);
+      if (EditorGUI.EndChangeCheck())
+      {
+        Undo.RecordObject(profile, "Normalize keyframe speeds");
+        didModify = true;
+        SpherePointTimelineRow.RepositionKeyframesForConstantSpeed(group as SpherePointKeyframeGroup);
+      }
+      EditorGUILayout.EndHorizontal();
+      
+      return didModify;
+    }
+
+    public bool RenderInterpolationCurveType()
+    {
       EditorGUI.BeginChangeCheck();
 
-      CurveType selectedCurveType = (CurveType)EditorGUILayout.EnumPopup(
+      InterpolationCurve selectedCurveType = (InterpolationCurve)EditorGUILayout.EnumPopup(
         new GUIContent("Animation Curve", 
-        "Adjust how this keyframe will animate it's value towards the next keyframe." ), keyframe.curveType);
+        "Adjust animation curve timing to the next keyframe." ), keyframe.interpolationCurve);
 
       if (EditorGUI.EndChangeCheck())
       {
         Undo.RecordObject(profile, "Curve type changed");
-        keyframe.curveType = selectedCurveType;
+        keyframe.interpolationCurve = selectedCurveType;
+        return true;
+      }
+
+      return false;
+    }
+
+    public bool RenderInterpolationDirectionType()
+    {
+      EditorGUI.BeginChangeCheck();
+
+      InterpolationDirection selectedDirection = (InterpolationDirection)EditorGUILayout.EnumPopup(
+        new GUIContent("Animation Direction",
+        "Adjust the animation direction to control how this property animates to the next keyframe value."), keyframe.interpolationDirection);
+
+      if (EditorGUI.EndChangeCheck()) {
+        Undo.RecordObject(profile, "Direction changed");
+        keyframe.interpolationDirection = selectedDirection;
         return true;
       }
 
@@ -237,8 +277,6 @@ namespace Funly.SkyStudio
 
     public bool RenderTimeValue()
     {
-      IBaseKeyframe keyframe = GetActiveKeyframe();
-
       EditorGUI.BeginChangeCheck();
 
       float time = EditorGUILayout.FloatField(
@@ -256,39 +294,22 @@ namespace Funly.SkyStudio
     }
 
     public static string GetActiveKeyframeId() {
-      if (IsEnabled == false || keyType == KeyType.None) {
+      if (inspectorEnabled == false || keyType == KeyType.None || keyframe == null) {
         return null;
       }
 
-      if (keyType == KeyType.Color) {
-        return colorKeyFrame.id;
-      } else if (keyType == KeyType.Numeric) {
-        return numberKeyframe.id;
-      }
-
-      return null;
+      return keyframe.id;
     }
 
-    public IBaseKeyframe GetActiveKeyframe()
+    private void UpdateTimeControllerInScene()
     {
-      if (keyType == KeyType.Color)
+      TimeOfDayController timeController = FindObjectOfType<TimeOfDayController>() as TimeOfDayController;
+      if (!timeController)
       {
-        return colorKeyFrame;
-      } else if (keyType == KeyType.Numeric)
-      {
-        return numberKeyframe;
+        return;
       }
-      return null;
-    }
 
-    public IKeyframeGroup GetActiveGroup()
-    {
-      if (keyType == KeyType.Color) {
-        return colorGroup;
-      } else if (keyType == KeyType.Numeric) {
-        return numberGroup;
-      }
-      return null;
+      timeController.UpdateSkyForCurrentTime();
     }
   }
 }

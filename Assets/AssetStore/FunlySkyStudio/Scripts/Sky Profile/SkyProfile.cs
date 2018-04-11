@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using Funly.SkyStudio;
 using UnityEngine;
 
@@ -252,19 +254,9 @@ namespace Funly.SkyStudio
       get { return GetGroup<NumberKeyframeGroup>(ProfilePropertyKeys.SunLightIntensityKey); }
     }
 
-    public NumberKeyframeGroup SunOrbitRotation
+    public SpherePointKeyframeGroup SunPosition
     {
-      get { return GetGroup<NumberKeyframeGroup>(ProfilePropertyKeys.SunOrbitRotation); }
-    }
-
-    public NumberKeyframeGroup SunOrbitTilt
-    {
-      get { return GetGroup<NumberKeyframeGroup>(ProfilePropertyKeys.SunOrbitTilt); }
-    }
-
-    public NumberKeyframeGroup SunOrbitProgress
-    {
-      get { return GetGroup<NumberKeyframeGroup>(ProfilePropertyKeys.SunOrbitProgress); }
+      get { return GetGroup<SpherePointKeyframeGroup>(ProfilePropertyKeys.SunPositionKey); }
     }
 
     // Moon Properties.
@@ -328,19 +320,9 @@ namespace Funly.SkyStudio
       get { return GetGroup<NumberKeyframeGroup>(ProfilePropertyKeys.MoonLightIntensityKey); }
     }
 
-    public NumberKeyframeGroup MoonOrbitRotation
+    public SpherePointKeyframeGroup MoonPosition
     {
-      get { return GetGroup<NumberKeyframeGroup>(ProfilePropertyKeys.MoonOrbitRotation); }
-    }
-
-    public NumberKeyframeGroup MoonOrbitTilt
-    {
-      get { return GetGroup<NumberKeyframeGroup>(ProfilePropertyKeys.MoonOrbitTilt); }
-    }
-
-    public NumberKeyframeGroup MoonOrbitProgress
-    {
-      get { return GetGroup<NumberKeyframeGroup>(ProfilePropertyKeys.MoonOrbitProgress); }
+      get { return GetGroup<SpherePointKeyframeGroup>(ProfilePropertyKeys.MoonPositionKey); }
     }
 
     public NumberKeyframeGroup MoonOrbitSpeed
@@ -549,16 +531,20 @@ namespace Funly.SkyStudio
     public SkyProfile()
     {
       // Build the profile definition table.
-      ReloadDefinitions();
-      MergeProfileWithDefinitions();
-      RebuildKeyToGroupInfoMapping();
+      ReloadFullProfile();
     }
 
     private void OnEnable()
     {
+      ReloadFullProfile();
+    }
+
+    private void ReloadFullProfile()
+    {
       ReloadDefinitions();
       MergeProfileWithDefinitions();
       RebuildKeyToGroupInfoMapping();
+      ValidateTimelineGroupKeys();
     }
 
     private void ReloadDefinitions()
@@ -580,11 +566,19 @@ namespace Funly.SkyStudio
 
     public void MergeGroupsWithDefinitions()
     {
+      HashSet<string> validProperties = ProfilePropertyKeys.GetPropertyKeysSet();
+
       // Build our groups from the profile definition table.
       foreach (ProfileGroupSection section in groupDefinitions)
       {
         foreach (ProfileGroupDefinition groupInfo in section.groups)
         {
+          // Filter out old groups that are no longer valid.
+          if (!validProperties.Contains(groupInfo.propertyKey))
+          {
+            continue;
+          }
+
           if (groupInfo.type == ProfileGroupDefinition.GroupType.Color) {
             if (keyframeGroups.ContainsKey(groupInfo.propertyKey) == false)
             {
@@ -613,6 +607,13 @@ namespace Funly.SkyStudio
               AddTextureGroup(groupInfo.propertyKey, groupInfo.groupName, groupInfo.texture);
             }
             else
+            {
+              keyframeGroups[groupInfo.propertyKey].name = groupInfo.groupName;
+            }
+          } else if (groupInfo.type == ProfileGroupDefinition.GroupType.SpherePoint) {
+            if (keyframeGroups.ContainsKey(groupInfo.propertyKey) == false) {
+              AddSpherePointGroup(groupInfo.propertyKey, groupInfo.groupName, groupInfo.spherePoint);
+            } else
             {
               keyframeGroups[groupInfo.propertyKey].name = groupInfo.groupName;
             }
@@ -663,9 +664,21 @@ namespace Funly.SkyStudio
       keyframeGroups[propKey] = group;
     }
 
+    private void AddSpherePointGroup(string propKey, string groupName, SpherePoint point)
+    {
+      SpherePointKeyframeGroup group = new SpherePointKeyframeGroup(groupName, new SpherePointKeyframe(point, 0));
+
+      keyframeGroups[propKey] = group;
+    }
+
     public T GetGroup<T>(string propertyKey) where T : class
     {
       return keyframeGroups[propertyKey] as T;
+    }
+
+    public IKeyframeGroup GetGroup(string propertyKey)
+    {
+      return keyframeGroups[propertyKey];
     }
 
     public IKeyframeGroup GetGroupWithId(string groupId)
@@ -708,6 +721,29 @@ namespace Funly.SkyStudio
       return timelineManagedKeys.Contains(propertyKey);
     }
 
+    public void ValidateTimelineGroupKeys()
+    {
+      List<string> removeKeys = new List<string>();
+
+      HashSet<string> validProperties = ProfilePropertyKeys.GetPropertyKeysSet();
+
+      foreach (string timelineKey in timelineManagedKeys)
+      {
+        if (!IsManagedByTimeline(timelineKey) || !validProperties.Contains(timelineKey))
+        {
+          removeKeys.Add(timelineKey);
+        }
+      }
+
+      foreach (string removeKey in removeKeys)
+      {
+        if (timelineManagedKeys.Contains(removeKey))
+        {
+          timelineManagedKeys.Remove(removeKey);
+        }
+      }
+    }
+
     public List<ProfileGroupDefinition> GetGroupDefinitionsManagedByTimeline() {
       List<ProfileGroupDefinition> groups = new List<ProfileGroupDefinition>();
 
@@ -716,7 +752,6 @@ namespace Funly.SkyStudio
         ProfileGroupDefinition groupDefinition = GetGroupDefinitionForKey(groupKey);
         if (groupDefinition == null)
         {
-          Debug.LogError("Failed to get group definition for key: " + groupDefinition);
           continue;
         }
 
@@ -746,7 +781,13 @@ namespace Funly.SkyStudio
 
     public ProfileGroupDefinition GetGroupDefinitionForKey(string propertyKey)
     {
-      return m_KeyToGroupInfo[propertyKey];
+      ProfileGroupDefinition def = null;
+      if (m_KeyToGroupInfo.TryGetValue(propertyKey, out def))
+      {
+        return def;
+      }
+
+      return null;
     }
 
     public void RebuildKeyToGroupInfoMapping()
@@ -763,29 +804,13 @@ namespace Funly.SkyStudio
 
     public void TrimGroupToSingleKeyframe(string propertyKey)
     {
-      ProfileGroupDefinition groupDefinition = GetGroupDefinitionForKey(propertyKey);
+      IKeyframeGroup group = GetGroup(propertyKey);
+      if (group == null)
+      {
+        return;
+      }
 
-      if (groupDefinition.type == ProfileGroupDefinition.GroupType.Color)
-      {
-        var group = GetGroup<ColorKeyframeGroup>(propertyKey);
-        if (group != null) {
-          group.TrimToSingleKeyframe();
-        }
-      }
-      else if (groupDefinition.type == ProfileGroupDefinition.GroupType.Number)
-      {
-        var group = GetGroup<NumberKeyframeGroup>(propertyKey);
-        if (group != null)
-        {
-          group.TrimToSingleKeyframe();
-        }
-      } else if (groupDefinition.type == ProfileGroupDefinition.GroupType.Texture) {
-        var group = GetGroup<TextureKeyframeGroup>(propertyKey);
-        if (group != null)
-        {
-          group.TrimToSingleKeyframe();
-        }
-      }
+      group.TrimToSingleKeyframe();
     }
 
     // Blacklist some groups from being on the timeline.

@@ -11,6 +11,8 @@ namespace Funly.SkyStudio
     public const float MinEdgeFeathering = 0.0001f;
     public const float MinStarFadeBegin = -.999f;
     public const float MaxSpriteItems = 100000;
+    public const float MinRotationSpeed = -10.0f;
+    public const float MaxRotationSpeed = 10.0f;
 
     public Standard3dShaderDefinition()
     {
@@ -112,7 +114,7 @@ namespace Funly.SkyStudio
             "Sky Middle Color", ProfilePropertyKeys.SkyMiddleColorKey, Color.white,
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.Gradient, true,
             "Middle color of the sky when using the gradient background."),
-          
+
           ProfileGroupDefinition.ColorGroupDefinition(
             "Sky Lower Color", ProfilePropertyKeys.SkyLowerColorKey, ColorHelper.ColorWithHex(0xE3C882),
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.Gradient, true,
@@ -127,7 +129,7 @@ namespace Funly.SkyStudio
             "Horizon Position", ProfilePropertyKeys.HorizonTrasitionStartKey, -1, 1, -.3f,
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.Gradient, true,
             "This vertical position controls where the gradient background will begin."),
-          
+
           ProfileGroupDefinition.NumberGroupDefinition(
             "Sky Gradient Length", ProfilePropertyKeys.HorizonTransitionLengthKey, 0, 2, 1,
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.Gradient, true,
@@ -214,10 +216,10 @@ namespace Funly.SkyStudio
             0.0f, 90.0f, 15.0f, ProfileGroupDefinition.RebuildType.None, ProfileGroupDefinition.FormatStyle.Integer, ShaderKeywords.SunSpriteSheet, true,
             "Frames per second to flip through the sprite images."),
 
-          ProfileGroupDefinition.NumberGroupDefinition("Sun Rotation Speed", ProfilePropertyKeys.SunRotationSpeedKey, 0, 10, 1, 
+          ProfileGroupDefinition.NumberGroupDefinition("Sun Rotation Speed", ProfilePropertyKeys.SunRotationSpeedKey, MinRotationSpeed, MaxRotationSpeed, 1,
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.SunRotation, true,
             "Speed value for sun texture rotation animation."),
-          
+
           ProfileGroupDefinition.NumberGroupDefinition("Sun Size", ProfilePropertyKeys.SunSizeKey, 0, 1, .1f,
             "Size of the sun."),
 
@@ -233,14 +235,8 @@ namespace Funly.SkyStudio
           ProfileGroupDefinition.NumberGroupDefinition("Sun Light Intensity", ProfilePropertyKeys.SunLightIntensityKey, 0, 5, 1,
             "Intensity of the directional light coming from the sun."),
 
-          ProfileGroupDefinition.NumberGroupDefinition("Sun Orbit Rotation", ProfilePropertyKeys.SunOrbitRotation, 0, 1, 0,
-            "Change the horizontal rotation (global y-axis) of sun orbit, to align sunrise and sunset with your scene."),
-
-          ProfileGroupDefinition.NumberGroupDefinition("Sun Orbit Tilt", ProfilePropertyKeys.SunOrbitTilt, -1, 1, 0,
-            "Adjust the tilt of the suns orbit. A value of 0 means there is no tilt and the sun will move directly overhead."),
-
-          ProfileGroupDefinition.NumberGroupDefinition("Sun Orbit Progress", ProfilePropertyKeys.SunOrbitProgress, 0, 1, 0,
-            "The progress of the sun completing it's full orbit."),
+          ProfileGroupDefinition.SpherePointGroupDefinition("Sun Position", ProfilePropertyKeys.SunPositionKey, 0, 0,
+            "Position of the sun in the skybox expressed as a horizontal and vertical rotation.")
         }),
 
         // Moon section.
@@ -269,7 +265,7 @@ namespace Funly.SkyStudio
             0.0f, 90.0f, 15.0f, ProfileGroupDefinition.RebuildType.None, ProfileGroupDefinition.FormatStyle.Integer, ShaderKeywords.MoonSpriteSheet, true,
             "Frames per second to flip through the sprite images."), 
 
-          ProfileGroupDefinition.NumberGroupDefinition("Moon Rotation Speed", ProfilePropertyKeys.MoonRotationSpeedKey, 0, 10, 1,
+          ProfileGroupDefinition.NumberGroupDefinition("Moon Rotation Speed", ProfilePropertyKeys.MoonRotationSpeedKey, MinRotationSpeed, MaxRotationSpeed, 1,
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.MoonRotation, true,
             "Speed value for moon texture rotation animation."),
           
@@ -288,17 +284,8 @@ namespace Funly.SkyStudio
           ProfileGroupDefinition.NumberGroupDefinition("Moon Light Intensity", ProfilePropertyKeys.MoonLightIntensityKey, 0, 5, 1,
             "Intensity of the directional light coming from the moon."),
 
-          ProfileGroupDefinition.NumberGroupDefinition("Moon Orbit Rotation", ProfilePropertyKeys.MoonOrbitRotation, 0, 1, 0,
-            "Rotate the moon around the y-axis, useful for aligning sunrise/sunsets with your scene layout."),
-
-          ProfileGroupDefinition.NumberGroupDefinition("Moon Orbit Tilt", ProfilePropertyKeys.MoonOrbitTilt, -1, 1, 0,
-            "Adjust the tilt of the moons orbit. A value of 0 means there is no tilt and the moon will move directly overhead."),
-
-          ProfileGroupDefinition.NumberGroupDefinition("Moon Orbit Progress", ProfilePropertyKeys.MoonOrbitProgress, 0, 1, 0,
-            "The progress of the moon completing it's full orbit."),
-
-          ProfileGroupDefinition.NumberGroupDefinition("Moon Orbit Speed", ProfilePropertyKeys.MoonOrbitSpeed, 0, 3, 1,
-            "Speed multiplier used to have the the moon move slower or faster than the suns orbit."),
+          ProfileGroupDefinition.SpherePointGroupDefinition("Moon Position", ProfilePropertyKeys.MoonPositionKey, 0, 0,
+            "Position of the moon in the skybox expressed as a horizontal and vertical rotation.")
         }),
 
         // Star 1 section.
@@ -326,7 +313,7 @@ namespace Funly.SkyStudio
             "Frames per second to flip through the sprite images."),
 
           ProfileGroupDefinition.NumberGroupDefinition(
-            "Star 1 Rotation Speed", ProfilePropertyKeys.Star1RotationSpeedKey, 0, 10, 0,
+            "Star 1 Rotation Speed", ProfilePropertyKeys.Star1RotationSpeedKey, MinRotationSpeed, MaxRotationSpeed, 0,
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.StarLayer1CustomTexture, true,
             "Speed the star rotates at."),
           
@@ -378,7 +365,7 @@ namespace Funly.SkyStudio
             "Frames per second to flip through the sprite images."),
 
           ProfileGroupDefinition.NumberGroupDefinition(
-            "Star 2 Rotation Speed", ProfilePropertyKeys.Star2RotationSpeedKey, 0, 10, 0,
+            "Star 2 Rotation Speed", ProfilePropertyKeys.Star2RotationSpeedKey, MinRotationSpeed, MaxRotationSpeed, 0,
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.StarLayer2CustomTexture, true,
             "Speed the star rotates at."),
           
@@ -430,7 +417,7 @@ namespace Funly.SkyStudio
             "Frames per second to flip through the sprite images."),
 
           ProfileGroupDefinition.NumberGroupDefinition(
-            "Star 3 Rotation Speed", ProfilePropertyKeys.Star3RotationSpeedKey, 0, 10, 0,
+            "Star 3 Rotation Speed", ProfilePropertyKeys.Star3RotationSpeedKey, MinRotationSpeed, MaxRotationSpeed, 0,
             ProfileGroupDefinition.RebuildType.None, ShaderKeywords.StarLayer3CustomTexture, true,
             "Speed the star rotates at."),
           

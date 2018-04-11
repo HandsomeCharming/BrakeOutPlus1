@@ -42,7 +42,10 @@ namespace Funly.SkyStudio {
         ShowWindow();
       }
 
-      SharedHelpWindow().Repaint();
+      if (_instance != null)
+      {
+        SharedHelpWindow().Repaint();
+      }
     }
 
     public static bool ContainsHelpForKey(string propertyKey) {
@@ -53,7 +56,13 @@ namespace Funly.SkyStudio {
 
 		private void OnInspectorUpdate()
 		{
-			Repaint();
+		  // Make sure we only have 1 window open.
+		  if (this != _instance) {
+		    this.Close();
+		    return;
+		  }
+
+      Repaint();
 		}
 
 		private void OnGUI()

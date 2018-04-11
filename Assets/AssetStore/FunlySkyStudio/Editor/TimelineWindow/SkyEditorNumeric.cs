@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Funly.SkyStudio
 {
-  public abstract class SkyEditorNumeric
+  public abstract class NumberTimelineRow
   {
     private const float k_LineThickness = 90.0f;
     private const float k_LineEdgeFeathering = .4f;
@@ -262,12 +262,10 @@ namespace Funly.SkyStudio
           }
 
           if (didSingleClick || isDragging) {
-            KeyframeInspectorWindow.numberKeyframe = currentKey;
-            KeyframeInspectorWindow.numberGroup = group;
-            KeyframeInspectorWindow.profile = profile;
-            KeyframeInspectorWindow.keyType = KeyframeInspectorWindow.KeyType.Numeric;
+            KeyframeInspectorWindow.SetKeyframeData(
+              currentKey, group, KeyframeInspectorWindow.KeyType.Numeric, profile);
 
-            if (didSingleClick && KeyframeInspectorWindow.IsEnabled == false) {
+            if (didSingleClick && KeyframeInspectorWindow.inspectorEnabled == false) {
               KeyframeInspectorWindow.ShowWindow();
             }
           }

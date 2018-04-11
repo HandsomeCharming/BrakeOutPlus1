@@ -28,11 +28,19 @@ namespace Funly.SkyStudio
 
     // Adjust interpolation curve to next keyframe.
     [SerializeField]
-    private CurveType m_CurveType = CurveType.Linear;
-    public CurveType curveType
+    private InterpolationCurve m_InterpolationCurve = InterpolationCurve.Linear;
+    public InterpolationCurve interpolationCurve
     {
-      get { return m_CurveType; }
-      set { m_CurveType = value; }
+      get { return m_InterpolationCurve; }
+      set { m_InterpolationCurve = value; }
+    }
+
+    [SerializeField]
+    private InterpolationDirection m_InterpolationDirection = InterpolationDirection.Auto;
+    public InterpolationDirection interpolationDirection
+    {
+      get { return m_InterpolationDirection; }
+      set { m_InterpolationDirection = value; }
     }
 
     public BaseKeyframe(float time)

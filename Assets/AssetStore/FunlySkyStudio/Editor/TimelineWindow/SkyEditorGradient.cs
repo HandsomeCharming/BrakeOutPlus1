@@ -6,7 +6,7 @@ using UnityEditor;
 namespace Funly.SkyStudio
 {
   // Custom editor GUI for skies.
-  public abstract class SkyEditorGradient
+  public abstract class ColorTimelineRow
   {
     private const float k_LineSmoothing = 5.0f;
     private static Mesh m_RectangleMesh;
@@ -82,11 +82,11 @@ namespace Funly.SkyStudio
       m.uv = uvs.ToArray();
     }
 
-    public static void KeyFrameGradient(Rect rect, SkyProfile profile, ColorKeyframeGroup colors)
+    public static void RenderColorGroupRow(Rect rect, SkyProfile profile, ColorKeyframeGroup colors)
     {
       bool sortGroup = false;
 
-      KeyFrameGradient(rect, colors);
+      RenderColorGroupRow(rect, colors);
 
       for (int i = 0; i < colors.keyframes.Count; i++) {
         ColorKeyframe currentKey = colors.GetKeyframe(i);
@@ -105,10 +105,8 @@ namespace Funly.SkyStudio
         // Show the color keyframe property window.
         if (didSingleClick || isDragging) {
           // Load info about this keyframe and show the editor window.
-          KeyframeInspectorWindow.profile = profile;
-          KeyframeInspectorWindow.colorGroup = colors;
-          KeyframeInspectorWindow.colorKeyFrame = currentKey;
-          KeyframeInspectorWindow.keyType = KeyframeInspectorWindow.KeyType.Color;
+          KeyframeInspectorWindow.SetKeyframeData(
+            currentKey, colors, KeyframeInspectorWindow.KeyType.Color, profile);
 
           if (didSingleClick) {
             KeyframeInspectorWindow.ShowWindow();
@@ -121,7 +119,7 @@ namespace Funly.SkyStudio
       }
     }
 
-    public static void KeyFrameGradient(Rect rect, ColorKeyframeGroup group)
+    public static void RenderColorGroupRow(Rect rect, ColorKeyframeGroup group)
     {
       if ((int) rect.width == 0)
       {

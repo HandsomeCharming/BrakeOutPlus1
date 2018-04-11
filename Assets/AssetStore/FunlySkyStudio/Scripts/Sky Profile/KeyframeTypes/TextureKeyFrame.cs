@@ -18,6 +18,8 @@ namespace Funly.SkyStudio
     public TextureKeyframe(TextureKeyframe keyframe) : base(keyframe.time)
     {
       this.texture = keyframe.texture;
+      interpolationCurve = keyframe.interpolationCurve;
+      interpolationDirection = keyframe.interpolationDirection;
     }
   }
 }
