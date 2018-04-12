@@ -37,7 +37,12 @@ public class UIManager : MonoBehaviour {
         m_ConsistantUI.UpdateNumbers();
 		if (GameManager.current.state == GameManager.GameState.Start || GameManager.current.state == GameManager.GameState.AssembleTrack )
         {
-            StartMainMenu();
+            if(AppManager.instance.HasName())
+                StartMainMenu();
+            else
+            {
+                StartLogin();
+            }
         }
         else if (GameManager.current.state == GameManager.GameState.Running)
         {
@@ -76,6 +81,12 @@ public class UIManager : MonoBehaviour {
         m_MainMenu.gameObject.SetActive(true);
     }
 	
+    void StartLogin()
+    {
+        DisableAll();
+        m_LoginUI.gameObject.SetActive(true);
+    }
+
     void StartGame()
     {
         DisableAll();
@@ -93,12 +104,6 @@ public class UIManager : MonoBehaviour {
         DisableAll();
         m_ReviveMenu.m_Countdown = 5.0f;
         m_ReviveMenu.gameObject.SetActive(true);
-    }
-
-    void StartLoggingIn()
-    {
-        DisableAll();
-
     }
 
     void Pause()

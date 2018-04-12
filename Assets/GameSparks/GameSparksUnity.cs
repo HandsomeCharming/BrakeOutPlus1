@@ -30,7 +30,7 @@ public class GameSparksUnity : MonoBehaviour
 
     void StartGameSparks()    
 #else
-    void Start()
+    void Awake()
 #endif
     {
 

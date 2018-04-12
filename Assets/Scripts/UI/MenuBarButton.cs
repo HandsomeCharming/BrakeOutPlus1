@@ -8,6 +8,7 @@ public class MenuBarButton : MonoBehaviour {
     public Image m_BaseImage;
     public GameObject m_Menu;
     public UnityEvent m_EventWhenPressedAgain;
+    public UnityEvent m_EventWhenFirstActivate;
     bool m_Active;
 
     static Color selectedColor = new Color(100.0f / 255.0f, 120.0f / 255.0f, 135.0f / 255.0f);
@@ -19,6 +20,8 @@ public class MenuBarButton : MonoBehaviour {
 
     public void SetActivate(bool active)
     {
+        if (active != m_Active && active)
+            m_EventWhenFirstActivate.Invoke();
         m_Active = active;
         if(active == true)
         {

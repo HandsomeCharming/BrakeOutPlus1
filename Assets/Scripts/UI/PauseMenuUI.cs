@@ -20,10 +20,13 @@ public class PauseMenuUI : UIBase
 
     void ReloadGame()
     {
-        GameManager.current.Reload();
+        //GameManager.current.Reload();
+        GameManager.current.m_ReviveCount = 3;
+        Player.current.Die();
     }
     void Resume()
     {
+
         GameManager.current.Pause(false);
     }
 }

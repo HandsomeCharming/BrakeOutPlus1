@@ -84,6 +84,10 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         current = this;
+
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.Save();
+
         //Init App Manager
         if(AppManager.instance == null)
         {
@@ -139,6 +143,11 @@ public class GameManager : MonoBehaviour {
         m_ItemMultiplier = 1.0f;
 
 		m_ReviveCount = 0;
+    }
+
+    private void Start()
+    {
+        //AppManager.instance.Invoke("DailyLoginGS", 0.5f);
     }
 
     public void StartLoadCar()
@@ -292,6 +301,7 @@ public class GameManager : MonoBehaviour {
         {
             SetDayHighScore();
         }
+        AppManager.instance.UpdateDailyLeaderboardScore((int)gameScore);
 	}
 
     void SetDayHighScore()
@@ -300,7 +310,8 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetInt(DayHighScoreName, dayHighScore);
         PlayerPrefs.Save();
 
-        NetworkManager.current.SendDailyHighScore(dayHighScore);
+        //NetworkManager.current.SendDailyHighScore(dayHighScore);
+
     }
 
     public void SetItemMultiplier(float mult, float time)
