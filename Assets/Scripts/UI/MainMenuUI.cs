@@ -16,7 +16,7 @@ public class MainMenuUI : UIBase
 
     public void ActivateMenu(MenuBarButton button, bool sendEvent = true)
     {
-        print(button.name);
+        //print(button.name);
         if (button == m_CurrentMenuBar && sendEvent)
         {
             button.m_EventWhenPressedAgain.Invoke();

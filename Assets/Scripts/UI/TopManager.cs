@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using GameSparks.Core;
 
 public class RankUIRow
 {
@@ -120,88 +121,79 @@ public class TopManager : MonoBehaviour {
                 {
                     m_Rows[i].name.text = "Unavailable";
                     m_Rows[i].rank.text = i.ToString();
-                    m_Rows[i].score.text = "0";
+                    m_Rows[i].score.text = "..";
                 }
             }
         });
-    }
+        
+        m_PlayerRow.rank.text = "..";
+        m_PlayerRow.score.text = "Loading";
+        m_PlayerRow.name.text = AppManager.instance.GetUserName();
 
-    //Shitty code
-    public void GetLeaderBoardWeekly()
-    {
-        if (m_CurrentBoardIndex != 2) InitLeaderBoardRows();
-        m_CurrentBoardIndex = 2;
+        List<string> lbs = new List<string>();
+        lbs.Add(boardName[m_CurrentBoardIndex]);
 
-        new GameSparks.Api.Requests.LeaderboardDataRequest().SetLeaderboardShortCode("WL").SetEntryCount(10).Send((response) =>
+        new GameSparks.Api.Requests.AccountDetailsRequest()
+            .Send((response) =>
+            {
+                if (!response.HasErrors)
+                {
+                    string PlayerID = response.UserId;
+                    new GameSparks.Api.Requests.GetLeaderboardEntriesRequest().SetPlayer(PlayerID).SetLeaderboards(lbs).Send((response2) =>
+                    {
+                        //print(response.ScriptData);
+                        //int score = (int)response2.BaseData.GetNumber("SCORE");
+                        print(response2.JSONData.Keys);
+                        foreach(var jj in response2.JSONData)
+                        {
+                            print(jj.Key);
+                            if(jj.Key.Contains(boardName[m_CurrentBoardIndex]))
+                            {
+                                print((jj.Value.GetType()));
+                                GSData data = (GSData) jj.Value;
+                                print(data.GetNumber("SCORE"));
+                                print(data.GetNumber("rank"));
+                                int score = (int) data.GetNumber("SCORE");
+                                int rank = (int)data.GetNumber("rank");
+                                m_PlayerRow.rank.text = rank.ToString();
+                                m_PlayerRow.score.text = score.ToString();
+                                m_PlayerRow.name.text = data.GetString("userName");
+                            }
+                        }
+                        //print(score);
+                        print(response2.BaseData.JSON);
+                    });
+                }
+
+            });
+
+        /*new GameSparks.Api.Requests.GetLeaderboardEntriesRequest().SetLeaderboards(lbs).Send((response) =>
         {
             if (!response.HasErrors)
             {
-                Debug.Log("Found Leaderboard Data...");
-                int i = 0;
-                foreach (GameSparks.Api.Responses.LeaderboardDataResponse._LeaderboardData entry in response.Data)
+                Debug.Log("Found my Leaderboard Data...");
+                print(response.ScriptData);
+                if(response.ScriptData != null)
                 {
-                    int rank = (int)entry.Rank;
-                    string playerName = entry.UserName;
-                    if (playerName == "") playerName = "Driver";
-                    string score = entry.JSONData["SCORE"].ToString();
-                    Debug.Log("Rank:" + rank + " Name:" + playerName + " \n Score:" + score);
-
-                    m_Rows[i].name.text = playerName;
-                    m_Rows[i].rank.text = rank.ToString();
-                    m_Rows[i].score.text = score.ToString();
-                    i++;
+                    //m_PlayerRow.rank.text = response.ScriptData.
+                    //m_PlayerRow.score.text = rank["top_score"] as string;
                 }
-                for (; i < 10; ++i)
+                else
                 {
-                    m_Rows[i].name.text = "Unavailable";
-                    m_Rows[i].rank.text = i.ToString();
-                    m_Rows[i].score.text = "0";
+                    m_PlayerRow.rank.text = "..";
+                    m_PlayerRow.score.text = "Not here";
+                    m_PlayerRow.name.text = AppManager.instance.GetUserName();
                 }
             }
             else
             {
-                Debug.Log("Error Retrieving Leaderboard Data...");
-            }
-        });
-    }
+                Debug.Log("Error Retrieving my leaderboard Data...");
 
-    //shiitty
-    public void GetLeaderBoardHonor()
-    {
-        if (m_CurrentBoardIndex != 3) InitLeaderBoardRows();
-        m_CurrentBoardIndex = 3;
-
-        new GameSparks.Api.Requests.LeaderboardDataRequest().SetLeaderboardShortCode("HR").SetEntryCount(10).Send((response) =>
-        {
-            if (!response.HasErrors)
-            {
-                Debug.Log("Found Leaderboard Data...");
-                int i = 0;
-                foreach (GameSparks.Api.Responses.LeaderboardDataResponse._LeaderboardData entry in response.Data)
-                {
-                    int rank = (int)entry.Rank;
-                    string playerName = entry.UserName;
-                    if (playerName == "") playerName = "Driver";
-                    string score = entry.JSONData["SCORE"].ToString();
-                    Debug.Log("Rank:" + rank + " Name:" + playerName + " \n Score:" + score);
-
-                    m_Rows[i].name.text = playerName;
-                    m_Rows[i].rank.text = rank.ToString();
-                    m_Rows[i].score.text = score.ToString();
-                    i++;
-                }
-                for (; i < 10; ++i)
-                {
-                    m_Rows[i].name.text = "Unavailable";
-                    m_Rows[i].rank.text = i.ToString();
-                    m_Rows[i].score.text = "0";
-                }
+                m_PlayerRow.rank.text = "..";
+                m_PlayerRow.score.text = "Not here";
+                m_PlayerRow.name.text = AppManager.instance.GetUserName();
             }
-            else
-            {
-                Debug.Log("Error Retrieving Leaderboard Data...");
-            }
-        });
+        });*/
     }
 
     public void GetLeaderBoardDaily(string text)

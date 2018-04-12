@@ -105,6 +105,24 @@ public class AppManager : MonoBehaviour {
         });
     }
 
+    public void RenameGameSpark(string name)
+    {
+
+        new GameSparks.Api.Requests.ChangeUserDetailsRequest().SetDisplayName(name).Send((response) =>
+        {
+            if (!response.HasErrors)
+            {
+                print("Registered");
+                PlayerPrefs.SetString(GSRegisteredPref, name);
+                PlayerPrefs.Save();
+            }
+            else
+            {
+                Debug.Log("Register gamespark failed");
+            }
+        });
+    }
+
     void GsServiceHandler(bool available)
     {
         if (!available)
