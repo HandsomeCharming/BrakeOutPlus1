@@ -143,10 +143,10 @@ public class TopManager : MonoBehaviour {
                     {
                         //print(response.ScriptData);
                         //int score = (int)response2.BaseData.GetNumber("SCORE");
-                        print(response2.JSONData.Keys);
+                        //print(response2.JSONData.Keys);
                         foreach(var jj in response2.JSONData)
                         {
-                            print(jj.Key);
+                            //print(jj.Key);
                             if(jj.Key.Contains(boardName[m_CurrentBoardIndex]))
                             {
                                 print((jj.Value.GetType()));
@@ -161,7 +161,7 @@ public class TopManager : MonoBehaviour {
                             }
                         }
                         //print(score);
-                        print(response2.BaseData.JSON);
+                        //print(response2.BaseData.JSON);
                     });
                 }
 
