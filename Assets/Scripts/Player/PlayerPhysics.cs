@@ -30,6 +30,9 @@ public class PlayerPhysics : MonoBehaviour {
     public float timeToReachMaxRotateSpeed;
     public float timeToReachMaxBoost;
 
+    public float cameraGoFarTime;
+    public float cameraGoNearTime;
+
     /*public float MinHoverDistance = 2.0f;
     public float MaxHoverDistance = 4.0f;
     public float ResetYHoverDistance = 0.5f;
@@ -71,6 +74,32 @@ public class PlayerPhysics : MonoBehaviour {
         {
             AudioSystem.current.SetSpeed(m_SoundSpeed);
         }
+    }
+
+    public float GetDataFromMinMax(MinMaxData data, int level, int maxLevel)
+    {
+        --level; --maxLevel;
+        float lerpAmount = ((float)level) / (float)maxLevel;
+        return Mathf.Lerp(data.min, data.max, lerpAmount);
+    }
+
+    public void SetPhysicsByClassData(CarClassData classData, SingleCarSelectData carData, CarSaveData data)
+    {
+        if (classData.carClass == CarClass.Custom) return;
+
+        pushForce = GetDataFromMinMax(classData.m_PushForce, data.m_AccLevel, carData.maxUpgradeLevel);
+        accelerateForce = GetDataFromMinMax(classData.m_BoostForce, data.m_AccLevel, carData.maxUpgradeLevel);
+        launchForce = GetDataFromMinMax(classData.m_LaunchForce, data.m_AccLevel, carData.maxUpgradeLevel);
+        //public float accelarateTime;
+        minRotateSpeed = GetDataFromMinMax(classData.m_MinRotateSpeed, data.m_HandlingLevel, carData.maxUpgradeLevel);
+        maxRotateSpeed = GetDataFromMinMax(classData.m_MaxRotateSpeed, data.m_HandlingLevel, carData.maxUpgradeLevel);
+        minBoostRotateSpeed = GetDataFromMinMax(classData.m_MinBoostRotateSpeed, data.m_HandlingLevel, carData.maxUpgradeLevel);
+        maxBoostRotateSpeed = GetDataFromMinMax(classData.m_MaxBoostRotateSpeed, data.m_HandlingLevel, carData.maxUpgradeLevel);
+        timeToReachMaxRotateSpeed = GetDataFromMinMax(classData.timeToReachMaxRotateSpeed, data.m_HandlingLevel, carData.maxUpgradeLevel);
+        timeToReachMaxBoost = GetDataFromMinMax(classData.timeToReachMaxBoost, data.m_HandlingLevel, carData.maxUpgradeLevel);
+
+        cameraGoFarTime = GetDataFromMinMax(classData.m_CameraGoFarTime, data.m_AccLevel, carData.maxUpgradeLevel);
+        cameraGoNearTime = GetDataFromMinMax(classData.m_CameraGoNearTime, data.m_AccLevel, carData.maxUpgradeLevel);
     }
 
     public bool CanBeKilledByWall()

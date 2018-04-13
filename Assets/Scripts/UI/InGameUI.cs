@@ -25,7 +25,7 @@ public class InGameUI : UIBase
 
     // Use this for initialization
     void Awake() {
-        DoubleScore.gameObject.SetActive(false);
+        //DoubleScore.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -93,7 +93,7 @@ public class InGameUI : UIBase
         }
     }
 
-    public void StartDoubleScoreCountDown(float time)
+    /*public void StartDoubleScoreCountDown(float time)
     {
         DoubleScore.gameObject.SetActive(true);
         StartCoroutine(DoubleScoreCountDown(time));
@@ -101,13 +101,9 @@ public class InGameUI : UIBase
 
     IEnumerator DoubleScoreCountDown(float time)
     {
-        while(time > 0)
-        {
-            yield return new WaitForEndOfFrame();
-            time -= Time.deltaTime;
-        }
+        yield return new WaitForSeconds(time);
         DoubleScore.gameObject.SetActive(false);
-    }
+    }*/
 
     public void HideBoostUI()
     {

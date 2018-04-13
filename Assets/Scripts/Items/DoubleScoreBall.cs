@@ -18,7 +18,7 @@ public class DoubleScoreBall : ItemSuper
         {
             float time = ItemManager.GetItemDuration(ItemType.DoubleScore);
             GameManager.current.SetItemMultiplier(2.0f, time);
-            UIManager.current.m_Ingame.StartDoubleScoreCountDown(time);
+            //UIManager.current.m_Ingame.StartDoubleScoreCountDown(time);
             
             Destroy(gameObject);
         }

@@ -204,4 +204,9 @@ public class SaveManager {
     {
         return m_Data.m_Trails.m_TrailNames.Contains(name);
     }
+
+    public CarSaveData GetSavedCarData(string name)
+    {
+        return m_CarDict[name];
+    }
 }

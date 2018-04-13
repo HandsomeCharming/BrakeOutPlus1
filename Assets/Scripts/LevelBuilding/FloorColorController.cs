@@ -21,7 +21,7 @@ public class FloorColorController : MonoBehaviour {
         //m_Storer = (FloorColorDataObject) Resources.Load("DataObjects/FloorColorDataObject");
         m_CurrentColorIndex = 0;
         m_CurrentDataIndex = 0;
-        print(m_Storer.data.Length);
+        //print(m_Storer.data.Length);
         m_CurrentData = m_Storer.data[0];
         lerpGap = m_Storer.m_LerpGap;
         m_FromDataIndex = Random.Range(0, m_CurrentData.colors.Length);

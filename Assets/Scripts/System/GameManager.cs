@@ -176,7 +176,14 @@ public class GameManager : MonoBehaviour {
         m_CurrentCarIndex = carIndex;
         m_CurrentSceneIndex = sceneIndex;
 
-        ReloadCar(CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).CarInGamePrefab);
+        SingleCarSelectData data = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex);
+        ReloadCar(data.CarInGamePrefab);
+        CarClassData classData = CarSelectDataReader.Instance.GetCarClassData(data.carClass.ToString());
+        if(classData != null)
+        {
+            Player.current.physics.SetPhysicsByClassData(classData, data, SaveManager.instance.GetSavedCarData(data.name));
+        }
+
         SetDefaultCar(carIndex, sceneIndex);
     }
 
@@ -439,6 +446,7 @@ public class GameManager : MonoBehaviour {
 		state = GameState.AssembleTrack;
 		ResetSceneStats();
         LoadDefaultCarAndTrail();
+        ItemManager.current.Reset();
         ChallengeManager.current.Reset();
         FloorBuilder.current.RebuildFloor();
         UIManager.current.ChangeStateByGameState();

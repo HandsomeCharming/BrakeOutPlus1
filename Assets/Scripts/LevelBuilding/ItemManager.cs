@@ -97,6 +97,13 @@ public class ItemManager {
         InitItemLevelDict();
     }
 
+    public void Reset()
+    {
+        m_CurrentItemDataIndex = 0;
+        m_CurrentItemData = m_Storer.m_SpawnData[0];
+        m_NextItemFloorCount = m_CurrentItemData.ItemFloorGap;
+    }
+
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();

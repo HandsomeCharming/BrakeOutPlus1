@@ -8,8 +8,18 @@ public enum CarClass
     Fast,
     GoodTurn,
     Boost,
-    Slow
+    Best,
+    Custom
 }
+
+public enum Rarity
+{
+    Common,
+    Rare,
+    Epic,
+    Legendary
+}
+
 
 [System.Serializable]
 public class SceneCars
@@ -62,6 +72,8 @@ public class SingleCarSelectData
 
     [Header("Class")]
     public CarClass carClass;
+    public Rarity rarity;
+    public int maxUpgradeLevel;
 
     [Header("Trail")]
     public bool CanChangeTrail = true;
@@ -94,14 +106,20 @@ public class CarClassData
     public float[] m_BoostPrice;
 
     [Header("Physics Settings")]
-    public float m_PushForce;
-    public float m_BoostForce;
-    public float m_LaunchForce;
+    public MinMaxData m_PushForce;
+    public MinMaxData m_BoostForce;
+    public MinMaxData m_LaunchForce;
     public float m_Gravity;
-    public MinMaxData m_RotateSpeed;
-    public MinMaxData m_BoostRotateSpeed;
-    public float m_CameraGoFarTime;
-    public float m_CameraGoNearTime;
+    public MinMaxData m_MinRotateSpeed;
+    public MinMaxData m_MaxRotateSpeed;
+    public MinMaxData m_MinBoostRotateSpeed;
+    public MinMaxData m_MaxBoostRotateSpeed;
+    public MinMaxData timeToReachMaxRotateSpeed;
+    public MinMaxData timeToReachMaxBoost;
+    public MinMaxData m_CameraGoFarTime;
+    public MinMaxData m_CameraGoNearTime;
+
+    public MinMaxData m_MaxBoostMultiplier;
 }
 
 [System.Serializable]
@@ -183,5 +201,17 @@ public class CarSelectDataReader
     public TrailSelectData GetTrailSelectData(string name)
     {
         return m_TrailSelectDict[name];
+    }
+
+    public CarClassData GetCarClassData(string name)
+    {
+        foreach (var data in m_CarStorer.classData)
+        {
+            if(name == data.name)
+            {
+                return data;
+            }
+        }
+        return null;
     }
 }
