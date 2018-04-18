@@ -208,6 +208,9 @@ public class SaveManager {
 
     public CarSaveData GetSavedCarData(string name)
     {
-        return m_CarDict[name];
+        if (m_CarDict.ContainsKey(name))
+            return m_CarDict[name];
+        else
+            return null;
     }
 }

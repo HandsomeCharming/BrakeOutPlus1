@@ -65,7 +65,7 @@ public class PlaneVehicle : VehicleSuper
             //print(m_Throttle);
         }*/
 
-        if (m_State == VehicleState.Normal || m_State == VehicleState.Gliding)
+        if (m_State == VehicleState.Normal || m_State == VehicleState.Gliding || m_State == VehicleState.AutoPilot)
         {
             tiltAngle = transform.eulerAngles.z;
             if (turning)

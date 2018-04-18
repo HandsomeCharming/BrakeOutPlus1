@@ -85,10 +85,7 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         current = this;
-
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-
+       
         //Init App Manager
         if(AppManager.instance == null)
         {
@@ -178,14 +175,26 @@ public class GameManager : MonoBehaviour {
         m_CurrentSceneIndex = sceneIndex;
 
         SingleCarSelectData data = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex);
-        ReloadCar(data.CarInGamePrefab);
-        CarClassData classData = CarSelectDataReader.Instance.GetCarClassData(data.carClass.ToString());
-        if(classData != null)
+        if(SaveManager.instance.HasCar(data.name))
         {
-            Player.current.physics.SetPhysicsByClassData(classData, data, SaveManager.instance.GetSavedCarData(data.name));
-        }
+            ReloadCar(data.CarInGamePrefab);
+            CarClassData classData = CarSelectDataReader.Instance.GetCarClassData(data.carClass.ToString());
+            if (classData != null)
+            {
+                Player.current.physics.SetPhysicsByClassData(classData, data, SaveManager.instance.GetSavedCarData(data.name));
+            }
 
-        SetDefaultCar(carIndex, sceneIndex);
+            SetDefaultCar(carIndex, sceneIndex);
+        }
+        else
+        {
+            Debug.LogError("Loading car that's not bought, loading default car");
+            PlayerPrefs.SetInt("DefaultCar", 0);
+            PlayerPrefs.SetInt("DefaultScene", 0);
+            PlayerPrefs.SetString("DefaultTrail", "Line");
+            PlayerPrefs.Save();
+            LoadDefaultCarAndTrail();
+        }
     }
 
     public void ReloadTrail(string name)
