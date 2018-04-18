@@ -129,17 +129,9 @@ public class TriangleVehicle : VehicleSuper {
     public override void StartAutoPilot()
     {
         base.StartAutoPilot();
-        if(m_AutoPilotAndBoostTrails != null)
-        {
-            m_AutoPilotAndBoostTrails.SetActive(true);
-        }
     }
     public override void EndAutoPilot()
     {
         base.EndAutoPilot();
-        if (m_AutoPilotAndBoostTrails != null)
-        {
-            m_AutoPilotAndBoostTrails.SetActive(false);
-        }
     }
 }

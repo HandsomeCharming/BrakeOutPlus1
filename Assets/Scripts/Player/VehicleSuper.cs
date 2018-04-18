@@ -10,8 +10,7 @@ public enum VehicleState
 }
 
 public class VehicleSuper : MonoBehaviour {
-
-    Player m_Player;
+    
     public float tiltAngle;
     public VehicleState m_State;
     public bool m_AutoPiloting;
@@ -19,6 +18,7 @@ public class VehicleSuper : MonoBehaviour {
     public bool m_Boosting;
 
     public GameObject m_AutoPilotAndBoostTrails;
+    public TrailComponent m_Trail;
 
     public virtual void Awake()
     {
@@ -78,18 +78,15 @@ public class VehicleSuper : MonoBehaviour {
         {
             m_Boosting = false;
         }
-        if(m_Boosting)
+        if(m_Trail != null)
         {
-            if (m_AutoPilotAndBoostTrails != null)
+            if (m_Boosting || m_State == VehicleState.AutoPilot)
             {
-                m_AutoPilotAndBoostTrails.SetActive(true);
+                m_Trail.StartBoost();
             }
-        }
-        else
-        {
-            if (m_AutoPilotAndBoostTrails != null)
+            else
             {
-                m_AutoPilotAndBoostTrails.SetActive(false);
+                m_Trail.StopBoost();
             }
         }
 

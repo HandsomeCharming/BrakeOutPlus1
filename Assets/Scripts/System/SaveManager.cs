@@ -157,8 +157,9 @@ public class SaveManager {
     public void GetDefaultCarAndTrails()
     {
         BuyCar(0, 0);
+        BuyCar(0, 1);
         BuyTrail("Line");
-        BuyTrail("LineSky");
+        BuyTrail("Cloud");
     }
 
     public bool BuyCar(int carIndex, int sceneIndex)

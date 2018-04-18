@@ -4,6 +4,7 @@ using UnityEngine.Analytics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System;
 
 public class GameManager : MonoBehaviour {
 
@@ -85,8 +86,8 @@ public class GameManager : MonoBehaviour {
     {
         current = this;
 
-        //PlayerPrefs.DeleteAll();
-        //PlayerPrefs.Save();
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
 
         //Init App Manager
         if(AppManager.instance == null)
@@ -198,9 +199,12 @@ public class GameManager : MonoBehaviour {
         print(name);
         foreach (var trail in trails)
         {
-            if (trail.name == name)
+            if (trail.name.Equals(name, StringComparison.InvariantCultureIgnoreCase) )
             {
                 m_CurrentTrail = Instantiate(trail.TrailPrefab, player.GetComponent<Player>().vehicle.transform);
+                m_CurrentTrail.transform.localPosition = Vector3.zero;
+                //Player.current.vehicle.m_AutoPilotAndBoostTrails = m_CurrentTrail.transform.Find("Boost").gameObject;
+                Player.current.vehicle.m_Trail = m_CurrentTrail.GetComponent<TrailComponent>();
                 SetDefaultTrail(name);
             }
         }
