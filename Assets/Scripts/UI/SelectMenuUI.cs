@@ -226,7 +226,7 @@ public class SelectMenuUI : MonoBehaviour {
                     if (/*isInBox(m_BotLeft, m_TopRight, pos) &&*/ touch.phase != TouchPhase.Ended)
                     {
                         //m_CurrentCarPreview.transform.Rotate((m_LastTouchPos.y - pos.y) * m_RotSpeed, (m_LastTouchPos.x - pos.x) * m_RotSpeed, 0);
-                        m_CurrentRot.x += (m_LastTouchPos.y - pos.y) * m_RotSpeed;
+                        //m_CurrentRot.x += (m_LastTouchPos.y - pos.y) * m_RotSpeed;
                         m_CurrentRot.y += (m_LastTouchPos.x - pos.x) * m_RotSpeed;
                         m_CurrentCarPreview.transform.localEulerAngles = m_CurrentRot;
 
