@@ -9,8 +9,6 @@ public class TriangleVehicle : VehicleSuper {
     public float rotateAngle;
     public float m_AccelerateRotateSpeed;
 
-    public GameObject m_AutoPilotTrails;
-
     bool turning = false;
     bool m_StartAccelerate = true;
     float m_AccelerateTurnDir;
@@ -18,14 +16,17 @@ public class TriangleVehicle : VehicleSuper {
 
     Vector3 m_OriginalRot;
 
-    public void Awake()
+    public override void Awake()
     {
+        base.Awake();
+
         m_OriginalRot = transform.localEulerAngles;
         //m_DriveSound = RuntimeManager.CreateInstance("event:/Drive");
         //RuntimeManager.AttachInstanceToGameObject(, transform, GetComponent<Rigidbody>());
         //m_DriveSound.start();
         m_Throttle = 0;
         //m_DriveSound.setParameterValue("Throttle", m_Throttle);
+
     }
 
     public override void OnRotateLeft() {
@@ -128,17 +129,17 @@ public class TriangleVehicle : VehicleSuper {
     public override void StartAutoPilot()
     {
         base.StartAutoPilot();
-        if(m_AutoPilotTrails != null)
+        if(m_AutoPilotAndBoostTrails != null)
         {
-            m_AutoPilotTrails.SetActive(true);
+            m_AutoPilotAndBoostTrails.SetActive(true);
         }
     }
     public override void EndAutoPilot()
     {
         base.EndAutoPilot();
-        if (m_AutoPilotTrails != null)
+        if (m_AutoPilotAndBoostTrails != null)
         {
-            m_AutoPilotTrails.SetActive(false);
+            m_AutoPilotAndBoostTrails.SetActive(false);
         }
     }
 }
