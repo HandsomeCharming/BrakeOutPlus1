@@ -32,6 +32,8 @@ public class PlayerPhysics : MonoBehaviour {
 
     public float cameraGoFarTime;
     public float cameraGoNearTime;
+    float cameraZoomTime;
+    public float cameraZoomLerpAmount;
 
     /*public float MinHoverDistance = 2.0f;
     public float MaxHoverDistance = 4.0f;
@@ -67,6 +69,8 @@ public class PlayerPhysics : MonoBehaviour {
         m_RigidBody = GetComponent<Rigidbody>();
         afterBoostTime = 0;
         m_SoundSpeed = 0;
+        cameraZoomTime = 0;
+        cameraZoomLerpAmount = 0;
     }
 	
 	void Update () {
@@ -115,9 +119,13 @@ public class PlayerPhysics : MonoBehaviour {
             m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
             GetComponent<Rigidbody>().useGravity = true;
             GetComponent<Rigidbody>().isKinematic = false;
+            CameraEffectManager.current.StopMotionBlur();
+
+            cameraZoomTime = Mathf.Lerp(0, cameraGoNearTime, cameraZoomLerpAmount);
         }
         else if (playerPhysicsState == PlayerPhysicsState.Accelerating)
         {
+            CameraEffectManager.current.StartMotionBlur();
 
             GetComponent<Rigidbody>().isKinematic = false;
         }
@@ -128,6 +136,8 @@ public class PlayerPhysics : MonoBehaviour {
         }
         else if (playerPhysicsState == PlayerPhysicsState.Dead)
         {
+            CameraEffectManager.current.StopMotionBlur();
+
             m_RigidBody.constraints = 0;
             m_RigidBody.AddTorque(new Vector3(1, 1, 1), ForceMode.Impulse);
             GetComponent<Rigidbody>().isKinematic = false;
@@ -137,6 +147,8 @@ public class PlayerPhysics : MonoBehaviour {
             m_RigidBody.constraints = RigidbodyConstraints.FreezeRotation;
             GetComponent<Rigidbody>().useGravity = true;
             GetComponent<Rigidbody>().isKinematic = true;
+
+            cameraZoomTime = Mathf.Lerp(0, cameraGoFarTime, cameraZoomLerpAmount);
         } 
         else if(playerPhysicsState == PlayerPhysicsState.Gliding)
         {
@@ -175,6 +187,9 @@ public class PlayerPhysics : MonoBehaviour {
             //ApplyHover();
             ApplyGravityIfOffTrack();
 
+            cameraZoomTime = Mathf.Clamp(cameraZoomTime - Time.fixedDeltaTime, 0, cameraGoNearTime);
+            cameraZoomLerpAmount = cameraZoomTime / cameraGoNearTime;
+
             if (m_SoundSpeed > 0)
             {
                 m_SoundSpeed -= m_SoundSpeedDownRate * Time.fixedDeltaTime;
@@ -188,6 +203,9 @@ public class PlayerPhysics : MonoBehaviour {
             m_RigidBody.AddForce(transform.forward * accelerateForce);
             //ApplyHover();
             ApplyGravityIfOffTrack();
+            
+            cameraZoomTime = Mathf.Clamp(cameraZoomTime + Time.fixedDeltaTime, 0, cameraGoFarTime);
+            cameraZoomLerpAmount = cameraZoomTime / cameraGoFarTime;
 
             if (m_SoundSpeed < 100.0f)
             {
@@ -214,6 +232,11 @@ public class PlayerPhysics : MonoBehaviour {
             forward *= 0.95f;
             forward.y = 0.05f;
             m_RigidBody.AddForce(transform.forward * force); //(transform.localToWorldMatrix * Vector3.forward * pushForce);
+        }
+        else if(playerPhysicsState == PlayerPhysicsState.AutoPilot)
+        {
+            cameraZoomTime = Mathf.Clamp(cameraZoomTime + Time.fixedDeltaTime, 0, cameraGoFarTime);
+            cameraZoomLerpAmount = cameraZoomTime / cameraGoFarTime;
         }
     }
 
@@ -304,12 +327,18 @@ public class PlayerPhysics : MonoBehaviour {
 	*/
     public virtual void RegularPush()
     {
-        playerPhysicsState = PlayerPhysicsState.RegularMoving;
+        if(playerPhysicsState != PlayerPhysicsState.RegularMoving)
+        {
+            SetPhysicsState(PlayerPhysicsState.RegularMoving);
+        }
     }
 
     public virtual void AcceleratePush()
     {
-        playerPhysicsState = PlayerPhysicsState.Accelerating;
+        if(playerPhysicsState != PlayerPhysicsState.Accelerating)
+        {
+            SetPhysicsState(PlayerPhysicsState.Accelerating);
+        }
     }
 
     public virtual void RotateLeft(float m_RotatePercentage = 1.0f)

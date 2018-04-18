@@ -16,6 +16,7 @@ public class CameraEffectManager : MonoBehaviour {
 
     bool m_Autopiloting;
     bool m_HasAutoPilotIEnu;
+    bool m_MotionBluring;
 
     void OnEnable()
     {
@@ -34,6 +35,7 @@ public class CameraEffectManager : MonoBehaviour {
 
         m_Autopiloting = false;
         m_HasAutoPilotIEnu = false;
+        m_Profile.motionBlur.enabled = true;
     }
 
     public static void Bloom(float intensity, float duration, float peakDuration = 0.0f)
@@ -90,6 +92,18 @@ public class CameraEffectManager : MonoBehaviour {
         m_Autopiloting = false;
     }
 
+    public void StartMotionBlur()
+    {
+        //m_Profile.motionBlur.enabled = true;
+        m_MotionBluring = true;
+    }
+
+    public void StopMotionBlur()
+    {
+        //m_Profile.motionBlur.enabled = false;
+        m_MotionBluring = false;
+    }
+
     IEnumerator AutoPilotEffect()
     {
         m_HasAutoPilotIEnu = true;
@@ -137,6 +151,12 @@ public class CameraEffectManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		
+        if (Player.current.physics.cameraZoomLerpAmount > 0)
+        {
+            var set = m_Profile.motionBlur.settings;
+            set.frameBlending = Mathf.Lerp(0.0f, 0.5f, Player.current.physics.cameraZoomLerpAmount);
+            m_Profile.motionBlur.settings = set;
+        }
+        
 	}
 }

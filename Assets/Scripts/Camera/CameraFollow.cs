@@ -110,7 +110,7 @@ public class CameraFollow : MonoBehaviour {
 				// Set the position of the camera on the x-z plane to:
 				// distance meters behind the target
 				transform.position = foPos;//target.position;
-                float dist = distance; // Mathf.Lerp(distance, boostDistance, Player.current.physics.boostPercentage);
+                float dist = Mathf.Lerp(distance, boostDistance, Player.current.physics.cameraZoomLerpAmount);
 				transform.position -= currentRotation * Vector3.forward * dist;
 
 				// Set the height of the camera
