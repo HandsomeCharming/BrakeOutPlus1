@@ -119,7 +119,7 @@ namespace UnityEngine.PostProcessing
             m_AmbientOcclusion.Init(context, profile.ambientOcclusion);
             m_ScreenSpaceReflection.Init(context, profile.screenSpaceReflection);
             m_FogComponent.Init(context, profile.fog);
-            //m_MotionBlur.Init(context, profile.motionBlur);
+            m_MotionBlur.Init(context, profile.motionBlur);
             m_Taa.Init(context, profile.antialiasing);
             m_EyeAdaptation.Init(context, profile.eyeAdaptation);
             m_DepthOfField.Init(context, profile.depthOfField);

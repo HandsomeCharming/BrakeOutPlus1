@@ -182,11 +182,11 @@ public class CameraFollow : MonoBehaviour {
 
     private void OnEnable()
     {
-        EnableMotionBlur(false);
+        //EnableMotionBlur(false);
     }
 
     public void EnableMotionBlur(bool enable)
     {
-        //Camera.main.GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>().profile.motionBlur.enabled = enable;
+        Camera.main.GetComponent<UnityEngine.PostProcessing.PostProcessingBehaviour>().profile.motionBlur.enabled = enable;
     }
 }

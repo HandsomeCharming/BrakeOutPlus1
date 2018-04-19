@@ -12,7 +12,7 @@ namespace UnityEngine.PostProcessing
         public AmbientOcclusionModel ambientOcclusion = new AmbientOcclusionModel();
         public ScreenSpaceReflectionModel screenSpaceReflection = new ScreenSpaceReflectionModel();
         public DepthOfFieldModel depthOfField = new DepthOfFieldModel();
-        //public MotionBlurModel motionBlur = new MotionBlurModel();
+        public MotionBlurModel motionBlur = new MotionBlurModel();
         public EyeAdaptationModel eyeAdaptation = new EyeAdaptationModel();
         public BloomModel bloom = new BloomModel();
         public ColorGradingModel colorGrading = new ColorGradingModel();
