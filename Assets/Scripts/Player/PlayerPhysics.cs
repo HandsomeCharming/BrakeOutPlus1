@@ -131,6 +131,7 @@ public class PlayerPhysics : MonoBehaviour {
         {
             CameraEffectManager.current.StartMotionBlur();
 
+            cameraZoomTime = Mathf.Lerp(0, cameraGoFarTime, cameraZoomLerpAmount);
             GetComponent<Rigidbody>().isKinematic = false;
         }
         else if (playerPhysicsState == PlayerPhysicsState.Dropping)
