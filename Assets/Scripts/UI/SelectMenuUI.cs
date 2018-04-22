@@ -14,6 +14,7 @@ public class SelectMenuUI : MonoBehaviour {
     public GameObject m_Foreground;
     public GameObject[] m_SceneGOs;
     public GameObject[] m_SceneButtons;
+    public CarUpgradeCard[] m_CarUpgradeCards;
     public RectTransform m_CarRotBotLeft;
     public RectTransform m_CarRotTopRight;
     public float m_RotSpeed;
@@ -93,7 +94,46 @@ public class SelectMenuUI : MonoBehaviour {
                 m_TrailButton.SetActive(true);
         }
 
+        RefreshUpgradeCards();
         LoadCurrentCarPreview();
+    }
+
+    public void RefreshUpgradeCards()
+    {
+        // hard code lol
+        SingleCarSelectData carData = m_Manager.GetCurrentCarData();
+        CarClassData classData = CarSelectDataReader.Instance.GetCarClassData(carData.carClass);
+        CarSaveData saveData = SaveManager.instance.GetSavedCarData(carData.name);
+        bool hasCar = saveData != null;
+        for (int i=0; i<3; ++i)
+        {
+            CarUpgradeCatagory type = (CarUpgradeCatagory)i;
+            int level = 0;
+            float min = 0, max = 0;
+            switch (type)
+            {
+                case CarUpgradeCatagory.Accelerate:
+                    if(saveData != null)
+                        level = saveData.m_AccLevel;
+                    min = classData.m_MinAcceleration;
+                    max = classData.m_MaxAcceleration;
+                    break;
+                case CarUpgradeCatagory.Boost:
+                    if (saveData != null)
+                        level = saveData.m_BoostLevel;
+                    min = classData.m_MinBoost;
+                    max = classData.m_MaxBoost;
+                    break;
+                case CarUpgradeCatagory.Handling:
+                    if (saveData != null)
+                        level = saveData.m_HandlingLevel;
+                    min = classData.m_MinHandling;
+                    max = classData.m_MaxHandling;
+                    break;
+            }
+            float scale = Mathf.Lerp(min, max, (float)level / carData.maxUpgradeLevel);
+            m_CarUpgradeCards[i].RefreshUI(level, carData.maxUpgradeLevel, scale, hasCar, carData.GetUpgradePrice(level, type));
+        }
     }
 
     void NextCar()

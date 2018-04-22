@@ -112,6 +112,12 @@ public class SelectCarManager : MonoBehaviour {
         return m_CurrentCars[m_CarIndex].name;
     }
 
+    public void UpgradeCurrentCar(CarUpgradeCatagory type)
+    {
+        SaveManager.instance.BuyCarUpgrade(GetCurrentCarData().name, type);
+        m_Menu.RefreshUpgradeCards();
+    }
+
     public void OpenTrailMenu()
     {
         m_Menu.OpenTrailMenu();

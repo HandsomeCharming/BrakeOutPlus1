@@ -160,16 +160,20 @@ public class SaveManager {
         BuyCar(0, 1);
         BuyTrail("Line");
         BuyTrail("Cloud");
+        
     }
 
     public bool BuyCar(int carIndex, int sceneIndex)
     {
-        if (GameManager.current.gameCoins >= CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).price )
+        int price = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).price;
+        if (GameManager.current.gameCoins >= price)
         {
             CarSaveData first = new CarSaveData();
             first.m_CarIndex = carIndex;
             first.m_SceneIndex = sceneIndex;
             first.m_Name = CarStorer.GetCarData(carIndex, sceneIndex).name;
+
+            GameManager.current.AddCoin(-price);
 
             m_Data.m_Cars.m_Cars.Add(first);
             m_CarDict.Add(first.m_Name, first);
@@ -180,18 +184,67 @@ public class SaveManager {
         }
         return false;
     }
-
+    
     public bool BuyTrail(string name)
     {
-        if(GameManager.current.gameCoins >= CarSelectDataReader.Instance.GetTrailSelectData(name).price)
+        int price = CarSelectDataReader.Instance.GetTrailSelectData(name).price;
+        if (GameManager.current.gameCoins >= price)
         {
             if (!m_Data.m_Trails.m_TrailNames.Contains(name))
             {
                 m_Data.m_Trails.m_TrailNames.Add(name);
+                GameManager.current.AddCoin(-price);
 
                 Save();
             }
             return true;
+        }
+        return false;
+    }
+
+    public bool BuyCarUpgrade(string carName, CarUpgradeCatagory type)
+    {
+        if(HasCar(carName) && GameManager.current.gameCoins >= CarSelectDataReader.Instance.GetCarData(carName).price)
+        {
+            CarSaveData data = GetSavedCarData(carName);
+            SingleCarSelectData carData = CarSelectDataReader.Instance.GetCarData(carName);
+            bool success = false;
+
+            switch (type)
+            {
+                case CarUpgradeCatagory.Accelerate:
+                    if (data.m_AccLevel < carData.maxUpgradeLevel && 
+                        GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_AccLevel, type))
+                    {
+                        data.m_AccLevel++;
+                        GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_AccLevel, type));
+                        success = true;
+                    }
+                    break;
+                case CarUpgradeCatagory.Boost:
+                    if (data.m_BoostLevel < carData.maxUpgradeLevel &&
+                        GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_BoostLevel, type))
+                    {
+                        data.m_BoostLevel++;
+                        GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_BoostLevel, type));
+                        success = true;
+                    }
+                    break;
+                case CarUpgradeCatagory.Handling:
+                    if (data.m_HandlingLevel < carData.maxUpgradeLevel &&
+                        GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_HandlingLevel, type))
+                    {
+                        data.m_HandlingLevel++;
+                        GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_HandlingLevel, type));
+                        success = true;
+                    }
+                    break;
+            }
+            if(success)
+            {
+                Save();
+                return true;
+            }
         }
         return false;
     }

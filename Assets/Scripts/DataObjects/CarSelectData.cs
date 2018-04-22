@@ -75,9 +75,34 @@ public class SingleCarSelectData
     public Rarity rarity;
     public int maxUpgradeLevel;
 
+    [Header("Price Settings")]
+    public int[] m_AccelerationPrice;
+    public int[] m_HandlingPrice;
+    public int[] m_BoostPrice;
+
     [Header("Trail")]
     public bool CanChangeTrail = true;
     public List<TrailOnCarData> m_Trails;
+
+    public int GetUpgradePrice(int currentLevel, CarUpgradeCatagory type)
+    {
+        switch (type)
+        {
+            case CarUpgradeCatagory.Accelerate:
+                if(currentLevel < m_AccelerationPrice.Length)
+                    return m_AccelerationPrice[currentLevel];
+                break;
+            case CarUpgradeCatagory.Boost:
+                if (currentLevel < m_BoostPrice.Length)
+                    return m_BoostPrice[currentLevel];
+                break;
+            case CarUpgradeCatagory.Handling:
+                if (currentLevel < m_HandlingPrice.Length)
+                    return m_HandlingPrice[currentLevel];
+                break;
+        }
+        return 0;
+    }
 }
 
 [System.Serializable]
@@ -99,11 +124,6 @@ public class CarClassData
     public float m_MinBoost;
     [Range(0, 1.0f)]
     public float m_MaxBoost;
-
-    [Header("Price Settings")]
-    public float[] m_AccelerationPrice;
-    public float[] m_HandlingPrice;
-    public float[] m_BoostPrice;
 
     [Header("Physics Settings")]
     public MinMaxData m_PushForce;
@@ -208,6 +228,18 @@ public class CarSelectDataReader
         foreach (var data in m_CarStorer.classData)
         {
             if(data.carClass.ToString() == data.name)
+            {
+                return data;
+            }
+        }
+        return null;
+    }
+
+    public CarClassData GetCarClassData(CarClass c)
+    {
+        foreach (var data in m_CarStorer.classData)
+        {
+            if (data.carClass == c)
             {
                 return data;
             }
