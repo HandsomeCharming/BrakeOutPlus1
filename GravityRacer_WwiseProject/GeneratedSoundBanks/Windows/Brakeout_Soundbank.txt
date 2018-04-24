@@ -29,64 +29,56 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	2398231425	SCORE			\Default Work Unit\SCORE	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	13604129	wallv2_3	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\wallv2_3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wallv2_3		453692
-	16513959	s1_l8#_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l8#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l8#_2		3790864
-	17309205	autopilot2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\autopilot2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilot2		2112160
-	31831561	s1_l6#_10	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l6#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l6#_10		6641104
-	40467238	wallv2_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\wallv2_2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wallv2_2		439772
-	40833462	tab2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\tab2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab2		391744
-	41281032	falling	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\falling_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\falling		564408
-	92767240	impact1	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact1		280924
-	153814299	shield	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\shield_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\shield		131084
-	177744442	impact5	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact5_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact5		269764
-	280193016	yellowcoin3	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\yellowcoin3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin3		40600
-	296840312	yellowcoin2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\yellowcoin2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin2		44216
-	301932103	s1_l5#_10	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l5#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l5#_10		7250224
-	304447943	s1_l8#_6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l8#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l8#_6		3713104
-	337550722	s1_l3#_10	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l3#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l3#_10		6200464
-	363046768	redcoin3	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\redcoin3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin3		234756
-	373212312	s1_l5#_6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l5#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l5#_6		3751984
-	376228521	speed6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\speed6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\speed\speed\speed6		1497752
-	419150087	autopilotclose	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\autopilotclose_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilotclose		606752
-	420104218	yellowcoin1	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\yellowcoin1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin1		39876
-	427506041	slowtime	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\slowtime_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\slowtime\slowtime\slowtime		1242788
-	464693520	s1_l2#_10	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l2#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l2#_10		6517984
-	479575978	s1_l2#_6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l2#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l2#_6		3427984
-	482017083	movev4	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\movev4_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\move\bo_sfx_move\movev4		1483212
-	485923688	wallv2_4	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\wallv2_4_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wallv2_4		480220
-	504397293	s1_l1#_10	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l1#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l1#_10		6796624
-	514244258	s1_l4#_10	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l4#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l4#_10		6524464
-	540799318	wallv2_1	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\wallv2_1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wallv2_1		436284
-	552897409	x2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\x2_v2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\x2		564732
-	624297125	redcoin2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\redcoin2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin2		202024
-	625367327	s1_l7#_10	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l7#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l7#_10		6388384
-	629591569	impact3	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact3		351864
-	674963848	s1_l8#_10	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l8#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l8#_10		6939184
-	693182511	s1_l1#_6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l1#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l1#_6		3518704
-	704082341	magnet	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\magnet_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\magnet\magnet\magnet		1176064
-	730798636	UIclick2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\UIclick2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIclick2		214560
-	733407512	autopilot1	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\autopilot1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilot1		1994208
-	735192962	s1_l4#_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l4#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l4#_2		3249424
-	742846866	scroll3	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\scroll3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll3		1508
-	746534377	tab1	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\tab1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab1		360064
-	759056848	s1_l4#_6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l4#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l4#_6		3453904
-	774448436	UIclick	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\UIclick_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIclick		69556
-	793530142	impact4	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact4_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact4		365616
-	793980733	s1_l2#_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l2#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l2#_2		3141904
-	805584263	glidingv2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\glidingv2_F17FB28C.wem		\Actor-Mixer Hierarchy\Default Work Unit\glidingv2		1152064
-	816385963	impact2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact2		399640
-	825031112	scroll1	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\scroll1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll1		1552
-	826149725	scroll4	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\scroll4_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll4		1440
-	837612678	scroll2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\scroll2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll2		1708
-	858482414	s1_l3#_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l3#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l3#_2		3082384
-	888458382	redcoin1	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\redcoin1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin1		225912
-	898054080	s1_l1#_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l1#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l1#_2		3512464
-	902731285	tab3	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\tab3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab3		374464
-	953675186	s1_l6#_6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l6#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l6#_6		3097504
-	985160453	s1_l7#_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l7#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l7#_2		3212944
-	989798264	s1_l5#_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l5#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l5#_2		4132624
-	1008209201	s1_l6#_2	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l6#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l6#_2		3422224
-	1008294273	slowtimeclose	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\slowtimeclose_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\slowtime\slowtime\slowtimeclose		384064
-	1043510067	s1_l3#_6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l3#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l3#_6		4192624
-	1058053890	s1_l7#_6	D:\GithubRepo\BrakeoutLFS\BrakeoutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l7#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l7#_6		3116944
+	17309205	autopilot2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\autopilot2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilot2		2112160
+	40833462	tab2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\tab2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab2		391744
+	41281032	falling	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\falling_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\falling		564408
+	76224508	s1_l6_v2-02	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l6_v2-02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l6_v2-02		3800888
+	92767240	impact1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact1		280924
+	139877051	s1_l5_v2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l5_v2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l5_v2		4259992
+	153814299	shield	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\shield_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\shield		131084
+	163532065	s1_l6_v2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l6_v2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l6_v2		4029084
+	177744442	impact5	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact5_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact5		269764
+	280193016	yellowcoin3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\yellowcoin3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin3		40600
+	296840312	yellowcoin2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\yellowcoin2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin2		44216
+	337550722	s1_l3#_10	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l3#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l3#_10		6200464
+	363046768	redcoin3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\redcoin3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin3		234756
+	373212312	s1_l5#_01	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l5#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l5#_01		3751984
+	391212068	s1_l6_v2-03	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l6_v2-03_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l6_v2-03		7051800
+	419150087	autopilotclose	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\autopilotclose_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilotclose		606752
+	420104218	yellowcoin1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\yellowcoin1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin1		39876
+	427506041	slowtime	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\slowtime_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\slowtime\slowtime\slowtime		1242788
+	434613612	wall_v3_2#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\wall_v3_2#.2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wall_v3_2#_2		121428
+	464693520	s1_l2#_10	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l2#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l2#_10		6517984
+	468277978	wall_v3_1#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\wall_v3_1#.2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wall_v3_1#_2		134352
+	479575978	s1_l2#_6	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l2#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l2#_6		3427984
+	482017083	movev4	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\movev4_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\move\bo_sfx_move\movev4		1483212
+	504397293	s1_l1#_10	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l1#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l1#_10		6796624
+	514244258	s1_l4#_10	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l4#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l4#_10		6524464
+	552897409	x2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\x2_v2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\x2		564732
+	624297125	redcoin2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\redcoin2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin2		202024
+	629591569	impact3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact3		351864
+	647400573	s1_l5_v2-02	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l5_v2-02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l5_v2-02		7348600
+	693182511	s1_l1#_6	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l1#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l1#_6		3518704
+	704082341	magnet	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\magnet_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\magnet\magnet\magnet		1176064
+	730798636	UIclick2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\UIclick2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIclick2		214560
+	733407512	autopilot1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\autopilot1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilot1		1994208
+	735192962	s1_l4#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l4#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l4#_2		3249424
+	742846866	scroll3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\scroll3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll3		1508
+	746534377	tab1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\tab1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab1		360064
+	759056848	s1_l4#_6	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l4#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l4#_6		3453904
+	774448436	UIclick	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\UIclick_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIclick		69556
+	793530142	impact4	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact4_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact4		365616
+	793980733	s1_l2#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l2#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l2#_2		3141904
+	805584263	glidingv2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\glidingv2_F17FB28C.wem		\Actor-Mixer Hierarchy\Default Work Unit\glidingv2		1152064
+	816385963	impact2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\impact2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact2		399640
+	825031112	scroll1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\scroll1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll1		1552
+	826149725	scroll4	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\scroll4_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll4		1440
+	837612678	scroll2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\scroll2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll2		1708
+	858482414	s1_l3#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l3#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l3#_2		3082384
+	877303993	speed7	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\speed7_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\speed\speed\speed7		1208908
+	888458382	redcoin1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\redcoin1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin1		225912
+	898054080	s1_l1#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l1#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l1#_2		3512464
+	902731285	tab3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\tab3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab3		374464
+	1008294273	slowtimeclose	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\slowtimeclose_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\slowtime\slowtime\slowtimeclose		384064
+	1043510067	s1_l3#_6	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Windows\SFX\s1_l3#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l3#_6		4192624
 
