@@ -265,7 +265,7 @@ public class GameManager : MonoBehaviour {
         gameStars += starCount;
         ConsistantUI.UpdateCoinAndStar();
 
-        if (state != GameState.Running)
+        //if (state != GameState.Running)
         {
             SaveGame();
         }

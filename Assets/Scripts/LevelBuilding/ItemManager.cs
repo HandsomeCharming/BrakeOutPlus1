@@ -11,7 +11,8 @@ public enum ItemType {
 	AutoPilot,
 	Shield,
 	TimeSlow,
-    DoubleScore
+    DoubleScore,
+    Star
 }
 
 [System.Serializable]
