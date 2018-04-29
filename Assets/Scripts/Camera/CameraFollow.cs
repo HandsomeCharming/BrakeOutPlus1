@@ -133,7 +133,35 @@ public class CameraFollow : MonoBehaviour {
 
     public void SnapBack()
     {
-        Vector3 offset = (transform.localToWorldMatrix * trackVelocityOffset);
+        Transform target = follow.transform;
+        Vector3 foPos = target.position + target.forward * forwardDist;
+
+        // Calculate the current rotation angles
+        var wantedRotationAngle = target.eulerAngles.y;
+        var wantedHeight = target.position.y + height;
+
+        var currentRotationAngle = transform.eulerAngles.y;
+        var currentHeight = transform.position.y;
+
+        // Damp the rotation around the y-axis
+        currentRotationAngle = wantedRotationAngle;
+
+        // Damp the height
+        currentHeight = wantedHeight;
+
+        // Convert the angle into a rotation
+        var currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
+
+        // Set the position of the camera on the x-z plane to:
+        // distance meters behind the target
+        transform.position = foPos;//target.position;
+        float dist = Mathf.Lerp(distance, boostDistance, Player.current.physics.cameraZoomLerpAmount);
+        transform.position -= currentRotation * Vector3.forward * dist;
+
+        // Set the height of the camera
+        transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);
+
+        /*Vector3 offset = (transform.localToWorldMatrix * trackVelocityOffset);
         transform.position = follow.transform.position + offset;
 
         Vector3 carForward;
@@ -152,7 +180,7 @@ public class CameraFollow : MonoBehaviour {
 
         // Rotate the camera towards the velocity vector.
         look = look;
-        transform.rotation = look;
+        transform.rotation = look;*/
     }
 
     public void StartShaking(float shakeTime, float shakeAmount = 0)
