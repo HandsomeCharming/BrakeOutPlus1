@@ -135,7 +135,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     FloorMesh signMesh = FloorBuilder.current.floorMeshes[signIndex];
 
                     //add boost sign
-                    GameObject sign = Instantiate(m_Storer.BoostGroundSignPrefab); ;
+                    /*GameObject sign = Instantiate(m_Storer.BoostGroundSignPrefab); ;
 
                     Vector3 prevPosMid = (signMesh.prevPos1 + signMesh.prevPos2) / 2.0f;
                     prevPosMid.y += 0.1f;
@@ -143,12 +143,13 @@ public class ObstacleBuilder : MonoBehaviour {
                     sign.transform.forward = signMesh.prevDir;
                     sign.transform.Rotate(90.0f, 0, 0);
                     sign.GetComponent<ItemSuper>().StartAnim();
-                    floorMesh.destroyOnRemake.Add(sign);
+                    floorMesh.destroyOnRemake.Add(sign);*/
 
+                    // make mesh
                     Vector3 dir = floorMesh.dir;
                     dir.z = -dir.z;
                     floorMesh.makeMesh();
-                    
+
                     // add rim
                     Vector3 end1 = floorMesh.endPos1;
                     Vector3 end2 = floorMesh.endPos2;
