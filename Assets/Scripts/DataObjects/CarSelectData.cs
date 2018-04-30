@@ -37,6 +37,13 @@ public class MinMaxData
 }
 
 [System.Serializable]
+public class MinMaxDataInt
+{
+    public int min;
+    public int max;
+}
+
+[System.Serializable]
 public class TrailSelectData
 {
     public string name;
