@@ -7,6 +7,7 @@ public class LootBoxManager : MonoBehaviour {
     public LootCardUI m_LootCardUI;
     public LootBoxPoolObject m_LootBoxPoolObject;
     public GameObject m_Buttons;
+    public GameObject m_ExitButton;
 
     int m_CurrentPrizeIndex;
     bool m_Looting = false;
@@ -25,8 +26,9 @@ public class LootBoxManager : MonoBehaviour {
     public void StartLoot()
     {
         if (m_Looting) return;
-        m_Buttons.SetActive(false);
         m_Looting = true;
+        m_Buttons.SetActive(false);
+        m_ExitButton.SetActive(false);
         float rand = Random.value;
         int prizeIndex = 0;
         var prizes = m_LootBoxPoolObject.prizes;
@@ -61,6 +63,7 @@ public class LootBoxManager : MonoBehaviour {
         }
 
         m_Buttons.SetActive(true);
+        m_ExitButton.SetActive(true);
         m_Looting = false;
     }
 
