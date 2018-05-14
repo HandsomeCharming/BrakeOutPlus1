@@ -6,6 +6,9 @@ public class LootBoxManager : MonoBehaviour {
 
     public LootCardUI m_LootCardUI;
     public LootBoxPoolObject m_LootBoxPoolObject;
+    public LootBoxPoolObject m_BigBoxLootBoxPoolObject;
+    public CarLootBoxData m_NormalCarPoolObject;
+    public CarLootBoxData m_BigBoxCarPoolObject;
     public GameObject m_Buttons;
     public GameObject m_ExitButton;
 
@@ -17,11 +20,6 @@ public class LootBoxManager : MonoBehaviour {
         m_CurrentPrizeIndex = -1;
         m_Looting = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void StartLoot()
     {
@@ -29,22 +27,12 @@ public class LootBoxManager : MonoBehaviour {
         m_Looting = true;
         m_Buttons.SetActive(false);
         m_ExitButton.SetActive(false);
-        float rand = Random.value;
-        int prizeIndex = 0;
-        var prizes = m_LootBoxPoolObject.prizes;
-        for (int i =0; i<prizes.Length; ++i)
-        {
-            if(rand <= prizes[i].m_Probability)
-            {
-                prizeIndex = i;
-                break;
-            }
-        }
-
+        int prizeIndex = GetPrizeIndexFromLootBoxRandom(m_LootBoxPoolObject);
         m_CurrentPrizeIndex = prizeIndex;
+
         m_LootCardUI.AnimateToLootBox(prizeIndex);
     }
-
+    
     public void FinishAnim()
     {
         var prize = m_LootBoxPoolObject.prizes[m_CurrentPrizeIndex];
@@ -80,5 +68,41 @@ public class LootBoxManager : MonoBehaviour {
     public void StartFiveLootWithStar()
     {
         StartLoot();
+    }
+
+    int GetPrizeIndexFromLootBoxRandom(LootBoxPoolObject lootBoxPool)
+    {
+        int prizeIndex = 0;
+        float rand = Random.value;
+        var prizes = lootBoxPool.prizes;
+        for (int i = 0; i < prizes.Length; ++i)
+        {
+            if (rand <= prizes[i].m_Probability)
+            {
+                prizeIndex = i;
+                break;
+            }
+        }
+        return prizeIndex;
+    }
+    
+    CarShortData GetCarDataFromCarLootBoxRandom(CarLootBoxData carLootBox)
+    {
+        int prizeIndex = 0;
+        float rand = Random.value;
+        var prizes = carLootBox.prizes;
+        for (int i = 0; i < prizes.Length; ++i)
+        {
+            if (rand <= prizes[i].m_Probability)
+            {
+                prizeIndex = i;
+                break;
+            }
+        }
+
+        CarShortData data = new CarShortData();
+        data.carIndex = prizes[prizeIndex].m_CarIndex;
+        data.sceneIndex = prizes[prizeIndex].m_SceneIndex;
+        return data;
     }
 }

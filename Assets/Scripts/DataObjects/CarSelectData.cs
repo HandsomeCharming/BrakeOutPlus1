@@ -54,6 +54,14 @@ public class TrailSelectData
 }
 
 [System.Serializable]
+public class CarShortData
+{
+    public string name;
+    public int carIndex;
+    public int sceneIndex;
+}
+
+[System.Serializable]
 public class TrailOnCarData
 {
     public string name;
