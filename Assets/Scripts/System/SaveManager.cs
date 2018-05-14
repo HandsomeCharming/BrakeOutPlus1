@@ -168,21 +168,25 @@ public class SaveManager {
         int price = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).price;
         if (GameManager.current.gameCoins >= price)
         {
-            CarSaveData first = new CarSaveData();
-            first.m_CarIndex = carIndex;
-            first.m_SceneIndex = sceneIndex;
-            first.m_Name = CarStorer.GetCarData(carIndex, sceneIndex).name;
-
             GameManager.current.AddCoin(-price);
-
-            m_Data.m_Cars.m_Cars.Add(first);
-            m_CarDict.Add(first.m_Name, first);
-
-            Save();
+            AcquireCar(carIndex, sceneIndex);
 
             return true;
         }
         return false;
+    }
+
+    public void AcquireCar(int carIndex, int sceneIndex)
+    {
+        CarSaveData first = new CarSaveData();
+        first.m_CarIndex = carIndex;
+        first.m_SceneIndex = sceneIndex;
+        first.m_Name = CarStorer.GetCarData(carIndex, sceneIndex).name;
+
+        m_Data.m_Cars.m_Cars.Add(first);
+        m_CarDict.Add(first.m_Name, first);
+
+        Save();
     }
     
     public bool BuyTrail(string name)
