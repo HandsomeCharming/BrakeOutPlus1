@@ -20,6 +20,12 @@ public enum Rarity
     Legendary
 }
 
+public enum Currency
+{
+    Star,
+    Coin
+}
+
 
 [System.Serializable]
 public class SceneCars
@@ -75,6 +81,9 @@ public class SingleCarSelectData
 {
     public string name;
     public int price;
+    public Currency priceCurrency;
+    public int returnedAmountWhenLooted;
+    public Currency returnWhenLootedCurrency;
 
     [Header("Prefabs")]
     public GameObject CarInGamePrefab;

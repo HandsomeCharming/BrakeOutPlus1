@@ -9,6 +9,7 @@ public class LootBoxManager : MonoBehaviour {
     public LootBoxPoolObject m_BigBoxLootBoxPoolObject;
     public CarLootBoxData m_NormalCarPoolObject;
     public CarLootBoxData m_BigBoxCarPoolObject;
+    public ReceiveItemUI m_ReceiveItem;
     public GameObject m_Buttons;
     public GameObject m_ExitButton;
 
@@ -41,15 +42,32 @@ public class LootBoxManager : MonoBehaviour {
             case LootBoxPrizeType.Coin:
                 int coins = Random.Range(prize.m_Count.min, prize.m_Count.max) * prize.m_Multiplier;
                 GameManager.current.AddCoin(coins);
+                ResetButtons();
                 break;
             case LootBoxPrizeType.Star:
                 int stars = Random.Range(prize.m_Count.min, prize.m_Count.max) * prize.m_Multiplier;
                 GameManager.current.AddStar(stars);
+                ResetButtons();
+                break;
+            case LootBoxPrizeType.Car:
+                var carData = GetCarDataFromCarLootBoxRandom(m_NormalCarPoolObject);
+                StartCoroutine(ReceiveCar(carData, 0.7f));
                 break;
             default:
+                ResetButtons();
                 break;
         }
+    }
 
+    IEnumerator ReceiveCar(CarShortData data, float time)
+    {
+        yield return new WaitForSeconds(time);
+        m_ReceiveItem.ReceiveCar(data);
+        ResetButtons();
+    }
+
+    void ResetButtons()
+    {
         m_Buttons.SetActive(true);
         m_ExitButton.SetActive(true);
         m_Looting = false;
