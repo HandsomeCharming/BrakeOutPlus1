@@ -97,15 +97,26 @@ public class SelectCarManager : MonoBehaviour {
         m_Menu.ChangeScene(m_CurrentSceneIndex);
     }
 
-    public void BuyCurrentCar()
+    public void BuyCurrentCarWithCoin()
     {
-        if(SaveManager.instance.BuyCar(m_CarIndex, m_CurrentSceneIndex))
+        if(SaveManager.instance.BuyCarWithCoin(m_CarIndex, m_CurrentSceneIndex))
         {
             SaveManager.instance.Save();
             m_Menu.RefreshForManager();
             GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
         }
     }
+
+    public void BuyCurrentCarWithStar()
+    {
+        if (SaveManager.instance.BuyCarWithStar(m_CarIndex, m_CurrentSceneIndex))
+        {
+            SaveManager.instance.Save();
+            m_Menu.RefreshForManager();
+            GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
+        }
+    }
+
 
     public string GetCurrentCarName()
     {

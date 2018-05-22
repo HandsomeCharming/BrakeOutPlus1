@@ -10,6 +10,8 @@ public class SelectMenuUI : MonoBehaviour {
     public Button m_PrevButton;
     public Text m_CarText;
     public GameObject m_BuyButton;
+    public Text m_CoinPrice;
+    public Text m_StarPrice;
     public GameObject m_TrailButton;
     public GameObject m_Foreground;
     public GameObject[] m_SceneGOs;
@@ -83,19 +85,30 @@ public class SelectMenuUI : MonoBehaviour {
         if (!m_Manager.isCurrentCarAvailable())
         {
             m_CurrentLocked = true;
-            m_BuyButton.SetActive(true);
+            ShowBuyButtonAndPrice(true);
             m_TrailButton.SetActive(false);
         }
         else
         {
             m_CurrentLocked = false;
-            m_BuyButton.SetActive(false);
+            ShowBuyButtonAndPrice(false);
             if(m_Manager.GetCurrentCarData().CanChangeTrail)
                 m_TrailButton.SetActive(true);
         }
 
         RefreshUpgradeCards();
         LoadCurrentCarPreview();
+    }
+
+    public void ShowBuyButtonAndPrice(bool show)
+    {
+        m_BuyButton.SetActive(show);
+        if(show)
+        {
+            var carData = m_Manager.GetCurrentCarData();
+            m_CoinPrice.text = carData.coinPrice.ToString();
+            m_StarPrice.text = carData.starPrice.ToString();
+        }
     }
 
     public void RefreshUpgradeCards()

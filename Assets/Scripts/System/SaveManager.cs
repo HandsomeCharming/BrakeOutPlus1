@@ -125,7 +125,7 @@ public class SaveManager {
             if(m_Data.m_Cars == null)
             {
                 m_Data.m_Cars = new CarSave();
-                BuyCar(0, 0);
+                AcquireCar(0, 0);
             }
             else
             {
@@ -142,8 +142,8 @@ public class SaveManager {
             if (m_Data.m_Trails == null)
             {
                 m_Data.m_Trails = new TrailSave();
-                BuyTrail("Line");
-                BuyTrail("LineSky");
+                AcquireTrail("Line");
+                AcquireTrail("LineSky");
             }
         }
         else
@@ -156,16 +156,16 @@ public class SaveManager {
 
     public void GetDefaultCarAndTrails()
     {
-        BuyCar(0, 0);
-        BuyCar(0, 1);
-        BuyTrail("Line");
-        BuyTrail("Cloud");
+        AcquireCar(0, 0);
+        AcquireCar(0, 1);
+        AcquireTrail("Line");
+        AcquireTrail("Cloud");
         
     }
 
-    public bool BuyCar(int carIndex, int sceneIndex)
+    public bool BuyCarWithCoin(int carIndex, int sceneIndex)
     {
-        int price = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).price;
+        int price = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).coinPrice;
         if (GameManager.current.gameCoins >= price)
         {
             GameManager.current.AddCoin(-price);
@@ -176,12 +176,29 @@ public class SaveManager {
         return false;
     }
 
+
+    public bool BuyCarWithStar(int carIndex, int sceneIndex)
+    {
+        int price = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).starPrice;
+        if (GameManager.current.gameStars >= price)
+        {
+            GameManager.current.AddStar(-price);
+            AcquireCar(carIndex, sceneIndex);
+
+            return true;
+        }
+        return false;
+    }
+
+
     public void AcquireCar(int carIndex, int sceneIndex)
     {
         CarSaveData first = new CarSaveData();
         first.m_CarIndex = carIndex;
         first.m_SceneIndex = sceneIndex;
         first.m_Name = CarStorer.GetCarData(carIndex, sceneIndex).name;
+
+        if (HasCar(first.m_Name)) return;
 
         m_Data.m_Cars.m_Cars.Add(first);
         m_CarDict.Add(first.m_Name, first);
@@ -196,8 +213,8 @@ public class SaveManager {
         {
             if (!m_Data.m_Trails.m_TrailNames.Contains(name))
             {
-                m_Data.m_Trails.m_TrailNames.Add(name);
                 GameManager.current.AddCoin(-price);
+                m_Data.m_Trails.m_TrailNames.Add(name);
 
                 Save();
             }
@@ -206,9 +223,19 @@ public class SaveManager {
         return false;
     }
 
+    public void AcquireTrail(string name)
+    {
+        if (!m_Data.m_Trails.m_TrailNames.Contains(name))
+        {
+            m_Data.m_Trails.m_TrailNames.Add(name);
+
+            Save();
+        }
+    }
+
     public bool BuyCarUpgrade(string carName, CarUpgradeCatagory type)
     {
-        if(HasCar(carName) && GameManager.current.gameCoins >= CarSelectDataReader.Instance.GetCarData(carName).price)
+        if(HasCar(carName))
         {
             CarSaveData data = GetSavedCarData(carName);
             SingleCarSelectData carData = CarSelectDataReader.Instance.GetCarData(carName);
