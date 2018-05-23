@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
     public int dayHighScore;
     const string LastDateName = "HSLastDate";
     const string DayHighScoreName = "DayHighScore";
+    const string RemovedAD = "RemovedAD";
 
     public int m_DefaultCarIndex;
     public int m_DefaultSceneIndex;
@@ -112,14 +113,6 @@ public class GameManager : MonoBehaviour {
         {
             obj.SetActive(true);
         }
-
-        //Show ad every 3 games
-        /*m_NextAdTime--;
-        if(m_NextAdTime < 0)
-        {
-            m_NextAdTime = 1;
-            //AdManager.Instance.ShowBannerAd();
-        }*/
     }
 
     void ResetSceneStats()
@@ -288,6 +281,15 @@ public class GameManager : MonoBehaviour {
             ChallengeManager.current.startTime = Time.time;
             ChallengeManager.current.getHardTimeRemain = 15.0f;
             UIManager.current.ChangeStateByGameState();
+            LoadAdIfNeeded();
+        }
+    }
+
+    void LoadAdIfNeeded()
+    {
+        if(!AdRemoved() && m_NextAdTime == 1)
+        {
+            AdManager.Instance.RequestInterstitial();
         }
     }
 
@@ -358,6 +360,20 @@ public class GameManager : MonoBehaviour {
             state = GameState.Dead;
             UIManager.current.ChangeStateByGameState();
             SetHighScore();
+            if(!AdRemoved())
+                HandleAdCountAndShowIfShould();
+        }
+    }
+
+    void HandleAdCountAndShowIfShould()
+    {
+        //Show ad every 3 games
+        m_NextAdTime--;
+        if (m_NextAdTime < 0)
+        {
+            m_NextAdTime = UnityEngine.Random.Range(4, 7);
+            //AdManager.Instance.ShowBannerAd();
+            AdManager.Instance.ShowInterstitial();
         }
     }
 
@@ -419,7 +435,12 @@ public class GameManager : MonoBehaviour {
     public void ShowReviveVideo()
     {
         if (Application.isMobilePlatform)
-            AdManager.Instance.ShowVideoAd("Revive");
+        {
+            if(!AdManager.Instance.ShowRewardReviveVideo())
+            {
+                RevivePlayer();
+            }
+        }
         else
             RevivePlayer();
     }
@@ -510,6 +531,17 @@ public class GameManager : MonoBehaviour {
         UIManager.current.ChangeStateByGameState();
     }
 	
+    public void RemoveAds()
+    {
+        PlayerPrefs.SetInt(RemovedAD, 1);
+        PlayerPrefs.Save();
+    }
+
+    public bool AdRemoved()
+    {
+        return PlayerPrefs.HasKey(RemovedAD);
+    }
+
 	// Update is called once per frame
 	void Update () {
 	}

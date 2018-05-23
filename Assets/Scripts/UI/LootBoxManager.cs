@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LootBoxManager : MonoBehaviour {
 
+    public static LootBoxManager instance;
+
     public LootCardUI m_LootCardUI;
     public LootBoxPoolObject m_LootBoxPoolObject;
     public LootBoxPoolObject m_BigBoxLootBoxPoolObject;
@@ -18,6 +20,8 @@ public class LootBoxManager : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
+        instance = this;
+
         m_CurrentPrizeIndex = -1;
         m_Looting = false;
     }
@@ -75,7 +79,7 @@ public class LootBoxManager : MonoBehaviour {
 
     public void StartLootAd()
     {
-        StartLoot();
+        AdManager.Instance.ShowLootboxVideo();
     }
 
     public void StartOneLootWithStar()

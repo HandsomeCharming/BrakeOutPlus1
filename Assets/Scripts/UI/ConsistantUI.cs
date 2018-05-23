@@ -8,8 +8,10 @@ public class ConsistantUI : MonoBehaviour {
 
     public static ConsistantUI current;
 
-    public int addCoinRate;
-    public int addStarRate;
+    public float addCoinRate;
+    public float addStarRate;
+    public float actualAddCoinRate;
+    public float actualAddStarRate;
 
     public Text coinNumbers;
     public Text starNumbers;
@@ -56,7 +58,16 @@ public class ConsistantUI : MonoBehaviour {
         else
         {
             addCoins.gameObject.SetActive(true);
-            addCoins.text = ((int)(m_ActualCoins - m_CurrentCoins)).ToString();
+
+            int diff = (int)(m_ActualCoins - m_CurrentCoins);
+
+            actualAddCoinRate = addCoinRate;
+            if(diff/addCoinRate > 5.0f)
+            {
+                actualAddCoinRate = diff / 5.0f;
+            }
+
+            addCoins.text = (diff).ToString();
         }
 
         if(m_ActualStars + 1 < m_CurrentStars)
@@ -68,7 +79,15 @@ public class ConsistantUI : MonoBehaviour {
         else
         {
             addStars.gameObject.SetActive(true);
-            addStars.text = ((int)(m_ActualStars - m_CurrentStars)).ToString();
+
+            int diff = (int)(m_ActualStars - m_CurrentStars);
+            actualAddStarRate = addStarRate;
+            if (diff / addStarRate > 5.0f)
+            {
+                actualAddStarRate = diff / 5.0f;
+            }
+
+            addStars.text = (diff).ToString();
         }
     }
 
@@ -76,7 +95,7 @@ public class ConsistantUI : MonoBehaviour {
     {
         if(m_ActualCoins != m_CurrentCoins)
         {
-            m_CurrentCoins = m_CurrentCoins + (addCoinRate * Time.deltaTime);
+            m_CurrentCoins = m_CurrentCoins + (actualAddCoinRate * Time.deltaTime);
             m_CurrentCoins = m_CurrentCoins > m_ActualCoins ? m_ActualCoins : m_CurrentCoins;
 
             coinNumbers.text = ((int)m_CurrentCoins).ToString();
@@ -93,7 +112,7 @@ public class ConsistantUI : MonoBehaviour {
 
         if(m_ActualStars != m_CurrentStars)
         {
-            m_CurrentStars = m_CurrentStars + (addStarRate * Time.deltaTime);
+            m_CurrentStars = m_CurrentStars + (actualAddStarRate * Time.deltaTime);
             m_CurrentStars = m_CurrentStars > m_ActualStars ? m_ActualStars : m_CurrentStars;
 
             starNumbers.text = ((int)m_CurrentStars).ToString();

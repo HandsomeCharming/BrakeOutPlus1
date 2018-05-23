@@ -1,49 +1,67 @@
-﻿using System.Collections;
+﻿#define TESTING_AD
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 #if UNITY_ADS
 using UnityEngine.Advertisements; // only compile Ads code on supported platforms
 #endif
 using GoogleMobileAds.Api;
 
+
 public class AdManager : MonoBehaviour {
 
     public static AdManager Instance;
 
+    RewardType m_RewardType;
+
     [SerializeField] string gameID = "1640909";
     private BannerView bannerView;
     string m_PlayingVideo;
+    private RewardBasedVideoAd rewardBasedVideo;
+    private InterstitialAd interstitial;
+
+#if TESTING_AD
+    string appId = "ca-app-pub-3372369278999623~1593905393";
+    string interstitialID = "ca-app-pub-3940256099942544/4411468910";
+    string rewardId = "ca-app-pub-3940256099942544/1712485313";
+    string lootboxId = "ca-app-pub-3372369278999623/1544913597";
+#else
+    string appId = "ca-app-pub-3372369278999623~1593905393";
+    string interstitialID = "ca-app-pub-3372369278999623/8232776726";
+    string rewardId = "ca-app-pub-3372369278999623/7466489964";
+#endif
+
+    enum RewardType
+    {
+        None,
+        Revive,
+        LootBox
+    }
+
 
     void Awake()
     {
-		Instance = this;
-		#if UNITY_ADS
-        Advertisement.Initialize(gameID, true);
-		#endif
-    }
+        Instance = this;
 
-    private void RequestBanner()
-    {
+        m_RewardType = RewardType.None;
+
 #if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        string appId = "ca-app-pub-3372369278999623~1593905393";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/2934735716";
+        string appId = "ca-app-pub-3372369278999623~1593905393";
 #else
-            string adUnitId = "unexpected_platform";
+        string appId = "unexpected_platform";
 #endif
+        // Initialize the Google Mobile Ads SDK.
+        MobileAds.Initialize(appId);
 
-        // Create a 320x50 banner at the top of the screen.
-        bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
-        bannerView.LoadAd(request);
-
-        bannerView.Show();
-    }
-
-    public void ShowBannerAd()
-    {
-        RequestBanner();
+        // Get singleton reward based video ad reference.
+        this.rewardBasedVideo = RewardBasedVideoAd.Instance;
+        rewardBasedVideo.OnAdRewarded += HandleRewardReviveRewarded;
+        rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed;
+        this.RequestRewardBasedVideo();
     }
 
     public void ShowVideoAd(string playingVideo = "")
@@ -103,11 +121,92 @@ public class AdManager : MonoBehaviour {
         Time.timeScale = 0f;
         yield return null;
 
-		#if UNITY_ADS
+#if UNITY_ADS
         while (Advertisement.isShowing)
             yield return null;
-		#endif
+#endif
 
         Time.timeScale = currentTimeScale;
+    }
+    
+    public void RequestInterstitial()
+    {
+        if (interstitial != null)
+            interstitial.Destroy();
+        // Initialize an InterstitialAd.
+        interstitial = new InterstitialAd(interstitialID);
+        interstitial.OnAdClosed += HandleInterstitialClosed;
+        interstitial.OnAdFailedToLoad += HandleInterstitialFailToLoad;
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+        // Load the interstitial with the request.
+        interstitial.LoadAd(request);
+    }
+
+    public void ShowInterstitial()
+    {
+        if (interstitial.IsLoaded())
+        {
+            interstitial.Show();
+        }
+    }
+
+    private void HandleInterstitialClosed(object sender, EventArgs args)
+    {
+
+    }
+    private void HandleInterstitialFailToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+        interstitial.Destroy();
+        RequestInterstitial();
+    }
+
+    public void RequestRewardBasedVideo()
+    {
+        // Create an empty ad request.
+        AdRequest request = new AdRequest.Builder().Build();
+        // Load the rewarded video ad with the request.
+        this.rewardBasedVideo.LoadAd(request, rewardId);
+    }
+
+    public bool ShowRewardReviveVideo()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            m_RewardType = RewardType.Revive;
+            rewardBasedVideo.Show();
+            return true;
+        }
+        return false;
+    }
+
+    public bool ShowLootboxVideo()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            m_RewardType = RewardType.LootBox;
+            rewardBasedVideo.Show();
+            return true;
+        }
+        return false;
+    }
+
+    public void HandleRewardReviveRewarded(object sender, Reward args)
+    {
+        print("Rewarded");
+        if(m_RewardType == RewardType.Revive)
+        {
+            GameManager.current.RevivePlayer();
+        }
+        else if (m_RewardType == RewardType.LootBox)
+        {
+            LootBoxManager.instance.StartLoot();
+        }
+        m_RewardType = RewardType.None;
+    }
+
+    public void HandleRewardBasedVideoClosed(object sender, EventArgs args)
+    {
+        this.RequestRewardBasedVideo();
     }
 }
