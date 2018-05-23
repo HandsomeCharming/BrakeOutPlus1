@@ -112,6 +112,7 @@ public class ReceiveItemUI : MonoBehaviour {
             Destroy(m_CurrentEffect);
         }
 
+        LootBoxManager.instance.CloseReceiveCarPanel();
         gameObject.SetActive(false);
     }
 }
