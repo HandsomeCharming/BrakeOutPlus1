@@ -80,8 +80,9 @@ public class TrailOnCarData
 public class SingleCarSelectData
 {
     public string name;
-    public int price;
-    public Currency priceCurrency;
+    public int coinPrice; // coin price
+    public int starPrice;
+    //public Currency priceCurrency;
     public int returnedAmountWhenLooted;
     public Currency returnWhenLootedCurrency;
 

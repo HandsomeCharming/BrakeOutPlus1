@@ -87,6 +87,10 @@ public class ReceiveItemUI : MonoBehaviour {
             m_CurrentCarPreview = Instantiate(data.CarForViewPrefab, Camera.main.transform);
 
             m_CurrentCarPreview.transform.localPosition = new Vector3(0.0f, -0.4f, 5.0f);
+            if (!data.customViewPos)
+                m_CurrentCarPreview.transform.localPosition = new Vector3(0.0f, -0.4f, 5.0f);
+            else
+                m_CurrentCarPreview.transform.localPosition = data.ViewPos + new Vector3(-1.0f, 0.0f, 0.0f);
 
             Vector3 rot = Vector3.one;
             if (!data.customViewRot)
@@ -112,6 +116,7 @@ public class ReceiveItemUI : MonoBehaviour {
             Destroy(m_CurrentEffect);
         }
 
+        LootBoxManager.instance.CloseReceiveCarPanel();
         gameObject.SetActive(false);
     }
 }
