@@ -1,4 +1,4 @@
-#if UNITY_PURCHASING
+//#if UNITY_PURCHASING
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System.IO;
@@ -397,4 +397,4 @@ namespace UnityEngine.Purchasing
         }
     }
 }
-#endif
+//#endif
