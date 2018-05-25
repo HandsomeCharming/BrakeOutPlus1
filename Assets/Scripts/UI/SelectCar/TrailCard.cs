@@ -38,6 +38,8 @@ public class TrailCard : MonoBehaviour {
         if(SaveManager.instance.BuyTrail(TrailName))
         {
             SelectTrail();
+            m_BuyButtonGO.SetActive(false);
+            m_SelectButtonGO.SetActive(true);
         }
     }
 

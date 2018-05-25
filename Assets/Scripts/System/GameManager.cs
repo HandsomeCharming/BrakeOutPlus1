@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour {
         print(name);
         foreach (var trail in trails)
         {
-            if (trail.name.Equals(name, StringComparison.InvariantCultureIgnoreCase) )
+            if (trail.name.Equals(name, StringComparison.InvariantCultureIgnoreCase)  && trail.TrailPrefab != null)
             {
                 m_CurrentTrail = Instantiate(trail.TrailPrefab, player.GetComponent<Player>().vehicle.transform);
                 m_CurrentTrail.transform.localPosition = Vector3.zero;
