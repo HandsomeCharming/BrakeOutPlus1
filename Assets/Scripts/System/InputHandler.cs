@@ -18,12 +18,17 @@ public class InputHandler : MonoBehaviour {
     public static InputHandler current;
 
     public ControlSchemes m_ControlScheme;
-    
+
+    [HideInInspector]
+    public float m_AccelerateScale;
+    public float m_InitAccelerateScale;
+
 	public bool paused = false;
     public float m_Turn;
     public bool m_Accelerate;
 
     const string m_PlayerPrefControlScheme = "ControlScheme";
+    const string AccelerateScale = "AccelerateScale";
     bool flag = false;
 
     public InputHandler() {
@@ -63,6 +68,7 @@ public class InputHandler : MonoBehaviour {
 	*/
     void Awake () {
         Input.simulateMouseWithTouches = true;
+
 	}
 	
     void Start()
@@ -70,6 +76,7 @@ public class InputHandler : MonoBehaviour {
 		//accTime = 0.0f;
         current = this;
         LoadControlScheme();
+        InitAccelerationScale();
     }
 
     void LoadControlScheme()
@@ -81,6 +88,18 @@ public class InputHandler : MonoBehaviour {
         else
         {
 			m_ControlScheme = ControlSchemes.BothHand;
+        }
+    }
+
+    void InitAccelerationScale()
+    {
+        if (PlayerPrefs.HasKey(AccelerateScale))
+        {
+            m_AccelerateScale = PlayerPrefs.GetFloat(AccelerateScale);
+        }
+        else
+        {
+            m_AccelerateScale = 2.0f;
         }
     }
 
@@ -261,7 +280,7 @@ public class InputHandler : MonoBehaviour {
                
                 if(m_ControlScheme == ControlSchemes.Gravity)
                 {
-                    m_Turn = Input.acceleration.x;
+                    m_Turn = Input.acceleration.x * m_AccelerateScale;
                     if (Mathf.Abs(m_Turn) < 0.05f) m_Turn = 0;
                     if (Input.touchCount > 0)
                         AccelarePlayer();
@@ -322,6 +341,11 @@ public class InputHandler : MonoBehaviour {
 
         
         
+    }
+
+    public void ChangeGravityScale(float value)
+    {
+        m_AccelerateScale = value;
     }
 
 	private bool IsPointerOverUIObject(Vector2 position) {

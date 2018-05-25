@@ -120,7 +120,10 @@ public class GameManager : MonoBehaviour {
         gameHighScore = PlayerPrefs.GetInt("High Score");
         gameScore = 0;
         if (DiffScoreOption == DiffScoreUsage.ScaleOffHighest)
+        {
             scoreForDifficulty = gameHighScore * scoreForDiffScale;
+            gameScore = scoreForDifficulty;
+        }
         else if (DiffScoreOption == DiffScoreUsage.Normal)
             scoreForDifficulty = 0;
         // else is haha
@@ -325,6 +328,23 @@ public class GameManager : MonoBehaviour {
         }
         AppManager.instance.UpdateDailyLeaderboardScore((int)gameScore);
 	}
+
+    public bool isQuickstart()
+    {
+        return DiffScoreOption == DiffScoreUsage.ScaleOffHighest;
+    }
+
+    public void SetQuickStart(bool start)
+    {
+        if(start && AdRemoved())
+        {
+            DiffScoreOption = DiffScoreUsage.ScaleOffHighest;
+        }
+        else
+        {
+            DiffScoreOption = DiffScoreUsage.Normal;
+        }
+    }
 
     void SetDayHighScore()
     {
