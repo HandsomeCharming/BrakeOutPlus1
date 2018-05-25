@@ -162,7 +162,7 @@ public class InputHandler : MonoBehaviour {
         if (GameManager.current.state == GameManager.GameState.Start)
         {
             //Start game detect
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            /*if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
                 GameManager.current.StartGame();
                 resume();
@@ -176,7 +176,7 @@ public class InputHandler : MonoBehaviour {
 					GameManager.current.StartGame();
 					resume();
 				}
-            }
+            }*/
         }
         else if(GameManager.current.state == GameManager.GameState.Dead)
         {
