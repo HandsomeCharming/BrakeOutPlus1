@@ -89,7 +89,25 @@ public class ReviveMenuUI : UIBase {
     void StarRevive()
     {
         //To-do: add remove star
-        GameManager.current.RevivePlayer();
+        int price = 10;
+        switch(GameManager.current.m_ReviveCount)
+        {
+            case 0:
+                price = 10;
+                break;
+            case 1:
+                price = 20;
+                break;
+            case 2:
+                price = 40;
+                break;
+            default:break;
+        }
+        if(GameManager.current.gameStars > price)
+        {
+            GameManager.current.AddStar(-price);
+            GameManager.current.RevivePlayer();
+        }
     }
 
     void AdRevive()
