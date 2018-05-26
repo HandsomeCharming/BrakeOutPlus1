@@ -14,6 +14,7 @@ public class LootBoxManager : MonoBehaviour {
     public ReceiveItemUI m_ReceiveItem;
     public GameObject m_Buttons;
     public GameObject m_ExitButton;
+	public LootBoxAdButton m_AdButton;
 
     int m_CurrentPrizeIndex;
     int m_ChancesLeft;
@@ -93,9 +94,15 @@ public class LootBoxManager : MonoBehaviour {
         }
     }
 
-    public void StartLootAd()
+	public void StartLootAdRewarded()
+	{
+		StartLoot ();
+		m_AdButton.ResetTimerWhenLootSuccess ();
+	}
+
+    public bool StartLootAd()
     {
-        AdManager.Instance.ShowLootboxVideo();
+		return AdManager.Instance.ShowLootboxVideo ();
     }
 
     public void StartOneLootWithStar()

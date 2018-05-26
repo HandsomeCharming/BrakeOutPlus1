@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour {
             CarClassData classData = CarSelectDataReader.Instance.GetCarClassData(data.carClass.ToString());
             if (classData != null)
             {
+				Player.current.SetBoost(classData, data, SaveManager.instance.GetSavedCarData(data.name));
                 Player.current.physics.SetPhysicsByClassData(classData, data, SaveManager.instance.GetSavedCarData(data.name));
             }
 

@@ -145,8 +145,9 @@ public class SelectMenuUI : MonoBehaviour {
                     break;
             }
             print(level);
-            float scale = Mathf.Lerp(min, max, (float)level / carData.maxUpgradeLevel);
-            m_CarUpgradeCards[i].RefreshUI(level, carData.maxUpgradeLevel, scale, hasCar, carData.GetUpgradePrice(level, type));
+			float minScale = min;
+            float addedscale = Mathf.Lerp(min, max, (float)level / carData.maxUpgradeLevel) - minScale;
+			m_CarUpgradeCards[i].RefreshUI(level, carData.maxUpgradeLevel, minScale, addedscale, hasCar, carData.GetUpgradePrice(level, type));
         }
     }
 

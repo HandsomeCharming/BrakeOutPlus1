@@ -36,17 +36,28 @@ public class LootBoxAdButton : MonoBehaviour {
         {
             remainTime.gameObject.SetActive(false);
         }
+
+		if (Input.GetKeyDown (KeyCode.K))
+		{
+			PlayerPrefs.DeleteKey (nextAdTimeKey);
+			PlayerPrefs.Save ();
+			CheckCanLoot ();
+		}
     }
 
     public void LootIfYouCan()
     {
-        SetLastAdTime();
-        RefreshTimer();
         if (CheckCanLoot())
         {
-            manager.StartLootAd();
+			manager.StartLootAd ();
         }
     }
+
+	public void ResetTimerWhenLootSuccess()
+	{
+		SetLastAdTime();
+		RefreshTimer();
+	}
 
     void SetLastAdTime()
     {

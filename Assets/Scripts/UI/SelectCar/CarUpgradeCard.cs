@@ -18,7 +18,8 @@ public class CarUpgradeCard : MonoBehaviour {
     public Text m_LevelText;
     public Text m_Price;
     public GameObject m_CoinIcon;
-    public RectTransform m_Bar;
+	public RectTransform m_MinBar;
+	public RectTransform m_AddedBar;
     public Button m_UpgradeButton;
 
     public SelectCarManager m_Manager;
@@ -45,14 +46,21 @@ public class CarUpgradeCard : MonoBehaviour {
         }
     }
 
-    public void RefreshUI(int level, int maxLevel, float scalex, bool hasCar, int price)
+	public void RefreshUI(int level, int maxLevel, float minScalex, float addScalex, bool hasCar, int price)
     {
         m_LevelText.text = (level+1).ToString() + "/" + (maxLevel + 1).ToString();
         m_Price.text = price.ToString();
 
-        Vector3 scale = m_Bar.localScale;
-        scale.x = scalex;
-        m_Bar.localScale = scale;
+		Vector3 minScale = m_MinBar.localScale;
+		minScale.x = minScalex;
+        m_MinBar.localScale = minScale;
+
+		Vector3 addedScale = m_MinBar.localScale;
+		addedScale.x = addScalex;
+		m_AddedBar.localScale = addedScale;
+		Vector3 addedPos = m_AddedBar.anchoredPosition;
+		addedPos.x = -795.0f + (420.0f * minScalex);
+		m_AddedBar.anchoredPosition = addedPos;
 
         bool canUpgrade = level != maxLevel && hasCar;
         m_UpgradeButton.gameObject.SetActive(canUpgrade);

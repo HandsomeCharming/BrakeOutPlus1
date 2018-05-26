@@ -200,7 +200,7 @@ public class AdManager : MonoBehaviour {
         }
         else if (m_RewardType == RewardType.LootBox)
         {
-            LootBoxManager.instance.StartLoot();
+			LootBoxManager.instance.StartLootAdRewarded();
         }
         m_RewardType = RewardType.None;
     }
