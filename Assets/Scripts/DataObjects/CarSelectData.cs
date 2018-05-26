@@ -105,6 +105,10 @@ public class SingleCarSelectData
     public int[] m_HandlingPrice;
     public int[] m_BoostPrice;
 
+    [Header("Feature Descriptions")]
+    public string firstLine = "a";
+    public string secondLine = "b";
+
     [Header("Trail")]
     public bool CanChangeTrail = true;
     public List<TrailOnCarData> m_Trails;

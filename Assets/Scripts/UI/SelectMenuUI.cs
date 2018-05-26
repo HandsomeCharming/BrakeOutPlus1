@@ -12,6 +12,8 @@ public class SelectMenuUI : MonoBehaviour {
     public GameObject m_BuyButton;
     public Text m_CoinPrice;
     public Text m_StarPrice;
+    public Text m_FirstFeature;
+    public Text m_SecondFeature;
     public GameObject m_TrailButton;
     public GameObject m_Foreground;
     public GameObject[] m_SceneGOs;
@@ -96,8 +98,16 @@ public class SelectMenuUI : MonoBehaviour {
                 m_TrailButton.SetActive(true);
         }
 
+        ChangeFeatureText();
         RefreshUpgradeCards();
         LoadCurrentCarPreview();
+    }
+
+    void ChangeFeatureText()
+    {
+        var carData = m_Manager.GetCurrentCarData();
+        m_FirstFeature.text = carData.firstLine;
+        m_SecondFeature.text = carData.secondLine;
     }
 
     public void ShowBuyButtonAndPrice(bool show)
