@@ -28,7 +28,8 @@ public class ShareButton : MonoBehaviour {
         //ScreenCapture.CaptureScreenshot(ScreenShotFilePath);
 
         NativeShare share = new NativeShare();
-        share.SetSubject("Test").SetText("FF");
+        share.SetSubject("Play Brakeout!").SetText("I just played this game and got " + ((int)GameManager.current.gameScore).ToString() +
+            ", would you like to challenge me?");
         share.AddFile(path);
         share.Share();
         
