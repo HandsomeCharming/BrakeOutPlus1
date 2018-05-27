@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Powerups
+{
+    AutoPilot,
+    Magnet,
+    DoubleScore,
+    Shield
+}
+
 public class Player : MonoBehaviour {
 
     public enum PlayerState

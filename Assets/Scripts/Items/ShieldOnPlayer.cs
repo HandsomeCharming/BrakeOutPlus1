@@ -11,6 +11,7 @@ public class ShieldOnPlayer : MonoBehaviour {
     private void Awake()
     {
         current = this;
+        InGameUI.Instance.StartPowerup(Powerups.Shield);
     }
 
     public void Init(float time)
@@ -33,6 +34,7 @@ public class ShieldOnPlayer : MonoBehaviour {
     public void PlayPopAnim()
     {
         m_Time = 10.0f;
+        InGameUI.Instance.EndPowerup(Powerups.Shield);
         Destroy(gameObject, 0.1f);
     }
 

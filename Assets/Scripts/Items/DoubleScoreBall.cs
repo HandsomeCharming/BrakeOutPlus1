@@ -17,6 +17,7 @@ public class DoubleScoreBall : ItemSuper
         if (other.tag == "Player")
         {
             float time = ItemManager.GetItemDuration(ItemType.DoubleScore);
+            InGameUI.Instance.StartPowerup(Powerups.DoubleScore);
             GameManager.current.SetItemMultiplier(2.0f, time);
             //UIManager.current.m_Ingame.StartDoubleScoreCountDown(time);
             

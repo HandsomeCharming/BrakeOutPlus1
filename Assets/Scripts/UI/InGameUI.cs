@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InGameUI : UIBase
 {
+    public static InGameUI Instance;
+
     public Text raceScore;
     public Text highScore;
     public Text coinNumbers;
@@ -12,8 +14,15 @@ public class InGameUI : UIBase
     public Image BoostImage;
     public Text BoostNumber;
     public Text DoubleScore;
+    public Image[] m_HUDs;
+    public Sprite m_ShieldImage;
+    public Sprite m_DoubleScoreImage;
+    public Sprite m_MagnetImage;
+    public Sprite m_AutopilotImage;
 
     public GameObject[] m_Controls;
+
+    public List<Powerups> m_Powerups;
 
     float m_MultiUpdatedTime = 1.5f;
     float m_MultiUpdatedTimeRemain = 0;
@@ -26,6 +35,8 @@ public class InGameUI : UIBase
     // Use this for initialization
     void Awake() {
         //DoubleScore.gameObject.SetActive(false);
+        Instance = this;
+        m_Powerups = new List<Powerups>();
     }
 
     private void OnEnable()
@@ -114,6 +125,54 @@ public class InGameUI : UIBase
             BoostNumber.GetComponent<Animator>().Play("BoostUIHide");
             BoostImage.GetComponent<Animator>().Play("BoostUIHide");
         }
+    }
+
+    public void StartPowerup(Powerups powerup)
+    {
+        if(!m_Powerups.Contains(powerup))
+        {
+            m_Powerups.Add(powerup);
+        }
+        RefreshPowerupHUD();
+    }
+
+    public void EndPowerup(Powerups powerup)
+    {
+        if (m_Powerups.Contains(powerup))
+        {
+            m_Powerups.Remove(powerup);
+        }
+        RefreshPowerupHUD();
+    }
+
+    public void RefreshPowerupHUD()
+    {
+        foreach(var image in m_HUDs)
+        {
+            image.gameObject.SetActive(false);
+        }
+
+        for(int i=0; i<m_Powerups.Count; ++i)
+        {
+            m_HUDs[i].gameObject.SetActive(true);
+            m_HUDs[i].sprite = GetImageFromPowerUp(m_Powerups[i]);
+        }
+    }
+
+    Sprite GetImageFromPowerUp(Powerups powerup)
+    {
+        switch(powerup)
+        {
+            case Powerups.AutoPilot:
+                return m_AutopilotImage;
+            case Powerups.DoubleScore:
+                return m_DoubleScoreImage;
+            case Powerups.Magnet:
+                return m_MagnetImage;
+            case Powerups.Shield:
+                return m_ShieldImage;
+        }
+        return null;
     }
 
     public void UpdateBoostMultiplierNumber(float multiplier, bool increasing) //false when decreasing

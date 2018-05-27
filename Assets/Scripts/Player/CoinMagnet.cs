@@ -29,11 +29,13 @@ public class CoinMagnet : MonoBehaviour {
     private void OnDisable()
     {
         AudioSystem.current.PlayEvent(AudioSystemEvents.MagnetStopEventName);
+        InGameUI.Instance.EndPowerup(Powerups.Magnet);
     }
 
     private void Awake()
     {
         AudioSystem.current.PlayEvent(AudioSystemEvents.MagnetStartEventName);
+        InGameUI.Instance.StartPowerup(Powerups.Magnet);
     }
 
     private void Update()

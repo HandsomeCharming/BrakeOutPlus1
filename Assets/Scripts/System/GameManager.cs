@@ -380,6 +380,7 @@ public class GameManager : MonoBehaviour {
     public void ResetItemMultiplier()
     {
         m_ItemMultiplier = 1.0f;
+        InGameUI.Instance.EndPowerup(Powerups.DoubleScore);
     }
 
     public void EndGame()  //When player dies
