@@ -40,11 +40,11 @@ public class QuickStartUI : MonoBehaviour {
 
         if (GameManager.current.isQuickstart())
         {
-            m_OnOff.text = "On";
+            m_OnOff.text = "ON";
         }
         else
         {
-            m_OnOff.text = "Off";
+            m_OnOff.text = "OFF";
         }
     }
 	
