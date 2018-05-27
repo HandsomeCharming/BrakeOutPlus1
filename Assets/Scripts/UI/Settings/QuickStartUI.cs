@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class QuickStartUI : MonoBehaviour {
 
-
+    public GameObject UnlockText;
     public Text m_OnOff;
+    public Text m_ButtonText;
     public Image m_BaseImage;
 
     Color initBaseColor;
@@ -27,10 +28,14 @@ public class QuickStartUI : MonoBehaviour {
         if(!GameManager.current.AdRemoved())
         {
             m_BaseImage.color = Color.gray;
+            m_ButtonText.color = Color.gray;
+            UnlockText.SetActive(true);
         }
         else
         {
             m_BaseImage.color = initBaseColor;
+            m_ButtonText.color = initBaseColor;
+            UnlockText.SetActive(false);
         }
 
         if (GameManager.current.isQuickstart())
