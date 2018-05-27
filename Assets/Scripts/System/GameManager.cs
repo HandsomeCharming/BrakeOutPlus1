@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour {
             obj.SetActive(true);
         }
 
-		DebugCoinStars ();
+		//DebugCoinStars ();
     }
 
 	void DebugCoinStars()
