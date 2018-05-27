@@ -9,6 +9,7 @@ public class LootBoxAdButton : MonoBehaviour {
 
     public LootBoxManager manager;
     public Text remainTime;
+    public Image adBase;
 
 
     const string nextAdTimeKey = "LBAdLastTime";
@@ -17,12 +18,26 @@ public class LootBoxAdButton : MonoBehaviour {
     void OnEnable () {
         if (!CheckCanLoot())
         {
-            remainTime.gameObject.SetActive(true);
+            SetAdButtonCanLoot(false);
             RefreshTimer();
         }
         else
         {
+            SetAdButtonCanLoot(true);
+        }
+    }
+
+    void SetAdButtonCanLoot(bool can)
+    {
+        if(can)
+        {
             remainTime.gameObject.SetActive(false);
+            adBase.color = Color.white;
+        }
+        else
+        {
+            remainTime.gameObject.SetActive(true);
+            adBase.color = Color.gray;
         }
     }
 	
@@ -57,13 +72,13 @@ public class LootBoxAdButton : MonoBehaviour {
 	{
 		SetLastAdTime();
 		RefreshTimer();
-	}
+        SetAdButtonCanLoot(false);
+    }
 
     void SetLastAdTime()
     {
         DateTime current = DateTime.Now;
         current = current.AddHours(2);
-        print(current.ToString(timeFormat));
         PlayerPrefs.SetString(nextAdTimeKey, current.ToString(timeFormat));
     }
 
@@ -86,18 +101,18 @@ public class LootBoxAdButton : MonoBehaviour {
             TimeSpan span = now - lastAd;
             if(span.Hours >= 2)
             {
-                remainTime.gameObject.SetActive(false);
+                SetAdButtonCanLoot(true);
                 return true;
             }
             else
             {
-                remainTime.gameObject.SetActive(true);
+                SetAdButtonCanLoot(false);
                 return false;
             }
         }
         else
         {
-            remainTime.gameObject.SetActive(false);
+            SetAdButtonCanLoot(true);
             return true;
         }
     }

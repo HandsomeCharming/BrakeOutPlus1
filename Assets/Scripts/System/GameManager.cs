@@ -570,8 +570,14 @@ public class GameManager : MonoBehaviour {
     {
         return PlayerPrefs.HasKey(RemovedAD);
     }
-
-	// Update is called once per frame
-	void Update () {
+    private void OnApplicationPause(bool pause)
+    {
+        if(state == GameState.Running && pause)
+        {
+            Pause(true);
+        }
+    }
+    // Update is called once per frame
+    void Update () {
 	}
 }
