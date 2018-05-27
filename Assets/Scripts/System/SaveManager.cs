@@ -131,7 +131,6 @@ public class SaveManager {
             {
                 foreach (var car in m_Data.m_Cars.m_Cars)
                 {
-                    Debug.Log(car.m_Name);
                     if(!m_CarDict.ContainsKey(car.m_Name))
                     {
                         m_CarDict.Add(car.m_Name, car);

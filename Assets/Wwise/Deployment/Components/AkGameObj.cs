@@ -100,7 +100,6 @@ public class AkGameObj : MonoBehaviour
 
 		//Register a Game Object in the sound engine, with its name.
 		AKRESULT res = AkSoundEngine.RegisterGameObj(gameObject, gameObject.name);
-        print("register");
         if (res == AKRESULT.AK_Success)
         {
 			// Get position with offset or custom position and orientation.

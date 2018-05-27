@@ -422,7 +422,6 @@ public class GameManager : MonoBehaviour {
 
     void RefreshDailyHighScore()
     {
-        print(System.DateTime.Now.ToString("dd/MM"));
         highScoreLastDate = PlayerPrefs.GetString(LastDateName, "");
         if (highScoreLastDate == "")
         {
