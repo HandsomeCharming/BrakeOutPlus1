@@ -21,11 +21,12 @@ public class CarUpgradeCard : MonoBehaviour {
 	public RectTransform m_MinBar;
 	public RectTransform m_AddedBar;
     public Button m_UpgradeButton;
+    public Text m_UpgradeText;
+
 
     public SelectCarManager m_Manager;
-
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         m_UpgradeButton.onClick.AddListener(Upgrade);
     }
 	
@@ -63,7 +64,8 @@ public class CarUpgradeCard : MonoBehaviour {
 		m_AddedBar.anchoredPosition = addedPos;
 
         bool canUpgrade = level != maxLevel && hasCar;
-        m_UpgradeButton.gameObject.SetActive(canUpgrade);
+        m_UpgradeButton.enabled = canUpgrade;
+        m_UpgradeText.text = canUpgrade ? "UPGRADE" : "MAX";
         m_Price.gameObject.SetActive(canUpgrade);
         m_CoinIcon.SetActive(canUpgrade);
     }
