@@ -121,6 +121,12 @@ public class BackgroundMaterial : MonoBehaviour {
         floorTime = floorBeforeTime;*/
     }
 
+    public Color GetCurrentDownColor()
+    {
+        float lerpAmount = time / lerpTime;
+        return Color.Lerp(m_CurrentColor.colors[ColorAIndex].downColor, m_CurrentColor.colors[ColorBIndex].downColor, lerpAmount);
+    }
+
     public Color GetCurrentFloorColor()
     {
         if (m_SharpLerpTime > 0 || m_SharpLerpToBlack)

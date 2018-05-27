@@ -21,6 +21,7 @@ public class SelectCarManager : MonoBehaviour {
 	void Awake ()
     {
         m_Menu.m_Manager = this;
+        InitCar();
 
         m_Menu.enabled = true;
 
@@ -29,7 +30,7 @@ public class SelectCarManager : MonoBehaviour {
     }
     private void OnEnable()
     {
-        InitCar();
+        //InitCar();
     }
 
     void InitCar()

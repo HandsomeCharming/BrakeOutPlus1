@@ -22,6 +22,8 @@ public class BackgroundManager : MonoBehaviour {
     public BackgroundData m_Storer;
     public SceneObjects[] m_SceneObjects;
 
+    public TabUIColor tabUIColor;
+
     public static BackgroundManager current;
 
     float m_NextObjectTime;
@@ -90,6 +92,7 @@ public class BackgroundManager : MonoBehaviour {
             default:
                 break;
         }
+        tabUIColor.ChangeBackground();
     }
 
     void ChangeSceneObject()
