@@ -21,16 +21,26 @@ public class SelectCarManager : MonoBehaviour {
 	void Awake ()
     {
         m_Menu.m_Manager = this;
+
+        m_Menu.enabled = true;
+
+        //m_CurrentCarName = m_CarNames[m_CarIndex];
+        //m_Menu.SetText(m_CurrentCarName);
+    }
+    private void OnEnable()
+    {
+        InitCar();
+    }
+
+    void InitCar()
+    {
         m_CarIndex = GameManager.current.m_DefaultCarIndex;
         m_CurrentSceneIndex = GameManager.current.m_DefaultSceneIndex;
         m_CurrentScene = m_Storer.sceneData[m_CurrentSceneIndex];
         m_CurrentCars = m_CurrentScene.carData;
-
-        m_Menu.enabled = true;
-        SelectScene(m_CurrentSceneIndex, true);
-        //m_CurrentCarName = m_CarNames[m_CarIndex];
-        //m_Menu.SetText(m_CurrentCarName);
+        SelectScene(m_CurrentSceneIndex, true, m_CarIndex);
     }
+
 
     public SingleCarSelectData GetCurrentCarData()
     {
@@ -54,6 +64,7 @@ public class SelectCarManager : MonoBehaviour {
         if(isCurrentCarAvailable())
         {
             GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
+            GameManager.current.ReloadDefaultTrail();
             //GameManager.current.SetDefaultCar(m_CarIndex, m_CurrentSceneIndex);
         }
     }
@@ -70,6 +81,7 @@ public class SelectCarManager : MonoBehaviour {
         if (isCurrentCarAvailable())
         {
             GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
+            GameManager.current.ReloadDefaultTrail();
             //GameManager.current.SetDefaultCar(m_CarIndex, m_CurrentSceneIndex);
         }
     }
@@ -79,13 +91,13 @@ public class SelectCarManager : MonoBehaviour {
         SelectScene(index, false);
     }
 
-    public void SelectScene(int index, bool forced)
+    public void SelectScene(int index, bool forced, int carIndex = 0)
     {
         if (m_CurrentSceneIndex == index && !forced) return;
         m_CurrentSceneIndex = index;
         m_CurrentScene = m_Storer.sceneData[m_CurrentSceneIndex];
         m_CurrentCars = m_CurrentScene.carData;
-        m_CarIndex = 0;
+        m_CarIndex = carIndex;
         if (isCurrentCarAvailable())
         {
             GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);

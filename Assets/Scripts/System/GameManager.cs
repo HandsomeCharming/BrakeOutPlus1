@@ -249,6 +249,12 @@ public class GameManager : MonoBehaviour {
         ChangeBackground((BackgroundEnum)m_DefaultSceneIndex);
     }
 
+    public void ReloadDefaultTrail()
+    {
+        m_DefaultTrailName = PlayerPrefs.GetString("DefaultTrail", "Line");
+        ReloadTrail(m_DefaultTrailName);
+    }
+
     public void ChangeBackground(BackgroundEnum back)
     {
         BackgroundManager.current.ChangeBackground(back);
