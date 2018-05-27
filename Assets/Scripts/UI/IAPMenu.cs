@@ -34,7 +34,7 @@ public class IAPMenu : MonoBehaviour {
         {
             RemoveAdButton.enabled = false;
             RemoveAdButton.GetComponent<UnityEngine.Purchasing.IAPButton>().enabled = false;
-            RemoveAdPriceText.text = "Purchased";
+            RemoveAdPriceText.text = "OWNED";
         }
     }
 }
