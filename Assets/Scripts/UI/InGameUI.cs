@@ -19,6 +19,7 @@ public class InGameUI : UIBase
     public Sprite m_DoubleScoreImage;
     public Sprite m_MagnetImage;
     public Sprite m_AutopilotImage;
+    public Sprite m_TimeslowImage;
 
     public GameObject[] m_Controls;
 
@@ -171,6 +172,8 @@ public class InGameUI : UIBase
                 return m_MagnetImage;
             case Powerups.Shield:
                 return m_ShieldImage;
+            case Powerups.Timeslow:
+                return m_TimeslowImage;
         }
         return null;
     }

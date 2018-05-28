@@ -6,7 +6,8 @@ public enum Powerups
     AutoPilot,
     Magnet,
     DoubleScore,
-    Shield
+    Shield,
+    Timeslow
 }
 
 public class Player : MonoBehaviour {

@@ -183,10 +183,16 @@ public class ItemManager {
         {
             //Find first bought item
             int first = 0;
+            bool hasItem = false;
             for (; first < items.Length; ++first)
             {
-                if (GetItemLevel(items[first]) > 0) break;
+                if (GetItemLevel(items[first]) > 0)
+                {
+                    hasItem = true;
+                    break;
+                }
             }
+            if (!hasItem) return null; // no bought item
             ItemType type = items[first];
 
             // Reservoir sampling
