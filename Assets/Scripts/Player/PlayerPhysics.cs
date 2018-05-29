@@ -312,7 +312,7 @@ public class PlayerPhysics : MonoBehaviour {
         style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
         float speed = m_RigidBody.velocity.magnitude;
         string text = string.Format("Speed : {0:0.0}", speed);
-        GUI.Label(rect, text, style);
+        //GUI.Label(rect, text, style);
     }
 
     void OnCollisionEnter(Collision collision)
