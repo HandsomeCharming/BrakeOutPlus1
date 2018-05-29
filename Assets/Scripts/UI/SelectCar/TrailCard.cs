@@ -13,13 +13,17 @@ public class TrailCard : MonoBehaviour {
     Button m_BuyButton;
     GameObject m_SelectButtonGO;
     Button m_SelectButton;
+    Text m_SelectText;
     GameObject m_TrailGO;
     Text m_PriceText;
+    GameObject m_PriceIconGO;
 
     bool inited = false;
 
-    void Awake () {
+    Color selectedColor;
 
+    void Awake () {
+        selectedColor = new Color(100.0f / 255.0f, 120.0f / 255.0f, 135.0f / 255.0f);
     }
 
     void Init()
@@ -29,9 +33,11 @@ public class TrailCard : MonoBehaviour {
         m_BuyButton = transform.Find("Button/BuyButton").GetComponent<Button>();
         m_SelectButtonGO = transform.Find("SelectButton").gameObject;
         m_SelectButton = transform.Find("SelectButton/SelectBut").GetComponent<Button>();
+        m_SelectText = transform.Find("SelectButton/Text").GetComponent<Text>();
         m_BuyButton.onClick.AddListener(BuyTrail);
         m_SelectButton.onClick.AddListener(SelectTrail);
-        m_PriceText = transform.Find("Price").GetComponent<Text>();
+        m_PriceText = transform.Find("Button/Price").GetComponent<Text>();
+        m_PriceIconGO = transform.Find("Button/Icon").gameObject;
         inited = true;
     }
 
@@ -68,12 +74,25 @@ public class TrailCard : MonoBehaviour {
             m_BuyButtonGO.SetActive(false);
             m_SelectButtonGO.SetActive(true);
             m_PriceText.text = "";
+            m_PriceIconGO.SetActive(false);
+
+            if (GameManager.current.m_DefaultTrailName == TrailName)
+            {
+                m_SelectButton.image.color = selectedColor;
+                m_SelectText.text = "EQUIPED";
+            }
+            else
+            {
+                m_SelectButton.image.color = Color.white;
+                m_SelectText.text = "EQUIP";
+            }
         }
         else
         {
             m_BuyButtonGO.SetActive(true);
             m_SelectButtonGO.SetActive(false);
             m_PriceText.text = data.price.ToString();
+            m_PriceIconGO.SetActive(true);
         }
 
 
