@@ -169,6 +169,7 @@ public class CarClassData
     public MinMaxData m_CameraGoNearTime;
 
     public MinMaxData m_MaxBoostMultiplier;
+    public MinMaxData m_BoostIncreaseRate;
 }
 
 [System.Serializable]
