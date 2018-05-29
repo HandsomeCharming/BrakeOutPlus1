@@ -14,6 +14,7 @@ public class TrailCard : MonoBehaviour {
     GameObject m_SelectButtonGO;
     Button m_SelectButton;
     GameObject m_TrailGO;
+    Text m_PriceText;
 
     bool inited = false;
 
@@ -30,6 +31,7 @@ public class TrailCard : MonoBehaviour {
         m_SelectButton = transform.Find("SelectButton/SelectBut").GetComponent<Button>();
         m_BuyButton.onClick.AddListener(BuyTrail);
         m_SelectButton.onClick.AddListener(SelectTrail);
+        m_PriceText = transform.Find("Price").GetComponent<Text>();
         inited = true;
     }
 
@@ -65,11 +67,13 @@ public class TrailCard : MonoBehaviour {
         {
             m_BuyButtonGO.SetActive(false);
             m_SelectButtonGO.SetActive(true);
+            m_PriceText.text = "";
         }
         else
         {
             m_BuyButtonGO.SetActive(true);
             m_SelectButtonGO.SetActive(false);
+            m_PriceText.text = data.price.ToString();
         }
 
 

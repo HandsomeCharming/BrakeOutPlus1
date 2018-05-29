@@ -6,7 +6,8 @@ public enum Powerups
     AutoPilot,
     Magnet,
     DoubleScore,
-    Shield
+    Shield,
+    Timeslow
 }
 
 public class Player : MonoBehaviour {
@@ -245,7 +246,8 @@ public class Player : MonoBehaviour {
 		int maxLevel = carData.maxUpgradeLevel;
 		float lerpAmount = ((float)level) / (float)maxLevel;
 		m_MaxMult = Mathf.Lerp(classData.m_MaxBoostMultiplier.min, classData.m_MaxBoostMultiplier.max, lerpAmount);
-	}
+        m_MultIncreaseRate = Mathf.Lerp(classData.m_BoostIncreaseRate.min, classData.m_BoostIncreaseRate.max, lerpAmount);
+    }
 
     public void Die()
     {

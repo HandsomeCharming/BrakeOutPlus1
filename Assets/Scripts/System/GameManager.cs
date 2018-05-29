@@ -473,7 +473,7 @@ public class GameManager : MonoBehaviour {
         {
             if(!AdManager.Instance.ShowRewardReviveVideo())
             {
-                RevivePlayer();
+                //RevivePlayer();
             }
         }
         else
@@ -515,6 +515,7 @@ public class GameManager : MonoBehaviour {
 		state = GameState.AssembleTrack;
 		ResetSceneStats();
         LoadDefaultCarAndTrail();
+        InputHandler.current.ResetControls();
         ItemManager.current.Reset();
         ChallengeManager.current.Reset();
         FloorBuilder.current.RebuildFloor();
