@@ -300,6 +300,8 @@ public class GameManager : MonoBehaviour {
             ChallengeManager.current.getHardTimeRemain = 15.0f;
             UIManager.current.ChangeStateByGameState();
             LoadAdIfNeeded();
+
+            AnalyticsEvent.GameStart();
         }
     }
 
@@ -398,6 +400,10 @@ public class GameManager : MonoBehaviour {
             SetHighScore();
             if(!AdRemoved())
                 HandleAdCountAndShowIfShould();
+            
+            Dictionary<string, object> customParams = new Dictionary<string, object>();
+            customParams.Add("Score", gameScore);
+            AnalyticsEvent.GameOver("Game", customParams);
         }
     }
 

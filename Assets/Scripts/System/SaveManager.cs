@@ -208,11 +208,11 @@ public class SaveManager {
     public bool BuyTrail(string name)
     {
         int price = CarSelectDataReader.Instance.GetTrailSelectData(name).price;
-        if (GameManager.current.gameCoins >= price)
+        if (GameManager.current.gameStars >= price)
         {
             if (!m_Data.m_Trails.m_TrailNames.Contains(name))
             {
-                GameManager.current.AddCoin(-price);
+                GameManager.current.AddStar(-price);
                 m_Data.m_Trails.m_TrailNames.Add(name);
 
                 Save();
