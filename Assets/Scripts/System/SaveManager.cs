@@ -157,9 +157,9 @@ public class SaveManager {
     {
         AcquireCar(0, 0);
         AcquireCar(0, 1);
-        AcquireTrail("Line");
-        AcquireTrail("Cloud");
-        AcquireTrail("None");
+        AcquireTrail("LINE");
+        AcquireTrail("CLOUD");
+        AcquireTrail("NONE");
     }
 
     public bool BuyCarWithCoin(int carIndex, int sceneIndex)

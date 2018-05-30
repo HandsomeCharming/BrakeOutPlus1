@@ -229,13 +229,16 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetInt("DefaultCar", carIndex);
         PlayerPrefs.SetInt("DefaultScene", sceneIndex);
         PlayerPrefs.Save();
+        m_DefaultCarIndex = PlayerPrefs.GetInt("DefaultCar", 0);
+        m_DefaultSceneIndex = PlayerPrefs.GetInt("DefaultScene", 0);
     }
 
     public void SetDefaultTrail(string name)
     {
         PlayerPrefs.SetString("DefaultTrail", name);
-
         PlayerPrefs.Save();
+
+        m_DefaultTrailName = PlayerPrefs.GetString("DefaultTrail", "Line");
     }
 
     public void LoadDefaultCarAndTrail()

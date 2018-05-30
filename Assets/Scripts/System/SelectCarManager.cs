@@ -161,6 +161,7 @@ public class SelectCarManager : MonoBehaviour {
     public void SelectTrail(string name)
     {
         GameManager.current.ReloadTrail(name);
+        m_TrailMenu.RefreshUI(m_CurrentScene.trailData);
     }
 
     private void OnDisable()
