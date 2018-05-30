@@ -159,7 +159,7 @@ public class SaveManager {
         AcquireCar(0, 1);
         AcquireTrail("Line");
         AcquireTrail("Cloud");
-        
+        AcquireTrail("None");
     }
 
     public bool BuyCarWithCoin(int carIndex, int sceneIndex)
