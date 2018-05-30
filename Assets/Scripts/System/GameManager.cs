@@ -9,7 +9,7 @@ using System;
 public class GameManager : MonoBehaviour {
 
     public static GameManager current;
-    public static int m_NextAdTime = 0;
+    public static int m_NextAdTime = 3;
 
     public bool m_LoadFromDefault = true;
     public GameObject m_PlayerPrefab;
@@ -310,7 +310,7 @@ public class GameManager : MonoBehaviour {
 
     void LoadAdIfNeeded()
     {
-        if(!AdRemoved() && m_NextAdTime == 1)
+		if(!AdRemoved() && AdManager.Instance.InterstitialNeedsLoading())
         {
             AdManager.Instance.RequestInterstitial();
         }
@@ -401,8 +401,6 @@ public class GameManager : MonoBehaviour {
             state = GameState.Dead;
             UIManager.current.ChangeStateByGameState();
             SetHighScore();
-            if(!AdRemoved())
-                HandleAdCountAndShowIfShould();
             
             Dictionary<string, object> customParams = new Dictionary<string, object>();
             customParams.Add("Score", gameScore);
@@ -413,13 +411,14 @@ public class GameManager : MonoBehaviour {
     void HandleAdCountAndShowIfShould()
     {
         //Show ad every 3 games
+		print(m_NextAdTime);
         m_NextAdTime--;
         if (m_NextAdTime < 0)
         {
             //AdManager.Instance.ShowBannerAd();
             if(AdManager.Instance.ShowInterstitial())
             {
-                m_NextAdTime = UnityEngine.Random.Range(3, 5);
+				m_NextAdTime = UnityEngine.Random.Range(2, 5);
             }
         }
     }
@@ -529,6 +528,9 @@ public class GameManager : MonoBehaviour {
 		CameraFollow.current.SnapBack ();
         //Scene scene = SceneManager.GetActiveScene();
         //SceneManager.LoadScene(scene.name);
+
+		if(!AdRemoved())
+			HandleAdCountAndShowIfShould();
     }
 
     public void SetNormalTimeScale(float timeScale)
@@ -581,7 +583,9 @@ public class GameManager : MonoBehaviour {
 
     public bool AdRemoved()
     {
-        return PlayerPrefs.HasKey(RemovedAD);
+		bool adRemoved = PlayerPrefs.HasKey (RemovedAD);
+		print (adRemoved);
+		return adRemoved;
     }
     private void OnApplicationPause(bool pause)
     {
