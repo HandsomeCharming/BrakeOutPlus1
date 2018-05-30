@@ -39,7 +39,7 @@ public class BackgroundManager : MonoBehaviour {
 
     public void ChangeBackground(BackgroundEnum background)
     {
-        if (m_Background == background) return;
+        //if (m_Background == background) return;
         m_Background = background;
         if(m_CurrentBackgroundObjects.Count > 0)
         {
