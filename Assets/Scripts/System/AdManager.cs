@@ -1,4 +1,4 @@
-﻿#define TESTING_AD
+﻿//#define TESTING_AD
 
 using System.Collections;
 using System.Collections.Generic;
@@ -143,12 +143,14 @@ public class AdManager : MonoBehaviour {
         interstitial.LoadAd(request);
     }
 
-    public void ShowInterstitial()
+    public bool ShowInterstitial()
     {
         if (interstitial.IsLoaded())
         {
             interstitial.Show();
+            return true;
         }
+        else return false;
     }
 
     private void HandleInterstitialClosed(object sender, EventArgs args)

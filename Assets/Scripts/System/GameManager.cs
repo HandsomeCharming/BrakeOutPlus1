@@ -413,9 +413,11 @@ public class GameManager : MonoBehaviour {
         m_NextAdTime--;
         if (m_NextAdTime < 0)
         {
-            m_NextAdTime = UnityEngine.Random.Range(3, 5);
             //AdManager.Instance.ShowBannerAd();
-            AdManager.Instance.ShowInterstitial();
+            if(AdManager.Instance.ShowInterstitial())
+            {
+                m_NextAdTime = UnityEngine.Random.Range(3, 5);
+            }
         }
     }
 
