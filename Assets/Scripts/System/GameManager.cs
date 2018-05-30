@@ -480,15 +480,10 @@ public class GameManager : MonoBehaviour {
 
     public void ShowReviveVideo()
     {
-        if (Application.isMobilePlatform)
+        if (!AdManager.Instance.ShowRewardReviveVideo())
         {
-            if(!AdManager.Instance.ShowRewardReviveVideo())
-            {
-                //RevivePlayer();
-            }
+            //RevivePlayer();
         }
-        else
-            RevivePlayer();
     }
 
     public void RevivePlayer()
