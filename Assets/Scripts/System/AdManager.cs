@@ -30,7 +30,7 @@ public class AdManager : MonoBehaviour {
 #else
     string appId = "ca-app-pub-3372369278999623~1593905393";
     string interstitialID = "ca-app-pub-3372369278999623/8232776726";
-    string rewardId = "ca-app-pub-3372369278999623/7466489964";
+    string rewardId = "ca-app-pub-3372369278999623/1544913597";
 #endif
 
     enum RewardType
