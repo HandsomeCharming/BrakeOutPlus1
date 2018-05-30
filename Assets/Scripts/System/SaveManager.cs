@@ -246,8 +246,8 @@ public class SaveManager {
                     if (data.m_AccLevel < carData.maxUpgradeLevel && 
                         GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_AccLevel, type))
                     {
-                        data.m_AccLevel++;
                         GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_AccLevel, type));
+                        data.m_AccLevel++;
                         success = true;
                     }
                     break;
@@ -255,8 +255,8 @@ public class SaveManager {
                     if (data.m_BoostLevel < carData.maxUpgradeLevel &&
                         GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_BoostLevel, type))
                     {
-                        data.m_BoostLevel++;
                         GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_BoostLevel, type));
+                        data.m_BoostLevel++;
                         success = true;
                     }
                     break;
@@ -264,8 +264,8 @@ public class SaveManager {
                     if (data.m_HandlingLevel < carData.maxUpgradeLevel &&
                         GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_HandlingLevel, type))
                     {
-                        data.m_HandlingLevel++;
                         GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_HandlingLevel, type));
+                        data.m_HandlingLevel++;
                         success = true;
                     }
                     break;
