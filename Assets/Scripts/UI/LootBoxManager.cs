@@ -16,6 +16,11 @@ public class LootBoxManager : MonoBehaviour {
     public GameObject m_ExitButton;
 	public LootBoxAdButton m_AdButton;
 
+    [Header("Car loot debug Settings")]
+    public int ReceivedCarIndex;
+    public int ReceivedSceneIndex;
+    public bool showReceiveCar = false;
+
     int m_CurrentPrizeIndex;
     int m_ChancesLeft;
     bool m_Looting = false;
@@ -29,6 +34,19 @@ public class LootBoxManager : MonoBehaviour {
 
         m_CurrentPrizeIndex = -1;
         m_Looting = false;
+    }
+
+    private void Update()
+    {
+        if(showReceiveCar)
+        {
+            showReceiveCar = false;
+            //var carData = CarSelectDataReader.Instance.GetCarData(ReceivedCarName);
+            CarShortData data = new CarShortData();
+            data.carIndex = ReceivedCarIndex;
+            data.sceneIndex = ReceivedSceneIndex;
+            m_ReceiveItem.ReceiveCar(data);
+        }
     }
 
     public void StartLoot()
