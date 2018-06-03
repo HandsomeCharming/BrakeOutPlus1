@@ -21,6 +21,7 @@ public class AdManager : MonoBehaviour {
     string m_PlayingVideo;
     private RewardBasedVideoAd rewardBasedVideo;
     private InterstitialAd interstitial;
+	private bool InterstitialShowed = false;
 
 #if TESTING_AD
     string appId = "ca-app-pub-3372369278999623~1593905393";
@@ -62,6 +63,9 @@ public class AdManager : MonoBehaviour {
         rewardBasedVideo.OnAdRewarded += HandleRewardReviveRewarded;
         rewardBasedVideo.OnAdClosed += HandleRewardBasedVideoClosed;
         this.RequestRewardBasedVideo();
+		if (InterstitialNeedsLoading ()) {
+			RequestInterstitial ();
+		}
     }
 
     public void ShowVideoAd(string playingVideo = "")
@@ -141,13 +145,32 @@ public class AdManager : MonoBehaviour {
         AdRequest request = new AdRequest.Builder().Build();
         // Load the interstitial with the request.
         interstitial.LoadAd(request);
+		InterstitialShowed = false;
     }
+
+	public bool InterstitialIsLoaded()
+	{
+		if (interstitial != null && interstitial.IsLoaded ()) {
+			return true;
+		}
+		return false;
+	}
+
+	public bool InterstitialNeedsLoading()
+	{
+		if (InterstitialShowed || interstitial == null) {
+			return true;
+		}
+		return false;
+	}
 
     public bool ShowInterstitial()
     {
+		print ("Show interstitial");
         if (interstitial.IsLoaded())
         {
             interstitial.Show();
+			InterstitialShowed = true;
             return true;
         }
         else return false;

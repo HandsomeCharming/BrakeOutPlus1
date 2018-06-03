@@ -30,6 +30,8 @@ public class SelectControlUI : MonoBehaviour {
                 go.SetActive(false);
             }
             m_SelectBases[index].SetActive(true);
+
+            UnityEngine.Analytics.AnalyticsEvent.ScreenVisit(control.ToString());
         }
 
     }

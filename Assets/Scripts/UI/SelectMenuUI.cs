@@ -51,8 +51,6 @@ public class SelectMenuUI : MonoBehaviour {
 
         m_BotLeft = RectTransformUtility.WorldToScreenPoint(Camera.main, m_CarRotBotLeft.position);
         m_TopRight = RectTransformUtility.WorldToScreenPoint(Camera.main, m_CarRotTopRight.position);
-        print(m_BotLeft);
-        print(m_TopRight);
         m_RotatingPreview = false;
     }
 	
@@ -154,7 +152,6 @@ public class SelectMenuUI : MonoBehaviour {
                     max = classData.m_MaxHandling;
                     break;
             }
-            print(level);
 			float minScale = min;
             float addedscale = Mathf.Lerp(min, max, (float)level / carData.maxUpgradeLevel) - minScale;
 			m_CarUpgradeCards[i].RefreshUI(level, carData.maxUpgradeLevel, minScale, addedscale, hasCar, carData.GetUpgradePrice(level, type));
