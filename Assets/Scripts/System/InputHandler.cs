@@ -87,7 +87,7 @@ public class InputHandler : MonoBehaviour {
         }
         else
         {
-			m_ControlScheme = ControlSchemes.BothHand;
+			m_ControlScheme = ControlSchemes.SingleHand;
         }
     }
 
