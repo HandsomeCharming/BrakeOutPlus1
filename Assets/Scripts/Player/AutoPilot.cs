@@ -39,7 +39,7 @@ public class AutoPilot : MonoBehaviour {
         m_PlayerPhysics = m_Player.physics;
         m_Rigidbody = m_Player.GetComponent<Rigidbody>();
         m_ReachThreshold = 5.0f;
-        m_TurningSpeed = 4.0f;
+        m_TurningSpeed = 2.0f;
         AudioSystem.current.PlayEvent(AudioSystemEvents.AutoPilotStartEventName);
         CameraEffectManager.current.StartAutoPilotEffect();
 
