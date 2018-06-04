@@ -92,6 +92,10 @@ public class ReceiveItemUI : MonoBehaviour {
             else
                 m_CurrentCarPreview.transform.localPosition = data.LootBoxViewPos + new Vector3(-1.0f, 0.0f, 0.0f);
 
+            if (data.lootBoxCustomViewPos)
+                m_CurrentCarPreview.transform.localEulerAngles = data.lootBoxViewRot;
+            //if(data)
+
             Vector3 rot = Vector3.one;
             if (!data.customViewRot)
                 rot = new Vector3(0, 180.0f, 0);

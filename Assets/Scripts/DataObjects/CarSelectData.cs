@@ -97,6 +97,8 @@ public class SingleCarSelectData
 
     public bool lootBoxCustomViewPos;
     public Vector3 LootBoxViewPos;
+    public bool lootBoxCustomViewRot;
+    public Vector3 lootBoxViewRot;
 
     [Header("Class")]
     public CarClass carClass;
