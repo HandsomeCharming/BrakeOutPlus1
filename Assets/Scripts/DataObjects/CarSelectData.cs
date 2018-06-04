@@ -95,6 +95,9 @@ public class SingleCarSelectData
     public bool customViewRot;
     public Vector3 ViewRot;
 
+    public bool lootBoxCustomViewPos;
+    public Vector3 LootBoxViewPos;
+
     [Header("Class")]
     public CarClass carClass;
     public Rarity rarity;
