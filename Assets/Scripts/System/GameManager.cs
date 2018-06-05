@@ -210,7 +210,6 @@ public class GameManager : MonoBehaviour {
         }
 
         var trails = CarSelectDataReader.Instance.GetCarData(m_CurrentCarIndex, m_CurrentSceneIndex).m_Trails;
-        print(name);
         foreach (var trail in trails)
         {
             if (trail.name.Equals(name, StringComparison.InvariantCultureIgnoreCase)  && trail.TrailPrefab != null)
@@ -219,9 +218,10 @@ public class GameManager : MonoBehaviour {
                 m_CurrentTrail.transform.localPosition = Vector3.zero;
                 //Player.current.vehicle.m_AutoPilotAndBoostTrails = m_CurrentTrail.transform.Find("Boost").gameObject;
                 Player.current.vehicle.m_Trail = m_CurrentTrail.GetComponent<TrailComponent>();
-                SetDefaultTrail(name);
             }
         }
+
+		SetDefaultTrail(name);
     }
 
     public void SetDefaultCar(int carIndex, int sceneIndex)
@@ -415,12 +415,33 @@ public class GameManager : MonoBehaviour {
         if (m_NextAdTime < 0)
         {
             //AdManager.Instance.ShowBannerAd();
-            if(AdManager.Instance.ShowInterstitial())
-            {
-				m_NextAdTime = UnityEngine.Random.Range(2, 5);
-            }
+			if (!RateUsPanel.IsRated ()) {
+				RandomShowRateUsOrInterstitial ();
+			} else {
+				ShowInterstitialAndResetAdTime ();
+			}
+
         }
     }
+
+	void RandomShowRateUsOrInterstitial()
+	{
+		float chance = UnityEngine.Random.value;
+		if (chance < 0.5f) {
+			UIManager.current.m_RateUsPanel.Show ();
+			m_NextAdTime = UnityEngine.Random.Range (2, 5);
+		} else {
+			ShowInterstitialAndResetAdTime ();
+		}
+	}
+
+	void ShowInterstitialAndResetAdTime()
+	{
+		if(AdManager.Instance.ShowInterstitial())
+		{
+			m_NextAdTime = UnityEngine.Random.Range(2, 5);
+		}
+	}
 
     public void LoadGameSave()
     {

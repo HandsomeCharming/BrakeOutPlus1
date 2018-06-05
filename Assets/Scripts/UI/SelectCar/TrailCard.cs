@@ -8,6 +8,8 @@ public class TrailCard : MonoBehaviour {
     public SelectCarManager m_Manager;
     public string TrailName;
 
+	bool m_Selected;
+
     Text m_TrailName;
     GameObject m_BuyButtonGO;
     Button m_BuyButton;
@@ -37,7 +39,8 @@ public class TrailCard : MonoBehaviour {
         m_BuyButton.onClick.AddListener(BuyTrail);
         m_SelectButton.onClick.AddListener(SelectTrail);
         m_PriceText = transform.Find("Button/Price").GetComponent<Text>();
-        m_PriceIconGO = transform.Find("Button/Icon").gameObject;
+		m_PriceIconGO = transform.Find("Button/Icon").gameObject;
+		SetSelected ();
         inited = true;
     }
 
@@ -47,14 +50,26 @@ public class TrailCard : MonoBehaviour {
         {
             SelectTrail();
             m_BuyButtonGO.SetActive(false);
-            m_SelectButtonGO.SetActive(true);
+			m_SelectButtonGO.SetActive(true);
+			SetSelected ();
         }
     }
 
     public void SelectTrail()
-    {
-        m_Manager.SelectTrail(TrailName);
+	{
+		SetSelected ();
+		if (m_Selected) {
+			m_Manager.SelectTrail("0"); // "0" mean doesnt equip
+		} else {
+			m_Manager.SelectTrail(TrailName);
+		}
+		SetSelected ();
     }
+
+	void SetSelected()
+	{
+		m_Selected = GameManager.current.m_DefaultTrailName == TrailName;
+	}
 
     public void RefreshUI(TrailSelectData data)
     {
@@ -63,11 +78,14 @@ public class TrailCard : MonoBehaviour {
         TrailName = data.name;
         m_TrailName.text = data.name;
 
-        if (m_TrailGO == null)
+        /*if (m_TrailGO == null)
         {
             m_TrailGO = Instantiate(data.TrailDisplayPrefab, transform.position, Quaternion.identity);
             m_TrailGO.transform.parent = transform;
-        }
+
+
+        	m_TrailGO.SetActive(true);
+        }*/
         
         if(SaveManager.instance.HasTrail(data.name))
         {
@@ -79,7 +97,7 @@ public class TrailCard : MonoBehaviour {
             if (GameManager.current.m_DefaultTrailName == TrailName)
             {
                 m_SelectButton.image.color = selectedColor;
-                m_SelectText.text = "EQUIPED";
+                m_SelectText.text = "EQUIPPED";
             }
             else
             {
@@ -94,9 +112,6 @@ public class TrailCard : MonoBehaviour {
             m_PriceText.text = data.price.ToString();
             m_PriceIconGO.SetActive(true);
         }
-
-
-        m_TrailGO.SetActive(true);
     }
 
     private void OnDisable()
