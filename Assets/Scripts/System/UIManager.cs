@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour {
     public ConsistantUI m_ConsistantUI;
     public LoginUI m_LoginUI;
 
+	public RateUsPanel m_RateUsPanel;
+
     bool showMain;
 
     public static UIManager current;

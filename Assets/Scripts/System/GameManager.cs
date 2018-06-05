@@ -415,12 +415,33 @@ public class GameManager : MonoBehaviour {
         if (m_NextAdTime < 0)
         {
             //AdManager.Instance.ShowBannerAd();
-            if(AdManager.Instance.ShowInterstitial())
-            {
-				m_NextAdTime = UnityEngine.Random.Range(2, 5);
-            }
+			if (!RateUsPanel.IsRated ()) {
+				RandomShowRateUsOrInterstitial ();
+			} else {
+				ShowInterstitialAndResetAdTime ();
+			}
+
         }
     }
+
+	void RandomShowRateUsOrInterstitial()
+	{
+		float chance = UnityEngine.Random.value;
+		if (chance < 0.5f) {
+			UIManager.current.m_RateUsPanel.Show ();
+			m_NextAdTime = UnityEngine.Random.Range (2, 5);
+		} else {
+			ShowInterstitialAndResetAdTime ();
+		}
+	}
+
+	void ShowInterstitialAndResetAdTime()
+	{
+		if(AdManager.Instance.ShowInterstitial())
+		{
+			m_NextAdTime = UnityEngine.Random.Range(2, 5);
+		}
+	}
 
     public void LoadGameSave()
     {
