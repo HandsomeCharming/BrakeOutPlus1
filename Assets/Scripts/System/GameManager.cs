@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        //AppManager.instance.Invoke("DailyLoginGS", 0.5f);
+        AppManager.instance.Invoke("DailyLoginGS", 0.5f);
     }
 
     public void StartLoadCar()
@@ -400,7 +400,6 @@ public class GameManager : MonoBehaviour {
         {
             state = GameState.Dead;
             UIManager.current.ChangeStateByGameState();
-            SetHighScore();
             
             Dictionary<string, object> customParams = new Dictionary<string, object>();
             customParams.Add("Score", gameScore);
@@ -432,37 +431,6 @@ public class GameManager : MonoBehaviour {
         gameHighScore = save.highScore;
         gameCoins = save.coin;
         gameStars = save.star;
-
-        // Daily score
-        RefreshDailyHighScore();
-    }
-
-    void RefreshDailyHighScore()
-    {
-        highScoreLastDate = PlayerPrefs.GetString(LastDateName, "");
-        if (highScoreLastDate == "")
-        {
-            dayHighScore = 0;
-            PlayerPrefs.SetString(LastDateName, System.DateTime.Today.ToString("dd/MM"));
-            PlayerPrefs.SetInt(DayHighScoreName, 0);
-        }
-        else
-        {
-            CultureInfo provider = CultureInfo.InvariantCulture;
-            System.DateTime date = System.DateTime.ParseExact(highScoreLastDate, "dd/MM", provider);
-            if(System.DateTime.Today > date)
-            {
-                // refresh
-                dayHighScore = 0;
-                PlayerPrefs.SetString(LastDateName, System.DateTime.Today.ToString("dd/MM"));
-                PlayerPrefs.SetInt(DayHighScoreName, 0);
-            }
-            else
-            {
-                dayHighScore = PlayerPrefs.GetInt(DayHighScoreName);
-            }
-        }
-        PlayerPrefs.Save();
     }
 
     public void SaveGame()
@@ -474,7 +442,6 @@ public class GameManager : MonoBehaviour {
     {
         state = GameState.Dead;
         UIManager.current.ChangeStateByGameState();
-        SetHighScore();
     }
 
     public void ShowReviveVideo()
@@ -508,7 +475,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Reload()
-    {
+	{
         IDictionary<string, object> dic = new Dictionary<string, object>();
         dic.Add("Score", (int)gameScore);
         AnalyticsResult result = UnityEngine.Analytics.Analytics.CustomEvent("Player Score", dic);

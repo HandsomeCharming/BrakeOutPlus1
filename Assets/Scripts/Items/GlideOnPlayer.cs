@@ -10,7 +10,9 @@ public class GlideOnPlayer : MonoBehaviour {
     Player m_Player;
 
     const float m_GlideTillCollideTime = 2.0f;
-    const float m_GlideMinSpeed = 45.0f;
+	const float m_GlideMinSpeed = 45.0f;
+	const float m_GlideMaxSpeed = 50.0f;
+
 
     private void Awake()
     {
@@ -50,6 +52,10 @@ public class GlideOnPlayer : MonoBehaviour {
         {
             playerRB.velocity = m_Player.transform.forward * m_GlideMinSpeed;
         }
+		else if(playerRB.velocity.magnitude > m_GlideMaxSpeed)
+		{
+			playerRB.velocity = m_Player.transform.forward * m_GlideMaxSpeed;
+		}
         //BackgroundMaterial.current.StartSharpLerpToBlack();
     }
 

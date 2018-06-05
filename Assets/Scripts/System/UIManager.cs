@@ -40,8 +40,9 @@ public class UIManager : MonoBehaviour {
             if(AppManager.instance.HasName())
                 StartMainMenu();
             else
-            {
-                StartLogin();
+			{
+				AppManager.instance.RegisterPlayer("Driver"); // hard coded register 
+				StartMainMenu();
             }
         }
         else if (GameManager.current.state == GameManager.GameState.Running)
@@ -95,6 +96,7 @@ public class UIManager : MonoBehaviour {
 
     void GameOver()
     {
+		m_Ingame.ClearAllPowerups ();
         DisableAll();
         m_DeadMenu.gameObject.SetActive(true);
     }

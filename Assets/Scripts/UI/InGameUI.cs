@@ -160,6 +160,12 @@ public class InGameUI : UIBase
         }
     }
 
+	public void ClearAllPowerups()
+	{
+		m_Powerups.Clear ();
+		RefreshPowerupHUD ();
+	}
+
     Sprite GetImageFromPowerUp(Powerups powerup)
     {
         switch(powerup)

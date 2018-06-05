@@ -53,8 +53,14 @@ public class AppManager : MonoBehaviour {
         {
             gameObject.AddComponent<NetworkManager>();
         }
-        GameSparks.Core.GS.GameSparksAvailable += GsServiceHandler;
+		GameSparks.Core.GS.GameSparksAvailable += GsServiceHandler;
+		//DailyLoginGS();
     }
+
+	void Start()
+	{
+
+	}
 
     public bool HasName()
     {
@@ -141,7 +147,8 @@ public class AppManager : MonoBehaviour {
         {
             string name = GetUserName();
             if (name == null) name = "Driver";
-            new GameSparks.Api.Requests.DeviceAuthenticationRequest().Send((response) =>
+			var request = new GameSparks.Api.Requests.DeviceAuthenticationRequest ();
+			request.Send((response) =>
             {
                 if (!response.HasErrors)
                 {
@@ -161,20 +168,17 @@ public class AppManager : MonoBehaviour {
         {
             DailyLoginGS();
         }
-        if (GameSparks.Core.GS.Authenticated)
-        {
-            new GameSparks.Api.Requests.LogEventRequest().SetEventKey("DLUpdate").SetEventAttribute("SCORE", score).Send((response) =>
-            {
-                if (!response.HasErrors)
-                {
-                    Debug.Log("Score Posted Successfully...");
-                }
-                else
-                {
-                    Debug.Log("Error Posting Score...");
-                }
-            });
-        }
+		if (GameSparks.Core.GS.Authenticated) {
+			new GameSparks.Api.Requests.LogEventRequest ().SetEventKey ("DLUpdate").SetEventAttribute ("SCORE", score).Send ((response) => {
+				if (!response.HasErrors) {
+					Debug.Log ("Score Posted Successfully...");
+				} else {
+					Debug.Log ("Error Posting Score...");
+				}
+			});
+		} else {
+			Debug.Log ("Gamesparks login failed");
+		}
         
     }
 

@@ -71,8 +71,8 @@ public class ReceiveItemUI : MonoBehaviour {
         int index = (int)rarity;
         m_Rarities[index].SetActive(true);
 
-        m_CurrentEffect = Instantiate(m_RarityEffectPrefab[index], Camera.main.transform);
-        m_CurrentEffect.transform.localPosition = new Vector3(0.0f, 0.8f, 5.0f);
+        //m_CurrentEffect = Instantiate(m_RarityEffectPrefab[index], Camera.main.transform);
+        //m_CurrentEffect.transform.localPosition = new Vector3(0.0f, 0.8f, 5.0f);
     }
 
     public void LoadCurrentCarPreview(SingleCarSelectData data)
@@ -115,10 +115,10 @@ public class ReceiveItemUI : MonoBehaviour {
         {
             Destroy(m_CurrentCarPreview);
         }
-        if(m_CurrentEffect != null)
+        /*if(m_CurrentEffect != null)
         {
             Destroy(m_CurrentEffect);
-        }
+        }*/
 
         LootBoxManager.instance.CloseReceiveCarPanel();
         gameObject.SetActive(false);
