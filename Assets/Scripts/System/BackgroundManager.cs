@@ -150,7 +150,8 @@ public class BackgroundManager : MonoBehaviour {
                 {
                     go.GetComponent<BackgroundObject>().Invoke("Fly", 60.0f);
                 }
-                go.AddComponent<BackgroundKeepDistance>();
+				go.AddComponent<BackgroundKeepDistance>();
+				m_CurrentBackgroundObjects.Add(go);
 
                 m_NextObjectTime = Random.Range(m_Storer.m_SkyNewObjectTime.min, m_Storer.m_SkyNewObjectTime.max);
             }
