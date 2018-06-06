@@ -43,7 +43,6 @@ public class UIManager : MonoBehaviour {
                 StartMainMenu();
             else
 			{
-				AppManager.instance.RegisterPlayer("Driver"); // hard coded register 
 				StartMainMenu();
             }
         }

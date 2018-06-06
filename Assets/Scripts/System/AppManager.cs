@@ -137,7 +137,14 @@ public class AppManager : MonoBehaviour {
         }
         else
         {
-            DailyLoginGS();
+            if(IsGSRegistered())
+            {
+                DailyLoginGS();
+            }
+            else
+            {
+                RegisterPlayer("Driver"); // hard coded register 
+            }
         }
     }
 
