@@ -223,7 +223,6 @@ public class AdManager : MonoBehaviour {
     {
         print("Rewarded");
         rewardReceived = true;
-        m_RewardType = RewardType.None;
     }
 
     public void HandleRewardBasedVideoClosed(object sender, EventArgs args)
@@ -239,6 +238,7 @@ public class AdManager : MonoBehaviour {
             {
                 LootBoxManager.instance.StartLootAdRewarded();
             }
+            m_RewardType = RewardType.None;
         }
     }
 }
