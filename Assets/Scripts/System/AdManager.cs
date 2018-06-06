@@ -22,6 +22,7 @@ public class AdManager : MonoBehaviour {
     private RewardBasedVideoAd rewardBasedVideo;
     private InterstitialAd interstitial;
 	private bool InterstitialShowed = false;
+    private bool rewardReceived = false;
 
 #if TESTING_AD
     string appId = "ca-app-pub-3372369278999623~1593905393";
@@ -198,6 +199,7 @@ public class AdManager : MonoBehaviour {
     {
         if (rewardBasedVideo.IsLoaded())
         {
+            rewardReceived = false;
             m_RewardType = RewardType.Revive;
             rewardBasedVideo.Show();
             return true;
@@ -209,6 +211,7 @@ public class AdManager : MonoBehaviour {
     {
         if (rewardBasedVideo.IsLoaded())
         {
+            rewardReceived = false;
             m_RewardType = RewardType.LootBox;
             rewardBasedVideo.Show();
             return true;
@@ -219,19 +222,23 @@ public class AdManager : MonoBehaviour {
     public void HandleRewardReviveRewarded(object sender, Reward args)
     {
         print("Rewarded");
-        if(m_RewardType == RewardType.Revive)
-        {
-            GameManager.current.RevivePlayer();
-        }
-        else if (m_RewardType == RewardType.LootBox)
-        {
-			LootBoxManager.instance.StartLootAdRewarded();
-        }
+        rewardReceived = true;
         m_RewardType = RewardType.None;
     }
 
     public void HandleRewardBasedVideoClosed(object sender, EventArgs args)
     {
         this.RequestRewardBasedVideo();
+        if(rewardReceived)
+        {
+            if (m_RewardType == RewardType.Revive)
+            {
+                GameManager.current.RevivePlayer();
+            }
+            else if (m_RewardType == RewardType.LootBox)
+            {
+                LootBoxManager.instance.StartLootAdRewarded();
+            }
+        }
     }
 }
