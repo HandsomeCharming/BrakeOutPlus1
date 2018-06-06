@@ -84,12 +84,23 @@ public class TopManager : MonoBehaviour {
         }
     }
 
+	string GetShortCode(string shortCode)
+	{
+		string res = shortCode;
+		if (res == "DL") {
+			//res += ".SNAPSHOT." + DateTime.Today.ToString ("yyyy-MM-dd");
+		}
+		return res;
+	}
+
     public void GetLeaderBoard(int boardIndex)
     {
         if (m_CurrentBoardIndex != boardIndex) InitLeaderBoardRows();
         m_CurrentBoardIndex = boardIndex;
+		string shortCode = GetShortCode(boardName [m_CurrentBoardIndex]);
+		Debug.Log (shortCode);
 
-        new GameSparks.Api.Requests.LeaderboardDataRequest().SetLeaderboardShortCode(boardName[m_CurrentBoardIndex]).SetEntryCount(10).Send((response) =>
+		new GameSparks.Api.Requests.LeaderboardDataRequest().SetLeaderboardShortCode(shortCode).SetEntryCount(10).Send((response) =>
         {
             if (!response.HasErrors)
             {
@@ -118,6 +129,8 @@ public class TopManager : MonoBehaviour {
             else
             {
                 Debug.Log("Error Retrieving Leaderboard Data...");
+				Debug.Log(response.Errors.JSON);
+					Debug.Log(shortCode);
 
                 for (int i=0; i < 10; ++i)
                 {
@@ -166,6 +179,10 @@ public class TopManager : MonoBehaviour {
                         //print(response2.BaseData.JSON);
                     });
                 }
+					else 
+					{
+						Debug.Log(response.Errors.JSON);
+					}
 
             });
 
