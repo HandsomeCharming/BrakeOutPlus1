@@ -143,7 +143,7 @@ public class AppManager : MonoBehaviour {
 
     public void DailyLoginGS()
     {
-        if (!GameSparks.Core.GS.Authenticated && HasName())
+		if (GameSparks.Core.GS.Available && !GameSparks.Core.GS.Authenticated && HasName())
         {
             string name = GetUserName();
             if (name == null) name = "Driver";

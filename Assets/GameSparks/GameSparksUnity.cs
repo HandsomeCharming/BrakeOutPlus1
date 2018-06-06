@@ -48,6 +48,7 @@ public class GameSparksUnity : MonoBehaviour
 #if UNITY_IOS && !UNITY_EDITOR
 		GSGetProxySettings(this.name);
 #endif
+
 	}
 	
 	void OnGUI () {

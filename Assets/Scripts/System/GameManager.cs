@@ -149,7 +149,6 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        AppManager.instance.Invoke("DailyLoginGS", 0.5f);
     }
 
     public void StartLoadCar()
