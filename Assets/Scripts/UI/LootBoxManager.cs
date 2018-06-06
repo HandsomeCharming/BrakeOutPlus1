@@ -25,8 +25,8 @@ public class LootBoxManager : MonoBehaviour {
     int m_ChancesLeft;
     bool m_Looting = false;
 
-    const int oneLootPrice = 45;
-    const int fiveLootPrice = 225;
+    const int oneLootPrice = 50;
+    const int fiveLootPrice = 220;
 
     // Use this for initialization
     void Start () {
