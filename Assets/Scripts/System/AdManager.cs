@@ -227,7 +227,6 @@ public class AdManager : MonoBehaviour {
 
     public void HandleRewardBasedVideoClosed(object sender, EventArgs args)
     {
-        this.RequestRewardBasedVideo();
         if(rewardReceived)
         {
             if (m_RewardType == RewardType.Revive)
@@ -240,5 +239,6 @@ public class AdManager : MonoBehaviour {
             }
             m_RewardType = RewardType.None;
         }
+        this.RequestRewardBasedVideo();
     }
 }
