@@ -67,6 +67,7 @@ public class CarUpgradeCard : MonoBehaviour {
         m_UpgradeButton.enabled = canUpgrade;
         m_UpgradeText.text = canUpgrade ? "UPGRADE" : "MAX";
         m_Price.gameObject.SetActive(canUpgrade);
-        m_CoinIcon.SetActive(canUpgrade);
+		m_CoinIcon.SetActive(canUpgrade);
+		m_UpgradeButton.gameObject.SetActive (hasCar);
     }
 }

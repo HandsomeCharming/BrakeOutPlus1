@@ -94,7 +94,7 @@ public class PlayerPhysics : MonoBehaviour {
         pushForce = GetDataFromMinMax(classData.m_PushForce, data.m_AccLevel, carData.maxUpgradeLevel);
         accelerateForce = GetDataFromMinMax(classData.m_BoostForce, data.m_AccLevel, carData.maxUpgradeLevel);
         launchForce = GetDataFromMinMax(classData.m_LaunchForce, data.m_AccLevel, carData.maxUpgradeLevel);
-        print("Acc Level: " + data.m_AccLevel);
+        //print("Acc Level: " + data.m_AccLevel);
 
         //public float accelarateTime;
         minRotateSpeed = GetDataFromMinMax(classData.m_MinRotateSpeed, data.m_HandlingLevel, carData.maxUpgradeLevel);
@@ -103,11 +103,11 @@ public class PlayerPhysics : MonoBehaviour {
         maxBoostRotateSpeed = GetDataFromMinMax(classData.m_MaxBoostRotateSpeed, data.m_HandlingLevel, carData.maxUpgradeLevel);
         timeToReachMaxRotateSpeed = GetDataFromMinMax(classData.timeToReachMaxRotateSpeed, data.m_HandlingLevel, carData.maxUpgradeLevel);
         timeToReachMaxBoost = GetDataFromMinMax(classData.timeToReachMaxBoost, data.m_HandlingLevel, carData.maxUpgradeLevel);
-        print("Handling Level: " + data.m_HandlingLevel);
+        //print("Handling Level: " + data.m_HandlingLevel);
 
         cameraGoFarTime = GetDataFromMinMax(classData.m_CameraGoFarTime, data.m_AccLevel, carData.maxUpgradeLevel);
         cameraGoNearTime = GetDataFromMinMax(classData.m_CameraGoNearTime, data.m_AccLevel, carData.maxUpgradeLevel);
-        print("boost Level: " + data.m_BoostLevel);
+        //print("boost Level: " + data.m_BoostLevel);
     }
 
     public bool CanBeKilledByWall()

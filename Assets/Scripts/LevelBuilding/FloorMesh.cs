@@ -187,7 +187,7 @@ public class FloorMesh : MonoBehaviour {
         float offset = slot * ITEM_WIDTH + ITEM_WIDTH / 2.0f;
         Vector3 prevPosMid = prevPos1 + (prevPos2 - prevPos1).normalized * offset;
         prevPosMid += dir * length / 2.0f;
-        prevPosMid.y += 1.0f;
+        prevPosMid.y += 1.2f;
 
         item.transform.position = prevPosMid;
         item.transform.forward = prevDir;
