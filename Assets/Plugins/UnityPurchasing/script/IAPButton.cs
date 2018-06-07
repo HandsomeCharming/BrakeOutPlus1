@@ -163,8 +163,13 @@ namespace UnityEngine.Purchasing
         {
             Debug.Log(string.Format("IAPButton.ProcessPurchase(PurchaseEventArgs {0} - {1})", e,
                 e.purchasedProduct.definition.id));
-
+            
             onPurchaseComplete.Invoke(e.purchasedProduct);
+
+            UnityEngine.Analytics.Analytics.CustomEvent("IAP Processed", new Dictionary<string, object>
+            {
+                { "id", e.purchasedProduct.definition.id},
+            });
 
             return (consumePurchase) ? PurchaseProcessingResult.Complete : PurchaseProcessingResult.Pending;
         }

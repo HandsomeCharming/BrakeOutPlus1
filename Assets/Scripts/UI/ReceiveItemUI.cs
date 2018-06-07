@@ -36,7 +36,7 @@ public class ReceiveItemUI : MonoBehaviour {
 
         if(SaveManager.instance.HasCar(selectData.name))
         {
-            m_NewOrNot.text = "Owned";
+            m_NewOrNot.text = "OWNED";
             if(selectData.returnWhenLootedCurrency == Currency.Coin)
             {
                 GameManager.current.AddCoin(selectData.returnedAmountWhenLooted);
@@ -48,7 +48,7 @@ public class ReceiveItemUI : MonoBehaviour {
         }
         else
         {
-            m_NewOrNot.text = "New";
+            m_NewOrNot.text = "NEW!";
             SaveManager.instance.AcquireCar(data.carIndex, data.sceneIndex);
         }
         m_BlurBackground.enabled = false;

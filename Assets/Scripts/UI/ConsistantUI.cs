@@ -49,7 +49,7 @@ public class ConsistantUI : MonoBehaviour {
         m_ActualCoins = GameManager.current.GetCoinCount();
         m_ActualStars = GameManager.current.gameStars;
 
-        if(m_ActualCoins + 5 < m_CurrentCoins || m_CurrentCoins > m_ActualCoins - 5)
+        if(m_ActualCoins + 5.0f < m_CurrentCoins || m_CurrentCoins > m_ActualCoins - 5.0f)
         {
             m_CurrentCoins = m_ActualCoins;
             addCoins.gameObject.SetActive(false);
@@ -70,7 +70,7 @@ public class ConsistantUI : MonoBehaviour {
             addCoins.text = (diff).ToString();
         }
 
-        if(m_ActualStars + 1 < m_CurrentStars)
+        if(m_ActualStars - 1.0f < m_CurrentStars)
         {
             m_CurrentStars = m_ActualStars;
             addStars.gameObject.SetActive(false);
