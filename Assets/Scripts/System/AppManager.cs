@@ -148,9 +148,19 @@ public class AppManager : MonoBehaviour {
         }
     }
 
+	void LoginOrRegister()
+	{
+		if (!IsGSRegistered ()) {
+			RegisterPlayer ("Driver");
+		}
+		else {
+			DailyLoginGS ();
+		}
+	}
+
     public void DailyLoginGS()
     {
-		if (GameSparks.Core.GS.Available && !GameSparks.Core.GS.Authenticated && HasName())
+		if (GameSparks.Core.GS.Available && !GameSparks.Core.GS.Authenticated && IsGSRegistered())
         {
             string name = GetUserName();
             if (name == null) name = "Driver";
@@ -169,24 +179,52 @@ public class AppManager : MonoBehaviour {
         }
     }
 
+	public void LoginAndPostScore(int score)
+	{
+
+		if (GameSparks.Core.GS.Available && !GameSparks.Core.GS.Authenticated)
+		{
+			string name = GetUserName();
+			var request = new GameSparks.Api.Requests.DeviceAuthenticationRequest ();
+			if (name == null) {
+				name = "Driver";
+				request.SetDisplayName (name);
+			}
+			request.Send((response) =>
+				{
+					if (!response.HasErrors)
+					{
+						print("Login");
+						SendPostScoreRequest(score);
+					}
+					else
+					{
+						Debug.Log("Register gamespark failed");
+					}
+				});
+		}
+	}
+
+	void SendPostScoreRequest(int score)
+	{
+		new GameSparks.Api.Requests.LogEventRequest ().SetEventKey ("DLUpdate").SetEventAttribute ("SCORE", score).Send ((response) => {
+			if (!response.HasErrors) {
+				Debug.Log ("Score Posted Successfully...");
+			} else {
+				Debug.Log ("Error Posting Score...");
+			}
+		});
+	}
+
     public void UpdateDailyLeaderboardScore(int score)
     {
         if (!GameSparks.Core.GS.Authenticated)
         {
-            DailyLoginGS();
+			LoginAndPostScore (score);
         }
-		if (GameSparks.Core.GS.Authenticated) {
-			new GameSparks.Api.Requests.LogEventRequest ().SetEventKey ("DLUpdate").SetEventAttribute ("SCORE", score).Send ((response) => {
-				if (!response.HasErrors) {
-					Debug.Log ("Score Posted Successfully...");
-				} else {
-					Debug.Log ("Error Posting Score...");
-				}
-			});
-		} else {
-			Debug.Log ("Gamesparks login failed");
-		}
-        
+		else{
+			SendPostScoreRequest (score);
+		} 
     }
 
     // Update is called once per frame
