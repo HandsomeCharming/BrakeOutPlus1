@@ -20,7 +20,15 @@
 								</Reference>
 							</ReferenceList>
 						</Bus>
-						<Bus Name="SFX Bus" ID="{80BD1D79-BA11-413A-8DD4-40CCF09A6FE5}"/>
+						<Bus Name="SFX Bus" ID="{80BD1D79-BA11-413A-8DD4-40CCF09A6FE5}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+						</Bus>
 					</ChildrenList>
 				</Bus>
 			</ChildrenList>

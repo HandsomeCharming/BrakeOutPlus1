@@ -68,7 +68,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-8</Value>
+										<Value>-12</Value>
 									</ValueList>
 									<RTPCList>
 										<RTPC Name="" ID="{DD50B65B-E270-47B4-99EF-9004044B4A78}" ShortID="224055855">
@@ -629,7 +629,7 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -694,17 +694,17 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>1428.57142857143</XPos>
+																		<XPos>1785.71428571429</XPos>
 																		<YPos>-38.11592</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -769,17 +769,17 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -844,18 +844,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>8571.42857142857</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -978,17 +968,17 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>1428.57142857143</XPos>
+																		<XPos>1785.71428571429</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -1053,17 +1043,17 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -1128,18 +1118,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>8571.42857142857</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -1262,17 +1242,17 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -1337,17 +1317,17 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -1412,18 +1392,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>8571.42857142857</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -2192,18 +2162,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>4571.42857142857</XPos>
+																		<XPos>5714.28571428571</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
-																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>-200</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-12.73644</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -2267,18 +2232,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>7142.85714285714</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.99857142857</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -2345,18 +2300,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>4285.71428571429</XPos>
+																		<XPos>5357.14285714286</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-1.9382</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -2423,28 +2373,23 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>1428.57142857143</XPos>
+																		<XPos>1785.71428571429</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>2857.14285714286</XPos>
+																		<XPos>3571.42857142858</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>4571.42857142857</XPos>
+																		<XPos>5714.28571428571</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
-																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>-200</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-12.73644</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -2739,17 +2684,17 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>4285.71428571429</XPos>
+																		<XPos>5357.14285714286</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -2814,18 +2759,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>7142.85714285714</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -2913,18 +2848,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>7142.85714285714</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-3.34982</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3012,18 +2942,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9998.57142857143</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3087,18 +3007,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>3571.42857142857</XPos>
+																		<XPos>4464.28571428571</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>7142.85714285714</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-3.34982</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3272,7 +3187,7 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -3337,18 +3252,18 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>1390.47475714286</XPos>
+																		<XPos>1738.09344642857</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>-0.21852</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-0.20378</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3412,18 +3327,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>4323.8081</XPos>
+																		<XPos>5404.760125</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>8571.42857142857</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-8.07644</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3516,18 +3426,18 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>1390.47475714286</XPos>
+																		<XPos>1738.09344642857</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>-0.218520000000012</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-0.20378</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3591,18 +3501,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>4323.8081</XPos>
+																		<XPos>5404.760125</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>8571.42857142857</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-8.07644</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3690,18 +3595,18 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>1390.47475714286</XPos>
+																		<XPos>1738.09344642857</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>-0.218520000000012</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-0.20378</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3765,18 +3670,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>4323.8081</XPos>
+																		<XPos>5404.760125</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>8571.42857142857</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-8.07644</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -3950,18 +3850,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>2857.14285714286</XPos>
+																		<XPos>3571.42857142858</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>7142.85714285714</XPos>
-																		<YPos>0</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>0</YPos>
+																		<XPos>7500</XPos>
+																		<YPos>-2.69397</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -4347,28 +4242,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.997</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.998</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.999</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>-2</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -4524,22 +4399,22 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.00142857142857143</XPos>
+																		<XPos>0.00178571428571429</XPos>
 																		<YPos>-10</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>1466.66667142857</XPos>
+																		<XPos>1833.33333928571</XPos>
 																		<YPos>-6.00736000000001</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -4604,22 +4479,22 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.00142857142857143</XPos>
+																		<XPos>0.00178571428571429</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>4285.71428571429</XPos>
+																		<XPos>5357.14285714286</XPos>
 																		<YPos>-8.84926</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5600</XPos>
+																		<XPos>7000</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -4687,28 +4562,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.997</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.998</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.999</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>-2</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -4796,22 +4651,22 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.00142857142857143</XPos>
+																		<XPos>0.00178571428571429</XPos>
 																		<YPos>-11.34789</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>1466.66667142857</XPos>
+																		<XPos>1833.33333928571</XPos>
 																		<YPos>-6.00736000000001</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>5714.28571428571</XPos>
+																		<XPos>7142.85714285714</XPos>
 																		<YPos>0</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>10000</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>0</YPos>
 																		<Flags>37</Flags>
 																	</Point>
@@ -4876,28 +4731,8 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>6428.57142857143</XPos>
+																		<XPos>7500</XPos>
 																		<YPos>-200</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.997</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.998</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>9999.999</XPos>
-																		<YPos>-2</YPos>
-																		<Flags>0</Flags>
-																	</Point>
-																	<Point>
-																		<XPos>10000</XPos>
-																		<YPos>-2</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -5638,6 +5473,11 @@
 								</MusicTrack>
 								<MusicTrack Name="s1_l2#_2" ID="{5F55E85A-7602-4C59-A9B7-3CFAF636A456}" ShortID="103343465">
 									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
 												<RTPC Name="" ID="{E8C8F880-3B49-4596-AB19-730567B1F35C}" ShortID="958190695">
@@ -5657,12 +5497,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>1500</XPos>
+																<XPos>1875</XPos>
 																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -5708,6 +5548,11 @@
 								</MusicTrack>
 								<MusicTrack Name="s1_l3#_2" ID="{B5ED6E4C-7034-4486-9E2F-0ADA18FAF5C5}" ShortID="763920781">
 									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
 												<RTPC Name="" ID="{3170FA71-2E11-4D23-A2CD-75B17AD67C8D}" ShortID="356152165">
@@ -5727,17 +5572,17 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>1400</XPos>
+																<XPos>1750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>3000</XPos>
+																<XPos>3750</XPos>
 																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -5785,13 +5630,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{FE426C50-B098-433C-9F84-AEA0356D422F}" ShortID="602430073">
+												<RTPC Name="" ID="{EFB039DC-B13A-4D10-9545-EB14F3F3D984}" ShortID="864660591">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{0E9D21C7-F28A-4709-ACCF-AD3FBDB95F69}">
+													<Curve Name="" ID="{A07BD14C-D7B2-4FD0-BDFD-951A69B83EAB}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -5802,17 +5647,17 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>2900</XPos>
+																<XPos>1750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>4500</XPos>
-																<YPos>-0.15239</YPos>
+																<XPos>3750</XPos>
+																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -5882,17 +5727,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>4300</XPos>
+																<XPos>5375</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>6000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -5962,18 +5802,13 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>5400</XPos>
+																<XPos>6750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
 																<XPos>7500</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
+																<YPos>-10.88136</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -6042,18 +5877,8 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>6900</XPos>
+																<XPos>7500</XPos>
 																<YPos>-200</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>9000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -6122,18 +5947,8 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>8000</XPos>
+																<XPos>7500</XPos>
 																<YPos>-200</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>9999.999</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -6263,13 +6078,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{6032B22D-D892-47BE-A09F-7501678DE4CD}" ShortID="88257253">
+												<RTPC Name="" ID="{9BB36142-077D-4970-8954-793129D1D5E2}" ShortID="1059441069">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{4834EF37-B135-4ADF-B61F-92B5FE78546C}">
+													<Curve Name="" ID="{AB460267-A265-4F17-8358-5B3B8AE11DB7}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -6280,18 +6095,18 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>4300</XPos>
+																<XPos>3625</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>6000</XPos>
-																<YPos>0</YPos>
+																<XPos>5625</XPos>
+																<YPos>-0.152389999999997</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
+																<XPos>7500</XPos>
+																<YPos>-0.11056</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -6338,13 +6153,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{29845189-23E6-428F-8F54-EE1B14EFAFC2}" ShortID="538854248">
+												<RTPC Name="" ID="{A8FFC84E-61A5-4BE3-8B5D-35CFE6453B44}" ShortID="100562727">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{E1AAEA40-B76B-471D-8800-1D341EBA89AA}">
+													<Curve Name="" ID="{91A2B1F3-769F-40D7-8F5E-B1EB1F6ECC51}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -6355,17 +6170,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>6900</XPos>
+																<XPos>5375</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>9000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -6409,6 +6219,81 @@
 										</MusicTrackSequence>
 									</SequenceList>
 								</MusicTrack>
+								<MusicTrack Name="s1_l23_v2" ID="{EA3A0439-B3D3-4EC6-BDCC-BAC5312DCC41}" ShortID="660287118">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<RTPCList>
+												<RTPC Name="" ID="{3846AB0D-0B48-4D09-9E64-92D3173DD43B}" ShortID="240762010">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{0697E385-3D63-46CD-A637-17110F7C0B81}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>250</XPos>
+																<YPos>-200</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>2187.5</XPos>
+																<YPos>0</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>7500</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="s1_l23_v2" ID="{C7BD7F8B-B98A-4571-A873-83F67E989FD8}" ShortID="908618148">
+											<Language>SFX</Language>
+											<AudioFile>s1_l23_v2.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{34E56E17-5681-4C2B-968B-7637ABC2678F}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{7162CD66-0270-428E-BEC8-7AD9A716EE35}">
+											<ClipList>
+												<MusicClip Name="s1_l23_v2" ID="{2BFC013C-73CA-48E8-835B-6D3DCF33A519}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="16672.5"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="s1_l23_v2" ID="{C7BD7F8B-B98A-4571-A873-83F67E989FD8}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
 							</ChildrenList>
 							<CueList>
 								<MusicCue Name="Entry Cue" ID="{EBD60647-C552-4222-BA64-B3F4EEE02338}"/>
@@ -6422,7 +6307,7 @@
 						</MusicSegment>
 						<MusicSegment Name="s2" ID="{4A291542-76BF-48A5-8E68-17B169B45EB1}" ShortID="57123885">
 							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="21836.25"/>
+								<Property Name="EndPosition" Type="Real64" Value="21937.5"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -6470,6 +6355,11 @@
 								</MusicTrack>
 								<MusicTrack Name="s1_l2#_6" ID="{8430F0AA-383F-4871-BF91-9B5EF34B0EF0}" ShortID="468918464">
 									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
 												<RTPC Name="" ID="{7E85DC28-9CF5-43B6-9EB7-F9AF3E4CFF48}" ShortID="926055374">
@@ -6489,12 +6379,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>1500</XPos>
+																<XPos>1875</XPos>
 																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -6540,6 +6430,11 @@
 								</MusicTrack>
 								<MusicTrack Name="s1_l3#_6" ID="{60351E80-E895-447E-AC1B-AA0AC52561BE}" ShortID="974804224">
 									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
 												<RTPC Name="" ID="{642194E1-5A46-4F06-9430-0C7E547B8F38}" ShortID="566570214">
@@ -6559,17 +6454,17 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>1400</XPos>
+																<XPos>1750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>3000</XPos>
+																<XPos>3750</XPos>
 																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -6617,13 +6512,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{390C5272-3AF9-4EEB-B10B-66DEDF3CEC08}" ShortID="956149572">
+												<RTPC Name="" ID="{190B73CE-08A0-4351-B426-F1BF6EB31591}" ShortID="826180863">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{33F81096-EC5B-465B-B188-85F8742B4977}">
+													<Curve Name="" ID="{6B315005-B445-40AA-AB38-2D90F6D8CFC9}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -6634,17 +6529,17 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>2900</XPos>
+																<XPos>1750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>4500</XPos>
-																<YPos>-0.152389999999997</YPos>
+																<XPos>3750</XPos>
+																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -6714,17 +6609,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>4300</XPos>
+																<XPos>5375</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>6000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -6794,18 +6684,13 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>5400</XPos>
+																<XPos>6750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
 																<XPos>7500</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
+																<YPos>-10.88136</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -6874,18 +6759,8 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>6900</XPos>
+																<XPos>7500</XPos>
 																<YPos>-200</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>9000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -6954,18 +6829,8 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>8000</XPos>
+																<XPos>7500</XPos>
 																<YPos>-200</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>9999.999</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -7095,13 +6960,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{259DB281-9C86-4540-9991-A7D78962FFC6}" ShortID="630497500">
+												<RTPC Name="" ID="{A224EC89-FB60-4985-B7B5-53FC4CEB76DE}" ShortID="1055919717">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{A0C7A154-0268-4BEB-9E21-D172A59BCB38}">
+													<Curve Name="" ID="{D1FB4C9A-BD15-4356-83D1-0E4EFE8E9411}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -7112,18 +6977,18 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>4300</XPos>
+																<XPos>3625</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>6000</XPos>
-																<YPos>0</YPos>
+																<XPos>5625</XPos>
+																<YPos>-0.152389999999997</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
+																<XPos>7500</XPos>
+																<YPos>-0.11056</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -7173,13 +7038,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{1AF37160-FE6E-42D7-92C8-5CB1765B323B}" ShortID="282885005">
+												<RTPC Name="" ID="{32FF14D6-2EC5-4898-BFA5-6640F03D9260}" ShortID="551520098">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{77DCCF3E-0F13-4102-8B70-7B6B578F7361}">
+													<Curve Name="" ID="{DD125428-889C-4D58-93D5-5AD2FF44063E}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -7190,17 +7055,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>6900</XPos>
+																<XPos>5375</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>9000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -7239,6 +7099,81 @@
 														<Property Name="FadeOutMode" Type="int16" Value="0"/>
 													</PropertyList>
 													<AudioSourceRef Name="s1_l6_v2-02" ID="{B511878F-D36A-43E3-8AC6-6888C3F18EAB}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+								<MusicTrack Name="s2_l23_v2" ID="{DC1823A2-598D-4FDC-99A3-19BAE0FBE3F6}" ShortID="370758644">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<RTPCList>
+												<RTPC Name="" ID="{53D97169-9C3F-49F3-955B-8064E8023BBC}" ShortID="979269312">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{0622EC46-499C-4B46-922C-14F27FAF4737}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>250</XPos>
+																<YPos>-200</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>2187.5</XPos>
+																<YPos>0</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>7500</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="s2_l23_v2" ID="{B0BA1F27-40BF-44BE-94F2-9EB29092C090}" ShortID="648428328">
+											<Language>SFX</Language>
+											<AudioFile>s2_l23_v2.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{E30DC170-A0DD-4A21-AB26-40FF42337A11}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{A5F14D57-C0E9-4337-B4DB-A3DE42C0D571}">
+											<ClipList>
+												<MusicClip Name="s2_l23_v2" ID="{6A5EBFD2-EDF0-4214-85F3-2BE00B90C0B3}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="21937.5"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="s2_l23_v2" ID="{B0BA1F27-40BF-44BE-94F2-9EB29092C090}"/>
 												</MusicClip>
 											</ClipList>
 										</MusicTrackSequence>
@@ -7305,6 +7240,11 @@
 								</MusicTrack>
 								<MusicTrack Name="s1_l2#_10" ID="{25C2B9EA-E893-4D3F-9218-7041426F421F}" ShortID="803076188">
 									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
 												<RTPC Name="" ID="{EF4A2056-F3AC-4308-8D1E-4871DA8C5C3F}" ShortID="552733558">
@@ -7324,12 +7264,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>1500</XPos>
+																<XPos>1875</XPos>
 																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -7375,6 +7315,11 @@
 								</MusicTrack>
 								<MusicTrack Name="s1_l3#_10" ID="{1FA28C42-012F-4DFE-8A91-C28359B7F78B}" ShortID="230721978">
 									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
 												<RTPC Name="" ID="{AC64362B-0012-4A75-9341-28B370C3F868}" ShortID="688441073">
@@ -7394,17 +7339,17 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>1400</XPos>
+																<XPos>1750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>3000</XPos>
+																<XPos>3750</XPos>
 																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -7452,13 +7397,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{019E08CA-2B02-4D2E-8C73-C6912AF1421C}" ShortID="975743191">
+												<RTPC Name="" ID="{7DB15DFF-7D08-4DE8-90E6-DE0CC1589CC3}" ShortID="359500005">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{D057816E-995E-4D07-8644-3E058B50653C}">
+													<Curve Name="" ID="{C35CC2EF-88BE-42AA-BF75-3C95A2136237}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -7469,17 +7414,17 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>2900</XPos>
+																<XPos>1750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>4500</XPos>
-																<YPos>-0.152389999999997</YPos>
+																<XPos>3750</XPos>
+																<YPos>0</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -7549,17 +7494,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>4300</XPos>
+																<XPos>5375</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>6000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -7629,18 +7569,13 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>5400</XPos>
+																<XPos>6750</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
 																<XPos>7500</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
+																<YPos>-10.88136</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -7709,18 +7644,8 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>6900</XPos>
+																<XPos>7500</XPos>
 																<YPos>-200</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>9000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -7789,18 +7714,8 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>8000</XPos>
+																<XPos>7500</XPos>
 																<YPos>-200</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>9999.999</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -7930,13 +7845,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{7BBEF7E1-5802-4EC6-90F7-151733CEF31C}" ShortID="631180421">
+												<RTPC Name="" ID="{0B3D814B-79DB-4157-B2C9-FF2ED2838A30}" ShortID="703366801">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{E481F89D-7651-4C28-9F91-9F33F147BCD3}">
+													<Curve Name="" ID="{BE6E4D02-641D-41B2-818C-AA7C68178550}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -7947,18 +7862,18 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>4300</XPos>
+																<XPos>3625</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>6000</XPos>
-																<YPos>0</YPos>
+																<XPos>5625</XPos>
+																<YPos>-0.152389999999997</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>10000</XPos>
-																<YPos>0</YPos>
+																<XPos>7500</XPos>
+																<YPos>-0.11056</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -8005,13 +7920,13 @@
 									<PropertyList>
 										<Property Name="Volume" Type="Real64">
 											<RTPCList>
-												<RTPC Name="" ID="{F3F50A83-5AF5-4683-890B-0C534CEC98E9}" ShortID="1033236760">
+												<RTPC Name="" ID="{7915AC43-1E4A-4942-BD90-08FE14FA1A3E}" ShortID="571273539">
 													<ReferenceList>
 														<Reference Name="ControlInput">
 															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
 														</Reference>
 													</ReferenceList>
-													<Curve Name="" ID="{268248F6-12F2-4A58-80E1-354E16762662}">
+													<Curve Name="" ID="{941C35EA-F385-41A0-A1FD-61C3CF38B345}">
 														<PropertyList>
 															<Property Name="Flags" Type="int32" Value="3"/>
 														</PropertyList>
@@ -8022,17 +7937,12 @@
 																<Flags>5</Flags>
 															</Point>
 															<Point>
-																<XPos>6900</XPos>
+																<XPos>5375</XPos>
 																<YPos>-200</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>9000</XPos>
-																<YPos>0</YPos>
-																<Flags>0</Flags>
-															</Point>
-															<Point>
-																<XPos>10000</XPos>
+																<XPos>7500</XPos>
 																<YPos>0</YPos>
 																<Flags>37</Flags>
 															</Point>
@@ -8071,6 +7981,81 @@
 														<Property Name="FadeOutMode" Type="int16" Value="0"/>
 													</PropertyList>
 													<AudioSourceRef Name="s1_l6_v2-03" ID="{255AEA22-EAE4-416F-B9CE-247941B85EE0}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+								<MusicTrack Name="s3_l23_v2" ID="{12F13435-B494-4B9C-BE60-C683BC480C54}" ShortID="639528988">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<RTPCList>
+												<RTPC Name="" ID="{224BF79D-CD74-48B2-86D8-2AFDA5827953}" ShortID="684248242">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}" WorkUnitID="{7DBDA732-91DE-482E-8B62-F94782B7E987}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{CFED2998-48C9-4E73-903F-9A017A665C0F}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>250</XPos>
+																<YPos>-200</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>2187.5</XPos>
+																<YPos>0</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>7500</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="s3_l23_v2" ID="{05DF9D85-4316-47E8-9B8F-27F420F5133E}" ShortID="33203099">
+											<Language>SFX</Language>
+											<AudioFile>s3_l23_v2.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{9D1D4C7F-DEF3-450D-BB18-254E0C1770A2}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{1A82FC6F-6CAF-4FBE-A752-3D3A60EB4AFF}">
+											<ClipList>
+												<MusicClip Name="s3_l23_v2" ID="{9DD96A4F-8E5A-4B52-B9AA-F032E63ED6FF}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="34653.3541666667"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="s3_l23_v2" ID="{05DF9D85-4316-47E8-9B8F-27F420F5133E}"/>
 												</MusicClip>
 											</ClipList>
 										</MusicTrackSequence>
@@ -8466,6 +8451,13 @@
 									</SequenceList>
 								</MusicTrack>
 								<MusicTrack Name="speed7" ID="{9E067E2F-B8E5-441A-A7ED-E66F40C94CA4}" ShortID="534908842">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A07E1E18-2382-4E50-B73F-9C0831051E7F}"/>
