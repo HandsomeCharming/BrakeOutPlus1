@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
 
         ResetSceneStats();
 
-        print(scoreForDifficulty);
+        //print(scoreForDifficulty);
 
         //ChallengeManager.current.currentFloorData = 0;
 
@@ -304,6 +304,8 @@ public class GameManager : MonoBehaviour {
             LoadAdIfNeeded();
 
             AnalyticsEvent.GameStart();
+
+            AppManager.instance.LoginOrRegister();
         }
     }
 

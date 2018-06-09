@@ -96,6 +96,7 @@ public class TopManager : MonoBehaviour {
     public void GetLeaderBoard(int boardIndex)
     {
         if (m_CurrentBoardIndex != boardIndex) InitLeaderBoardRows();
+        AppManager.instance.LoginOrRegister();
         m_CurrentBoardIndex = boardIndex;
 		string shortCode = GetShortCode(boardName [m_CurrentBoardIndex]);
 		Debug.Log (shortCode);
@@ -104,7 +105,7 @@ public class TopManager : MonoBehaviour {
         {
             if (!response.HasErrors)
             {
-                Debug.Log("Found Leaderboard Data...");
+                //Debug.Log("Found Leaderboard Data...");
                 int i = 0;
                 foreach (GameSparks.Api.Responses.LeaderboardDataResponse._LeaderboardData entry in response.Data)
                 {
@@ -112,7 +113,7 @@ public class TopManager : MonoBehaviour {
                     string playerName = entry.UserName;
                     if (playerName == "") playerName = "Driver";
                     string score = entry.JSONData["SCORE"].ToString();
-                    Debug.Log("Rank:" + rank + " Name:" + playerName + " \n Score:" + score);
+                    //Debug.Log("Rank:" + rank + " Name:" + playerName + " \n Score:" + score);
                     
                     m_Rows[i].name.text = playerName;
                     m_Rows[i].rank.text = rank.ToString();
@@ -148,6 +149,8 @@ public class TopManager : MonoBehaviour {
         List<string> lbs = new List<string>();
         lbs.Add(boardName[m_CurrentBoardIndex]);
 
+        print(GameSparks.Core.GS.Authenticated);
+
         new GameSparks.Api.Requests.AccountDetailsRequest()
             .Send((response) =>
             {
@@ -158,31 +161,39 @@ public class TopManager : MonoBehaviour {
                     {
                         //print(response.ScriptData);
                         //int score = (int)response2.BaseData.GetNumber("SCORE");
-                        //print(response2.JSONData.Keys);
-                        foreach(var jj in response2.JSONData)
+                        if (!response2.HasErrors)
                         {
-                            //print(jj.Key);
-                            if(jj.Key.Contains(boardName[m_CurrentBoardIndex]))
+                            foreach (var jj in response2.JSONData)
                             {
-                                print((jj.Value.GetType()));
-                                GSData data = (GSData) jj.Value;
-                                print(data.GetNumber("SCORE"));
-                                print(data.GetNumber("rank"));
-                                int score = (int) data.GetNumber("SCORE");
-                                int rank = (int)data.GetNumber("rank");
-                                m_PlayerRow.rank.text = rank.ToString();
-                                m_PlayerRow.score.text = score.ToString();
-                                m_PlayerRow.name.text = data.GetString("userName");
+                                //print(jj.Key);
+                                if (jj.Key.Contains(boardName[m_CurrentBoardIndex]))
+                                {
+                                    //print(jj.Key);
+                                    //print((jj.Value.GetType()));
+                                    GSData data = (GSData)jj.Value;
+                                    //print(data.JSON);
+                                    //print(data.GetNumber("SCORE"));
+                                    //print(data.GetNumber("rank"));
+                                    int score = (int)data.GetNumber("SCORE");
+                                    int rank = (int)data.GetNumber("rank");
+                                    m_PlayerRow.rank.text = rank.ToString();
+                                    m_PlayerRow.score.text = score.ToString();
+                                    m_PlayerRow.name.text = data.GetString("userName");
+                                }
                             }
+                        }
+                        else
+                        {
+                            Debug.Log(response2.Errors.JSON);
                         }
                         //print(score);
                         //print(response2.BaseData.JSON);
                     });
                 }
-					else 
-					{
-						Debug.Log(response.Errors.JSON);
-					}
+                else
+                {
+                    Debug.Log(response.Errors.JSON);
+                }
 
             });
 

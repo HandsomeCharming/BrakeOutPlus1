@@ -61,7 +61,7 @@ public class AudioSystem : MonoBehaviour {
 
         if (Camera.main.GetComponent<AkAudioListener>() == null)
         {
-            print("Add listener");
+            //print("Add listener");
             AkSoundEngine.RegisterGameObj(Camera.main.gameObject);
             Camera.main.gameObject.AddComponent<AkAudioListener>();
         }

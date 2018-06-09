@@ -96,19 +96,23 @@ public class AppManager : MonoBehaviour {
 
     public void RegisterGameSpark(string name)
     {
-        new GameSparks.Api.Requests.DeviceAuthenticationRequest().SetDisplayName(name).Send((response) =>
+        if(GameSparks.Core.GS.Available)
         {
-            if (!response.HasErrors)
+            new GameSparks.Api.Requests.DeviceAuthenticationRequest().SetDisplayName(name).Send((response) =>
             {
-                print("Registered");
-                PlayerPrefs.SetString(GSRegisteredPref, name);
-                PlayerPrefs.Save();
-            }
-            else
-            {
-                Debug.Log("Register gamespark failed");
-            }
-        });
+                if (!response.HasErrors)
+                {
+                    print("Registered");
+                    print(response.JSONString);
+                    PlayerPrefs.SetString(GSRegisteredPref, name);
+                    PlayerPrefs.Save();
+                }
+                else
+                {
+                    Debug.Log("Register gamespark failed");
+                }
+            });
+        }
     }
 
     public void RenameGameSpark(string name)
@@ -137,18 +141,11 @@ public class AppManager : MonoBehaviour {
         }
         else
         {
-            if(IsGSRegistered())
-            {
-                DailyLoginGS();
-            }
-            else
-            {
-                RegisterPlayer("Driver"); // hard coded register 
-            }
+            LoginOrRegister();
         }
     }
 
-	void LoginOrRegister()
+	public void LoginOrRegister()
 	{
 		if (!IsGSRegistered ()) {
 			RegisterPlayer ("Driver");
@@ -160,7 +157,7 @@ public class AppManager : MonoBehaviour {
 
     public void DailyLoginGS()
     {
-		if (GameSparks.Core.GS.Available && !GameSparks.Core.GS.Authenticated && IsGSRegistered())
+		if (GameSparks.Core.GS.Available && IsGSRegistered())
         {
             string name = GetUserName();
             if (name == null) name = "Driver";
@@ -170,6 +167,7 @@ public class AppManager : MonoBehaviour {
                 if (!response.HasErrors)
                 {
                     print("Login");
+                    print(response.JSONString);
                 }
                 else
                 {
