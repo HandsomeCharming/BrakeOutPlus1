@@ -65,6 +65,14 @@ public class CarShortData
     public string name;
     public int carIndex;
     public int sceneIndex;
+
+    public CarShortData() { }
+
+    public CarShortData(int carIndex, int sceneIndex)
+    {
+        this.carIndex = carIndex;
+        this.sceneIndex = sceneIndex;
+    }
 }
 
 [System.Serializable]

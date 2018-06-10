@@ -15,6 +15,7 @@ public class LootBoxManager : MonoBehaviour {
     public GameObject m_Buttons;
     public GameObject m_ExitButton;
 	public LootBoxAdButton m_AdButton;
+    public CanvasGroup m_CanvasGroup;
 
     [Header("Car loot debug Settings")]
     public int ReceivedCarIndex;
@@ -34,6 +35,24 @@ public class LootBoxManager : MonoBehaviour {
 
         m_CurrentPrizeIndex = -1;
         m_Looting = false;
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(FadeIn(UIManager.UIFadeInTime));
+    }
+
+    IEnumerator FadeIn(float totalTime)
+    {
+        float time = 0;
+
+        while (time < totalTime)
+        {
+            m_CanvasGroup.alpha = Mathf.Lerp(0.0f, 1.0f, time / totalTime);
+            time += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        m_CanvasGroup.alpha = 1.0f;
     }
 
     private void Update()
@@ -90,6 +109,7 @@ public class LootBoxManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(time);
         m_ReceiveItem.ReceiveCar(data);
+        m_ReceiveItem.m_CloseAction += CloseReceiveCarPanel;
     }
 
     public void CloseReceiveCarPanel()

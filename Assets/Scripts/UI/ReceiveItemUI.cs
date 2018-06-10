@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ReceiveItemUI : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class ReceiveItemUI : MonoBehaviour {
     public Button m_BlurBackground;
     public GameObject[] m_Rarities;
     public GameObject[] m_RarityEffectPrefab;
+
+    public UnityAction m_CloseAction;
 
     [HideInInspector]
     public GameObject m_CurrentCarPreview;
@@ -120,7 +123,10 @@ public class ReceiveItemUI : MonoBehaviour {
             Destroy(m_CurrentEffect);
         }*/
 
-        LootBoxManager.instance.CloseReceiveCarPanel();
+        if(m_CloseAction != null)
+            m_CloseAction.Invoke();
+        m_CloseAction = null;
+
         gameObject.SetActive(false);
     }
 }

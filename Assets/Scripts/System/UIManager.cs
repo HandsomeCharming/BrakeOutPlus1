@@ -17,12 +17,15 @@ public class UIManager : MonoBehaviour {
     public LoginUI m_LoginUI;
 
 	public RateUsPanel m_RateUsPanel;
-
+    public DailyRewardUI m_DailyReward;
+    
     bool showMain;
 
     public static UIManager current;
-    
-	void Awake () {
+
+    public const float UIFadeInTime = 0.3f;
+
+    void Awake () {
         current = this;
         m_UIs = new List<UIBase>();
         m_UIs.Add(m_Ingame);
@@ -32,6 +35,8 @@ public class UIManager : MonoBehaviour {
         m_UIs.Add(m_PauseMenu);
         m_UIs.Add(m_LoginUI);
         ChangeStateByGameState();
+
+        m_DailyReward.ShowIfCanReceiveReward();
     }
 
     public void ChangeStateByGameState()
