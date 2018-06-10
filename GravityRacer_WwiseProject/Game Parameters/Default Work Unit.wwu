@@ -6,7 +6,7 @@
 				<GameParameter Name="SCORE" ID="{6259DCDD-94FA-443D-BF77-0E54016BA2CA}">
 					<PropertyList>
 						<Property Name="InitialValue" Type="Real64" Value="0"/>
-						<Property Name="Max" Type="Real64" Value="10000"/>
+						<Property Name="Max" Type="Real64" Value="7500"/>
 					</PropertyList>
 				</GameParameter>
 				<GameParameter Name="SPEED" ID="{8853B442-1301-4F77-90A4-178A3CCA0846}">
