@@ -16,6 +16,8 @@ public class SelectCarManager : MonoBehaviour {
 
     public CarSelectData m_Storer;
 
+    public bool removeTutorialKey;
+
     SceneCars m_CurrentScene;
     List<SingleCarSelectData> m_CurrentCars;
 
@@ -32,7 +34,17 @@ public class SelectCarManager : MonoBehaviour {
         //m_CurrentCarName = m_CarNames[m_CarIndex];
         //m_Menu.SetText(m_CurrentCarName);
     }
-    
+
+    private void Update()
+    {
+        if(removeTutorialKey)
+        {
+            removeTutorialKey = false;
+            PlayerPrefs.DeleteKey(TutorialKey);
+            PlayerPrefs.Save();
+        }
+    }
+
     bool HasSawTutorial()
     {
         return PlayerPrefs.HasKey(TutorialKey);

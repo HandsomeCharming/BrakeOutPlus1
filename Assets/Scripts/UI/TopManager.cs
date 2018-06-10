@@ -168,7 +168,7 @@ public class TopManager : MonoBehaviour {
                                 //print(jj.Key);
                                 if (jj.Key.Contains(boardName[m_CurrentBoardIndex]))
                                 {
-                                    //print(jj.Key);
+                                    print(jj.Key);
                                     //print((jj.Value.GetType()));
                                     GSData data = (GSData)jj.Value;
                                     //print(data.JSON);
