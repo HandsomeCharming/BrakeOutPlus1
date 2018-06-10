@@ -11,11 +11,25 @@ public class DailyRewardUI : MonoBehaviour {
     public ReceiveItemUI m_ReceiveItemUI;
     public DailyRewardCardUI[] m_RewardCards;
     public CanvasGroup m_CanvasGroup;
+    public Image m_ClaimButtonBase;
+    public GameObject m_ButtonAfterClaim;
 
     public int DebugDateOffset;
 
     const string DateKey = "DailyRewardDate";
     const string PastRewardCountKey = "DailyRewardCount";
+
+
+    public void ClearRecord()
+    {
+        PlayerPrefs.DeleteKey(DateKey);
+        PlayerPrefs.DeleteKey(PastRewardCountKey);
+        PlayerPrefs.Save();
+    }
+
+    private void OnEnable()
+    {
+    }
 
     public void ShowIfCanReceiveReward()
     {
@@ -31,15 +45,18 @@ public class DailyRewardUI : MonoBehaviour {
                 go.SetSelected(false);
             }
 
-            if (rewardCount < 7)
+            int maxCount = rewardCount < 7 ? rewardCount : 7;
+            for(int i=0; i<maxCount-1; ++i)
             {
-                m_RewardCards[rewardCount].SetSelected(true);
+                m_RewardCards[i].SetSelected(true);
             }
-            else
-            {
-                m_RewardCards[7].SetSelected(true);
-            }
+
+            m_ClaimButtonBase.color = Color.white;
+            m_ClaimButtonBase.GetComponent<Button>().enabled = true;
+            m_ButtonAfterClaim.SetActive(false);
+
             StartCoroutine(FadeIn(UIManager.UIFadeInTime));
+
         }
     }
 
@@ -56,12 +73,24 @@ public class DailyRewardUI : MonoBehaviour {
         m_CanvasGroup.alpha = 1.0f;
     }
 
-    public void ClaimRewardAndClose()
+    public void ClaimReward()
     {
+        m_ClaimButtonBase.color = Color.gray;
+        m_ClaimButtonBase.GetComponent<Button>().enabled = false;
+
         int rewardCount = GetRewardCount();
         print(rewardCount);
+        
+        if (rewardCount < 7)
+        {
+            m_RewardCards[rewardCount].SetSelected(true);
+        }
+        else
+        {
+            m_RewardCards[7].SetSelected(true);
+        }
 
-        if(rewardCount < dailyRewardData.data.Length)
+        if (rewardCount < dailyRewardData.data.Length)
         {
             var rewardData = dailyRewardData.data[rewardCount];
 
@@ -74,7 +103,17 @@ public class DailyRewardUI : MonoBehaviour {
         RecordManager.RecordInt(PastRewardCountKey, rewardCount);
         RecordLatestRewardDate();
 
+        Invoke("EnableButtonToClose", 1.0f);
+    }
+
+    public void Close()
+    {
         gameObject.SetActive(false);
+    }
+
+    void EnableButtonToClose()
+    {
+        m_ButtonAfterClaim.SetActive(true);
     }
 
     bool CanReceiveReward()

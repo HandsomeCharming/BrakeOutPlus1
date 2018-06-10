@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour {
 
 	public RateUsPanel m_RateUsPanel;
     public DailyRewardUI m_DailyReward;
+
+    public bool ClearDailyReward;
     
     bool showMain;
 
@@ -37,6 +39,15 @@ public class UIManager : MonoBehaviour {
         ChangeStateByGameState();
 
         m_DailyReward.ShowIfCanReceiveReward();
+    }
+
+    private void Update()
+    {
+        if(ClearDailyReward)
+        {
+            ClearDailyReward = false;
+            m_DailyReward.ClearRecord();
+        }
     }
 
     public void ChangeStateByGameState()
