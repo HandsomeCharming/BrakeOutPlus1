@@ -7,6 +7,8 @@ public class SelectCarManager : MonoBehaviour {
     public SelectMenuUI m_Menu;
     public SelectTrailUI m_TrailMenu;
 
+    public GameObject m_TutorialCanvasGO;
+
     public int m_CurrentSceneIndex;
 
     int m_CarIndex;
@@ -16,6 +18,8 @@ public class SelectCarManager : MonoBehaviour {
 
     SceneCars m_CurrentScene;
     List<SingleCarSelectData> m_CurrentCars;
+
+    const string TutorialKey = "CarTutorialWatched";
 
 	// Use this for initialization
 	void Awake ()
@@ -28,10 +32,28 @@ public class SelectCarManager : MonoBehaviour {
         //m_CurrentCarName = m_CarNames[m_CarIndex];
         //m_Menu.SetText(m_CurrentCarName);
     }
+    
+    bool HasSawTutorial()
+    {
+        return PlayerPrefs.HasKey(TutorialKey);
+    }
+
+    public void SawTutorial()
+    {
+        PlayerPrefs.SetInt(TutorialKey, 1);
+        PlayerPrefs.Save();
+        m_TutorialCanvasGO.SetActive(false);
+    }
+
     private void OnEnable()
     {
         //InitCar();
         UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("CarMenu");
+
+        if (!HasSawTutorial())
+        {
+            m_TutorialCanvasGO.SetActive(true);
+        }
     }
 
     void InitCar()

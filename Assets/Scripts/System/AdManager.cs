@@ -202,6 +202,10 @@ public class AdManager : MonoBehaviour {
             rewardReceived = false;
             m_RewardType = RewardType.Revive;
             rewardBasedVideo.Show();
+            UnityEngine.Analytics.Analytics.CustomEvent("ShowVideo", new Dictionary<string, object>
+            {
+                { "id", "Revive"},
+            });
             return true;
         }
         return false;
@@ -214,6 +218,10 @@ public class AdManager : MonoBehaviour {
             rewardReceived = false;
             m_RewardType = RewardType.LootBox;
             rewardBasedVideo.Show();
+            UnityEngine.Analytics.Analytics.CustomEvent("ShowVideo", new Dictionary<string, object>
+            {
+                { "id", "LootBox"},
+            });
             return true;
         }
         return false;

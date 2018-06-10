@@ -482,6 +482,8 @@ public class GameManager : MonoBehaviour {
         //FloorBuilder.current.RebuildFloor();
         Player.current.Revive();
         UIManager.current.ChangeStateByGameState();
+
+        
         //UIManager.current.m_Ingame.StartReviveCountDown(3.0f);
     }
 

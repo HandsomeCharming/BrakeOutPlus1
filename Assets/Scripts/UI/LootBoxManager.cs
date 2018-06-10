@@ -40,6 +40,8 @@ public class LootBoxManager : MonoBehaviour {
     void OnEnable()
     {
         StartCoroutine(FadeIn(UIManager.UIFadeInTime));
+
+        UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("LootBox");
     }
 
     IEnumerator FadeIn(float totalTime)
@@ -150,6 +152,8 @@ public class LootBoxManager : MonoBehaviour {
             GameManager.current.AddStar(-oneLootPrice);
             m_ChancesLeft = 1;
             StartLoot();
+
+            UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("OneLoot");
         }
     }
 
@@ -160,6 +164,8 @@ public class LootBoxManager : MonoBehaviour {
             GameManager.current.AddStar(-fiveLootPrice);
             m_ChancesLeft = 5;
             StartLoot();
+
+            UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("FiveLoot");
         }
     }
 

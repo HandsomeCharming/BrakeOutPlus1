@@ -21,6 +21,7 @@ public class SelectMenuUI : MonoBehaviour {
     public CarUpgradeCard[] m_CarUpgradeCards;
     public RectTransform m_CarRotBotLeft;
     public RectTransform m_CarRotTopRight;
+    public GameObject[] m_Rarities;
     public float m_RotSpeed;
     public float m_RotRecoverSpeed = 1.0f;
 
@@ -96,9 +97,23 @@ public class SelectMenuUI : MonoBehaviour {
                 m_TrailButton.SetActive(true);
         }
 
+        SetCurrentRarity();
         ChangeFeatureText();
         RefreshUpgradeCards();
         LoadCurrentCarPreview();
+    }
+
+    void SetCurrentRarity()
+    {
+        var carData = m_Manager.GetCurrentCarData();
+        Rarity rarity = carData.rarity;
+        int rarityIndex = (int)rarity;
+
+        foreach(var go in m_Rarities)
+        {
+            go.SetActive(false);
+        }
+        m_Rarities[rarityIndex].SetActive(true);
     }
 
     void ChangeFeatureText()
