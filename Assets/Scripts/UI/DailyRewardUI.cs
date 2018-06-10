@@ -13,6 +13,8 @@ public class DailyRewardUI : MonoBehaviour {
     public CanvasGroup m_CanvasGroup;
     public Image m_ClaimButtonBase;
     public GameObject m_ButtonAfterClaim;
+    public DailyRewardCardUI m_RewardCard3B;
+    public DailyRewardCardUI m_RewardCard7B;
 
     public int DebugDateOffset;
 
@@ -51,6 +53,21 @@ public class DailyRewardUI : MonoBehaviour {
                 m_RewardCards[i].SetSelected(true);
             }
 
+            // day 3 and 7 hard code
+            if(SaveManager.instance.HasCar("TRIVEX"))
+            {
+                m_RewardCards[2].gameObject.SetActive(false);
+                m_RewardCards[2] = m_RewardCard3B;
+                m_RewardCards[2].gameObject.SetActive(true);
+            }
+            if (SaveManager.instance.HasCar("HELICOPTER"))
+            {
+                m_RewardCards[6].gameObject.SetActive(false);
+                m_RewardCards[6] = m_RewardCard7B;
+                m_RewardCards[6].gameObject.SetActive(true);
+            }
+
+            // set buttons
             m_ClaimButtonBase.color = Color.white;
             m_ClaimButtonBase.GetComponent<Button>().enabled = true;
             m_ButtonAfterClaim.SetActive(false);
@@ -92,9 +109,7 @@ public class DailyRewardUI : MonoBehaviour {
 
         if (rewardCount < dailyRewardData.data.Length)
         {
-            var rewardData = dailyRewardData.data[rewardCount];
-
-            ReceiveRewardByData(rewardData);
+            ReceiveRewardByDay(rewardCount);
         }
         else
         {
@@ -131,22 +146,34 @@ public class DailyRewardUI : MonoBehaviour {
         }
     }
 
-    void ReceiveRewardByData(DailyRewardData data)
+    void ReceiveRewardByDay(int rewardCount)
     {
-        switch(data.type)
+        if(rewardCount == 2 && SaveManager.instance.HasCar("TRIVEX"))
         {
-            case DailyLoginPrizeType.Coin:
-                GameManager.current.AddCoin(data.count);
-                break;
-            case DailyLoginPrizeType.Star:
-                GameManager.current.AddStar(data.count);
-                break;
-            case DailyLoginPrizeType.Car:
-                m_ReceiveItemUI.ReceiveCar(new CarShortData(data.carIndex, data.sceneIndex));
-                break;
-            case DailyLoginPrizeType.Box:
-                m_ReceiveItemUI.ReceiveCar(new CarShortData(data.carIndex, data.sceneIndex));
-                break;
+            GameManager.current.AddStar(78);
+        }
+        else if (rewardCount == 6 && SaveManager.instance.HasCar("HELICOPTER"))
+        {
+            GameManager.current.AddStar(4368);
+        }
+        else
+        {
+            var data = dailyRewardData.data[rewardCount];
+            switch (data.type)
+            {
+                case DailyLoginPrizeType.Coin:
+                    GameManager.current.AddCoin(data.count);
+                    break;
+                case DailyLoginPrizeType.Star:
+                    GameManager.current.AddStar(data.count);
+                    break;
+                case DailyLoginPrizeType.Car:
+                    m_ReceiveItemUI.ReceiveCar(new CarShortData(data.carIndex, data.sceneIndex));
+                    break;
+                case DailyLoginPrizeType.Box:
+                    m_ReceiveItemUI.ReceiveCar(new CarShortData(data.carIndex, data.sceneIndex));
+                    break;
+            }
         }
     }
 
