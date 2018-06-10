@@ -46,7 +46,7 @@ public class DailyRewardUI : MonoBehaviour {
             }
 
             int maxCount = rewardCount < 7 ? rewardCount : 7;
-            for(int i=0; i<maxCount-1; ++i)
+            for(int i=0; i<maxCount; ++i)
             {
                 m_RewardCards[i].SetSelected(true);
             }
