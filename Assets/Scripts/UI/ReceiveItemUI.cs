@@ -11,6 +11,7 @@ public class ReceiveItemUI : MonoBehaviour {
     public Button m_BlurBackground;
     public GameObject[] m_Rarities;
     public GameObject[] m_RarityEffectPrefab;
+    public GameObject[] m_Backgrounds;
 
     public UnityAction m_CloseAction;
 
@@ -55,6 +56,13 @@ public class ReceiveItemUI : MonoBehaviour {
             SaveManager.instance.AcquireCar(data.carIndex, data.sceneIndex);
         }
         m_BlurBackground.enabled = false;
+
+        foreach(var go in m_Backgrounds)
+        {
+            go.SetActive(false);
+        }
+        m_Backgrounds[data.sceneIndex].SetActive(true);
+
         Invoke("EnableTouch", 0.5f);
 
         gameObject.SetActive(true);

@@ -62,9 +62,9 @@ public class ConsistantUI : MonoBehaviour {
             int diff = (int)(m_ActualCoins - m_CurrentCoins);
 
             actualAddCoinRate = addCoinRate;
-            if(diff/addCoinRate > 5.0f)
+            if(diff/addCoinRate > 3.0f)
             {
-                actualAddCoinRate = diff / 5.0f;
+                actualAddCoinRate = diff / 3.0f;
             }
 
             addCoins.text = (diff).ToString();
@@ -82,9 +82,9 @@ public class ConsistantUI : MonoBehaviour {
 
             int diff = (int)(m_ActualStars - m_CurrentStars);
             actualAddStarRate = addStarRate;
-            if (diff / addStarRate > 5.0f)
+            if (diff / addStarRate > 3.0f)
             {
-                actualAddStarRate = diff / 5.0f;
+                actualAddStarRate = diff / 3.0f;
             }
 
             addStars.text = (diff).ToString();

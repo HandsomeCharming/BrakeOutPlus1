@@ -152,6 +152,7 @@ public class SelectCarManager : MonoBehaviour {
             SaveManager.instance.Save();
             m_Menu.RefreshForManager();
             GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
+            GameManager.current.ReloadTrail(GetCurrentCarData().m_Trails[0].name);
         }
     }
 
@@ -162,6 +163,7 @@ public class SelectCarManager : MonoBehaviour {
             SaveManager.instance.Save();
             m_Menu.RefreshForManager();
             GameManager.current.ReloadCar(m_CarIndex, m_CurrentSceneIndex);
+            GameManager.current.ReloadTrail(GetCurrentCarData().m_Trails[0].name);
         }
     }
 

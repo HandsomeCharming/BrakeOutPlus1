@@ -44,6 +44,11 @@ public class LootBoxManager : MonoBehaviour {
         UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("LootBox");
     }
 
+    public void Close()
+    {
+        StartCoroutine(FadeOut(UIManager.UIFadeInTime));
+    }
+
     IEnumerator FadeIn(float totalTime)
     {
         float time = 0;
@@ -55,6 +60,23 @@ public class LootBoxManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         m_CanvasGroup.alpha = 1.0f;
+        m_CanvasGroup.interactable = true;
+    }
+    
+    IEnumerator FadeOut(float totalTime)
+    {
+        float time = 0;
+        m_CanvasGroup.interactable = false;
+
+        while (time < totalTime)
+        {
+            m_CanvasGroup.alpha = Mathf.Lerp(1.0f, 0.0f, time / totalTime);
+            time += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        m_CanvasGroup.alpha = 0.0f;
+
+        gameObject.SetActive(false);
     }
 
     private void Update()

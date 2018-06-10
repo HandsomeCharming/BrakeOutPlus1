@@ -88,6 +88,23 @@ public class DailyRewardUI : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         m_CanvasGroup.alpha = 1.0f;
+        m_CanvasGroup.interactable = true;
+    }
+    
+    IEnumerator FadeOut(float totalTime)
+    {
+        float time = 0;
+        m_CanvasGroup.interactable = false;
+
+        while (time < totalTime)
+        {
+            m_CanvasGroup.alpha = Mathf.Lerp(1.0f, 0.0f, time / totalTime);
+            time += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        m_CanvasGroup.alpha = 0.0f;
+
+        gameObject.SetActive(false);
     }
 
     public void ClaimReward()
@@ -118,12 +135,12 @@ public class DailyRewardUI : MonoBehaviour {
         RecordManager.RecordInt(PastRewardCountKey, rewardCount);
         RecordLatestRewardDate();
 
-        Invoke("EnableButtonToClose", 1.0f);
+        Invoke("EnableButtonToClose", 0.5f);
     }
 
     public void Close()
     {
-        gameObject.SetActive(false);
+        StartCoroutine(FadeOut(UIManager.UIFadeInTime));
     }
 
     void EnableButtonToClose()
