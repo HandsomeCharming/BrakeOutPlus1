@@ -91,7 +91,7 @@ public class LootBoxAdButton : MonoBehaviour {
         remainTime.text = span.Hours.ToString() + ":" + span.Minutes.ToString() + ":" + span.Seconds.ToString();
     }
 
-    bool CheckCanLoot()
+    public bool CheckCanLoot()
     {
         if(PlayerPrefs.HasKey(nextAdTimeKey))
         {

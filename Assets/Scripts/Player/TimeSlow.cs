@@ -14,11 +14,13 @@ public class TimeSlow : MonoBehaviour {
         Camera.main.GetComponent<CameraFollow>().EnableMotionBlur(true);
 
         AudioSystem.current.PlayEvent(AudioSystemEvents.SlowTimeStartEventName);
+        InGameUI.Instance.StartPowerup(Powerups.Timeslow);
     }
 
     private void OnDisable()
     {
         AudioSystem.current.PlayEvent(AudioSystemEvents.SlowTimeStopEventName);
+        InGameUI.Instance.EndPowerup(Powerups.Timeslow);
     }
 
     private void Update()
