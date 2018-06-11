@@ -196,7 +196,8 @@ public class InGameUI : UIBase
             BoostImage.GetComponent<Animator>().Play("BoostUIShow");
         }
         
-        float displayMult = Mathf.Lerp(1.0f, Player.current.m_MaxMult, (multiplier- 1.0f) / 0.7f);
+        float maxMult = Player.current == null?2.0f: Player.current.m_MaxMult;
+        float displayMult = Mathf.Lerp(1.0f, maxMult, (multiplier- 1.0f) / 0.7f);
 		BoostNumber.text = "x" + displayMult.ToString("0.0" );
 
         float lerp = (multiplier - 1.0f - (increasing ? 0.0f : 1.0f)) / 1.7f;
