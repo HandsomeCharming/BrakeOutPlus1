@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//#define LOOTBOX_DEBUG
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +23,8 @@ public class LootBoxManager : MonoBehaviour {
     public int ReceivedCarIndex;
     public int ReceivedSceneIndex;
     public bool showReceiveCar = false;
+
+    public bool ShouldClearLootTime = false;
 
     int m_CurrentPrizeIndex;
     int m_ChancesLeft;
@@ -79,6 +83,7 @@ public class LootBoxManager : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
+#if LOOTBOX_DEBUG
     private void Update()
     {
         if(showReceiveCar)
@@ -90,7 +95,12 @@ public class LootBoxManager : MonoBehaviour {
             data.sceneIndex = ReceivedSceneIndex;
             m_ReceiveItem.ReceiveCar(data);
         }
-    }
+        if(ShouldClearLootTime)
+        {
+            m_AdButton.ClearLastAd();
+        }
+    }*/
+#endif
 
     public void StartLoot()
     {
@@ -164,7 +174,7 @@ public class LootBoxManager : MonoBehaviour {
 
     public bool StartLootAd()
     {
-		return AdManager.Instance.ShowLootboxVideo ();
+        return AdManager.Instance.ShowLootboxVideo ();
     }
 
     public void StartOneLootWithStar()

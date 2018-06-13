@@ -27,6 +27,11 @@ public class LootBoxAdButton : MonoBehaviour {
         }
     }
 
+    public void ClearLastAd()
+    {
+        PlayerPrefs.DeleteKey(nextAdTimeKey);
+    }
+
     void SetAdButtonCanLoot(bool can)
     {
         if(can)
@@ -79,6 +84,7 @@ public class LootBoxAdButton : MonoBehaviour {
     {
         DateTime current = DateTime.Now;
         current = current.AddHours(2);
+        //current = current.AddSeconds(10);
         PlayerPrefs.SetString(nextAdTimeKey, current.ToString(timeFormat));
     }
 
@@ -98,8 +104,7 @@ public class LootBoxAdButton : MonoBehaviour {
             string lastTimeStr = PlayerPrefs.GetString(nextAdTimeKey);
             DateTime lastAd = DateTime.ParseExact(lastTimeStr, timeFormat, CultureInfo.InvariantCulture);
             DateTime now = DateTime.Now;
-            TimeSpan span = now - lastAd;
-            if(span.Hours >= 2)
+            if (now > lastAd)
             {
                 SetAdButtonCanLoot(true);
                 return true;

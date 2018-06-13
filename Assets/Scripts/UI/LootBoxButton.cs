@@ -55,8 +55,7 @@ public class LootBoxButton : MonoBehaviour {
             string lastTimeStr = PlayerPrefs.GetString(nextAdTimeKey);
             DateTime lastAd = DateTime.ParseExact(lastTimeStr, timeFormat, CultureInfo.InvariantCulture);
             DateTime now = DateTime.Now;
-            TimeSpan span = now - lastAd;
-            if (span.Hours >= 2)
+            if (now > lastAd)
             {
                 return true;
             }
