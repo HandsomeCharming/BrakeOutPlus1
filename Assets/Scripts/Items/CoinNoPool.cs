@@ -29,7 +29,7 @@ public class CoinNoPool : MonoBehaviour {
 
     public void TouchedByPlayer()
     {
-        GameManager.current.AddCoin(m_CoinAmount);
+        GameManager.current.AddCoinInGame(m_CoinAmount);
         isMagneting = false;
         AudioSystem.current.PlayCoin();
 

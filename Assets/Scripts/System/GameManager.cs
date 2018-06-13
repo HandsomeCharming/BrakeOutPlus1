@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
 	public int gameHighScore;
     public int gameCoins;
     public int gameStars;
+    public int singleGameCoins = 0;
     public int colliNum;
 	public int cldIndex;
 	public int cIndex;
@@ -274,6 +275,19 @@ public class GameManager : MonoBehaviour {
             SaveGame();
         }
     }
+    
+    public void AddCoinInGame(int coinCount)
+    {
+        singleGameCoins += coinCount;
+        ConsistantUI.UpdateInGameCoins(singleGameCoins);
+    }
+
+    public void CollectInGameCoins(bool doubleCollect = false)
+    {
+        int mult = doubleCollect ? 2 : 1;
+        AddCoin(singleGameCoins * mult);
+        singleGameCoins = 0;
+    }
 
     public void AddStar(int starCount)
     {
@@ -302,6 +316,7 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 1.0f;
             ChallengeManager.current.startTime = Time.time;
             ChallengeManager.current.getHardTimeRemain = 15.0f;
+            singleGameCoins = 0;
             m_GameCount++;
             UIManager.current.ChangeStateByGameState();
             LoadAdIfNeeded();
@@ -512,6 +527,7 @@ public class GameManager : MonoBehaviour {
         SetHighScore();
 
 		state = GameState.AssembleTrack;
+        ConsistantUI.current.EndGame();
 		ResetSceneStats();
         LoadDefaultCarAndTrail();
         InputHandler.current.ResetControls();

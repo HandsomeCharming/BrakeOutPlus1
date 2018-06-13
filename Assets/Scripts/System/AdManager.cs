@@ -39,7 +39,8 @@ public class AdManager : MonoBehaviour {
     {
         None,
         Revive,
-        LootBox
+        LootBox,
+        DoubleCollect
     }
 
 
@@ -227,6 +228,22 @@ public class AdManager : MonoBehaviour {
         return false;
     }
 
+    public bool ShowDoubleCollectVideo()
+    {
+        if (rewardBasedVideo.IsLoaded())
+        {
+            rewardReceived = false;
+            m_RewardType = RewardType.DoubleCollect;
+            rewardBasedVideo.Show();
+            UnityEngine.Analytics.Analytics.CustomEvent("ShowVideo", new Dictionary<string, object>
+            {
+                { "id", "Double Collect"},
+            });
+            return true;
+        }
+        return false;
+    }
+
     public void HandleRewardReviveRewarded(object sender, Reward args)
     {
         print("Rewarded");
@@ -244,6 +261,18 @@ public class AdManager : MonoBehaviour {
             else if (m_RewardType == RewardType.LootBox)
             {
                 LootBoxManager.instance.StartLootAdRewarded();
+            }
+            else if(m_RewardType == RewardType.DoubleCollect)
+            {
+                DeadMenuUI.current.ReloadGameAndCollectDouble();
+            }
+            m_RewardType = RewardType.None;
+        }
+        else
+        {
+            if (m_RewardType == RewardType.DoubleCollect)
+            {
+                DeadMenuUI.current.ReloadGameAndCollect();
             }
             m_RewardType = RewardType.None;
         }

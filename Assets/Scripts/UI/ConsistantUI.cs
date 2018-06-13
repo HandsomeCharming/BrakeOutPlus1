@@ -6,7 +6,15 @@ using UnityEngine.UI;
 
 public class ConsistantUI : MonoBehaviour {
 
+    enum ConsistantUIState
+    {
+        Normal,
+        InGame
+    }
+
     public static ConsistantUI current;
+
+    ConsistantUIState state;
 
     public float addCoinRate;
     public float addStarRate;
@@ -42,6 +50,19 @@ public class ConsistantUI : MonoBehaviour {
         {
             current.UpdateNumbers();
         }
+    }
+
+    public static void UpdateInGameCoins(int coins)
+    {
+        if (current)
+        {
+            current.UpdateInGameCoinsText(coins);
+        }
+    }
+
+    public void UpdateInGameCoinsText(int coins)
+    {
+        addCoins.text = "+" + coins.ToString();
     }
 
     public void UpdateNumbers()
@@ -89,11 +110,53 @@ public class ConsistantUI : MonoBehaviour {
 
             addStars.text = (diff).ToString();
         }
+
+        if(state == ConsistantUIState.InGame)
+        {
+            addCoins.gameObject.SetActive(true);
+            UpdateInGameAddCoins();
+        }
+    }
+    
+    public void StartGameAndSetCurrentToActual()
+    {
+        m_ActualCoins = GameManager.current.GetCoinCount();
+        m_ActualStars = GameManager.current.gameStars;
+        m_CurrentCoins = m_ActualCoins;
+        m_CurrentStars = m_ActualStars;
+        state = ConsistantUIState.InGame;
+        UpdateNumbers();
+    }
+
+    public void EndGame()
+    {
+        state = ConsistantUIState.Normal;
+        UpdateNumbers();
     }
 
     private void Update()
     {
-        if(m_ActualCoins != m_CurrentCoins)
+        if(state == ConsistantUIState.Normal)
+        {
+            AddCoinAndStar();
+        }
+    }
+
+    void UpdateInGameAddCoins()
+    {
+        if(GameManager.current.singleGameCoins > 0)
+        {
+            addCoins.text = "+" + GameManager.current.singleGameCoins.ToString();
+        }
+        else
+        {
+            addCoins.text = "";
+        }
+    }
+
+    void AddCoinAndStar()
+    {
+        if (m_ActualCoins != m_CurrentCoins)
         {
             m_CurrentCoins = m_CurrentCoins + (actualAddCoinRate * Time.deltaTime);
             m_CurrentCoins = m_CurrentCoins > m_ActualCoins ? m_ActualCoins : m_CurrentCoins;
@@ -105,12 +168,12 @@ public class ConsistantUI : MonoBehaviour {
                 addCoins.gameObject.SetActive(false);
             }
         }
-        else if(addCoins.gameObject.activeSelf)
+        else if (addCoins.gameObject.activeSelf)
         {
             addCoins.gameObject.SetActive(false);
         }
 
-        if(m_ActualStars != m_CurrentStars)
+        if (m_ActualStars != m_CurrentStars)
         {
             m_CurrentStars = m_CurrentStars + (actualAddStarRate * Time.deltaTime);
             m_CurrentStars = m_CurrentStars > m_ActualStars ? m_ActualStars : m_CurrentStars;

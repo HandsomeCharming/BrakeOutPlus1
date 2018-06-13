@@ -117,6 +117,7 @@ public class UIManager : MonoBehaviour {
     {
         DisableAll();
         m_Ingame.gameObject.SetActive(true);
+        m_ConsistantUI.StartGameAndSetCurrentToActual();
     }
 
     void GameOver()
