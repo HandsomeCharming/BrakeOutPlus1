@@ -12,6 +12,7 @@ public class DailyRewardUI : MonoBehaviour {
     public DailyRewardCardUI[] m_RewardCards;
     public CanvasGroup m_CanvasGroup;
     public Image m_ClaimButtonBase;
+    public Text m_ClainButtonText;
     public GameObject m_ButtonAfterClaim;
     public DailyRewardCardUI m_RewardCard3B;
     public DailyRewardCardUI m_RewardCard7B;
@@ -69,6 +70,7 @@ public class DailyRewardUI : MonoBehaviour {
 
             // set buttons
             m_ClaimButtonBase.color = Color.white;
+            m_ClainButtonText.text = "CLAIM";
             m_ClaimButtonBase.GetComponent<Button>().enabled = true;
             m_ButtonAfterClaim.SetActive(false);
 
@@ -109,7 +111,8 @@ public class DailyRewardUI : MonoBehaviour {
 
     public void ClaimReward()
     {
-        m_ClaimButtonBase.color = Color.gray;
+        //m_ClaimButtonBase.color = Color.gray;
+        m_ClainButtonText.text = "CLOSE";
         m_ClaimButtonBase.GetComponent<Button>().enabled = false;
 
         int rewardCount = GetRewardCount();
