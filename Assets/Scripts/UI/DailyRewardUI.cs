@@ -139,6 +139,7 @@ public class DailyRewardUI : MonoBehaviour {
         RecordLatestRewardDate();
 
         Invoke("EnableButtonToClose", 0.5f);
+        AudioSystem.current.PlayEvent("click");
     }
 
     public void Close()
