@@ -37,8 +37,6 @@ public class UIManager : MonoBehaviour {
         m_UIs.Add(m_PauseMenu);
         m_UIs.Add(m_LoginUI);
         ChangeStateByGameState();
-
-        m_DailyReward.ShowIfCanReceiveReward();
     }
 
     private void Update()
@@ -85,6 +83,11 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    public void ShowDailyLogin()
+    {
+        m_DailyReward.ShowIfCanReceiveReward();
+    }
+
     void DisableAll()
     {
         foreach(var ui in m_UIs)
@@ -97,6 +100,11 @@ public class UIManager : MonoBehaviour {
     {
         DisableAll();
         m_MainMenu.gameObject.SetActive(true);
+
+        if(GameManager.current.m_GameCount > 0)
+        {
+            ShowDailyLogin();
+        }
     }
 	
     void StartLogin()

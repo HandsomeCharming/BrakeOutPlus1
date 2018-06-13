@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour {
     public float m_ItemMultiplier;
     public float m_GlobalMultiplier;
     public GameObject[] m_InitSequence;
+    public int m_GameCount;
 
     [HideInInspector]
     public int m_ReviveCount;
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour {
         LoadGameSave();
 
         Application.targetFrameRate = 60;
+        m_GameCount = 0;
         //QualitySettings.antiAliasing = 0;
         //QualitySettings.shadowCascades = 2;
         //QualitySettings.shadowDistance = 150;
@@ -300,6 +302,7 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 1.0f;
             ChallengeManager.current.startTime = Time.time;
             ChallengeManager.current.getHardTimeRemain = 15.0f;
+            m_GameCount++;
             UIManager.current.ChangeStateByGameState();
             LoadAdIfNeeded();
 
