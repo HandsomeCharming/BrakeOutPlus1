@@ -65,7 +65,8 @@ public class GameManager : MonoBehaviour {
         Paused,
         ReviveMenu,
         Dead,
-        Running
+        Running,
+		Tutorial
     }
 
     public enum DiffScoreUsage
@@ -324,8 +325,11 @@ public class GameManager : MonoBehaviour {
             AnalyticsEvent.GameStart();
 
             AppManager.instance.LoginOrRegister();
+
+			UIManager.current.m_Tutorial.ShowTurnAndBoostTutorialIfFirstTime ();
         }
     }
+
 
     void LoadAdIfNeeded()
     {
@@ -569,7 +573,7 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = m_OldTimescale * m_SlowmotionFactor;
     }
 
-    public void Pause(bool pause)
+	public void Pause(bool pause, bool showPauseUI = true)
     {
         if(pause == true)
         {
@@ -582,8 +586,24 @@ public class GameManager : MonoBehaviour {
             state = GameState.Running;
         }
         print(state);
-        UIManager.current.ChangeStateByGameState();
+		if(showPauseUI)
+        	UIManager.current.ChangeStateByGameState();
     }
+
+	public void ShowTutorial(bool pause)
+	{
+		if(pause == true)
+		{
+			Time.timeScale = 0;
+			state = GameState.Tutorial;
+		}
+		else
+		{
+			Time.timeScale = m_OldTimescale * m_SlowmotionFactor;
+			state = GameState.Running;
+		}
+		UIManager.current.ChangeStateByGameState();
+	}
 	
     public void RemoveAds()
     {

@@ -8,6 +8,17 @@ public class RecordManager {
 
     const string DateFormat = "dd-MM-yyyy";
 
+	public static void Record(string key)
+	{
+		PlayerPrefs.SetInt(key, 1);
+		PlayerPrefs.Save();
+	}
+
+	public static bool HasRecord(string key)
+	{
+		return PlayerPrefs.HasKey (key);
+	}
+
     public static void RecordInt(string key, int value)
     {
         PlayerPrefs.SetInt(key, value);

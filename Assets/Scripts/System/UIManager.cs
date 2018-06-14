@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour {
 
 	public RateUsPanel m_RateUsPanel;
     public DailyRewardUI m_DailyReward;
+	public TutorialUI m_Tutorial;
 
     public bool ClearDailyReward;
     
@@ -51,31 +52,23 @@ public class UIManager : MonoBehaviour {
     public void ChangeStateByGameState()
     {
         m_ConsistantUI.UpdateNumbers();
-		if (GameManager.current.state == GameManager.GameState.Start || GameManager.current.state == GameManager.GameState.AssembleTrack )
-        {
-            if(AppManager.instance.HasName())
-                StartMainMenu();
-            else
-			{
-				StartMainMenu();
-            }
-        }
-        else if (GameManager.current.state == GameManager.GameState.Running)
-        {
-            StartGame();
-        }
-        else if (GameManager.current.state == GameManager.GameState.Paused)
-        {
-            Pause();
-        }
-        else if (GameManager.current.state == GameManager.GameState.ReviveMenu)
-        {
-            ShowRevive();
-        }
-        else if (GameManager.current.state == GameManager.GameState.Login)
-        {
+		if (GameManager.current.state == GameManager.GameState.Start || GameManager.current.state == GameManager.GameState.AssembleTrack) {
+			if (AppManager.instance.HasName ())
+				StartMainMenu ();
+			else {
+				StartMainMenu ();
+			}
+		} else if (GameManager.current.state == GameManager.GameState.Running) {
+			StartGame ();
+		} else if (GameManager.current.state == GameManager.GameState.Paused) {
+			Pause ();
+		} else if (GameManager.current.state == GameManager.GameState.ReviveMenu) {
+			ShowRevive ();
+		} else if (GameManager.current.state == GameManager.GameState.Login) {
 
-        }
+		} else if (GameManager.current.state == GameManager.GameState.Tutorial) {
+			DisableOthersForTutorial ();
+		}
 
         if (GameManager.current.state == GameManager.GameState.Dead)
         {
@@ -94,6 +87,7 @@ public class UIManager : MonoBehaviour {
         {
             ui.gameObject.SetActive(false);
         }
+		m_Tutorial.gameObject.SetActive (false);
     }
 
     void StartMainMenu()
@@ -139,5 +133,11 @@ public class UIManager : MonoBehaviour {
         DisableAll();
         m_PauseMenu.gameObject.SetActive(true);
     }
+
+	void DisableOthersForTutorial()
+	{
+		DisableAll();
+		m_Tutorial.gameObject.SetActive (true);
+	}
 }
 
