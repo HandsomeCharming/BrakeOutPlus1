@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
     public float m_MultIncreaseRate = 0.055f;
     [HideInInspector]
     public float m_MultIncreaseGap = 2.0f;
-    [HideInInspector]
+    //[HideInInspector]
     public float m_MaxMult = 0.2f;
     [HideInInspector]
 	public float m_BoostResetTime =1.0f;
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour {
 		m_MultIncreaseGap = 0.3f;
 		m_BoostResetTime =0.3f;
         m_MultIncreaseRate = 0.025f;
-        m_MaxMult = 1.7f;
+        //m_MaxMult = 1.7f;
 		m_TiltAngleX = transform.eulerAngles.x;
     }
 	
