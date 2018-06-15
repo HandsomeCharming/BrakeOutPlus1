@@ -205,6 +205,25 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+	public void ResetCarData()
+	{
+		if (Player.current != null) {
+			int carIndex = m_CurrentCarIndex;
+			int sceneIndex = m_CurrentSceneIndex;
+
+			SingleCarSelectData data = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex);
+			if(SaveManager.instance.HasCar(data.name))
+			{
+				CarClassData classData = CarSelectDataReader.Instance.GetCarClassData(data.carClass.ToString());
+				if (classData != null)
+				{
+					Player.current.SetBoost(classData, data, SaveManager.instance.GetSavedCarData(data.name));
+					Player.current.physics.SetPhysicsByClassData(classData, data, SaveManager.instance.GetSavedCarData(data.name));
+				}
+			}
+		}
+	}
+
     public void ReloadTrail(string name)
     {
         if(m_CurrentTrail != null)

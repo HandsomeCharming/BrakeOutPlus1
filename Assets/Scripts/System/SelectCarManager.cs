@@ -177,6 +177,7 @@ public class SelectCarManager : MonoBehaviour {
     {
         SaveManager.instance.BuyCarUpgrade(GetCurrentCarData().name, type);
         m_Menu.RefreshUpgradeCards();
+		GameManager.current.ResetCarData ();
     }
 
     public void OpenTrailMenu()
