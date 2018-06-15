@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0babb78dccbb44448a9e17206a9b4e03
-timeCreated: 1528668230
+timeCreated: 1529025127
 licenseType: Free
 PluginImporter:
   externalObjects: {}
@@ -24,7 +24,7 @@ PluginImporter:
   - first:
       iPhone: iOS
     second:
-      enabled: 0
+      enabled: 1
       settings: {}
   userData: 
   assetBundleName: 
