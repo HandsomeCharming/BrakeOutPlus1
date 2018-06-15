@@ -242,7 +242,7 @@ public class Player : MonoBehaviour {
 
 	public void SetBoost(CarClassData classData, SingleCarSelectData carData, CarSaveData data)
 	{
-		int level = data.m_BoostLevel-1; 
+		int level = data.m_BoostLevel; 
 		int maxLevel = carData.maxUpgradeLevel;
 		float lerpAmount = ((float)level) / (float)maxLevel;
 		m_MaxMult = Mathf.Lerp(classData.m_MaxBoostMultiplier.min, classData.m_MaxBoostMultiplier.max, lerpAmount);
