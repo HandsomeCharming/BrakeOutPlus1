@@ -270,7 +270,7 @@ public class CarSelectDataReader
     {
         foreach (var data in m_CarStorer.classData)
         {
-            if(data.carClass.ToString() == data.name)
+            if(data.carClass.ToString() == name)
             {
                 return data;
             }
