@@ -18,7 +18,7 @@ public class TutorialUI : MonoBehaviour {
 
 	public void ShowTurnAndBoostTutorialIfFirstTime()
 	{
-		if(!RecordManager.HasRecord(TurnTutorialShowedKey))
+		//f(!RecordManager.HasRecord(TurnTutorialShowedKey))
 		{
 			GameManager.current.ShowTutorial (true);
 			m_TurnTutorial.SetActive (true);
