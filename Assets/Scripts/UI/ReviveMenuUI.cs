@@ -103,7 +103,7 @@ public class ReviveMenuUI : UIBase {
                 break;
             default:break;
         }
-        if(GameManager.current.gameStars > price)
+        if(GameManager.current.gameStars >= price)
         {
             GameManager.current.AddStar(-price);
             GameManager.current.RevivePlayer();
