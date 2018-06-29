@@ -90,7 +90,7 @@ public class SaveManager {
     {
         Debug.Log("save");
         BinaryFormatter bf = new BinaryFormatter();
-        //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
+        
         System.IO.FileInfo filepath = new System.IO.FileInfo(Application.persistentDataPath);
         filepath.Directory.Create();
 
@@ -152,6 +152,7 @@ public class SaveManager {
             GetDefaultCarAndTrails();
         }
     }
+
 
     public void GetDefaultCarAndTrails()
     {

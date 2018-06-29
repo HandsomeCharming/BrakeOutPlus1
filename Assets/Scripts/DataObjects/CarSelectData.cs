@@ -47,6 +47,16 @@ public class MinMaxDataInt
 {
     public int min;
     public int max;
+
+    public int GetRandomBetweenRange()
+    {
+        return Random.Range(min, max+1);
+    }
+
+    public int GetBetweenRange(float lerpAmount)
+    {
+        return Mathf.RoundToInt(Mathf.Lerp((float)min, (float)max, lerpAmount));
+    }
 }
 
 [System.Serializable]
