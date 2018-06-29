@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,22 +53,25 @@ public class QuestDispenser : MonoBehaviour {
     {
         int index = Random.Range(0, DailyQuestStorer.randomQuests.Length);
         DailyQuestSingleData dailyQuestData = DailyQuestStorer.randomQuests[index];
+        Quest quest = GetQuestFromDailyQuestSingleData(dailyQuestData);
+
+        return quest;
+    }
+
+    public static Quest GetQuestFromDailyQuestSingleData(DailyQuestSingleData dailyQuestData)
+    {
         Quest quest = new Quest();
         quest.action = dailyQuestData.action;
         quest.currency = Random.value < 0.5f ? Currency.Coin : Currency.Star;
 
         float lerpAmount = Random.value;
-        quest.targetCount = dailyQuestData.actionCount.GetBetweenRange(lerpAmount);
+        quest.targetCount = dailyQuestData.actionCount.GetBetweenRangeWithGap(lerpAmount, dailyQuestData.actionGap);
         quest.currentCount = 0;
-        quest.rewardCount = (quest.currency == Currency.Star) ? dailyQuestData.rewardStar.GetBetweenRange(lerpAmount) :
-            dailyQuestData.rewardCoin.GetBetweenRange(lerpAmount);
+        quest.rewardCount = (quest.currency == Currency.Star) ?
+            dailyQuestData.rewardStar.GetBetweenRangeWithGap(lerpAmount, dailyQuestData.actionGap) :
+            dailyQuestData.rewardCoin.GetBetweenRangeWithGap(lerpAmount, dailyQuestData.actionGap);
 
         return quest;
     }
 
-    [NUnit.Framework.Test]
-    void GetRandomQuest()
-    {
-
-    }
 }

@@ -24,7 +24,8 @@ public enum QuestAction
     OpenChest,
     UpgradeItem,
     Glide,
-    CrushCube
+    CrushCube,
+    UpgradeItemToMax
 }
 
 [System.Serializable]

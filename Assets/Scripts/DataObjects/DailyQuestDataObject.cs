@@ -7,6 +7,7 @@ public class DailyQuestSingleData
 {
     public QuestAction action;
     public MinMaxDataInt actionCount;
+    public int actionGap = 1;
     public MinMaxDataInt rewardCoin;
     public MinMaxDataInt rewardStar;
 }

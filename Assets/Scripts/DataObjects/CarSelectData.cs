@@ -48,6 +48,12 @@ public class MinMaxDataInt
     public int min;
     public int max;
 
+    public MinMaxDataInt(int min, int max)
+    {
+        this.min = min;
+        this.max = max;
+    }
+
     public int GetRandomBetweenRange()
     {
         return Random.Range(min, max+1);
@@ -56,6 +62,14 @@ public class MinMaxDataInt
     public int GetBetweenRange(float lerpAmount)
     {
         return Mathf.RoundToInt(Mathf.Lerp((float)min, (float)max, lerpAmount));
+    }
+    
+    public int GetBetweenRangeWithGap(float lerpAmount, int gap)
+    {
+        int gappedAmount = (max - min) / gap;
+        int addedAmount = Mathf.RoundToInt( Mathf.Lerp((float)0, (float)gappedAmount, lerpAmount) );
+        addedAmount *= gap;
+        return min + addedAmount;
     }
 }
 
