@@ -10,11 +10,8 @@ public class QuestManager : MonoBehaviour {
     public static QuestManager current;
     
     public QuestSave m_QuestData;
-    Quest[] quests;
-    int currentLevel;
 
     const string QuestSavePath = "/savedQuest.gd";
-    const string PlayerLevelKey = "Level";
     const string LastDailyDateKey = "LastDailyDate";
 
     public Quest[] GetQuests()
@@ -63,11 +60,44 @@ public class QuestManager : MonoBehaviour {
         }
     }
 
+    public static void UpdateQuestsStatic(QuestAction action, int count = 1)
+    {
+        if(current != null)
+        {
+            current.UpdateQuests(action, count);
+        }
+    }
+
+    void UpdateQuests(QuestAction action, int count = 0)
+    {
+        if (m_QuestData.levelQuest != null)
+        {
+            UpdateQuest(action, count, m_QuestData.levelQuest);
+        }
+
+        foreach(var quest in m_QuestData.m_Quests)
+        {
+            if(quest != null)
+            {
+                UpdateQuest(action, count, quest);
+            }
+        }
+    }
+
+    void UpdateQuest(QuestAction action, int count, Quest quest)
+    {
+        if(quest.action == action)
+        {
+            quest.currentCount += count;
+            quest.currentCount = quest.currentCount > quest.targetCount ? quest.targetCount : quest.currentCount;
+        }
+    }
+
     // Use this for initialization
     void Awake () {
         current = this;
-        InitLevel();
         LoadQuests();
+        ListenToQuests();
     }
 	
 	// Update is called once per frame
@@ -75,22 +105,13 @@ public class QuestManager : MonoBehaviour {
 		
 	}
 
-    void InitLevel()
-    {
-        if(!RecordManager.HasRecord(PlayerLevelKey))
-        {
-            RecordManager.RecordInt(PlayerLevelKey, 0);
-        }
-        currentLevel = RecordManager.GetRecordInt(PlayerLevelKey);
-    }
-
     void LoadQuests()
     {
         LoadQuestData();
 
         if (ShouldGetLevelQuest())
         {
-            m_QuestData.levelQuest = QuestDispenser.GetLevelQuest(currentLevel);
+            m_QuestData.levelQuest = QuestDispenser.GetLevelQuest(m_QuestData.currentLevel);
         }
 
         if(ShouldGetDailyQuest())
@@ -101,6 +122,12 @@ public class QuestManager : MonoBehaviour {
         SaveQuestData();
     }
 
+    void ListenToQuests()
+    {
+        
+    }
+
+
     void GetDailyQuest()
     {
         m_QuestData.m_Quests.Add(QuestDispenser.GetRandomDailyQuest());
@@ -109,7 +136,6 @@ public class QuestManager : MonoBehaviour {
 
     bool ShouldGetDailyQuest()
     {
-        // TO-DO: Add day check
         if(RecordManager.HasRecordDate(LastDailyDateKey))
         {
             DateTime lastDailyDate = RecordManager.GetRecordDate(LastDailyDateKey);

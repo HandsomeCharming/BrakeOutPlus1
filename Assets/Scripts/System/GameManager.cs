@@ -440,13 +440,15 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
-            state = GameState.Dead;
-            UIManager.current.ChangeStateByGameState();
-            
-            Dictionary<string, object> customParams = new Dictionary<string, object>();
-            customParams.Add("Score", gameScore);
-            AnalyticsEvent.GameOver("Game", customParams);
+            DieAndGoToEndingUI();
         }
+    }
+
+    void DieAndGoToEndingUI()
+    {
+        state = GameState.Dead;
+        QuestManager.UpdateQuestsStatic(QuestAction.Play, 1);
+        UIManager.current.ChangeStateByGameState();
     }
 
     void HandleAdCountAndShowIfShould()
@@ -503,8 +505,7 @@ public class GameManager : MonoBehaviour {
 
     public void SkipRevive()
     {
-        state = GameState.Dead;
-        UIManager.current.ChangeStateByGameState();
+        DieAndGoToEndingUI();
     }
 
     public void ShowReviveVideo()
@@ -544,6 +545,7 @@ public class GameManager : MonoBehaviour {
         IDictionary<string, object> dic = new Dictionary<string, object>();
         dic.Add("Score", (int)gameScore);
         AnalyticsResult result = UnityEngine.Analytics.Analytics.CustomEvent("Player Score", dic);
+
         print(result);
 
         SaveGame();

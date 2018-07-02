@@ -9,6 +9,8 @@ public class QuestSlotUI : MonoBehaviour {
     public GameObject StarGo;
     public GameObject CoinGo;
     public GameObject ContentGo;
+    public GameObject ProgressGo;
+    public GameObject ClaimGo;
 
     public Text m_CoinText;
     public Text m_StarText;
@@ -23,13 +25,18 @@ public class QuestSlotUI : MonoBehaviour {
     public void UpdateUIByQuest(Quest quest)
     {
         bool isCoin = quest.currency == Currency.Coin;
+        bool finished = quest.targetCount == quest.currentCount;
         CoinGo.SetActive(isCoin);
         StarGo.SetActive(!isCoin);
+        ProgressGo.SetActive(!finished);
+        if(ClaimGo != null)
+            ClaimGo.SetActive(finished);
+
         if (isCoin) m_CoinText.text = quest.rewardCount.ToString();
         else m_StarText.text = quest.rewardCount.ToString();
 
         m_ActionText.text = GetActionStringByActionAndCount(quest.action, quest.targetCount);
-        m_ProgressText.text = "0/" + quest.targetCount.ToString();
+        m_ProgressText.text = quest.currentCount.ToString() + "/" + quest.targetCount.ToString();
     }
 
     string GetActionStringByActionAndCount(QuestAction action, int count)
@@ -87,6 +94,8 @@ public class QuestSlotUI : MonoBehaviour {
         StarGo = transform.Find("Content/Star").gameObject;
         CoinGo = transform.Find("Content/Coin").gameObject;
         ContentGo = transform.Find("Content").gameObject;
+        ProgressGo = transform.Find("Content/Progress").gameObject;
+        ClaimGo = transform.Find("Content/Claim").gameObject;
 
         m_CoinText = transform.Find("Content/Coin/Num").GetComponent<Text>();
         m_StarText = transform.Find("Content/Star/Num").GetComponent<Text>();
