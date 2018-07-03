@@ -29,6 +29,7 @@ public class ObstacleBuilder : MonoBehaviour {
     public const string WallRightCube = "WallRightCube";
     public const string WallMidCube = "WallMidCube";
     public const string GlidingTrigger = "GlidingTrigger";
+    public const string JumpTrigger = "JumpTrigger";
     public const string AutoPilotTrigger = "AutoPilotTrigger";
 
     public const string BoostGroundSign = "BoostGroundSign";
@@ -113,6 +114,17 @@ public class ObstacleBuilder : MonoBehaviour {
 
                     floorMesh.makeMesh();
 
+                    //Jump trigger
+                    float scale = Vector3.Distance(floorMesh.prevPos1, floorMesh.prevPos2);
+                    GameObject trigger = Instantiate(ObstacleDataReader.GetObstaclePrefab(JumpTrigger));
+                    Vector3 endPosMid = (floorMesh.prevPos1 + floorMesh.prevPos2) / 2.0f;
+                    trigger.transform.localScale = new Vector3(scale, 5, 1);
+                    trigger.transform.position = endPosMid;
+                    trigger.transform.forward = floorMesh.prevDir;
+
+                    floorMesh.destroyOnRemake.Add(trigger);
+
+                    //rim
                     Vector3 end1 = floorMesh.prevPos1;
                     Vector3 end2 = floorMesh.prevPos2;
                     GameObject rim = Instantiate(m_Storer.m_RimPrefab, null);
@@ -295,6 +307,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     float scale = Vector3.Distance(floorMesh.prevPos1, floorMesh.prevPos2);
                     floorMesh.makeMesh();
 
+                    //Gliding trigger
                     GameObject trigger = Instantiate(ObstacleDataReader.GetObstaclePrefab(GlidingTrigger));
                     Vector3 endPosMid = (floorMesh.prevPos1 + floorMesh.prevPos2) / 2.0f;
                     trigger.transform.localScale = new Vector3(scale, 5, 1);

@@ -235,7 +235,7 @@ public class SaveManager {
 
     public bool BuyCarUpgrade(string carName, CarUpgradeCatagory type)
     {
-        if(HasCar(carName))
+        if (HasCar(carName))
         {
             CarSaveData data = GetSavedCarData(carName);
             SingleCarSelectData carData = CarSelectDataReader.Instance.GetCarData(carName);
@@ -244,7 +244,7 @@ public class SaveManager {
             switch (type)
             {
                 case CarUpgradeCatagory.Accelerate:
-                    if (data.m_AccLevel < carData.maxUpgradeLevel && 
+                    if (data.m_AccLevel < carData.maxUpgradeLevel &&
                         GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_AccLevel, type))
                     {
                         GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_AccLevel, type));
@@ -271,9 +271,16 @@ public class SaveManager {
                     }
                     break;
             }
-            if(success)
+            if (success)
             {
                 Save();
+                QuestManager.UpdateQuestsStatic(QuestAction.UpgradeCar);
+                if ((type == CarUpgradeCatagory.Accelerate && data.m_AccLevel == carData.maxUpgradeLevel)
+                    || (type == CarUpgradeCatagory.Boost && data.m_BoostLevel == carData.maxUpgradeLevel)
+                    || (type == CarUpgradeCatagory.Handling && data.m_HandlingLevel == carData.maxUpgradeLevel))
+                {
+                    QuestManager.UpdateQuestsStatic(QuestAction.UpgradeCarToMax);
+                }
                 return true;
             }
         }

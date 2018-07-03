@@ -111,6 +111,7 @@ public class LootBoxManager : MonoBehaviour {
         int prizeIndex = GetPrizeIndexFromLootBoxRandom(m_LootBoxPoolObject);
         m_CurrentPrizeIndex = prizeIndex;
 
+        QuestManager.UpdateQuestsStatic(QuestAction.OpenChest);
         m_LootCardUI.AnimateToLootBox(prizeIndex);
     }
     

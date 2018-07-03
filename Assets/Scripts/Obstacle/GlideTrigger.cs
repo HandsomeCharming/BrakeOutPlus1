@@ -17,6 +17,7 @@ public class GlideTrigger : MonoBehaviour {
         {
             print("Glide trigger");
             Player.current.gameObject.AddComponent<GlideOnPlayer>();
+            QuestManager.UpdateQuestsStatic(QuestAction.Glide);
         }
     }
 }

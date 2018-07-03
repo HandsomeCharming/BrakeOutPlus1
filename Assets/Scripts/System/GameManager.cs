@@ -448,6 +448,7 @@ public class GameManager : MonoBehaviour {
     {
         state = GameState.Dead;
         QuestManager.UpdateQuestsStatic(QuestAction.Play, 1);
+        QuestManager.UpdateQuestsStatic(QuestAction.ReachScore, (int)gameScore);
         UIManager.current.ChangeStateByGameState();
     }
 

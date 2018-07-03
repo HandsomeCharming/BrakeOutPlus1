@@ -17,16 +17,16 @@ public class QuestSave
 
 public enum QuestAction
 {
-    Play,
-    ReachScore,
-    LeapGap,
-    UpgradeCar,
-    UpgradeCarToMax,
-    OpenChest,
-    UpgradeItem,
-    Glide,
-    CrushCube,
-    UpgradeItemToMax
+    Play, // done
+    ReachScore, // done
+    LeapGap, // done
+    UpgradeCar, // done
+    UpgradeCarToMax, // done
+    OpenChest, // done
+    UpgradeItem, // done
+    Glide, // done
+    CrushCube, // done
+    UpgradeItemToMax // done
 }
 
 [System.Serializable]

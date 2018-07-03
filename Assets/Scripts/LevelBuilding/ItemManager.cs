@@ -47,7 +47,14 @@ public class ItemSaveData
             if (data[i].m_Type == type)
             {
                 if(data[i].m_Level < 5)
+                {
                     data[i].m_Level++;
+                    QuestManager.UpdateQuestsStatic(QuestAction.UpgradeItem);
+                    if(data[i].m_Level == 5)
+                    {
+                        QuestManager.UpdateQuestsStatic(QuestAction.UpgradeItemToMax);
+                    }
+                }
                 break;
             }
         }

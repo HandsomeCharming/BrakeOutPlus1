@@ -223,6 +223,8 @@ public class Player : MonoBehaviour {
         {
             if (physics.CanBeKilledByWall())
                 DecreaseHealth();
+            else
+                QuestManager.UpdateQuestsStatic(QuestAction.CrushCube);
         }
     }
 

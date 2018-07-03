@@ -88,8 +88,18 @@ public class QuestManager : MonoBehaviour {
     {
         if(quest.action == action)
         {
-            quest.currentCount += count;
-            quest.currentCount = quest.currentCount > quest.targetCount ? quest.targetCount : quest.currentCount;
+            if(action != QuestAction.ReachScore)
+            {
+                quest.currentCount += count;
+                quest.currentCount = quest.currentCount > quest.targetCount ? quest.targetCount : quest.currentCount;
+            }
+            else
+            {
+                if(quest.currentCount < count)
+                {
+                    quest.currentCount = count;
+                }
+            }
         }
     }
 
