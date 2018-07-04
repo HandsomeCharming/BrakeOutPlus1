@@ -88,7 +88,7 @@ public class ConsistantUI : MonoBehaviour {
                 actualAddCoinRate = diff / 3.0f;
             }
 
-            addCoins.text = (diff).ToString();
+            addCoins.text = "+" + (diff).ToString();
         }
 
         if(m_ActualStars - 1.0f < m_CurrentStars)
@@ -108,7 +108,7 @@ public class ConsistantUI : MonoBehaviour {
                 actualAddStarRate = diff / 3.0f;
             }
 
-            addStars.text = (diff).ToString();
+            addStars.text = "+" + (diff).ToString();
         }
 
         if(state == ConsistantUIState.InGame)

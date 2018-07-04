@@ -320,6 +320,18 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void AddCurrency(Currency currency, int count)
+    {
+        if(currency == Currency.Coin)
+        {
+            AddCoin(count);
+        }
+        else
+        {
+            AddStar(count);
+        }
+    }
+
     public int GetCoinCount()
     {
         return gameCoins;

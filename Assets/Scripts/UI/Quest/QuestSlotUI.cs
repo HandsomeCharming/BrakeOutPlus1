@@ -17,15 +17,16 @@ public class QuestSlotUI : MonoBehaviour {
     public Text m_ActionText;
     public Text m_ProgressText;
 
-    public void UpdateUINoQuest()
+    public void HideContents()
     {
         ContentGo.SetActive(false);
     }
 
-    public void UpdateUIByQuest(Quest quest)
+    public void UpdateUIByQuest(Quest quest, bool isLevelingQuest = false)
     {
         bool isCoin = quest.currency == Currency.Coin;
         bool finished = quest.targetCount == quest.currentCount;
+        HighlightedFrame.SetActive(isLevelingQuest);
         CoinGo.SetActive(isCoin);
         StarGo.SetActive(!isCoin);
         ProgressGo.SetActive(!finished);
@@ -39,7 +40,7 @@ public class QuestSlotUI : MonoBehaviour {
         m_ProgressText.text = quest.currentCount.ToString() + "/" + quest.targetCount.ToString();
     }
 
-    string GetActionStringByActionAndCount(QuestAction action, int count)
+    public static string GetActionStringByActionAndCount(QuestAction action, int count)
     {
         string res = "";
         switch(action)
@@ -77,16 +78,6 @@ public class QuestSlotUI : MonoBehaviour {
 
         return res;
     }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void FindChildsEditor()
     {

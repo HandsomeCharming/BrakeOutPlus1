@@ -6,6 +6,13 @@ public class QuestPanelUI : MonoBehaviour {
 
     public RecordsUI m_RecordsUI;
     public QuestSlotUI[] m_SlotUIs;
+    public GameObject m_NoQuest;
+
+    public void TryFinishLevelQuest()
+    {
+        QuestManager.current.TryFinishLevelQuest();
+        RefreshUI();
+    }
 
 	// Use this for initialization
 	void OnEnable () {
@@ -17,9 +24,15 @@ public class QuestPanelUI : MonoBehaviour {
         bool hasQuest = false;
         int index = 0;
         QuestSave questSave = QuestManager.current.m_QuestData;
+        
+        foreach (var slot in m_SlotUIs)
+        {
+            slot.gameObject.SetActive(true);
+        }
+
         if (questSave.levelQuest != null)
         {
-            m_SlotUIs[index].UpdateUIByQuest(QuestManager.current.m_QuestData.levelQuest);
+            m_SlotUIs[index].UpdateUIByQuest(QuestManager.current.m_QuestData.levelQuest, true);
             hasQuest = true;
             index++;
         }
@@ -35,10 +48,24 @@ public class QuestPanelUI : MonoBehaviour {
         }
         while(index < 3)
         {
-            m_SlotUIs[index].UpdateUINoQuest();
+            m_SlotUIs[index].HideContents();
             index++;
         }
 
         // to-do: add no quest thing
+        if(questSave.m_Quests.Count == 0)
+        {
+            UpdateUINoQuest();
+        }
+    }
+
+    void UpdateUINoQuest()
+    {
+        foreach(var slot in m_SlotUIs)
+        {
+            slot.gameObject.SetActive(false);
+        }
+
+        m_NoQuest.SetActive(true);
     }
 }

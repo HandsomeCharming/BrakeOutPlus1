@@ -14,11 +14,21 @@ public class QuestManager : MonoBehaviour {
     const string QuestSavePath = "/savedQuest.gd";
     const string LastDailyDateKey = "LastDailyDate";
 
-    public Quest[] GetQuests()
+    public List<Quest> GetQuests()
     {
-        return null;
+        List<Quest> quests = new List<Quest>();
+        if(m_QuestData.levelQuest != null)
+        {
+            quests.Add(m_QuestData.levelQuest);
+        }
+        foreach(var quest in m_QuestData.m_Quests)
+        {
+            if(quest != null)
+                quests.Add(quest);
+        }
+        return quests;
     }
-    
+
     public void SaveQuestData()
     {
         Debug.Log("save quest");
@@ -60,6 +70,56 @@ public class QuestManager : MonoBehaviour {
         }
     }
 
+    public void TryFinishLevelQuest()
+    {
+        Quest quest = m_QuestData.levelQuest;
+        if(quest != null && IsQuestFinished(quest))
+        {
+            GameManager.current.AddCurrency(quest.currency, quest.rewardCount);
+            m_QuestData.levelQuest = null;
+            m_QuestData.currentLevel++;
+
+            if (ShouldGetLevelQuest())
+            {
+                m_QuestData.levelQuest = QuestDispenser.GetLevelQuest(m_QuestData.currentLevel);
+            }
+            SaveQuestData();
+        }
+    }
+
+    public void TryFinishDailyQuests()
+    {
+        Queue<Quest> destroyQueue = new Queue<Quest>();
+        foreach(var quest in m_QuestData.m_Quests)
+        {
+            if(quest != null && IsQuestFinished(quest))
+            {
+                FinishDailyQuest(quest);
+                destroyQueue.Enqueue(quest);
+            }
+        }
+        bool shouldSave = destroyQueue.Count > 0;
+
+        while (destroyQueue.Count > 0)
+        {
+            m_QuestData.m_Quests.Remove(destroyQueue.Dequeue());
+        }
+
+        if(shouldSave)
+            SaveQuestData();
+    }
+
+    public static int GetActiveQuestCount()
+    {
+        int res = 0;
+        if(current != null)
+        {
+            if (current.m_QuestData.levelQuest != null) res++;
+            res += current.m_QuestData.m_Quests.Count;
+        }
+        return res;
+    }
+
     public static void UpdateQuestsStatic(QuestAction action, int count = 1)
     {
         if(current != null)
@@ -68,7 +128,17 @@ public class QuestManager : MonoBehaviour {
         }
     }
 
-    void UpdateQuests(QuestAction action, int count = 0)
+    bool IsQuestFinished(Quest quest)
+    {
+        return quest.currentCount >= quest.targetCount;
+    }
+
+    void FinishDailyQuest(Quest quest)
+    {
+        GameManager.current.AddCurrency(quest.currency, quest.rewardCount);
+    }
+
+    void UpdateQuests(QuestAction action, int count = 1)
     {
         if (m_QuestData.levelQuest != null)
         {
@@ -100,6 +170,7 @@ public class QuestManager : MonoBehaviour {
                     quest.currentCount = count;
                 }
             }
+            QuestProgressInGame.QuestUpdated(quest);
         }
     }
 

@@ -13,7 +13,6 @@ public class InGameUI : UIBase
     public Button pause;
     public Image BoostImage;
     public Text BoostNumber;
-    public Text DoubleScore;
     public Image[] m_HUDs;
     public Sprite m_ShieldImage;
     public Sprite m_DoubleScoreImage;

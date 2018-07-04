@@ -36,4 +36,9 @@ public class Quest {
     public int currentCount = 0;
     public Currency currency;
     public int rewardCount;
+
+    public bool IsFinished()
+    {
+        return currentCount >= targetCount;
+    }
 }
