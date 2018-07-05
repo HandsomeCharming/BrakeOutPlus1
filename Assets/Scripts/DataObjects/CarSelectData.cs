@@ -71,6 +71,13 @@ public class MinMaxDataInt
         addedAmount *= gap;
         return min + addedAmount;
     }
+
+    public float GetRoundedLerpAmount(float lerpAmount, int gap)
+    {
+        int gappedAmount = (max - min) / gap;
+        int addedAmount = Mathf.RoundToInt(Mathf.Lerp(0.0f, (float)gappedAmount, lerpAmount));
+        return ((float)addedAmount) / gappedAmount;
+    }
 }
 
 [System.Serializable]

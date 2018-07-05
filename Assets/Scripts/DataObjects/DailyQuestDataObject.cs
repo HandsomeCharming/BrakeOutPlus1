@@ -10,6 +10,7 @@ public class DailyQuestSingleData
     public int actionGap = 1;
     public MinMaxDataInt rewardCoin;
     public MinMaxDataInt rewardStar;
+    //public int rewardGap = 1;
 }
 
 [CreateAssetMenu(fileName = "DailyQuestDataObject", menuName = "Custom/DailyQuestData", order = 1)]

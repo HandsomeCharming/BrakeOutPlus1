@@ -217,6 +217,7 @@ public class QuestManager : MonoBehaviour {
 
     bool ShouldGetDailyQuest()
     {
+        return true;
         if(RecordManager.HasRecordDate(LastDailyDateKey))
         {
             DateTime lastDailyDate = RecordManager.GetRecordDate(LastDailyDateKey);

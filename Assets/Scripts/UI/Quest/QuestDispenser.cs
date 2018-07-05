@@ -65,11 +65,13 @@ public class QuestDispenser : MonoBehaviour {
         quest.currency = Random.value < 0.5f ? Currency.Coin : Currency.Star;
 
         float lerpAmount = Random.value;
+        float roundedLerpAmount = dailyQuestData.actionCount.GetRoundedLerpAmount(lerpAmount, dailyQuestData.actionGap);
         quest.targetCount = dailyQuestData.actionCount.GetBetweenRangeWithGap(lerpAmount, dailyQuestData.actionGap);
+
         quest.currentCount = 0;
         quest.rewardCount = (quest.currency == Currency.Star) ?
-            dailyQuestData.rewardStar.GetBetweenRangeWithGap(lerpAmount, dailyQuestData.actionGap) :
-            dailyQuestData.rewardCoin.GetBetweenRangeWithGap(lerpAmount, dailyQuestData.actionGap);
+            dailyQuestData.rewardStar.GetBetweenRange(roundedLerpAmount) :
+            dailyQuestData.rewardCoin.GetBetweenRange(roundedLerpAmount);
 
         return quest;
     }
