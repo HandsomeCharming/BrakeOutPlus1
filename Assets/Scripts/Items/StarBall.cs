@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class StarBall : ItemSuper
 {
-
-    private void OnEnable()
+    void OnEnable()
     {
         ScaleUp(1.5f);
     }

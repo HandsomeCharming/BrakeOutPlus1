@@ -91,7 +91,7 @@ public class TopManager : MonoBehaviour {
 	{
 		string res = shortCode;
 		if (res == "DL") {
-			//res += ".SNAPSHOT." + DateTime.Today.ToString ("yyyy-MM-dd");
+			res += ".DAY." + DateTime.UtcNow.ToString ("yyyyMMdd");
 		}
 		return res;
 	}

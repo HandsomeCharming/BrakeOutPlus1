@@ -33,4 +33,9 @@ public class ItemSuper : MonoBehaviour {
     {
 
     }
+
+    protected void ScaleUp(float scale)
+    {
+        transform.localScale = Vector3.one * 1.5f;
+    }
 }
