@@ -11,8 +11,15 @@ public class QuestManager : MonoBehaviour {
     
     public QuestSave m_QuestData;
 
+    public float PlayedTime;
+    public int FinishedQuests;
+    public int GamesPlayed;
+
     const string QuestSavePath = "/savedQuest.gd";
     const string LastDailyDateKey = "LastDailyDate";
+    const string PlayedTimeKey = "PlayedTime";
+    const string FinishedQuestsKey = "FinishedQuests";
+    const string GamesPlayedKey = "GamesPlayed";
 
     public List<Quest> GetQuests()
     {
@@ -78,6 +85,7 @@ public class QuestManager : MonoBehaviour {
             GameManager.current.AddCurrency(quest.currency, quest.rewardCount);
             m_QuestData.levelQuest = null;
             m_QuestData.currentLevel++;
+            FinishedQuests++;
 
             if (ShouldGetLevelQuest())
             {
@@ -96,6 +104,7 @@ public class QuestManager : MonoBehaviour {
             {
                 FinishDailyQuest(quest);
                 destroyQueue.Enqueue(quest);
+                FinishedQuests++;
             }
         }
         bool shouldSave = destroyQueue.Count > 0;
@@ -107,6 +116,12 @@ public class QuestManager : MonoBehaviour {
 
         if(shouldSave)
             SaveQuestData();
+    }
+
+    public static void GameFinished()
+    {
+        if(current != null)
+            current.GamesPlayed++;
     }
 
     public static int GetActiveQuestCount()
@@ -178,13 +193,18 @@ public class QuestManager : MonoBehaviour {
     void Awake () {
         current = this;
         LoadQuests();
-        ListenToQuests();
     }
-	
-	// Update is called once per frame
+
 	void Update () {
-		
+        PlayedTime += Time.deltaTime;
 	}
+
+    private void OnDisable()
+    {
+        RecordManager.RecordFloat(PlayedTimeKey, PlayedTime);
+        RecordManager.RecordInt(GamesPlayedKey, GamesPlayed);
+        RecordManager.RecordInt(FinishedQuestsKey, FinishedQuests);
+    }
 
     void LoadQuests()
     {
@@ -202,12 +222,6 @@ public class QuestManager : MonoBehaviour {
 
         SaveQuestData();
     }
-
-    void ListenToQuests()
-    {
-        
-    }
-
 
     void GetDailyQuest()
     {
@@ -231,5 +245,12 @@ public class QuestManager : MonoBehaviour {
     bool ShouldGetLevelQuest()
     {
         return (m_QuestData.levelQuest == null);
+    }
+
+    void LoadRecords()
+    {
+        PlayedTime = PlayerPrefs.GetFloat(PlayedTimeKey, 0);
+        GamesPlayed = PlayerPrefs.GetInt(GamesPlayedKey, 0);
+        FinishedQuests = PlayerPrefs.GetInt(FinishedQuestsKey, 0);
     }
 }

@@ -24,9 +24,21 @@ public class RecordManager {
         PlayerPrefs.SetInt(key, value);
         PlayerPrefs.Save();
     }
+
     public static int GetRecordInt(string key)
     {
         return PlayerPrefs.GetInt(key);
+    }
+
+    public static void RecordFloat(string key, float value)
+    {
+        PlayerPrefs.SetFloat(key, value);
+        PlayerPrefs.Save();
+    }
+
+    public static float GetRecordFloat(string key)
+    {
+        return PlayerPrefs.GetFloat(key);
     }
 
     public static void RecordDate(string key, DateTime date)

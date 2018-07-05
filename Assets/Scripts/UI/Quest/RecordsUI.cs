@@ -1,16 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecordsUI : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Text QuestFinished;
+    public Text Highscore;
+    public Text GamesPlayed;
+    public Text TimePlayed;
+
+	public void RefreshUI()
+    {
+        QuestFinished.text = QuestManager.current.FinishedQuests.ToString();
+        Highscore.text = GameManager.current.gameHighScore.ToString();
+        GamesPlayed.text = QuestManager.current.GamesPlayed.ToString();
+
+        float secs = QuestManager.current.PlayedTime;
+        TimeSpan t = TimeSpan.FromSeconds(secs);
+        TimePlayed.text = string.Format("{0:D2}h:{1:D2}m",
+                t.Hours,
+                t.Minutes); 
+    }
 }

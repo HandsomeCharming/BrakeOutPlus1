@@ -563,8 +563,10 @@ public class GameManager : MonoBehaviour {
 
         SaveGame();
         SetHighScore();
+        QuestManager.GameFinished();
 
-		state = GameState.AssembleTrack;
+
+        state = GameState.AssembleTrack;
         ConsistantUI.current.EndGame();
 		ResetSceneStats();
         LoadDefaultCarAndTrail();

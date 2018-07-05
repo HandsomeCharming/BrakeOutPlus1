@@ -57,6 +57,8 @@ public class QuestPanelUI : MonoBehaviour {
         {
             UpdateUINoQuest();
         }
+
+        m_RecordsUI.RefreshUI();
     }
 
     void UpdateUINoQuest()
