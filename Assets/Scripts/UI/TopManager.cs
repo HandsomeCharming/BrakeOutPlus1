@@ -27,6 +27,7 @@ public class TopManager : MonoBehaviour {
 
     public DateTime m_LastUpdateTime;
     public Transform m_ListParent;
+    public GameObject ChangeNamePanel;
 
     public int m_CurrentBoardIndex;
 
@@ -67,6 +68,8 @@ public class TopManager : MonoBehaviour {
         if(!Inited)
             InitLeaderBoardRows();
         GetLeaderBoard(m_CurrentBoardIndex);
+
+        ChangeNamePanel.SetActive(!RecordManager.HasRecord(GlobalKeys.m_RenamedKey));
         //NetworkManager.current.GetLeaderBoardDaily(BoardDailyAction);
         //NetworkManager.current.GetMyRankDaily(GetMyRankDailyAction);
 
