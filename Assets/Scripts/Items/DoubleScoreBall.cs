@@ -5,7 +5,12 @@ using UnityEngine;
 public class DoubleScoreBall : ItemSuper
 {
     const string prefabName = "Prefabs/Items/MagnetOnPlayer";
-    
+
+    private void OnEnable()
+    {
+        ScaleUp(1.5f);
+    }
+
     public override void Disable()
     {
         base.Disable();

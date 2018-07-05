@@ -5,6 +5,12 @@ using UnityEngine;
 public class ShieldBall : ItemSuper
 {
     const string prefabName = "Prefabs/Items/ShieldOnPlayer";
+
+    private void OnEnable()
+    {
+        ScaleUp(1.5f);
+    }
+
     public override void Disable()
     {
         base.Disable();

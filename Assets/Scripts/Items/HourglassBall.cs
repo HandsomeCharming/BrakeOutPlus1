@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class HourglassBall : ItemSuper {
 
+    private void OnEnable()
+    {
+        ScaleUp(1.5f);
+    }
+
     public override void Disable()
     {
         base.Disable();
