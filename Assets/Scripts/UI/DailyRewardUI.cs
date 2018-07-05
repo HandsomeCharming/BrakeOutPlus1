@@ -41,6 +41,20 @@ public class DailyRewardUI : MonoBehaviour {
             m_CanvasGroup.alpha = 0.0f;
             gameObject.SetActive(true);
 
+            // day 3 and 7 hard code
+            if (SaveManager.instance.HasCar("TRIVEX"))
+            {
+                m_RewardCards[2].gameObject.SetActive(false);
+                m_RewardCards[2] = m_RewardCard3B;
+                m_RewardCards[2].gameObject.SetActive(true);
+            }
+            if (SaveManager.instance.HasCar("HELICOPTER"))
+            {
+                m_RewardCards[6].gameObject.SetActive(false);
+                m_RewardCards[6] = m_RewardCard7B;
+                m_RewardCards[6].gameObject.SetActive(true);
+            }
+
             int rewardCount = GetRewardCount();
 
             foreach (var go in m_RewardCards)
@@ -52,20 +66,6 @@ public class DailyRewardUI : MonoBehaviour {
             for(int i=0; i<maxCount; ++i)
             {
                 m_RewardCards[i].SetSelected(true);
-            }
-
-            // day 3 and 7 hard code
-            if(SaveManager.instance.HasCar("TRIVEX"))
-            {
-                m_RewardCards[2].gameObject.SetActive(false);
-                m_RewardCards[2] = m_RewardCard3B;
-                m_RewardCards[2].gameObject.SetActive(true);
-            }
-            if (SaveManager.instance.HasCar("HELICOPTER"))
-            {
-                m_RewardCards[6].gameObject.SetActive(false);
-                m_RewardCards[6] = m_RewardCard7B;
-                m_RewardCards[6].gameObject.SetActive(true);
             }
 
             // set buttons
