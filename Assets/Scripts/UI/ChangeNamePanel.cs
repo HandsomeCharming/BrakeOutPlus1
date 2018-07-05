@@ -14,6 +14,7 @@ public class ChangeNamePanel : MonoBehaviour {
         if (name == "") name = "Driver";
         AppManager.instance.SaveName(name);
         AppManager.instance.RenameGameSpark(name);
+        RecordManager.Record(GlobalKeys.m_RenamedKey);
     }
 
 
