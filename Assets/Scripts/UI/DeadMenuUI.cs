@@ -31,7 +31,8 @@ public class DeadMenuUI : UIBase
     private void OnEnable()
     {
         RefreshUI();
-        QuestManager.current.TryFinishLevelQuest();
+        if(QuestManager.ShouldFinishLevelQuestInDeadMenu())
+            QuestManager.current.TryFinishLevelQuest();
         QuestManager.current.TryFinishDailyQuests();
     }
 

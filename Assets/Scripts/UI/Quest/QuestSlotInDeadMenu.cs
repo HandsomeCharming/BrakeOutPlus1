@@ -12,11 +12,11 @@ public class QuestSlotInDeadMenu : MonoBehaviour {
     public GameObject starIcon;
     public Text rewardNum;
 
-    public void RefreshByQuest(Quest quest)
+    public void RefreshByQuest(Quest quest, bool showFinished = true)
     {
         questText.text = QuestSlotUI.GetActionStringByActionAndCount(quest.action, quest.targetCount);
 
-        if (quest.IsFinished())
+        if (quest.IsFinished() && showFinished)
         {
             progress.gameObject.SetActive(false);
             rewards.SetActive(true);

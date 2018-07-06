@@ -28,13 +28,12 @@ public class QuestSlotUI : MonoBehaviour {
         HighlightedFrame.SetActive(isLevelingQuest);
         CoinGo.SetActive(isCoin);
         StarGo.SetActive(!isCoin);
-
-        /* code to toggle claim button
+        
         bool finished = quest.targetCount == quest.currentCount;
         ProgressGo.SetActive(!finished);
         if(ClaimGo != null)
             ClaimGo.SetActive(finished);
-            */
+            
 
         if (isCoin) m_CoinText.text = quest.rewardCount.ToString();
         else m_StarText.text = quest.rewardCount.ToString();

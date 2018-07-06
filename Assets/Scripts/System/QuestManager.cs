@@ -36,6 +36,26 @@ public class QuestManager : MonoBehaviour {
         return quests;
     }
 
+    public static bool HasLevelQuest()
+    {
+        if (current != null)
+            return (current.m_QuestData.levelQuest != null);
+        return false;
+    }
+
+    public static bool ShouldFinishLevelQuestInDeadMenu()
+    {
+        if(HasLevelQuest())
+        {
+            Quest quest = current.m_QuestData.levelQuest;
+            QuestAction action = quest.action;
+            bool res = action == QuestAction.Play || action == QuestAction.ReachScore || action == QuestAction.LeapGap || action == QuestAction.Glide
+                || action == QuestAction.CrushCube;
+            return res;
+        }
+        return false;
+    }
+
     public void SaveQuestData()
     {
         Debug.Log("save quest");
