@@ -53,7 +53,7 @@ public class QuestPanelUI : MonoBehaviour {
         }
 
         // to-do: add no quest thing
-        if(questSave.m_Quests.Count == 0)
+        if(questSave.m_Quests.Count == 0 && questSave.levelQuest == null)
         {
             UpdateUINoQuest();
         }

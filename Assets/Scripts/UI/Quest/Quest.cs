@@ -12,6 +12,7 @@ public class QuestSave
     public QuestSave()
     {
         m_Quests = new List<Quest>();
+        currentLevel = 0;
     }
 }
 
