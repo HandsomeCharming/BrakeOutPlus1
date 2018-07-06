@@ -37,7 +37,22 @@ public class QuestSlotUI : MonoBehaviour {
         else m_StarText.text = quest.rewardCount.ToString();
 
         m_ActionText.text = GetActionStringByActionAndCount(quest.action, quest.targetCount);
-        m_ProgressText.text = quest.currentCount.ToString() + "/" + quest.targetCount.ToString();
+        m_ProgressText.text = GetProgressStringByQuest(quest);
+    }
+
+    public static string GetProgressStringByQuest(Quest quest)
+    {
+        string res = "";
+        if(quest.action == QuestAction.ReachScore)
+        {
+            res = quest.currentCount < quest.targetCount ? "0" : "1";
+            res += "/1";
+        }
+        else
+        {
+            res = quest.currentCount.ToString() + "/" + quest.targetCount.ToString();
+        }
+        return res;
     }
 
     public static string GetActionStringByActionAndCount(QuestAction action, int count)
@@ -46,35 +61,36 @@ public class QuestSlotUI : MonoBehaviour {
         switch(action)
         {
             case QuestAction.Play:
-                res = "Play " + count.ToString() + " Games";
+                res = "Play " + count.ToString() + " Game";
                 break;
             case QuestAction.ReachScore:
                 res = "Reach " + count.ToString() + " Score";
                 break;
             case QuestAction.LeapGap:
-                res = "Leap " + count.ToString() + " Gaps";
+                res = "Leap " + count.ToString() + " Gap";
                 break;
             case QuestAction.UpgradeCar:
-                res = "Upgrade Car " + count.ToString() + " Times";
+                res = "Upgrade Car " + count.ToString() + " Time";
                 break;
             case QuestAction.UpgradeCarToMax:
-                res = "Upgrade Car To Max " + count.ToString() + " Times";
+                res = "Upgrade Car To Max " + count.ToString() + " Time";
                 break;
             case QuestAction.OpenChest:
-                res = "Open " + count.ToString() + " Chests";
+                res = "Open " + count.ToString() + " Chest";
                 break;
             case QuestAction.UpgradeItem:
-                res = "Upgrade Item " + count.ToString() + " Times";
+                res = "Upgrade Item " + count.ToString() + " Time";
                 break;
             case QuestAction.Glide:
-                res = "Glide " + count.ToString() + " Times";
+                res = "Glide " + count.ToString() + " Time";
                 break;
             case QuestAction.CrushCube:
-                res = "Crush Cube " + count.ToString() + " Times";
+                res = "Crush Cube " + count.ToString() + " Time";
                 break;
             default:
                 break;
         }
+        if (count > 1 && action != QuestAction.ReachScore) res += "s";
 
         return res;
     }

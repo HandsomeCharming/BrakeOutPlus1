@@ -28,7 +28,7 @@ public class QuestSlotInDeadMenu : MonoBehaviour {
         else
         {
             progress.gameObject.SetActive(true);
-            progress.text = quest.currentCount.ToString() + "/" + quest.targetCount.ToString();
+            progress.text = QuestSlotUI.GetProgressStringByQuest(quest);
             rewards.SetActive(false);
         }
     }

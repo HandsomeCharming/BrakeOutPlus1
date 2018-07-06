@@ -180,9 +180,9 @@ public class QuestManager : MonoBehaviour {
             }
             else
             {
-                if(quest.currentCount < count)
+                if(quest.currentCount >= quest.targetCount)
                 {
-                    quest.currentCount = count;
+                    quest.currentCount = quest.targetCount;
                 }
             }
             QuestProgressInGame.QuestUpdated(quest);

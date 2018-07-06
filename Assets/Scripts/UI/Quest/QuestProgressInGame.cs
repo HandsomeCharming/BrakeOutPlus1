@@ -37,7 +37,7 @@ public class QuestProgressInGame : MonoBehaviour {
         ShowTimeRemain = ShowTime;
         Show();
         questText.text = QuestSlotUI.GetActionStringByActionAndCount(quest.action, quest.targetCount);
-        progress.text = quest.currentCount.ToString() + "/" + quest.targetCount.ToString();
+        progress.text = QuestSlotUI.GetProgressStringByQuest(quest);
     }
 
     void Update () {
