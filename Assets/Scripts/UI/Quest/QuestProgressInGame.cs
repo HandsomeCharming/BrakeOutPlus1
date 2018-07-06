@@ -9,7 +9,6 @@ public class QuestProgressInGame : MonoBehaviour {
     float ShowTimeRemain;
 
     public Text questText;
-    public Text progress;
 
     public static QuestProgressInGame current;
 
@@ -62,12 +61,10 @@ public class QuestProgressInGame : MonoBehaviour {
     void Show()
     {
         questText.gameObject.SetActive(true);
-        progress.gameObject.SetActive(true);
     }
 
     void Hide()
     {
         questText.gameObject.SetActive(false);
-        progress.gameObject.SetActive(false);
     }
 }

@@ -30,6 +30,7 @@ public class ObstacleBuilder : MonoBehaviour {
     public const string WallMidCube = "WallMidCube";
     public const string GlidingTrigger = "GlidingTrigger";
     public const string JumpTrigger = "JumpTrigger";
+    public const string BeforeJumpTrigger = "BeforeJumpTrigger";
     public const string AutoPilotTrigger = "AutoPilotTrigger";
 
     public const string BoostGroundSign = "BoostGroundSign";
@@ -178,6 +179,19 @@ public class ObstacleBuilder : MonoBehaviour {
                     signpost1.transform.forward = signMesh.prevDir;
                     signpost1.GetComponent<ItemSuper>().StartAnim();
                     floorMesh.destroyOnRemake.Add(signpost1);
+
+
+                    //Before Jump tutorial trigger
+                    float scale = Vector3.Distance(floorMesh.prevPos1, floorMesh.prevPos2);
+                    GameObject trigger = Instantiate(ObstacleDataReader.GetObstaclePrefab(BeforeJumpTrigger));
+                    Vector3 endPosMid = (floorMesh.prevPos1 + floorMesh.prevPos2) / 2.0f;
+                    endPosMid += (-floorMesh.prevDir) * 20.0f;
+                    trigger.transform.localScale = new Vector3(scale, 5, 1);
+                    trigger.transform.position = endPosMid;
+                    trigger.transform.forward = floorMesh.prevDir;
+
+                    floorMesh.destroyOnRemake.Add(trigger);
+
 
                     /*GameObject signpost2 = Instantiate(m_Storer.m_BoostSignPrefab, null);
                     signpost2.transform.position = end2;

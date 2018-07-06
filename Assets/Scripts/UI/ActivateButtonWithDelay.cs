@@ -10,11 +10,18 @@ public class ActivateButtonWithDelay : MonoBehaviour {
     private void OnEnable()
     {
         GetComponent<Button>().enabled = false;
-        Invoke("EnableButton", enableTime);
+        EnableButton();
     }
 
     void EnableButton()
     {
+        StartCoroutine(EnableButtonIEnu());
+    }
+
+    IEnumerator EnableButtonIEnu()
+    {
+        yield return new WaitForSecondsRealtime(enableTime);
+
         GetComponent<Button>().enabled = true;
     }
 }

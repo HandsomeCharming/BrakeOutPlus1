@@ -8,7 +8,6 @@ public class JumpTrigger : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            print("jump trigger");
             QuestManager.UpdateQuestsStatic(QuestAction.LeapGap);
         }
     }
