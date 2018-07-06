@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class RecordsUI : MonoBehaviour {
 
+    public Text LevelNum;
     public Text QuestFinished;
     public Text Highscore;
     public Text GamesPlayed;
@@ -16,6 +17,7 @@ public class RecordsUI : MonoBehaviour {
         QuestFinished.text = QuestManager.current.FinishedQuests.ToString();
         Highscore.text = GameManager.current.gameHighScore.ToString();
         GamesPlayed.text = QuestManager.current.GamesPlayed.ToString();
+        LevelNum.text = (QuestManager.current.m_QuestData.currentLevel+1).ToString();
 
         float secs = QuestManager.current.PlayedTime;
         TimeSpan t = TimeSpan.FromSeconds(secs);
