@@ -9,18 +9,12 @@ public class QuestProgressInDeadMenu : MonoBehaviour {
     public void ShowQuestProgress()
     {
         int index = 0;
-        List<Quest> quests = QuestManager.current.GetQuests();
-        bool isLevel = QuestManager.HasLevelQuest();
+        List<Quest> quests = QuestManager.current.GetQuestsToShowInGame();
         foreach(var quest in quests)
         {
             m_QuestSlots[index].gameObject.SetActive(true);
-            m_QuestSlots[index].RefreshByQuest(quest, !isLevel);
+            m_QuestSlots[index].RefreshByQuest(quest);
             ++index;
-
-            if (isLevel)
-            {
-                isLevel = false;
-            }
         }
 
         while (index < 3)

@@ -51,7 +51,7 @@ public class QuestProgressInGame : MonoBehaviour {
 
     void ShowFirstQuest()
     {
-        List<Quest> quests = QuestManager.current.GetQuests();
+        List<Quest> quests = QuestManager.current.GetQuestsToShowInGame();
         if (quests.Count > 0)
         {
             UpdateQuest(quests[0]);

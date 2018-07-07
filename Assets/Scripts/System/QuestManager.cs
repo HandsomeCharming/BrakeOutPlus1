@@ -36,6 +36,21 @@ public class QuestManager : MonoBehaviour {
         return quests;
     }
 
+    public List<Quest> GetQuestsToShowInGame()
+    {
+        List<Quest> quests = new List<Quest>();
+        if (m_QuestData.levelQuest != null && ShouldDisplayInGame(m_QuestData.levelQuest))
+        {
+            quests.Add(m_QuestData.levelQuest);
+        }
+        foreach (var quest in m_QuestData.m_Quests)
+        {
+            if (quest != null)
+                quests.Add(quest);
+        }
+        return quests;
+    }
+
     public static bool HasLevelQuest()
     {
         if (current != null)
@@ -161,6 +176,14 @@ public class QuestManager : MonoBehaviour {
         {
             current.UpdateQuests(action, count);
         }
+    }
+
+    public static bool ShouldDisplayInGame(Quest quest)
+    {
+        QuestAction action = quest.action;
+        bool res = action == QuestAction.Play || action == QuestAction.ReachScore || action == QuestAction.LeapGap || action == QuestAction.Glide
+            || action == QuestAction.CrushCube;
+        return res;
     }
 
     bool IsQuestFinished(Quest quest)
