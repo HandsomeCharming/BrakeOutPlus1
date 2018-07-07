@@ -29,7 +29,7 @@ public class ScaleOverTime : MonoBehaviour {
     {
         while(runs)
         {
-            float scale = Mathf.Lerp(m_ScaleMinMax.min, m_ScaleMinMax.max, m_DurationRemain / m_Duration);
+			float scale = Mathf.Lerp(m_ScaleMinMax.max, m_ScaleMinMax.min, m_DurationRemain / m_Duration);
             transform.localScale = Vector3.one * scale;
 
             yield return new WaitForSecondsRealtime(updateFreq);
