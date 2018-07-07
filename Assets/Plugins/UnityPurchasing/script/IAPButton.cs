@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.Purchasing.Security;
 
 namespace UnityEngine.Purchasing
 {
@@ -175,26 +176,28 @@ namespace UnityEngine.Purchasing
             bool validPurchase = true; // Presume valid for platforms with no R.V.
 
 #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
-    // Prepare the validator with the secrets we prepared in the Editor
-    // obfuscation window.
-    var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
-        AppleTangle.Data(), Application.bundleIdentifier);
+            var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
+             AppleTangle.Data(), Application.bundleIdentifier);
 
-    try {
-        // On Google Play, result has a single product ID.
-        // On Apple stores, receipts contain multiple products.
-        var result = validator.Validate(e.purchasedProduct.receipt);
-        // For informational purposes, we list the receipt(s)
-        Debug.Log("Receipt is valid. Contents:");
-        foreach (IPurchaseReceipt productReceipt in result) {
-            Debug.Log(productReceipt.productID);
-            Debug.Log(productReceipt.purchaseDate);
-            Debug.Log(productReceipt.transactionID);
-        }
-    } catch (IAPSecurityException) {
-        Debug.Log("Invalid receipt, not unlocking content");
-        validPurchase = false;
-    }
+            try
+            {
+                // On Google Play, result has a single product ID.
+                // On Apple stores, receipts contain multiple products.
+                var result = validator.Validate(e.purchasedProduct.receipt);
+                // For informational purposes, we list the receipt(s)
+                Debug.Log("Receipt is valid. Contents:");
+                foreach (IPurchaseReceipt productReceipt in result)
+                {
+                    Debug.Log(productReceipt.productID);
+                    Debug.Log(productReceipt.purchaseDate);
+                    Debug.Log(productReceipt.transactionID);
+                }
+            }
+            catch (IAPSecurityException)
+            {
+                Debug.Log("Invalid receipt, not unlocking content");
+                validPurchase = false;
+            }
 #endif
 
             return (consumePurchase && validPurchase) ? PurchaseProcessingResult.Complete : PurchaseProcessingResult.Pending;
@@ -358,26 +361,28 @@ namespace UnityEngine.Purchasing
                 bool validPurchase = true; // Presume valid for platforms with no R.V.
 
 #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
-    // Prepare the validator with the secrets we prepared in the Editor
-    // obfuscation window.
     var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
-        AppleTangle.Data(), Application.bundleIdentifier);
+             AppleTangle.Data(), Application.bundleIdentifier);
 
-    try {
-        // On Google Play, result has a single product ID.
-        // On Apple stores, receipts contain multiple products.
-        var result = validator.Validate(e.purchasedProduct.receipt);
-        // For informational purposes, we list the receipt(s)
-        Debug.Log("Receipt is valid. Contents:");
-        foreach (IPurchaseReceipt productReceipt in result) {
-            Debug.Log(productReceipt.productID);
-            Debug.Log(productReceipt.purchaseDate);
-            Debug.Log(productReceipt.transactionID);
-        }
-    } catch (IAPSecurityException) {
-        Debug.Log("Invalid receipt, not unlocking content");
-        validPurchase = false;
-    }
+            try
+            {
+                // On Google Play, result has a single product ID.
+                // On Apple stores, receipts contain multiple products.
+                var res = validator.Validate(e.purchasedProduct.receipt);
+                // For informational purposes, we list the receipt(s)
+                Debug.Log("Receipt is valid. Contents:");
+                foreach (IPurchaseReceipt productReceipt in res)
+                {
+                    Debug.Log(productReceipt.productID);
+                    Debug.Log(productReceipt.purchaseDate);
+                    Debug.Log(productReceipt.transactionID);
+                }
+            }
+            catch (IAPSecurityException)
+            {
+                Debug.Log("Invalid receipt, not unlocking content");
+                validPurchase = false;
+            }
 #endif
 
                 foreach (IAPButton button in activeButtons)
