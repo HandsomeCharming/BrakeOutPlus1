@@ -175,7 +175,7 @@ namespace UnityEngine.Purchasing
 
             bool validPurchase = true; // Presume valid for platforms with no R.V.
 
-#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
+/*#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
              AppleTangle.Data(), Application.bundleIdentifier);
 
@@ -199,6 +199,7 @@ namespace UnityEngine.Purchasing
                 validPurchase = false;
             }
 #endif
+            */
 
             return (consumePurchase && validPurchase) ? PurchaseProcessingResult.Complete : PurchaseProcessingResult.Pending;
         }
@@ -359,31 +360,6 @@ namespace UnityEngine.Purchasing
                 bool consumePurchase = false;
                 bool resultProcessed = false;
                 bool validPurchase = true; // Presume valid for platforms with no R.V.
-
-#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
-    var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
-             AppleTangle.Data(), Application.bundleIdentifier);
-
-            try
-            {
-                // On Google Play, result has a single product ID.
-                // On Apple stores, receipts contain multiple products.
-                var res = validator.Validate(e.purchasedProduct.receipt);
-                // For informational purposes, we list the receipt(s)
-                Debug.Log("Receipt is valid. Contents:");
-                foreach (IPurchaseReceipt productReceipt in res)
-                {
-                    Debug.Log(productReceipt.productID);
-                    Debug.Log(productReceipt.purchaseDate);
-                    Debug.Log(productReceipt.transactionID);
-                }
-            }
-            catch (IAPSecurityException)
-            {
-                Debug.Log("Invalid receipt, not unlocking content");
-                validPurchase = false;
-            }
-#endif
 
                 foreach (IAPButton button in activeButtons)
                 {
