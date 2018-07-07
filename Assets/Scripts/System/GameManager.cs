@@ -466,10 +466,7 @@ public class GameManager : MonoBehaviour {
 
     void HandleAdCountAndShowIfShould()
     {
-        //Show ad every 3 games
-		print(m_NextAdTime);
-        m_NextAdTime--;
-        if (m_NextAdTime < 0)
+        if (AdPlacementRecorder.ShouldPlayAd())
         {
             //AdManager.Instance.ShowBannerAd();
 			if (!RateUsPanel.IsRated ()) {
@@ -497,6 +494,7 @@ public class GameManager : MonoBehaviour {
 		if(AdManager.Instance.ShowInterstitial())
 		{
 			m_NextAdTime = UnityEngine.Random.Range(2, 5);
+            AdPlacementRecorder.AdPlayed();
 		}
 	}
 
@@ -580,7 +578,10 @@ public class GameManager : MonoBehaviour {
         //SceneManager.LoadScene(scene.name);
 
 		if(!AdRemoved())
-			HandleAdCountAndShowIfShould();
+        {
+            AdPlacementRecorder.GamePlayed();
+            HandleAdCountAndShowIfShould();
+        }
     }
 
     public void SetNormalTimeScale(float timeScale)
