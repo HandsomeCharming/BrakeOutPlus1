@@ -59,6 +59,10 @@ public class QuestProgressInGame : MonoBehaviour {
         {
             UpdateQuest(quests[0]);
         }
+        else
+        {
+            questText.text = "";
+        }
     }
 
     void Show()
