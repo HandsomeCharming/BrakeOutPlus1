@@ -175,7 +175,7 @@ namespace UnityEngine.Purchasing
 
             bool validPurchase = true; // Presume valid for platforms with no R.V.
 
-/*#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
+#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
              AppleTangle.Data(), Application.bundleIdentifier);
 
@@ -199,7 +199,6 @@ namespace UnityEngine.Purchasing
                 validPurchase = false;
             }
 #endif
-            */
 
             return (consumePurchase && validPurchase) ? PurchaseProcessingResult.Complete : PurchaseProcessingResult.Pending;
         }
@@ -387,6 +386,31 @@ namespace UnityEngine.Purchasing
 
                     resultProcessed = true;
                 }
+
+#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
+            var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
+             AppleTangle.Data(), Application.bundleIdentifier);
+
+            try
+            {
+                // On Google Play, result has a single product ID.
+                // On Apple stores, receipts contain multiple products.
+                var result = validator.Validate(e.purchasedProduct.receipt);
+                // For informational purposes, we list the receipt(s)
+                Debug.Log("Receipt is valid. Contents:");
+                foreach (IPurchaseReceipt productReceipt in result)
+                {
+                    Debug.Log(productReceipt.productID);
+                    Debug.Log(productReceipt.purchaseDate);
+                    Debug.Log(productReceipt.transactionID);
+                }
+            }
+            catch (IAPSecurityException)
+            {
+                Debug.Log("Invalid receipt, not unlocking content");
+                validPurchase = false;
+            }
+#endif
 
                 // we expect at least one receiver to get this message
                 if (!resultProcessed) {
