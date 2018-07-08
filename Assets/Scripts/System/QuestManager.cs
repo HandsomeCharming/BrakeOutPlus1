@@ -156,7 +156,10 @@ public class QuestManager : MonoBehaviour {
     public static void GameFinished()
     {
         if(current != null)
+        {
             current.GamesPlayed++;
+            current.SaveRecords();
+        }
     }
 
     public static int GetActiveQuestCount()
@@ -295,5 +298,12 @@ public class QuestManager : MonoBehaviour {
         PlayedTime = PlayerPrefs.GetFloat(PlayedTimeKey, 0);
         GamesPlayed = PlayerPrefs.GetInt(GamesPlayedKey, 0);
         FinishedQuests = PlayerPrefs.GetInt(FinishedQuestsKey, 0);
+    }
+
+    public void SaveRecords()
+    {
+        PlayerPrefs.SetFloat(PlayedTimeKey, PlayedTime);
+        PlayerPrefs.SetInt(GamesPlayedKey, GamesPlayed);
+        PlayerPrefs.SetInt(FinishedQuestsKey, FinishedQuests);
     }
 }
