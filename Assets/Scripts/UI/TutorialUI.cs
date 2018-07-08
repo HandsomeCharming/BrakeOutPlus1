@@ -53,9 +53,12 @@ public class TutorialUI : MonoBehaviour {
             m_JumpTutorial.SetActive(true);
             RecordManager.Record(JumpTutorialShowedKey);
         }*/
-        GameManager.current.Pause(true, false);
-
-        SetUpJumpMaskAndBoostButtons();
+        if (!RecordManager.HasRecord(JumpTutorialShowedKey))
+        {
+            GameManager.current.Pause(true, false);
+            SetUpJumpMaskAndBoostButtons();
+            RecordManager.Record(JumpTutorialShowedKey);
+        }
     }
 
     public void HideJumpTutorial()
