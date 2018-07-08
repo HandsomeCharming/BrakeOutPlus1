@@ -83,6 +83,9 @@ public class QuestSlotUI : MonoBehaviour {
             case QuestAction.UpgradeItem:
                 res = "Upgrade Item " + count.ToString() + " Time";
                 break;
+            case QuestAction.UpgradeItemToMax:
+                res = "Upgrade Item To Max " + count.ToString();
+                break;
             case QuestAction.Glide:
                 res = "Glide " + count.ToString() + " Time";
                 break;
