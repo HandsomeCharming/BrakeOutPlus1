@@ -140,7 +140,6 @@ public class BackgroundMaterial : MonoBehaviour {
     {
         float lerpAmount = 1 - m_SharpLerpTime / m_Storer.sharpLerpTime;
         Color col = Color.Lerp(m_CurrentFloor, m_SharpLerpTarget.floorColor, lerpAmount);
-        print(col);
         return col;
     }
 

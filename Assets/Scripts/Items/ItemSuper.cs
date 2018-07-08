@@ -7,6 +7,8 @@ public class ItemSuper : MonoBehaviour {
     public int m_SlotOnMesh;
     public int m_Level;
 
+    protected const float itemEnlargeSize = 3.0f;
+
     public virtual void MoveToCallBack()
     {
 
@@ -36,6 +38,6 @@ public class ItemSuper : MonoBehaviour {
 
     protected void ScaleUp(float scale)
     {
-        transform.localScale = Vector3.one * 1.5f;
+        transform.localScale = Vector3.one * scale;
     }
 }

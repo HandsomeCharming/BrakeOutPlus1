@@ -11,6 +11,7 @@ public class TutorialUI : MonoBehaviour {
     public GameObject m_JumpTutorial;
     public GameObject m_BoostFramePrefab;
     public GameObject m_TutorialMaskPrefab;
+    public Transform m_GravityParent;
 
     List<GameObject> frames;
     GameObject m_TutorialMask;
@@ -87,6 +88,10 @@ public class TutorialUI : MonoBehaviour {
                 int indexMinus = InputHandler.current.m_ControlScheme == ControlSchemes.BothHand ? 3 : 2;
                 m_TutorialMask.transform.SetSiblingIndex(buttonParent.childCount - indexMinus);
             }
+        }
+        else
+        {
+            m_TutorialMask = Instantiate(m_TutorialMaskPrefab, m_GravityParent);
         }
     }
 }

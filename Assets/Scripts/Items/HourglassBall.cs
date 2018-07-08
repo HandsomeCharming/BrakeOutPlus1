@@ -6,7 +6,7 @@ public class HourglassBall : ItemSuper {
 
     private void OnEnable()
     {
-        ScaleUp(1.5f);
+        ScaleUp(itemEnlargeSize);
     }
 
     public override void Disable()
