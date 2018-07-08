@@ -7,7 +7,7 @@ public class ItemSuper : MonoBehaviour {
     public int m_SlotOnMesh;
     public int m_Level;
 
-    protected const float itemEnlargeSize = 3.0f;
+    protected const float itemEnlargeSize = 2.6f;
 
     public virtual void MoveToCallBack()
     {
