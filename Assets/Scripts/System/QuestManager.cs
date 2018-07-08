@@ -305,5 +305,6 @@ public class QuestManager : MonoBehaviour {
         PlayerPrefs.SetFloat(PlayedTimeKey, PlayedTime);
         PlayerPrefs.SetInt(GamesPlayedKey, GamesPlayed);
         PlayerPrefs.SetInt(FinishedQuestsKey, FinishedQuests);
+        PlayerPrefs.Save();
     }
 }

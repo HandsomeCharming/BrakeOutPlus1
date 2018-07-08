@@ -47,7 +47,7 @@ public class DeadMenuUI : UIBase
         m_Score.text = ((int)GameManager.current.gameScore).ToString();
         m_CoinEarned.text = ((int)GameManager.current.singleGameCoins).ToString();
 
-        int questCount = QuestManager.GetActiveQuestCount();
+        int questCount = QuestManager.current.GetQuestsToShowInGame().Count;
         Vector2 group1Pos = Group1.anchoredPosition;
         Vector2 group2Pos = Group2.anchoredPosition;
         group1Pos.y = questGroupYs[questCount].x;
