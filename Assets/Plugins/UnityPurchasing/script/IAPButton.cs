@@ -395,10 +395,10 @@ namespace UnityEngine.Purchasing
             {
                 // On Google Play, result has a single product ID.
                 // On Apple stores, receipts contain multiple products.
-                var result = validator.Validate(e.purchasedProduct.receipt);
+                var res = validator.Validate(e.purchasedProduct.receipt);
                 // For informational purposes, we list the receipt(s)
                 Debug.Log("Receipt is valid. Contents:");
-                foreach (IPurchaseReceipt productReceipt in result)
+                foreach (IPurchaseReceipt productReceipt in res)
                 {
                     Debug.Log(productReceipt.productID);
                     Debug.Log(productReceipt.purchaseDate);
