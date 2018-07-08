@@ -241,7 +241,7 @@ namespace UnityEngine.Purchasing
             private static IAPButtonStoreManager instance = new IAPButtonStoreManager();
             private ProductCatalog catalog;
             private List<IAPButton> activeButtons = new List<IAPButton>();
-            private List<IStoreListener> activeListeners = new List<IStoreListener> ();
+            private List<IAPListener> activeListeners = new List<IAPListener> ();
 
             protected IStoreController controller;
             protected IExtensionProvider extensions;
@@ -255,7 +255,7 @@ namespace UnityEngine.Purchasing
 
                 ConfigurationBuilder builder = ConfigurationBuilder.Instance(module);
 
-                IStoreConfigurationHelper.PopulateConfigurationBuilder(ref builder, catalog);
+                IAPConfigurationHelper.PopulateConfigurationBuilder(ref builder, catalog);
 
                 UnityPurchasing.Initialize(this, builder);
             }
@@ -306,12 +306,12 @@ namespace UnityEngine.Purchasing
                 activeButtons.Remove(button);
             }
 
-            public void AddListener(IStoreListener listener)
+            public void AddListener(IAPListener listener)
             {
                 activeListeners.Add (listener);
             }
 
-            public void RemoveListener(IStoreListener listener)
+            public void RemoveListener(IAPListener listener)
             {
                 activeListeners.Remove (listener);
             }
