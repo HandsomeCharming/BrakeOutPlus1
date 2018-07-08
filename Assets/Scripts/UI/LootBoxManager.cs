@@ -45,7 +45,7 @@ public class LootBoxManager : MonoBehaviour {
     {
         StartCoroutine(FadeIn(UIManager.UIFadeInTime));
 
-        UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("LootBox");
+        //UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("LootBox");
     }
 
     public void Close()
@@ -186,7 +186,7 @@ public class LootBoxManager : MonoBehaviour {
             m_ChancesLeft = 1;
             StartLoot();
 
-            UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("OneLoot");
+            //UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("OneLoot");
         }
     }
 
@@ -198,7 +198,7 @@ public class LootBoxManager : MonoBehaviour {
             m_ChancesLeft = 5;
             StartLoot();
 
-            UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("FiveLoot");
+            //UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("FiveLoot");
         }
     }
 

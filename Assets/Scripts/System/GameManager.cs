@@ -353,7 +353,7 @@ public class GameManager : MonoBehaviour {
             UIManager.current.ChangeStateByGameState();
             LoadAdIfNeeded();
 
-            AnalyticsEvent.GameStart();
+            //AnalyticsEvent.GameStart();
 
             AppManager.instance.LoginOrRegister();
 

@@ -177,7 +177,7 @@ namespace UnityEngine.Purchasing
 
 #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
-             AppleTangle.Data(), Application.bundleIdentifier);
+             AppleTangle.Data(), Application.identifier);
 
             try
             {
@@ -389,7 +389,7 @@ namespace UnityEngine.Purchasing
 
 #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
-             AppleTangle.Data(), Application.bundleIdentifier);
+             AppleTangle.Data(), Application.identifier);
 
             try
             {

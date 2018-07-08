@@ -73,7 +73,7 @@ public class TopManager : MonoBehaviour {
         //NetworkManager.current.GetLeaderBoardDaily(BoardDailyAction);
         //NetworkManager.current.GetMyRankDaily(GetMyRankDailyAction);
 
-        UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("Top");
+        //UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("Top");
     }
 
     public void InitLeaderBoardRows()

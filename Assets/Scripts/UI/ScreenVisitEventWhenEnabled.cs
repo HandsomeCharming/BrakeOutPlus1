@@ -8,6 +8,6 @@ public class ScreenVisitEventWhenEnabled : MonoBehaviour {
 
 	// Use this for initialization
 	void OnEnable () {
-        UnityEngine.Analytics.AnalyticsEvent.ScreenVisit(VisitName);
+        //UnityEngine.Analytics.AnalyticsEvent.ScreenVisit(VisitName);
     }
 }

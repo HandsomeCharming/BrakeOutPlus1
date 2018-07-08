@@ -60,7 +60,7 @@ public class SelectCarManager : MonoBehaviour {
     private void OnEnable()
     {
         //InitCar();
-        UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("CarMenu");
+        //UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("CarMenu");
 
         if (!HasSawTutorial())
         {
@@ -187,7 +187,7 @@ public class SelectCarManager : MonoBehaviour {
         m_TrailMenu.gameObject.SetActive(true);
         m_TrailMenu.RefreshUI(m_CurrentScene.trailData);
 
-        UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("TrailMenu");
+        //UnityEngine.Analytics.AnalyticsEvent.ScreenVisit("TrailMenu");
     }
 
     public void CloseTrailMenu()
