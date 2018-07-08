@@ -223,7 +223,7 @@ public class QuestManager : MonoBehaviour {
             }
             else
             {
-                if(quest.currentCount >= quest.targetCount)
+                if(count >= quest.targetCount)
                 {
                     quest.currentCount = quest.targetCount;
                 }
