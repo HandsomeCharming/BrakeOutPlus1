@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour {
         if (DiffScoreOption == DiffScoreUsage.ScaleOffHighest)
         {
             scoreForDifficulty = gameHighScore * scoreForDiffScale;
-            gameScore = scoreForDifficulty;
+            //gameScore = scoreForDifficulty;
         }
         else if (DiffScoreOption == DiffScoreUsage.Normal)
             scoreForDifficulty = 0;
