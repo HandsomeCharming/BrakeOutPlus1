@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(DebugRemovePlayerPrefEditor))]
-public class DebugRemovePlayerPrefEditor : Editor {
+[CustomEditor(typeof(DebugRemovePlayerPref))]
+public class DebugRemovePlayerPrefsEditor : Editor
+{
 
     public override void OnInspectorGUI()
     {
