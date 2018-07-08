@@ -63,34 +63,34 @@ public class QuestSlotUI : MonoBehaviour {
         switch(action)
         {
             case QuestAction.Play:
-                res = "Play " + count.ToString() + " Game";
+                res = "Play " + count.ToString() + " game";
                 break;
             case QuestAction.ReachScore:
-                res = "Reach " + count.ToString() + " Score";
+                res = "Reach " + count.ToString() + " score";
                 break;
             case QuestAction.LeapGap:
                 res = "Leap " + count.ToString() + " Gap";
                 break;
             case QuestAction.UpgradeCar:
-                res = "Upgrade Car " + count.ToString() + " Time";
+                res = "Upgrade a Car Status once";
                 break;
             case QuestAction.UpgradeCarToMax:
-                res = "Upgrade Car To Max " + count.ToString() + " Time";
+                res = "Upgrade a Car Status to max";
                 break;
             case QuestAction.OpenChest:
                 res = "Open " + count.ToString() + " Chest";
                 break;
             case QuestAction.UpgradeItem:
-                res = "Upgrade Item " + count.ToString() + " Time";
+                res = "Upgrade an Item once";
                 break;
             case QuestAction.UpgradeItemToMax:
-                res = "Upgrade Item To Max " + count.ToString();
+                res = "Upgrade an Item to max ";
                 break;
             case QuestAction.Glide:
-                res = "Glide " + count.ToString() + " Time";
+                res = "Glide " + count.ToString() + " time";
                 break;
             case QuestAction.CrushCube:
-                res = "Crush Cube " + count.ToString() + " Time";
+                res = "Crush Cube " + count.ToString() + " time";
                 break;
             default:
                 break;
