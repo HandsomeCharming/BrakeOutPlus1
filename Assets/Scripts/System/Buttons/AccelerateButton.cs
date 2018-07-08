@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;// Required when using Event data.
 
 public class AccelerateButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public static List<AccelerateButton> accButtons;
+
     bool m_Held;
 
     private void Awake()
@@ -24,12 +26,26 @@ public class AccelerateButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 	void OnEnable()
 	{
 		m_Held = false;
+
+        if (accButtons == null)
+            accButtons = new List<AccelerateButton>();
+        accButtons.Add(this);
 	}
+
+    private void OnDisable()
+    {
+        accButtons.Remove(this);
+    }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         InputHandler.current.AccelerateButton(true);
         m_Held = true;
+
+        if(GameManager.current.IsPaused())
+        {
+            UIManager.current.m_Tutorial.HideJumpTutorial();
+        }
     }
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)

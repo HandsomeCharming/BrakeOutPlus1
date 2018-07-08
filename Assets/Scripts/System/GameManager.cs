@@ -610,6 +610,11 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = m_OldTimescale * m_SlowmotionFactor;
     }
 
+    public bool IsPaused()
+    {
+        return Time.timeScale == 0;
+    }
+
 	public void Pause(bool pause, bool showPauseUI = true)
     {
         if(pause == true)
