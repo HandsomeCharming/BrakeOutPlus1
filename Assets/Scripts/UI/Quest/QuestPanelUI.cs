@@ -19,7 +19,7 @@ public class QuestPanelUI : MonoBehaviour {
         RefreshUI();
     }
 
-    void RefreshUI()
+    public void RefreshUI()
     {
         bool hasQuest = false;
         int index = 0;
