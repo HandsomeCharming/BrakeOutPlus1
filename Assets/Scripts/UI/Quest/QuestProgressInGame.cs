@@ -9,6 +9,9 @@ public class QuestProgressInGame : MonoBehaviour {
     float ShowTimeRemain;
 
     public Text questText;
+    bool fadingOut = false;
+
+    const float fadeOutTime = 0.3f;
 
     public static QuestProgressInGame current;
 
@@ -60,11 +63,38 @@ public class QuestProgressInGame : MonoBehaviour {
 
     void Show()
     {
-        questText.gameObject.SetActive(true);
+        fadingOut = false;
+
+        Color color = questText.color;
+        color.a = 1.0f;
+        questText.color = color;
+        //questText.gameObject.SetActive(true);
     }
 
     void Hide()
     {
-        questText.gameObject.SetActive(false);
+        if(!fadingOut)
+        {
+            fadingOut = true;
+            StartCoroutine(FadeOut());
+        }
+        //questText.gameObject.SetActive(false);
+    }
+
+    IEnumerator FadeOut()
+    {
+        float time = 0;
+
+        while(time < fadeOutTime && fadingOut)
+        {
+            Color color = questText.color;
+            color.a = Mathf.Lerp(1.0f, 0.0f, time / fadeOutTime);
+            questText.color = color;
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+        Color col = questText.color;
+        col.a = 0;
+        questText.color = col;
     }
 }
