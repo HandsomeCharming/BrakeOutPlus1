@@ -91,10 +91,14 @@ public class TutorialUI : MonoBehaviour {
                 int indexMinus = InputHandler.current.m_ControlScheme == ControlSchemes.BothHand ? 3 : 2;
                 m_TutorialMask.transform.SetSiblingIndex(buttonParent.childCount - indexMinus);
             }
+            m_TutorialMask.transform.GetChild(0).gameObject.SetActive(false);
+            m_TutorialMask.transform.GetChild(1).gameObject.SetActive(true);
         }
         else
         {
             m_TutorialMask = Instantiate(m_TutorialMaskPrefab, m_GravityParent);
+            m_TutorialMask.transform.GetChild(0).gameObject.SetActive(true);
+            m_TutorialMask.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 }
