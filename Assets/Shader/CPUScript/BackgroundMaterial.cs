@@ -104,7 +104,7 @@ public class BackgroundMaterial : MonoBehaviour {
 
     IEnumerator GlideManage()
     {
-        const float fadeInTime = 0.5f;
+        const float fadeInTime = 1.0f;
         const float maxAlpha = 0.5f;
         float time = 0;
         Image image = GlideBackground.GetComponent<Image>();
@@ -151,8 +151,8 @@ public class BackgroundMaterial : MonoBehaviour {
 
     IEnumerator AutoPilotManage()
     {
-        const float fadeInTime = 0.5f;
-        const float maxAlpha = 0.5f;
+        const float fadeInTime = 1.0f;
+        const float maxAlpha = 0.9f;
         float time = 0;
         Image image = AutoPilotBackground.GetComponent<Image>();
         while (m_Autopilot)
