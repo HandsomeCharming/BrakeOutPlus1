@@ -152,7 +152,7 @@ public class BackgroundMaterial : MonoBehaviour {
     IEnumerator AutoPilotManage()
     {
         const float fadeInTime = 1.0f;
-        const float maxAlpha = 1.0f;
+        const float maxAlpha = 0.5f;
         float time = 0;
         Image image = AutoPilotBackground.GetComponent<Image>();
         while (m_Autopilot)
