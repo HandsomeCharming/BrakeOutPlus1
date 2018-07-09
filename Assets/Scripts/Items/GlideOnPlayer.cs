@@ -38,6 +38,7 @@ public class GlideOnPlayer : MonoBehaviour {
     {
         if(canCollide && collision.gameObject.CompareTag("Floor"))
         {
+            canCollide = false;
             EndGliding();
         }
     }
