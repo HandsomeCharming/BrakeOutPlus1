@@ -21,6 +21,7 @@ public class AutoPilot : MonoBehaviour {
     public float m_TurningSpeed = 2.0f;
     public float m_Speed = 40.0f;
     public float m_ReachThreshold = 5.0f;
+    public bool m_DeathEffect = false;
 
     const float UPY = 0.7f;
 
@@ -41,22 +42,24 @@ public class AutoPilot : MonoBehaviour {
         m_ReachThreshold = 5.0f;
         m_TurningSpeed = 2.0f;
         AudioSystem.current.PlayEvent(AudioSystemEvents.AutoPilotStartEventName);
-        CameraEffectManager.current.StartAutoPilotEffect();
 
         StartAutoPilot();
     }
 
     private void OnDisable()
     {
-        CameraEffectManager.current.StopAutoPilotEffect();
+        if (m_DeathEffect)
+            CameraEffectManager.current.StopAutoPilotEffect();
         AudioSystem.current.PlayEvent(AudioSystemEvents.AutoPilotStopEventName);
     }
 
-    public void SetPilotTime(float time)
+    public void SetPilotTime(float time, bool deathEffect = false)
 	{
 		m_AutoPilotTime = time;
         m_PrepareToStop = false;
-
+        m_DeathEffect = deathEffect;
+        if (m_DeathEffect)
+            CameraEffectManager.current.StartAutoPilotEffect();
     }
 
     public void StartAutoPilot()

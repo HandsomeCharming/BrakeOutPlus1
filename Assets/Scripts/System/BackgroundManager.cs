@@ -57,7 +57,9 @@ public class BackgroundManager : MonoBehaviour {
                 m_ColorCanvas.SetActive(true);
                 FloorBuilder.current.EnableAllFloorMaterials(true);
                 FloorBuilder.current.ChangeAllFloorMaterials(m_Storer.floorColorMat);
-                
+                BackgroundMaterial.current.EndAutoPilot();
+                BackgroundMaterial.current.EndGlide();
+
                 ChangeSceneObject();
                 break;
             case BackgroundEnum.SkyCity:

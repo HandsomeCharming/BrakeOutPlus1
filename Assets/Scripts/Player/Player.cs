@@ -302,13 +302,13 @@ public class Player : MonoBehaviour {
 
         if (Player.current.gameObject.GetComponent<AutoPilot>() == null)
         {
-            Player.current.gameObject.AddComponent<AutoPilot>().SetPilotTime(2.0f);
+            Player.current.gameObject.AddComponent<AutoPilot>().SetPilotTime(2.0f, true);
             Player.current.gameObject.GetComponent<AutoPilot>().enabled = true;
         }
         else
         {
             Player.current.gameObject.GetComponent<AutoPilot>().enabled = true;
-            Player.current.gameObject.GetComponent<AutoPilot>().SetPilotTime(2.0f);
+            Player.current.gameObject.GetComponent<AutoPilot>().SetPilotTime(2.0f, true);
         }
         //physics.SetPhysicsState(PlayerPhysics.PlayerPhysicsState.);
         //physics.Launch();
