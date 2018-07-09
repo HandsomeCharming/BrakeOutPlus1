@@ -53,7 +53,7 @@ public class TutorialUI : MonoBehaviour {
             m_JumpTutorial.SetActive(true);
             RecordManager.Record(JumpTutorialShowedKey);
         }*/
-        if (!RecordManager.HasRecord(JumpTutorialShowedKey))
+        //if (!RecordManager.HasRecord(JumpTutorialShowedKey))
         {
             GameManager.current.Pause(true, false);
             SetUpJumpMaskAndBoostButtons();
@@ -75,7 +75,7 @@ public class TutorialUI : MonoBehaviour {
     {
         var buttonList = AccelerateButton.accButtons;
         frames = new List<GameObject>();
-        if (buttonList != null)
+        if (buttonList != null && buttonList.Count > 0)
         {
             Transform buttonParent = null;
             foreach (var button in buttonList)
@@ -90,9 +90,9 @@ public class TutorialUI : MonoBehaviour {
                 m_TutorialMask = Instantiate(m_TutorialMaskPrefab, buttonParent);
                 int indexMinus = InputHandler.current.m_ControlScheme == ControlSchemes.BothHand ? 3 : 2;
                 m_TutorialMask.transform.SetSiblingIndex(buttonParent.childCount - indexMinus);
+                m_TutorialMask.transform.GetChild(0).gameObject.SetActive(false);
+                m_TutorialMask.transform.GetChild(1).gameObject.SetActive(true);
             }
-            m_TutorialMask.transform.GetChild(0).gameObject.SetActive(false);
-            m_TutorialMask.transform.GetChild(1).gameObject.SetActive(true);
         }
         else
         {
