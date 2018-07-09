@@ -19,7 +19,7 @@ public class InGameUI : UIBase
     public Sprite m_MagnetImage;
     public Sprite m_AutopilotImage;
     public Sprite m_TimeslowImage;
-    public Text LevelText;
+    public Text PhaseText;
 
     public GameObject[] m_Controls;
 
@@ -213,14 +213,14 @@ public class InGameUI : UIBase
         }
     }
 
-    public void ShowLevelText()
+    public void ShowPhaseText()
     {
-        LevelText.text = "Level " + GameManager.current.m_Level.ToString();
+        PhaseText.text = "PHASE " + GameManager.current.m_Level.ToString();
         StartCoroutine(Fade(0.5f, 0.0f, 1.0f));
-        Invoke("HideLevelText", 3.0f);
+        Invoke("HidePhaseText", 3.0f);
     }
 
-    public void HideLevelText()
+    public void HidePhaseText()
     {
         StartCoroutine(Fade(0.5f, 1.0f, 0.0f));
     }
@@ -230,18 +230,18 @@ public class InGameUI : UIBase
         float time = 0;
         while(time < duration)
         {
-            Color col = LevelText.color;
+            Color col = PhaseText.color;
             col.a = Mathf.Lerp(from, to, time / duration);
-            LevelText.color = col;
+            PhaseText.color = col;
             yield return new WaitForEndOfFrame();
             time += Time.deltaTime;
         }
-        Color color = LevelText.color;
+        Color color = PhaseText.color;
         color.a = Mathf.Lerp(from, to, time / duration);
-        LevelText.color = color;
+        PhaseText.color = color;
         
         if (to == 0.0f)
-            LevelText.text = "";
+            PhaseText.text = "";
     }
 
     void Pause()

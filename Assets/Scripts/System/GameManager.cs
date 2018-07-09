@@ -665,7 +665,7 @@ public class GameManager : MonoBehaviour {
     public void LevelIncreased()
     {
         m_Level++;
-        UIManager.current.m_Ingame.ShowLevelText();
+        UIManager.current.m_Ingame.ShowPhaseText();
     }
 
     private void OnApplicationPause(bool pause)
