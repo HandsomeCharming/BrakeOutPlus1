@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour {
     public float m_GlobalMultiplier;
     public GameObject[] m_InitSequence;
     public int m_GameCount;
+    public int m_Level;
 
     [HideInInspector]
     public int m_ReviveCount;
@@ -147,8 +148,9 @@ public class GameManager : MonoBehaviour {
         m_BoostMultiplier = 1.0f;
         m_DiffMultiplier = 1.0f;
         m_ItemMultiplier = 1.0f;
+        m_Level = 0;
 
-		m_ReviveCount = 0;
+         m_ReviveCount = 0;
     }
 
     private void Start()
@@ -659,6 +661,13 @@ public class GameManager : MonoBehaviour {
 		print (adRemoved);
 		return adRemoved;
     }
+
+    public void LevelIncreased()
+    {
+        m_Level++;
+        UIManager.current.m_Ingame.ShowLevelText();
+    }
+
     private void OnApplicationPause(bool pause)
     {
         if(state == GameState.Running && pause)

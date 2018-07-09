@@ -19,6 +19,7 @@ public class InGameUI : UIBase
     public Sprite m_MagnetImage;
     public Sprite m_AutopilotImage;
     public Sprite m_TimeslowImage;
+    public Text LevelText;
 
     public GameObject[] m_Controls;
 
@@ -210,6 +211,37 @@ public class InGameUI : UIBase
             BoostImage.GetComponent<Animator>().Play("BoostUIBigShake");
             m_BigShakeGap = 0.5f;
         }
+    }
+
+    public void ShowLevelText()
+    {
+        LevelText.text = "Level " + GameManager.current.m_Level.ToString();
+        StartCoroutine(Fade(0.5f, 0.0f, 1.0f));
+        Invoke("HideLevelText", 3.0f);
+    }
+
+    public void HideLevelText()
+    {
+        StartCoroutine(Fade(0.5f, 1.0f, 0.0f));
+    }
+
+    IEnumerator Fade(float duration, float from, float to)
+    {
+        float time = 0;
+        while(time < duration)
+        {
+            Color col = LevelText.color;
+            col.a = Mathf.Lerp(from, to, time / duration);
+            LevelText.color = col;
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+        Color color = LevelText.color;
+        color.a = Mathf.Lerp(from, to, time / duration);
+        LevelText.color = color;
+        
+        if (to == 0.0f)
+            LevelText.text = "";
     }
 
     void Pause()

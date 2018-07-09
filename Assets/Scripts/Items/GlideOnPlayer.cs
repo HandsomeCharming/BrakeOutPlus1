@@ -67,6 +67,8 @@ public class GlideOnPlayer : MonoBehaviour {
 
         BackgroundMaterial.current.StartSharpLerp();
         AudioSystem.current.PlayEvent(AudioSystemEvents.GlideStopEventName);
+        GameManager.current.LevelIncreased();
+
         Destroy(this);
     }
 }
