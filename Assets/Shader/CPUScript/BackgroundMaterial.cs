@@ -7,6 +7,9 @@ public class BackgroundMaterial : MonoBehaviour {
 
     public static BackgroundMaterial current;
 
+    public GameObject GlideBackground;
+    public GameObject AutoPilotBackground;
+
     [HideInInspector]
     public Material mat;
     public DifficultyColorDataObject m_Storer;
@@ -30,6 +33,8 @@ public class BackgroundMaterial : MonoBehaviour {
     TopDownColor m_SharpLerpTarget;
     TopDownColor blackColor;
     bool m_SharpLerpToBlack = false;
+    bool m_Gliding = false;
+    bool m_Autopilot = false;
     //int FloorColAIndex;
     //int FloorColBIndex;
 
@@ -81,6 +86,100 @@ public class BackgroundMaterial : MonoBehaviour {
         FloorColBIndex = ColorBIndex;
         floorTime = floorBeforeTime;*/
     }
+
+    public void StartGlideIfColor()
+    {
+        if(BackgroundManager.current.m_Background == BackgroundEnum.Color)
+        {
+            GlideBackground.SetActive(true);
+            m_Gliding = true;
+            StartCoroutine(GlideManage());
+        }
+    }
+    
+    public void EndGlide()
+    {
+        m_Gliding = false;
+    }
+
+    IEnumerator GlideManage()
+    {
+        const float fadeInTime = 0.5f;
+        const float maxAlpha = 0.5f;
+        float time = 0;
+        Image image = GlideBackground.GetComponent<Image>();
+        while (m_Gliding)
+        {
+            if(time < fadeInTime)
+            {
+                Color col = image.color;
+                col.a = Mathf.Lerp(0, maxAlpha, time / fadeInTime);
+                image.color = col;
+            }
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+
+        time = 0;
+        while (time < fadeInTime)
+        {
+            Color col = image.color;
+            col.a = Mathf.Lerp(maxAlpha, 0, time / fadeInTime);
+            image.color = col;
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+        
+        GlideBackground.SetActive(false);
+    }
+
+
+    public void StartAutoPilotIfColor()
+    {
+        if (BackgroundManager.current.m_Background == BackgroundEnum.Color)
+        {
+            AutoPilotBackground.SetActive(true);
+            m_Autopilot = true;
+            StartCoroutine(AutoPilotManage());
+        }
+    }
+
+    public void EndAutoPilot()
+    {
+        m_Autopilot = false;
+    }
+
+    IEnumerator AutoPilotManage()
+    {
+        const float fadeInTime = 0.5f;
+        const float maxAlpha = 0.5f;
+        float time = 0;
+        Image image = AutoPilotBackground.GetComponent<Image>();
+        while (m_Autopilot)
+        {
+            if (time < fadeInTime)
+            {
+                Color col = image.color;
+                col.a = Mathf.Lerp(0, maxAlpha, time / fadeInTime);
+                image.color = col;
+            }
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+
+        time = 0;
+        while (time < fadeInTime)
+        {
+            Color col = image.color;
+            col.a = Mathf.Lerp(maxAlpha, 0, time / fadeInTime);
+            image.color = col;
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+
+        AutoPilotBackground.SetActive(false);
+    }
+
 
     void SetColorA(TopDownColor colors)
     {

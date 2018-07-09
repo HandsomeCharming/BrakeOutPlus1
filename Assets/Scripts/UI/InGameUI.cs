@@ -28,10 +28,15 @@ public class InGameUI : UIBase
     float m_MultiUpdatedTime = 1.5f;
     float m_MultiUpdatedTimeRemain = 0;
     float m_BigShakeGap;
-
+    bool Fading = false;
+    bool FadeInOrOut = false; // 0 out, 1 in
+    float fadeTime = 0;
+    
     Color transWhite = new Color(1.0f, 1.0f, 1.0f, 0.85f);
     Color transWhite2 = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     Color transYellow = new Color(1.0f, 0.92f, 0.016f, 0.85f);
+
+    const float PhaseFadeDuration = 0.5f;
 
     // Use this for initialization
     void Awake() {
@@ -100,6 +105,36 @@ public class InGameUI : UIBase
                 if (m_BigShakeGap > 0)
                 {
                     m_BigShakeGap -= Time.deltaTime;
+                }
+
+                if(Fading)
+                {
+                    if(FadeInOrOut)
+                    {
+                        float from = 0, to = 1;
+                        Color col = PhaseText.color;
+                        col.a = Mathf.Lerp(from, to, fadeTime / PhaseFadeDuration);
+                        PhaseText.color = col;
+                        fadeTime += Time.deltaTime;
+                        if (fadeTime > 4.0f)
+                        {
+                            FadeInOrOut = false;
+                            fadeTime = 0;
+                        }
+                    }
+                    else
+                    {
+                        float from = 1, to = 0;
+                        Color col = PhaseText.color;
+                        col.a = Mathf.Lerp(from, to, fadeTime / PhaseFadeDuration);
+                        PhaseText.color = col;
+                        fadeTime += Time.deltaTime;
+                        if(fadeTime > PhaseFadeDuration)
+                        {
+                            PhaseText.text = "";
+                            Fading = false;
+                        }
+                    }
                 }
             }
         }
@@ -216,16 +251,59 @@ public class InGameUI : UIBase
     public void ShowPhaseText()
     {
         PhaseText.text = "PHASE " + (GameManager.current.m_Level+1).ToString();
-        StartCoroutine(Fade(0.5f, 0.0f, 1.0f));
-        Invoke("HidePhaseText", 3.0f);
+        fadeTime = 0;
+        Fading = true;
+        FadeInOrOut = true;
     }
 
     public void HidePhaseText()
     {
-        StartCoroutine(Fade(0.5f, 1.0f, 0.0f));
+        fadeTime = 0;
+        Fading = true;
+        FadeInOrOut = false;
+        //StartCoroutine(Fade(0.5f, 1.0f, 0.0f));
     }
 
-    IEnumerator Fade(float duration, float from, float to)
+    IEnumerator ManageShow()
+    {
+        float time = 0;
+        float from = 0.0f, to = 1.0f;
+        float duration = 0.5f;
+        while (time < duration)
+        {
+            Color col = PhaseText.color;
+            col.a = Mathf.Lerp(from, to, time / duration);
+            PhaseText.color = col;
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+        Color color = PhaseText.color;
+        color.a = Mathf.Lerp(from, to, time / duration);
+        PhaseText.color = color;
+
+        yield return new WaitForSeconds(3.0f);
+
+        time = 0; 
+        from = 1.0f; to = 0.0f;
+        while (time < duration)
+        {
+            Color col = PhaseText.color;
+            col.a = Mathf.Lerp(from, to, time / duration);
+            PhaseText.color = col;
+            yield return new WaitForEndOfFrame();
+            time += Time.deltaTime;
+        }
+        color = PhaseText.color;
+        color.a = Mathf.Lerp(from, to, time / duration);
+        PhaseText.color = color;
+        print("here");
+
+        PhaseText.text = "";
+        Fading = false;
+
+    }
+
+    /*void Fade(float duration, float from, float to)
     {
         float time = 0;
         while(time < duration)
@@ -239,11 +317,14 @@ public class InGameUI : UIBase
         Color color = PhaseText.color;
         color.a = Mathf.Lerp(from, to, time / duration);
         PhaseText.color = color;
-        
-        if (to == 0.0f)
-            PhaseText.text = "";
-    }
 
+        if (to == 0.0f)
+        {
+            PhaseText.text = "";
+            Fading = false;
+        }
+    }
+    */
     void Pause()
     {
         GameManager.current.Pause(true);

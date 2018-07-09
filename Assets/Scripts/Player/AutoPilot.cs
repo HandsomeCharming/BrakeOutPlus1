@@ -68,6 +68,7 @@ public class AutoPilot : MonoBehaviour {
         m_DestIndex = (FloorBuilder.current.collidingIndex + 3) % FloorBuilder.current.floorMeshCount;
         m_PrepareToStop = false;
         InGameUI.Instance.StartPowerup(Powerups.AutoPilot);
+        BackgroundMaterial.current.StartAutoPilotIfColor();
     }
 
     public void AutoPilotTimeUp()
@@ -95,6 +96,7 @@ public class AutoPilot : MonoBehaviour {
         m_PlayerPhysics.SetPhysicsState(PlayerPhysics.PlayerPhysicsState.RegularMoving);
 		m_Player.GetComponent<Rigidbody> ().velocity = m_Player.transform.forward * m_Speed;
         InGameUI.Instance.EndPowerup(Powerups.AutoPilot);
+        BackgroundMaterial.current.EndAutoPilot();
         Destroy(this);
     }
 

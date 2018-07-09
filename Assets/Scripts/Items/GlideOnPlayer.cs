@@ -57,6 +57,7 @@ public class GlideOnPlayer : MonoBehaviour {
 			playerRB.velocity = m_Player.transform.forward * m_GlideMaxSpeed;
 		}
         //BackgroundMaterial.current.StartSharpLerpToBlack();
+        BackgroundMaterial.current.StartGlideIfColor();
     }
 
     public void EndGliding()
@@ -68,6 +69,7 @@ public class GlideOnPlayer : MonoBehaviour {
         BackgroundMaterial.current.StartSharpLerp();
         AudioSystem.current.PlayEvent(AudioSystemEvents.GlideStopEventName);
         GameManager.current.LevelIncreased();
+        BackgroundMaterial.current.EndGlide();
 
         Destroy(this);
     }
