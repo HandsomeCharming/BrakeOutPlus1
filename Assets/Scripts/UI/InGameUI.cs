@@ -215,7 +215,7 @@ public class InGameUI : UIBase
 
     public void ShowPhaseText()
     {
-        PhaseText.text = "PHASE " + GameManager.current.m_Level.ToString();
+        PhaseText.text = "PHASE " + (GameManager.current.m_Level+1).ToString();
         StartCoroutine(Fade(0.5f, 0.0f, 1.0f));
         Invoke("HidePhaseText", 3.0f);
     }

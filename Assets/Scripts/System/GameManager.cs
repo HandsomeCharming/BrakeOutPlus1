@@ -360,6 +360,7 @@ public class GameManager : MonoBehaviour {
             AppManager.instance.LoginOrRegister();
 
 			UIManager.current.m_Tutorial.ShowTurnAndBoostTutorialIfFirstTime ();
+            UIManager.current.m_Ingame.ShowPhaseText();
         }
     }
 
