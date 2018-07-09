@@ -81,7 +81,7 @@ public class InGameUI : UIBase
             if (GameManager.current.state == GameManager.GameState.Running)
             {
                 raceScore.text = ((int)GameManager.current.gameScore).ToString();
-				highScore.text = ((int)GameManager.current.gameHighScore).ToString();
+				highScore.text = "BEST:" + ((int)GameManager.current.gameHighScore).ToString();
                 coinNumbers.text = GameManager.current.GetCoinCount().ToString();
 
                 if (m_MultiUpdatedTimeRemain > 0)
