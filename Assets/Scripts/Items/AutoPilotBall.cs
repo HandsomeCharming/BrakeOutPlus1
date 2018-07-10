@@ -20,9 +20,10 @@ public class AutoPilotBall : ItemSuper {
 		if (other.tag == "Player") {
             if (!GameManager.current.m_StartBoosting)
             {
+                float duration = ItemManager.GetItemDuration(ItemType.AutoPilot);
                 if (Player.current.gameObject.GetComponent<AutoPilot>() == null)
                 {
-                    Player.current.gameObject.AddComponent<AutoPilot>().SetPilotTime(ItemManager.GetItemDuration(ItemType.AutoPilot));
+                    Player.current.gameObject.AddComponent<AutoPilot>().SetPilotTimeNoEffect(duration);
                 }
                 else
                 {

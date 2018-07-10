@@ -85,6 +85,12 @@ public class AutoPilot : MonoBehaviour {
             CameraEffectManager.current.StartAutoPilotEffect();
     }
 
+    public void SetPilotTimeNoEffect(float time)
+    {
+        m_AutoPilotTime = time;
+        m_PrepareToStop = false;
+    }
+
     public void StartAutoPilot()
     {
         m_Piloting = true;
