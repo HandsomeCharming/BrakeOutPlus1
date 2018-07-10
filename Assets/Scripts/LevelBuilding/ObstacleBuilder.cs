@@ -324,6 +324,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     //Gliding trigger
                     GameObject trigger = Instantiate(ObstacleDataReader.GetObstaclePrefab(GlidingTrigger));
                     Vector3 endPosMid = (floorMesh.prevPos1 + floorMesh.prevPos2) / 2.0f;
+					endPosMid += floorMesh.dir * 2;
                     trigger.transform.localScale = new Vector3(scale, 5, 2);
                     trigger.transform.position = endPosMid;
                     trigger.transform.forward = floorMesh.prevDir;

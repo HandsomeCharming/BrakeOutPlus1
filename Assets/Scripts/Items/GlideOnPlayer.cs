@@ -10,8 +10,8 @@ public class GlideOnPlayer : MonoBehaviour {
     Player m_Player;
 
     const float m_GlideTillCollideTime = 2.0f;
-	const float m_GlideMinSpeed = 48.0f;
-	const float m_GlideMaxSpeed = 51.0f;
+	const float m_GlideMinSpeed = 53.0f;
+	const float m_GlideMaxSpeed = 55.0f;
 
 
     private void Awake()
