@@ -116,7 +116,7 @@ public class InGameUI : UIBase
                         col.a = Mathf.Lerp(from, to, fadeTime / PhaseFadeDuration);
                         PhaseText.color = col;
                         fadeTime += Time.deltaTime;
-                        if (fadeTime > 4.0f)
+                        if (fadeTime > 2.5f)
                         {
                             FadeInOrOut = false;
                             fadeTime = 0;
