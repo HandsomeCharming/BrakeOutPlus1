@@ -22,6 +22,8 @@ public class FPSDisplay : MonoBehaviour {
         style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
         float msec = deltaTime * 1000.0f;
         float fps = 1.0f / deltaTime;
+        if (Player.current != null)
+            fps = Player.current.GetComponent<Rigidbody>().velocity.magnitude;
         string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         GUI.Label(rect, text, style);
     }
