@@ -18,11 +18,17 @@ public class AutoPilotBall : ItemSuper {
     void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player") {
-			if (Player.current.gameObject.GetComponent<AutoPilot> () == null) {
-				Player.current.gameObject.AddComponent<AutoPilot> ().SetPilotTime (ItemManager.GetItemDuration(ItemType.AutoPilot));
-			} else {
-				Player.current.gameObject.GetComponent<AutoPilot> ().SetPilotTime (ItemManager.GetItemDuration(ItemType.AutoPilot));
-			}
+            if (!GameManager.current.m_StartBoosting)
+            {
+                if (Player.current.gameObject.GetComponent<AutoPilot>() == null)
+                {
+                    Player.current.gameObject.AddComponent<AutoPilot>().SetPilotTime(ItemManager.GetItemDuration(ItemType.AutoPilot));
+                }
+                else
+                {
+                    Player.current.gameObject.GetComponent<AutoPilot>().SetPilotTime(ItemManager.GetItemDuration(ItemType.AutoPilot));
+                }
+            }
             Destroy(gameObject);
 		}
 	}

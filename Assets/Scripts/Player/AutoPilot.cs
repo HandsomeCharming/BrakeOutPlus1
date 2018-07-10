@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AutoPilot : MonoBehaviour {
-
-
+    
     public float m_AutoPilotTime;
+    public float m_AutoPilotScoreMax;
     public bool m_Start;
 
     bool m_Piloting;
@@ -22,6 +22,7 @@ public class AutoPilot : MonoBehaviour {
     public float m_Speed = 40.0f;
     public float m_ReachThreshold = 5.0f;
     public bool m_DeathEffect = false;
+    PilotMode m_PilotMode;
 
     const float UPY = 0.7f;
 
@@ -34,6 +35,14 @@ public class AutoPilot : MonoBehaviour {
     bool m_Stopping = false;
     int m_StopIndex = -1;
 
+    public enum PilotMode
+    {
+        Score,
+        Time
+    }
+
+
+
     // Use this for initialization
     void Awake () {
         m_Player = GetComponent<Player>();
@@ -42,6 +51,7 @@ public class AutoPilot : MonoBehaviour {
         m_ReachThreshold = 5.0f;
         m_TurningSpeed = 2.0f;
         AudioSystem.current.PlayEvent(AudioSystemEvents.AutoPilotStartEventName);
+        m_PilotMode = PilotMode.Time;
 
         StartAutoPilot();
     }
@@ -51,6 +61,19 @@ public class AutoPilot : MonoBehaviour {
         if (m_DeathEffect)
             CameraEffectManager.current.StopAutoPilotEffect();
         AudioSystem.current.PlayEvent(AudioSystemEvents.AutoPilotStopEventName);
+    }
+
+    public void SetPilotModeAndCount(PilotMode mode, float count)
+    {
+        m_PilotMode = mode;
+        if(mode == PilotMode.Time)
+        {
+            m_AutoPilotTime = count;
+        }
+        else
+        {
+            m_AutoPilotScoreMax = count;
+        }
     }
 
     public void SetPilotTime(float time, bool deathEffect = false)
@@ -77,6 +100,7 @@ public class AutoPilot : MonoBehaviour {
     public void AutoPilotTimeUp()
     {
         FloorBuilder.current.AddAutoPilotEnd();
+        GameManager.current.AutoPilotSpeedChange(1.0f);
 
         m_PrepareToStop = true;
     }
@@ -100,6 +124,8 @@ public class AutoPilot : MonoBehaviour {
 		m_Player.GetComponent<Rigidbody> ().velocity = m_Player.transform.forward * m_Speed;
         InGameUI.Instance.EndPowerup(Powerups.AutoPilot);
         BackgroundMaterial.current.EndAutoPilot();
+        GameManager.current.AutoPilotSpeedChange(1.0f);
+        GameManager.current.m_StartBoosting = false;
         Destroy(this);
     }
 
@@ -161,8 +187,12 @@ public class AutoPilot : MonoBehaviour {
             }
 
             m_AutoPilotTime -= Time.deltaTime;
-            if (m_AutoPilotTime <= 0 && !m_PrepareToStop)
+            if (m_PilotMode == PilotMode.Time && m_AutoPilotTime <= 0 && !m_PrepareToStop)
                 AutoPilotTimeUp();
+            else if(m_PilotMode == PilotMode.Score && !m_PrepareToStop && GameManager.current.gameScore > m_AutoPilotScoreMax )
+            {
+                AutoPilotTimeUp();
+            }
         }
     }
 }

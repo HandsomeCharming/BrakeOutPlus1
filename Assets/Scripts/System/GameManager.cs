@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     public float scoreForDiffScale = 0.2f;
     public bool shouldUseScoreForDiff = true;
     public DiffScoreUsage DiffScoreOption;
+    public bool m_StartBoosting = false;
 
 	public int gameHighScore;
     public int gameCoins;
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour {
 
     float m_OldTimescale;
     float m_SlowmotionFactor;
+    [SerializeField]
+    float m_AutoPilotSpeedUpFactor = 1.0f;
 
     public string highScoreLastDate;
     public int dayHighScore;
@@ -101,6 +104,7 @@ public class GameManager : MonoBehaviour {
 
         //Init Game save
         LoadGameSave();
+        LoadQuickstart();
 
         Application.targetFrameRate = 60;
         m_GameCount = 0;
@@ -119,6 +123,7 @@ public class GameManager : MonoBehaviour {
             obj.SetActive(true);
         }
 
+        
 		//DebugCoinStars ();
     }
 
@@ -134,8 +139,8 @@ public class GameManager : MonoBehaviour {
         gameScore = 0;
         if (DiffScoreOption == DiffScoreUsage.ScaleOffHighest)
         {
-            scoreForDifficulty = gameHighScore * scoreForDiffScale;
-            //gameScore = scoreForDifficulty;
+            scoreForDifficulty = 0;
+            gameScore = 0;
         }
         else if (DiffScoreOption == DiffScoreUsage.Normal)
             scoreForDifficulty = 0;
@@ -149,6 +154,9 @@ public class GameManager : MonoBehaviour {
         m_DiffMultiplier = 1.0f;
         m_ItemMultiplier = 1.0f;
         m_Level = 0;
+        m_StartBoosting = false;
+        m_GlobalMultiplier = 1.0f;
+        m_AutoPilotSpeedUpFactor = 1.0f;
 
          m_ReviveCount = 0;
     }
@@ -361,9 +369,21 @@ public class GameManager : MonoBehaviour {
 
 			UIManager.current.m_Tutorial.ShowTurnAndBoostTutorialIfFirstTime ();
             UIManager.current.m_Ingame.ShowPhaseText();
+
+            if(isQuickstart())
+            {
+                StartQuickStart();
+            }
         }
     }
 
+    void StartQuickStart()
+    {
+        player.gameObject.AddComponent<AutoPilot>().SetPilotModeAndCount(AutoPilot.PilotMode.Score, gameHighScore * scoreForDiffScale);
+        AutoPilotSpeedChange(1.7f);
+        m_GlobalMultiplier = 4.0f;
+        m_StartBoosting = true;
+    }
 
     void LoadAdIfNeeded()
     {
@@ -416,11 +436,22 @@ public class GameManager : MonoBehaviour {
         if(start && AdRemoved())
         {
             DiffScoreOption = DiffScoreUsage.ScaleOffHighest;
+            RecordManager.RecordInt(GlobalKeys.m_QuickstartKey, 1);
         }
         else
         {
             DiffScoreOption = DiffScoreUsage.Normal;
+            RecordManager.RecordInt(GlobalKeys.m_QuickstartKey, 0);
         }
+    }
+
+    void LoadQuickstart()
+    {
+        int isQS = PlayerPrefs.GetInt(GlobalKeys.m_QuickstartKey, 0);
+        if (isQS != 0)
+            DiffScoreOption = DiffScoreUsage.ScaleOffHighest;
+        else
+            DiffScoreOption = DiffScoreUsage.Normal;
     }
 
     void SetDayHighScore()
@@ -593,7 +624,8 @@ public class GameManager : MonoBehaviour {
         // Change it when it's not slow motion
         if (Time.timeScale >= 1.0f)
         {
-            Time.timeScale = m_OldTimescale;
+            SetTimeScaleBasedOnFactors();
+            //Time.timeScale = m_OldTimescale;
         }
     }
 
@@ -603,15 +635,30 @@ public class GameManager : MonoBehaviour {
         // Change it when it's not slow motion
         if(Time.timeScale >= 1.0f)
         {
-            Time.timeScale = m_OldTimescale;
+            SetTimeScaleBasedOnFactors();
+            //Time.timeScale = m_OldTimescale;
         }
     }
 
     public void TokiyoTomare(float slowdownFactor = 0.5f)
     {
         m_SlowmotionFactor = slowdownFactor;
-        Time.timeScale = m_OldTimescale * m_SlowmotionFactor;
+        SetTimeScaleBasedOnFactors();
     }
+
+    public void AutoPilotSpeedChange(float speedUpFactor)
+    {
+        m_AutoPilotSpeedUpFactor = speedUpFactor;
+        SetTimeScaleBasedOnFactors();
+        if(speedUpFactor == 1.0f)
+            m_GlobalMultiplier = 1.0f;
+    }
+
+    void SetTimeScaleBasedOnFactors()
+    {
+        Time.timeScale = m_OldTimescale * m_SlowmotionFactor * m_AutoPilotSpeedUpFactor;
+    }
+
 
     public bool IsPaused()
     {

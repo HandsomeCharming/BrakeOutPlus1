@@ -19,15 +19,18 @@ public class HourglassBall : ItemSuper {
     {
         if (other.tag == "Player")
         {
-            if (Player.current.gameObject.GetComponent<TimeSlow>() == null)
+            if (!GameManager.current.m_StartBoosting)
             {
-                Player.current.gameObject.AddComponent<TimeSlow>().SetTimer(ItemManager.GetItemDuration(ItemType.TimeSlow));
+                if (Player.current.gameObject.GetComponent<TimeSlow>() == null)
+                {
+                    Player.current.gameObject.AddComponent<TimeSlow>().SetTimer(ItemManager.GetItemDuration(ItemType.TimeSlow));
+                }
+                else
+                {
+                    Player.current.gameObject.GetComponent<TimeSlow>().SetTimer(ItemManager.GetItemDuration(ItemType.TimeSlow));
+                }
+                Destroy(gameObject);
             }
-            else
-            {
-                Player.current.gameObject.GetComponent<TimeSlow>().SetTimer(ItemManager.GetItemDuration(ItemType.TimeSlow));
-            }
-            Destroy(gameObject);
         }
     }
 }

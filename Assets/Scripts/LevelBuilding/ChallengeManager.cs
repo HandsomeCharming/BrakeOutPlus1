@@ -55,7 +55,7 @@ public class ChallengeManager : MonoBehaviour {
             GameManager.current.m_DiffMultiplier = floorData[currentDifficulty].multiplier;
             GameManager.current.SetNormalTimeScale(floorData[currentDifficulty].m_Timescale);
 
-            if (ChallengeManager.current.floorData[currentDifficulty].useGlideTransition)
+            if (ChallengeManager.current.floorData[currentDifficulty].useGlideTransition && !GameManager.current.m_StartBoosting)
                 FloorBuilder.current.AddGlidingAtEnd(); 
         }
 
