@@ -380,8 +380,8 @@ public class GameManager : MonoBehaviour {
     void StartQuickStart()
     {
         player.gameObject.AddComponent<AutoPilot>().SetPilotModeAndCount(AutoPilot.PilotMode.Score, gameHighScore * scoreForDiffScale);
-        AutoPilotSpeedChange(1.7f);
-        m_GlobalMultiplier = 4.0f;
+        AutoPilotSpeedChange(1.5f);
+        m_GlobalMultiplier = 6.0f;
         m_StartBoosting = true;
     }
 
