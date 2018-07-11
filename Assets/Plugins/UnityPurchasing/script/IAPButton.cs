@@ -175,7 +175,7 @@ namespace UnityEngine.Purchasing
 
             bool validPurchase = true; // Presume valid for platforms with no R.V.
 
-#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
+#if false// UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
              AppleTangle.Data(), Application.identifier);
 
@@ -387,7 +387,7 @@ namespace UnityEngine.Purchasing
                     resultProcessed = true;
                 }
 
-#if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
+#if false//UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
             var validator = new CrossPlatformValidator(GooglePlayTangle.Data(),
              AppleTangle.Data(), Application.identifier);
 
