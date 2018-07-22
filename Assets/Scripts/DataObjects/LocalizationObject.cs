@@ -123,10 +123,10 @@ public class LocalizationObjectEditor : Editor
     {
         DrawDefaultInspector();
         LocalizationObject gd = (LocalizationObject)target;
-        if (GUILayout.Button("Parse"))
+        /*if (GUILayout.Button("Parse"))
         {
             gd.ParseLocalizationData();
-        }
+        }*/
     }
 }
 
