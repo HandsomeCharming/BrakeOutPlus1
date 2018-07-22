@@ -46,16 +46,21 @@ public class FontData
 
 
 [CreateAssetMenu(fileName = "LocalizationData", menuName = "Custom/LocalizationData", order = 1)]
-public class LocalizationObject : ScriptableObject {
-    public TextData[] data;
-    public FontData fontData;
+public class LocalizationObject : ScriptableObject
+{
+    public TextAsset textFile;
     public SystemLanguage debugLang;
+    public FontData fontData;
+
+    [Header("Old")]
+    public TextData[] data;
 
     public Dictionary<string, TextDataParsed> m_TextDict;
 
+    // this doesn't work, scriptable object can't store dictionary
     public void ParseLocalizationData()
     {
-        var comparer = StringComparer.OrdinalIgnoreCase;
+       /* var comparer = StringComparer.OrdinalIgnoreCase;
         m_TextDict = new Dictionary<string, TextDataParsed>(comparer);
         foreach (TextData d in data)
         {
@@ -74,8 +79,38 @@ public class LocalizationObject : ScriptableObject {
                 }
             }
             m_TextDict.Add(d.Original, parse);
+        }*/
+
+        var comparer = StringComparer.OrdinalIgnoreCase;
+        m_TextDict = new Dictionary<string, TextDataParsed>(comparer);
+        string text = textFile.text;
+        string[] line = text.Split('\n');
+
+        List<SystemLanguage> languages = new List<SystemLanguage>();
+
+        string[] line1 = line[0].Split(',');
+        for(int i = 1; i < line[0].Length; ++i)
+        {
+            string lang = line1[i];
+            SystemLanguage language = (SystemLanguage)System.Enum.Parse(typeof(SystemLanguage), lang);
+            languages.Add(language);
         }
 
+        for(int i=1; i<line.Length; ++i)
+        {
+            string[] lineWord = line[i].Split(',');
+            
+            TextDataParsed parse = new TextDataParsed();
+            parse.m_Dict = new Dictionary<SystemLanguage, string>();
+            parse.Original = lineWord[0];
+            
+            for(int j=1; j<lineWord.Length; ++j)
+            {
+                parse.m_Dict[languages[j - 1]] = lineWord[j];
+            }
+
+            m_TextDict.Add(parse.Original, parse);
+        }
     }
 }
 

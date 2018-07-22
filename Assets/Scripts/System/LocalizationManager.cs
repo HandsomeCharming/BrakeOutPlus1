@@ -27,13 +27,15 @@ public class LocalizationManager : MonoBehaviour {
         else
             m_CurrentLanguage = Application.systemLanguage;
         ParseLocalizationData();
-        //m_TextDict = m_Storer.m_TextDict;
+        foreach (var key in m_TextDict.Keys)
+        {
+            print(key.ToString());
+        }
     }
 
     public void ParseLocalizationData()
     {
-        var data = m_Storer.data;
-
+        /*var data = m_Storer.data;
         var comparer = StringComparer.OrdinalIgnoreCase;
         m_TextDict = new Dictionary<string, TextDataParsed>(comparer);
         foreach (TextData d in data)
@@ -53,6 +55,37 @@ public class LocalizationManager : MonoBehaviour {
             }
 
             m_TextDict.Add(d.Original, parse);
+        }*/
+
+        var comparer = StringComparer.OrdinalIgnoreCase;
+        m_TextDict = new Dictionary<string, TextDataParsed>(comparer);
+        string text = m_Storer.textFile.text;
+        string[] line = text.Split('\n');
+
+        List<SystemLanguage> languages = new List<SystemLanguage>();
+
+        string[] line1 = line[0].Split(',');
+        for (int i = 1; i < line1.Length; ++i)
+        {
+            string lang = line1[i];
+            SystemLanguage language = (SystemLanguage)System.Enum.Parse(typeof(SystemLanguage), lang);
+            languages.Add(language);
+        }
+
+        for (int i = 1; i < line.Length; ++i)
+        {
+            string[] lineWord = line[i].Split(',');
+
+            TextDataParsed parse = new TextDataParsed();
+            parse.m_Dict = new Dictionary<SystemLanguage, string>();
+            parse.Original = lineWord[0];
+
+            for (int j = 1; j < lineWord.Length; ++j)
+            {
+                parse.m_Dict[languages[j - 1]] = lineWord[j];
+            }
+
+            m_TextDict.Add(parse.Original, parse);
         }
     }
 
