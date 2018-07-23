@@ -53,8 +53,10 @@ public class UIManager : MonoBehaviour {
     {
         m_ConsistantUI.UpdateNumbers();
 		if (GameManager.current.state == GameManager.GameState.Start || GameManager.current.state == GameManager.GameState.AssembleTrack) {
-			if (AppManager.instance.HasName ())
-				StartMainMenu ();
+            if (!AppManager.instance.HasName())
+            {
+                StartLogin();
+            }
 			else {
 				StartMainMenu ();
 			}
@@ -65,7 +67,7 @@ public class UIManager : MonoBehaviour {
 		} else if (GameManager.current.state == GameManager.GameState.ReviveMenu) {
 			ShowRevive ();
 		} else if (GameManager.current.state == GameManager.GameState.Login) {
-
+            StartLogin();
 		} else if (GameManager.current.state == GameManager.GameState.Tutorial) {
 			DisableOthersForTutorial ();
 		}

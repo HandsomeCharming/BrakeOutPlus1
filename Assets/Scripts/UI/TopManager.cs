@@ -60,7 +60,7 @@ public class TopManager : MonoBehaviour {
         }
 
         m_PlayerRow = new RankUIRow();
-        m_PlayerRow.Init(transform.Find("Player"));
+        m_PlayerRow.Init(transform.Find("Content/Player"));
     }
 
     private void OnEnable()

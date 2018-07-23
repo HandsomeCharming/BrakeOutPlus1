@@ -30,7 +30,7 @@ public class GameSparksUnity : MonoBehaviour
 
     void StartGameSparks()    
 #else
-    void Awake()
+    void Start()
 #endif
     {
 
@@ -48,7 +48,6 @@ public class GameSparksUnity : MonoBehaviour
 #if UNITY_IOS && !UNITY_EDITOR
 		GSGetProxySettings(this.name);
 #endif
-
 	}
 	
 	void OnGUI () {
