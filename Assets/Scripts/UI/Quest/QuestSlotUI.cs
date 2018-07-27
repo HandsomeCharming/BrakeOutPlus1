@@ -57,45 +57,50 @@ public class QuestSlotUI : MonoBehaviour {
         return res;
     }
 
+    static string tr(string original)
+    {
+        return LocalizationManager.GetLocalStringStatic(original);
+    }
+
     public static string GetActionStringByActionAndCount(QuestAction action, int count)
     {
         string res = "";
         switch(action)
         {
             case QuestAction.Play:
-                res = "Play " + count.ToString() + " game";
+                res = string.Format(tr("Play %d game"), count.ToString());
                 break;
             case QuestAction.ReachScore:
-                res = "Reach " + count.ToString() + " score";
+                res = string.Format(tr("Reach %d score"), count.ToString());
                 break;
             case QuestAction.LeapGap:
-                res = "Leap " + count.ToString() + " Gap";
+                res = string.Format(tr("Leap %d Gap"), count.ToString());
                 break;
             case QuestAction.UpgradeCar:
-                res = "Upgrade a Car Status once";
+                res = string.Format(tr("Upgrade a Car Status once"));
                 break;
             case QuestAction.UpgradeCarToMax:
-                res = "Upgrade a Car Status to max";
+                res = string.Format(tr("Upgrade a Car Status to max"));
                 break;
             case QuestAction.OpenChest:
-                res = "Open " + count.ToString() + " Chest";
+                res = string.Format(tr("Open %d Chest"), count.ToString());
                 break;
             case QuestAction.UpgradeItem:
-                res = "Upgrade an Item once";
+                res = string.Format(tr("Upgrade an Item once"));
                 break;
             case QuestAction.UpgradeItemToMax:
-                res = "Upgrade an Item to max ";
+                res = string.Format(tr("Upgrade an Item to max "));
                 break;
             case QuestAction.Glide:
-                res = "Glide " + count.ToString() + " time";
+                res = string.Format(tr("Glide %d time"), count.ToString());
                 break;
             case QuestAction.CrushCube:
-                res = "Crush Cube " + count.ToString() + " time";
+                res = string.Format(tr("Crush Cube %d time"), count.ToString());
                 break;
             default:
                 break;
         }
-        if (count > 1 && action != QuestAction.ReachScore) res += "s";
+        if (count > 1 && action != QuestAction.ReachScore && LocalizationManager.current.m_CurrentLanguage == SystemLanguage.English) res += "s";
 
         return res;
     }

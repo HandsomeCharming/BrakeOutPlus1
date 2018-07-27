@@ -89,6 +89,11 @@ public class LocalizationManager : MonoBehaviour {
         }
     }
 
+    public static string GetLocalStringStatic(string original)
+    {
+        return current.GetLocalString(original);
+    }
+
     public string GetLocalString(string original)
     {
         if(m_TextDict.ContainsKey(original))
