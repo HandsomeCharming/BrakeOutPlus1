@@ -68,13 +68,13 @@ public class QuestSlotUI : MonoBehaviour {
         switch(action)
         {
             case QuestAction.Play:
-                res = string.Format(tr("Play %d game"), count.ToString());
+				res = string.Format(tr("Play {0} game"), count.ToString());
                 break;
             case QuestAction.ReachScore:
-                res = string.Format(tr("Reach %d score"), count.ToString());
+				res = string.Format(tr("Reach {0} score"), count.ToString());
                 break;
             case QuestAction.LeapGap:
-                res = string.Format(tr("Leap %d Gap"), count.ToString());
+				res = string.Format(tr("Leap {0} Gap"), count.ToString());
                 break;
             case QuestAction.UpgradeCar:
                 res = string.Format(tr("Upgrade a Car Status once"));
@@ -83,19 +83,19 @@ public class QuestSlotUI : MonoBehaviour {
                 res = string.Format(tr("Upgrade a Car Status to max"));
                 break;
             case QuestAction.OpenChest:
-                res = string.Format(tr("Open %d Chest"), count.ToString());
+				res = string.Format(tr("Open {0} Chest"), count.ToString());
                 break;
             case QuestAction.UpgradeItem:
                 res = string.Format(tr("Upgrade an Item once"));
                 break;
             case QuestAction.UpgradeItemToMax:
-                res = string.Format(tr("Upgrade an Item to max "));
+                res = string.Format(tr("Upgrade an Item to max"));
                 break;
             case QuestAction.Glide:
-                res = string.Format(tr("Glide %d time"), count.ToString());
+				res = string.Format(tr("Glide {0} time"), count.ToString());
                 break;
             case QuestAction.CrushCube:
-                res = string.Format(tr("Crush Cube %d time"), count.ToString());
+				res = string.Format(tr("Crush Cube {0} time"), count.ToString());
                 break;
             default:
                 break;
