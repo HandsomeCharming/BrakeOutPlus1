@@ -84,7 +84,7 @@ public class ItemUpgradeCard : MonoBehaviour {
         {
             m_PriceText.gameObject.SetActive(false);
             m_CoinImage.gameObject.SetActive(false);
-			m_PurchaseText.text = "MAX";
+			m_PurchaseText.text = LocalizationManager.tr("MAX");
             SetSlotToLevel();
             m_LevelText.text = "Lv 5/5";
 			//m_ItemImage.rectTransform.anchoredPosition = new Vector2(-275.0F, 32.5F);
@@ -94,7 +94,7 @@ public class ItemUpgradeCard : MonoBehaviour {
         else if (m_Level == 0)
         {
             m_PriceText.text = ItemManager.current.GetItemPrice(m_Type).ToString();
-            m_PurchaseText.text = "PURCHASE";
+            m_PurchaseText.text = LocalizationManager.tr("PURCHASE");
             SlotParent.gameObject.SetActive(true);
 			SetSlotToLevel();
             m_LevelText.text = "";
@@ -115,7 +115,7 @@ public class ItemUpgradeCard : MonoBehaviour {
         else
         {
             m_PriceText.text = ItemManager.current.GetItemPrice(m_Type).ToString();
-            m_PurchaseText.text = "UPGRADE";
+            m_PurchaseText.text = LocalizationManager.tr("UPGRADE");
             SlotParent.gameObject.SetActive(true);
             SetSlotToLevel();
             m_LevelText.text = "Lv " + m_Level.ToString() + "/5";

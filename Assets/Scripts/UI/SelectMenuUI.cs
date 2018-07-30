@@ -119,8 +119,8 @@ public class SelectMenuUI : MonoBehaviour {
     void ChangeFeatureText()
     {
         var carData = m_Manager.GetCurrentCarData();
-        m_FirstFeature.text = carData.firstLine;
-        m_SecondFeature.text = carData.secondLine;
+        m_FirstFeature.text = LocalizationManager.tr(carData.firstLine);
+        m_SecondFeature.text = LocalizationManager.tr(carData.secondLine);
     }
 
     public void ShowBuyButtonAndPrice(bool show)

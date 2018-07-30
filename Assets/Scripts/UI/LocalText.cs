@@ -3,13 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Text))]
 public class LocalText : MonoBehaviour {
+
+    string original;
+
+    private void Awake()
+    {
+        original = GetComponent<Text>().text;
+    }
+
     private void OnEnable()
     {
-        if(LocalizationManager.current && GetComponent<Text>() )
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        if (LocalizationManager.current && GetComponent<Text>())
         {
             Text text = GetComponent<Text>();
-            text.text = LocalizationManager.current.GetLocalString(text.text);
+            text.text = LocalizationManager.current.GetLocalString(original);
 
             Font font = LocalizationManager.current.GetFont();
             if (font != null && text.font != font)

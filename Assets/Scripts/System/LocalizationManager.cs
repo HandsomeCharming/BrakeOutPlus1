@@ -10,11 +10,27 @@ public class LocalizationManager : MonoBehaviour {
     public static LocalizationManager current;
 
     public LocalizationObject m_Storer;
-    public bool m_UseDebugLang = true;
-    const string m_ObjectLocation = "ScriptableObjects/LocalizationData"; 
+    public bool m_UseDebugLang = false;
+    const string m_ObjectLocation = "ScriptableObjects/LocalizationData";
+    const string languageKey = "LangKey";
 
     public Dictionary<string, TextDataParsed> m_TextDict;
-    public SystemLanguage m_CurrentLanguage;
+
+
+    SystemLanguage m_CurrentLanguage = SystemLanguage.English;
+    public SystemLanguage CurrentLanguage
+    {
+        set
+        {
+            m_CurrentLanguage = value;
+            RecordManager.RecordInt(languageKey, (int)m_CurrentLanguage);
+            print(m_CurrentLanguage);
+        }
+        get
+        {
+            return m_CurrentLanguage;
+        }
+    }
 
     // Use this for initialization
     void Awake ()
@@ -23,9 +39,18 @@ public class LocalizationManager : MonoBehaviour {
         m_Storer = (LocalizationObject)Resources.Load(m_ObjectLocation);
 
         if (m_UseDebugLang)
-            m_CurrentLanguage = m_Storer.debugLang;
+            CurrentLanguage = m_Storer.debugLang;
         else
-            m_CurrentLanguage = Application.systemLanguage;
+        {
+            if(RecordManager.HasRecord(languageKey))
+            {
+                CurrentLanguage = (SystemLanguage)RecordManager.GetRecordInt(languageKey);
+            }
+            else
+            {
+                CurrentLanguage = Application.systemLanguage;
+            }
+        }
         ParseLocalizationData();
         foreach (var key in m_TextDict.Keys)
         {
@@ -75,6 +100,11 @@ public class LocalizationManager : MonoBehaviour {
         for (int i = 1; i < line.Length; ++i)
         {
             string[] lineWord = line[i].Split(',');
+            if (m_TextDict.ContainsKey(lineWord[0]))
+            {
+                Debug.LogWarning(lineWord[0] + ": Localization key duplicated.");
+                continue;
+            }
 
             TextDataParsed parse = new TextDataParsed();
             parse.m_Dict = new Dictionary<SystemLanguage, string>();
@@ -89,7 +119,7 @@ public class LocalizationManager : MonoBehaviour {
         }
     }
 
-    public static string GetLocalStringStatic(string original)
+    public static string tr(string original)
     {
         return current.GetLocalString(original);
     }
@@ -99,9 +129,9 @@ public class LocalizationManager : MonoBehaviour {
         if(m_TextDict.ContainsKey(original))
         {
             TextDataParsed data = m_TextDict[original];
-            if(data.m_Dict.ContainsKey(m_CurrentLanguage))
+            if(data.m_Dict.ContainsKey(CurrentLanguage))
             {
-                return data.m_Dict[m_CurrentLanguage];
+                return data.m_Dict[CurrentLanguage];
             }
         }
 
@@ -110,7 +140,7 @@ public class LocalizationManager : MonoBehaviour {
 
     public Font GetFont()
     {
-        string lang = m_CurrentLanguage.ToString();
+        string lang = CurrentLanguage.ToString();
         Font font = (Font) m_Storer.fontData.GetType().GetField(lang).GetValue(m_Storer.fontData);
         return font;
     }

@@ -59,7 +59,7 @@ public class QuestSlotUI : MonoBehaviour {
 
     static string tr(string original)
     {
-        return LocalizationManager.GetLocalStringStatic(original);
+        return LocalizationManager.tr(original);
     }
 
     public static string GetActionStringByActionAndCount(QuestAction action, int count)
@@ -100,7 +100,7 @@ public class QuestSlotUI : MonoBehaviour {
             default:
                 break;
         }
-        if (count > 1 && action != QuestAction.ReachScore && LocalizationManager.current.m_CurrentLanguage == SystemLanguage.English) res += "s";
+        if (count > 1 && action != QuestAction.ReachScore && LocalizationManager.current.CurrentLanguage == SystemLanguage.English) res += "s";
 
         return res;
     }
