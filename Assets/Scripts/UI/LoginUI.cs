@@ -53,6 +53,8 @@ public class LoginUI : UIBase
         string text = displayName;
         if (text == "") text = "Driver";
         AppManager.instance.RegisterPlayer(text);
+        GameManager.current.state = GameManager.GameState.Start;
+        RecordManager.Record(GlobalKeys.FBRegisteredKey);
         UIManager.current.ChangeStateByGameState();
     }
 
@@ -78,8 +80,8 @@ public class LoginUI : UIBase
                          if (!fbauth_response.HasErrors)
                          {
                              print("success");
-                                     print(fbauth_response.DisplayName);
-                                     RegisterWithFacebook(fbauth_response.DisplayName);
+                             print(fbauth_response.DisplayName);
+                             RegisterWithFacebook(fbauth_response.DisplayName);
                          }
                          else
                          {
