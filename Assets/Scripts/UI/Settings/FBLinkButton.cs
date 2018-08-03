@@ -17,7 +17,7 @@ public class FBLinkButton : MonoBehaviour {
 
     void Refresh()
     {
-        m_Text.text = RecordManager.HasRecord(GlobalKeys.FBRegisteredKey) ? LocalizationManager.tr("FB Linked") : LocalizationManager.tr("FB Link");
+        m_Text.text = RecordManager.HasRecord(GlobalKeys.FBRegisteredKey) ? LocalizationManager.tr("LINKED") : LocalizationManager.tr("LINK");
     }
 
     void RegisterWithFacebook(string displayName)
