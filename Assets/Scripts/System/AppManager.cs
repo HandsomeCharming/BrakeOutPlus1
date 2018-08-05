@@ -167,7 +167,6 @@ public class AppManager : MonoBehaviour {
                 if (!response.HasErrors)
                 {
                     print("Login");
-                    print(response.JSONString);
                 }
                 else
                 {
