@@ -121,6 +121,7 @@ public class QuestManager : MonoBehaviour {
             m_QuestData.levelQuest = null;
             m_QuestData.currentLevel++;
             FinishedQuests++;
+            SaveRecords();
 
             if (ShouldGetLevelQuest())
             {
@@ -140,6 +141,7 @@ public class QuestManager : MonoBehaviour {
                 FinishDailyQuest(quest);
                 destroyQueue.Enqueue(quest);
                 FinishedQuests++;
+                SaveRecords();
             }
         }
         bool shouldSave = destroyQueue.Count > 0;
