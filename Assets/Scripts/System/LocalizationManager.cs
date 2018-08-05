@@ -52,10 +52,6 @@ public class LocalizationManager : MonoBehaviour {
             }
         }
         ParseLocalizationData();
-        foreach (var key in m_TextDict.Keys)
-        {
-            print(key.ToString());
-        }
     }
 
     public void ParseLocalizationData()

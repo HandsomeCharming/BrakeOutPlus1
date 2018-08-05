@@ -88,10 +88,23 @@ public class AppManager : MonoBehaviour {
         }
     }
 
+    public void RegisterPlayerFB(string name)
+    {
+        if (!HasName())
+            SaveName(name);
+
+        PlayerPrefs.SetString(GSRegisteredPref, name);
+        PlayerPrefs.Save();
+    }
+
     public void SaveName(string name)
     {
         PlayerPrefs.SetString(UsernamePref, name);
         PlayerPrefs.Save();
+        if(name != "Driver")
+        {
+            RecordManager.Record(GlobalKeys.m_RenamedKey);
+        }
     }
 
     public void RegisterGameSpark(string name)
@@ -141,7 +154,7 @@ public class AppManager : MonoBehaviour {
         }
         else
         {
-            LoginOrRegister();
+            //LoginOrRegister();
         }
     }
 
@@ -161,18 +174,24 @@ public class AppManager : MonoBehaviour {
         {
             string name = GetUserName();
             if (name == null) name = "Driver";
-			var request = new GameSparks.Api.Requests.DeviceAuthenticationRequest ();
-			request.Send((response) =>
+            if(FacebookManager.current.HasFBConnected())
             {
-                if (!response.HasErrors)
+                FacebookManager.current.GameSparksFBLogBackIn();
+            } else
+            {
+                var request = new GameSparks.Api.Requests.DeviceAuthenticationRequest();
+                request.Send((response) =>
                 {
-                    print("Login");
-                }
-                else
-                {
-                    Debug.Log("Register gamespark failed");
-                }
-            });
+                    if (!response.HasErrors)
+                    {
+                        print("Login");
+                    }
+                    else
+                    {
+                        Debug.Log("Register gamespark failed");
+                    }
+                });
+            }
         }
     }
 

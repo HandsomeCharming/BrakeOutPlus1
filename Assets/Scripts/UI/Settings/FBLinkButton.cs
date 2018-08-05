@@ -17,15 +17,14 @@ public class FBLinkButton : MonoBehaviour {
 
     void Refresh()
     {
-        m_Text.text = RecordManager.HasRecord(GlobalKeys.FBRegisteredKey) ? LocalizationManager.tr("LINKED") : LocalizationManager.tr("LINK");
+        m_Text.text = FacebookManager.current.HasFBConnected() ? LocalizationManager.tr("LINKED") : LocalizationManager.tr("LINK");
     }
 
     void RegisterWithFacebook(string displayName)
     {
         string text = displayName;
         if (text == "") text = "Driver";
-        AppManager.instance.RegisterPlayer(text);
-        RecordManager.Record(GlobalKeys.FBRegisteredKey);
+        AppManager.instance.RegisterPlayerFB(text);
         Refresh();
     }
 
@@ -41,6 +40,7 @@ public class FBLinkButton : MonoBehaviour {
                 if (FB.IsLoggedIn)
                 {
                     Debug.Log("Logged In, Connecting GS via FB..");
+                    FacebookManager.current.SetFBToken(AccessToken.CurrentAccessToken.TokenString);
                     new GameSparks.Api.Requests.FacebookConnectRequest().SetAccessToken(AccessToken.CurrentAccessToken.TokenString)
                              .SetDoNotLinkToCurrentPlayer(false)// we don't want to create a new account so link to the player that is currently logged in
                              .SetSwitchIfPossible(true)//this will switch to the player with this FB account id they already have an account from a separate login
@@ -72,7 +72,7 @@ public class FBLinkButton : MonoBehaviour {
 
     public void LoginFacebook_button()
     {
-        if (RecordManager.HasRecord(GlobalKeys.FBRegisteredKey)) return;
+        if (FacebookManager.current.HasFBConnected()) return;
         Debug.Log("Connecting Facebook With GameSparks...");// first check if FB is ready, and then login //
                                                             // if it's not ready we just init FB and use the login method as the callback for the init method //
         if (!FB.IsInitialized)

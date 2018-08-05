@@ -333,7 +333,7 @@ public class TopManager : MonoBehaviour {
     void ShowNotConnectedPanel()
     {
         NotConnectedPanel.SetActive(true);
-        if(RecordManager.HasRecord(GlobalKeys.FBRegisteredKey))
+        if(FacebookManager.current.HasFBConnected())
         {
             NotConnectedText.text = LocalizationManager.tr("Facebook friends not playing this game yet, invite them!");
         }

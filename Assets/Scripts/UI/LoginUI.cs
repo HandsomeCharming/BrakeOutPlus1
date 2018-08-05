@@ -52,9 +52,8 @@ public class LoginUI : UIBase
         m_LoginPage.SetActive(false);
         string text = displayName;
         if (text == "") text = "Driver";
-        AppManager.instance.RegisterPlayer(text);
+        AppManager.instance.RegisterPlayerFB(text);
         GameManager.current.state = GameManager.GameState.Start;
-        RecordManager.Record(GlobalKeys.FBRegisteredKey);
         UIManager.current.ChangeStateByGameState();
     }
 
@@ -73,13 +72,15 @@ public class LoginUI : UIBase
                 if (FB.IsLoggedIn)
                 {
                     Debug.Log("Logged In, Connecting GS via FB..");
-                    new GameSparks.Api.Requests.FacebookConnectRequest().SetAccessToken(AccessToken.CurrentAccessToken.TokenString)
+                    FacebookManager.current.SetFBToken(AccessToken.CurrentAccessToken.TokenString);
+                    new GameSparks.Api.Requests.FacebookConnectRequest()
+                             .SetAccessToken(AccessToken.CurrentAccessToken.TokenString)
                              .SetDoNotLinkToCurrentPlayer(false)// we don't want to create a new account so link to the player that is currently logged in
                              .SetSwitchIfPossible(true)//this will switch to the player with this FB account id they already have an account from a separate login
+                             .SetSyncDisplayName(true)
                              .Send((fbauth_response) => {
                          if (!fbauth_response.HasErrors)
                          {
-                             print("success");
                              print(fbauth_response.DisplayName);
                              RegisterWithFacebook(fbauth_response.DisplayName);
                          }
