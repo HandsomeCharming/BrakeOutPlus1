@@ -281,7 +281,7 @@ public class TopManager : MonoBehaviour {
                         {
                             foreach (var jj in response2.JSONData)
                             {
-                                //print(jj.Key);
+                                print(jj.Key);
                                 if (jj.Key.Contains(boardName[m_CurrentBoardIndex]))
                                 {
                                     print(jj.Key);
@@ -295,6 +295,7 @@ public class TopManager : MonoBehaviour {
                                 else
                                 {
                                     HidePlayerName();
+                                    Debug.Log("No score from leaderboard");
                                 }
                             }
                         }

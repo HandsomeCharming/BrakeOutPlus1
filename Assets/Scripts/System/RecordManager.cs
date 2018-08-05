@@ -8,7 +8,7 @@ public class RecordManager {
 
     const string DateFormat = "dd-MM-yyyy";
     const string LastHighScoreDateKey = "TodayHSDate";
-    const string LastHighScorekey = "TodayHSDate";
+    const string LastHighScorekey = "TodayHS";
 
     public static void Record(string key)
 	{
@@ -53,33 +53,45 @@ public class RecordManager {
 
     public static bool HasRecordDate(string key)
     {
-        return PlayerPrefs.HasKey(key) && PlayerPrefs.GetString(key) != "";
+        if (PlayerPrefs.HasKey(key))
+        {
+            try
+            {
+                DateTime date = DateTime.ParseExact(PlayerPrefs.GetString(key), DateFormat, CultureInfo.InvariantCulture);
+            }
+            catch (Exception err)
+            {
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     public static DateTime GetRecordDate(string key)
     {
         Debug.Assert(PlayerPrefs.HasKey(key));
-        Debug.Log(PlayerPrefs.GetString(key));
         DateTime date = DateTime.ParseExact(PlayerPrefs.GetString(key), DateFormat, CultureInfo.InvariantCulture);
         return date;
     }
 
     public static void RecordTodaysHighscore(float score)
     {
-        if(HasRecordDate(LastHighScoreDateKey) && GetRecordDate(LastHighScoreDateKey).Date == DateTime.Today.Date && score < GetRecordFloat(LastHighScorekey))
+        if (HasRecordDate(LastHighScoreDateKey) && GetRecordDate(LastHighScoreDateKey).Date == DateTime.UtcNow.Date && score < GetRecordFloat(LastHighScorekey))
         {
             return;
         }
-        RecordDate(LastHighScoreDateKey, DateTime.Today);
+        RecordDate(LastHighScoreDateKey, DateTime.UtcNow.Date);
         RecordFloat(LastHighScorekey, score);
     }
 
     public static float GetTodaysHighscore()
     {
-        if (HasRecordDate(LastHighScoreDateKey) && GetRecordDate(LastHighScoreDateKey).Date == DateTime.Today.Date)
+        if (HasRecordDate(LastHighScoreDateKey) && GetRecordDate(LastHighScoreDateKey).Date == DateTime.UtcNow.Date)
         {
             return GetRecordFloat(LastHighScorekey);
         }
+        Debug.Log("Today High score failed");
         return 0;
     }
 

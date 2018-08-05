@@ -1,5 +1,6 @@
 ﻿using Facebook.Unity;
 using GameSparks.Api.Requests;
+using GameSparks.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +35,7 @@ public class FacebookManager : MonoBehaviour {
             Save();
             new FacebookConnectRequest()
                 .SetAccessToken(AccessToken.CurrentAccessToken.TokenString)
-                .SetSwitchIfPossible(true)
+                .SetSwitchIfPossible(false)
                 .SetSyncDisplayName(true)
                 .Send((response) => {
                     if (response.HasErrors)
@@ -44,6 +45,7 @@ public class FacebookManager : MonoBehaviour {
                     else
                     {
                         Debug.Log("Gamesparks Facebook login successful");
+                        PrintFriends();
                     }
                 });
         }
@@ -64,6 +66,7 @@ public class FacebookManager : MonoBehaviour {
                     else
                     {
                         Debug.Log("Gamesparks Facebook login successful on log back in");
+                        PrintFriends();
                     }
                 });
         }
@@ -83,5 +86,19 @@ public class FacebookManager : MonoBehaviour {
     void Load()
     {
         fbAuthToken = PlayerPrefs.GetString(tokenKey);
+    }
+
+    void PrintFriends()
+    {
+
+        new ListGameFriendsRequest()
+        .Send((response1) => {
+            var friends = response1.Friends;
+            GSData scriptData = response1.ScriptData;
+            foreach (var friend in friends)
+            {
+                print(friend.DisplayName);
+            }
+        });
     }
 }

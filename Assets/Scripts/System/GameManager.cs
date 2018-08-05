@@ -709,7 +709,6 @@ public class GameManager : MonoBehaviour {
     public bool AdRemoved()
     {
 		bool adRemoved = PlayerPrefs.HasKey (RemovedAD);
-		print (adRemoved);
 		return adRemoved;
     }
 

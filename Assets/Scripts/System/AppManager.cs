@@ -225,6 +225,7 @@ public class AppManager : MonoBehaviour {
 	{
 		new GameSparks.Api.Requests.LogEventRequest ().SetEventKey ("DLUpdate").SetEventAttribute ("SCORE", score).Send ((response) => {
 			if (!response.HasErrors) {
+                print(score);
 				Debug.Log ("Score Posted Successfully...");
 			} else {
 				Debug.Log ("Error Posting Score...");

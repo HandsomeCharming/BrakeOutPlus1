@@ -76,7 +76,7 @@ public class LoginUI : UIBase
                     new GameSparks.Api.Requests.FacebookConnectRequest()
                              .SetAccessToken(AccessToken.CurrentAccessToken.TokenString)
                              .SetDoNotLinkToCurrentPlayer(false)// we don't want to create a new account so link to the player that is currently logged in
-                             .SetSwitchIfPossible(true)//this will switch to the player with this FB account id they already have an account from a separate login
+                             .SetSwitchIfPossible(false)//this will switch to the player with this FB account id they already have an account from a separate login
                              .SetSyncDisplayName(true)
                              .Send((fbauth_response) => {
                          if (!fbauth_response.HasErrors)
