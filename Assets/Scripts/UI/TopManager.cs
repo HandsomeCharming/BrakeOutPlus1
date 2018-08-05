@@ -29,6 +29,7 @@ public class TopManager : MonoBehaviour {
     public Transform m_ListParent;
     public GameObject ChangeNamePanel;
     public GameObject NotConnectedPanel;
+    public Text NotConnectedText;
     public GameObject RankPanel;
 
     public int m_CurrentBoardIndex;
@@ -140,7 +141,7 @@ public class TopManager : MonoBehaviour {
                 if (response.Errors.JSON.Contains("NOTSOCIAL"))
                 {
                     RankPanel.SetActive(false);
-                    NotConnectedPanel.SetActive(true);
+                    ShowNotConnectedPanel();
                     return;
                 }
             }
@@ -327,5 +328,18 @@ public class TopManager : MonoBehaviour {
         m_PlayerRow.rank.text = "";
         m_PlayerRow.score.text = "";
         m_PlayerRow.name.text = "";
+    }
+
+    void ShowNotConnectedPanel()
+    {
+        NotConnectedPanel.SetActive(true);
+        if(RecordManager.HasRecord(GlobalKeys.FBRegisteredKey))
+        {
+            NotConnectedText.text = LocalizationManager.tr("Facebook friends not playing this game yet, invite them!");
+        }
+        else
+        {
+            NotConnectedText.text = LocalizationManager.tr("Not connected with Facebook");
+        }
     }
 }
