@@ -38,6 +38,8 @@ public class ObstacleBuilder : MonoBehaviour {
     public const string GlideSign = "GlideSign";
     public const string StopSign = "StopSign";
 
+    List<GameObject> glideCoinsToDestroy;
+
     private void Awake()
     {
         current = this;
@@ -370,7 +372,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     floorMesh.prevPos2.y -= m_Storer.m_GlideHeight;  //6.5f;
                     floorMesh.makeMesh();
 
-                    if(GlideTrigger.current )
+                    if(GlideTrigger.current)
                     {
                         float upY = 3.5f;
 
@@ -386,8 +388,10 @@ public class ObstacleBuilder : MonoBehaviour {
 
                         float gap = m_Storer.m_GlideCoinGap;
                         int count = (int) (dist / gap);
-                        
-                        for(int i=1; i < count - 1; ++i)
+
+                        DestroyAllGlideCoins();
+                        glideCoinsToDestroy = new List<GameObject>();
+                        for (int i=1; i < count - 1; ++i)
                         {
                             float ii = (float)i;
                             GameObject coins = Instantiate(m_Storer.m_GliderCoins[Random.Range(0, m_Storer.m_GliderCoins.Length)]);
@@ -396,8 +400,8 @@ public class ObstacleBuilder : MonoBehaviour {
                             coins.transform.forward = dir;
                             coins.gameObject.SetActive(true);
                             coins.GetComponent<ItemSuper>().StartAnim();
+                            glideCoinsToDestroy.Add(coins);
                             //coin.m_LifeTime = 20.0f;
-                            Destroy(coins, 20.0f);
                         }
                     }
                     
@@ -472,8 +476,16 @@ public class ObstacleBuilder : MonoBehaviour {
         floorMesh.destroyOnRemake.Add(obstacle);
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    public void DestroyAllGlideCoins()
+    {
+        if(glideCoinsToDestroy != null)
+        {
+            foreach(var go in glideCoinsToDestroy)
+            {
+                Destroy(go);
+            }
+            glideCoinsToDestroy.Clear();
+            glideCoinsToDestroy = null;
+        }
+    }
 }

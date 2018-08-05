@@ -53,12 +53,13 @@ public class RecordManager {
 
     public static bool HasRecordDate(string key)
     {
-        return PlayerPrefs.HasKey(key);
+        return PlayerPrefs.HasKey(key) && PlayerPrefs.GetString(key) != "";
     }
 
     public static DateTime GetRecordDate(string key)
     {
         Debug.Assert(PlayerPrefs.HasKey(key));
+        Debug.Log(PlayerPrefs.GetString(key));
         DateTime date = DateTime.ParseExact(PlayerPrefs.GetString(key), DateFormat, CultureInfo.InvariantCulture);
         return date;
     }

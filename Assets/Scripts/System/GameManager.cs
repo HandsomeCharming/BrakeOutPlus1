@@ -610,10 +610,11 @@ public class GameManager : MonoBehaviour {
         FloorBuilder.current.RebuildFloor();
         UIManager.current.ChangeStateByGameState();
 		CameraFollow.current.SnapBack ();
+        ObstacleBuilder.current.DestroyAllGlideCoins();
         //Scene scene = SceneManager.GetActiveScene();
         //SceneManager.LoadScene(scene.name);
 
-		if(!AdRemoved())
+        if (!AdRemoved())
         {
             AdPlacementRecorder.GamePlayed();
             HandleAdCountAndShowIfShould();

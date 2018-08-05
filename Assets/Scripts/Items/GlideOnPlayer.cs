@@ -72,6 +72,8 @@ public class GlideOnPlayer : MonoBehaviour {
         GameManager.current.LevelIncreased();
         BackgroundMaterial.current.EndGlide();
 
+        ObstacleBuilder.current.DestroyAllGlideCoins();
+
         Destroy(this);
     }
 }
