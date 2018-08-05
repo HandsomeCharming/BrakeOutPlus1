@@ -423,7 +423,9 @@ public class GameManager : MonoBehaviour {
         {
             SetDayHighScore();
         }
-        AppManager.instance.UpdateDailyLeaderboardScore((int)gameScore);
+        RecordManager.RecordTodaysHighscore(gameScore);
+        float todaysHighScore = RecordManager.GetTodaysHighscore();
+        AppManager.instance.UpdateDailyLeaderboardScore((int)todaysHighScore);
 	}
 
     public bool isQuickstart()

@@ -7,8 +7,10 @@ using UnityEngine;
 public class RecordManager {
 
     const string DateFormat = "dd-MM-yyyy";
+    const string LastHighScoreDateKey = "TodayHSDate";
+    const string LastHighScorekey = "TodayHSDate";
 
-	public static void Record(string key)
+    public static void Record(string key)
 	{
 		PlayerPrefs.SetInt(key, 1);
 		PlayerPrefs.Save();
@@ -60,4 +62,25 @@ public class RecordManager {
         DateTime date = DateTime.ParseExact(PlayerPrefs.GetString(key), DateFormat, CultureInfo.InvariantCulture);
         return date;
     }
+
+    public static void RecordTodaysHighscore(float score)
+    {
+        if(HasRecordDate(LastHighScoreDateKey) && GetRecordDate(LastHighScoreDateKey).Date == DateTime.Today.Date && score < GetRecordFloat(LastHighScorekey))
+        {
+            return;
+        }
+        RecordDate(LastHighScoreDateKey, DateTime.Today);
+        RecordFloat(LastHighScorekey, score);
+    }
+
+    public static float GetTodaysHighscore()
+    {
+        if (HasRecordDate(LastHighScoreDateKey) && GetRecordDate(LastHighScoreDateKey).Date == DateTime.Today.Date)
+        {
+            return GetRecordFloat(LastHighScorekey);
+        }
+        return 0;
+    }
+
+
 }
