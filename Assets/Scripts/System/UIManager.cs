@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour {
     {
         m_ConsistantUI.UpdateNumbers();
 		if (GameManager.current.state == GameManager.GameState.Start || GameManager.current.state == GameManager.GameState.AssembleTrack) {
-            if (!AppManager.instance.HasName())
+            if (false) //!AppManager.instance.HasName())
             {
                 StartLogin();
             }
