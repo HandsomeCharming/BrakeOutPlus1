@@ -90,7 +90,7 @@ public class AppManager : MonoBehaviour {
 
     public void RegisterPlayerFB(string name)
     {
-        RegisterGameSpark(name);
+        RegisterPlayer(name);
     }
 
     public void SaveName(string name)
