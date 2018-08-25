@@ -15,6 +15,7 @@ public class LocalizationManager : MonoBehaviour {
     const string languageKey = "LangKey";
 
     public Dictionary<string, TextDataParsed> m_TextDict;
+    public event Action languageChanged;
 
 
     SystemLanguage m_CurrentLanguage = SystemLanguage.English;
@@ -24,6 +25,10 @@ public class LocalizationManager : MonoBehaviour {
         {
             m_CurrentLanguage = value;
             RecordManager.RecordInt(languageKey, (int)m_CurrentLanguage);
+            if(languageChanged != null)
+            {
+                languageChanged();
+            }
             print(m_CurrentLanguage);
         }
         get
