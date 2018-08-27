@@ -11,6 +11,11 @@ public class LocalText : MonoBehaviour {
     private void Awake()
     {
         original = GetComponent<Text>().text;
+
+        if(LocalizationManager.current)
+        {
+            LocalizationManager.current.languageChanged += Refresh;
+        }
     }
 
     private void OnEnable()
@@ -30,6 +35,14 @@ public class LocalText : MonoBehaviour {
             {
                 text.font = font;
             }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (LocalizationManager.current)
+        {
+            LocalizationManager.current.languageChanged -= Refresh;
         }
     }
 }

@@ -280,7 +280,7 @@ public class SelectMenuUI : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if(!m_CurrentLocked)
+		//if(!m_CurrentLocked)
         {
             if(Input.touchCount == 1 || Input.GetMouseButton(0))
             {
