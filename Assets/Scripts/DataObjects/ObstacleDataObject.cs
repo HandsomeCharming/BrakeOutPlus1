@@ -39,16 +39,22 @@ public class SceneObstaclePrefabs
 [CreateAssetMenu(fileName = "ObstacleDataObject", menuName = "Custom/ObstacleData", order = 1)]
 public class ObstacleDataObject : ScriptableObject {
 
+    [Header("Obstacles")]
     public float m_BlackHoleDistance;
     public float m_MovingCubeMoveDistance;
 
+    [Header("Jump")]
     public float m_JumpDistance;
     public float m_JumpHeight;
 
+    [Header("Glide")]
     public float m_GlideDistance;
     public float m_GlideHeight;
     public float m_GlideCoinGap;
+    public MinMaxData m_GlideCoinFreq;
+    public MinMaxData m_GlideCoinOffset;
 
+    [Header("Prefabs")]
     public GameObject BoostGroundSignPrefab;
     public GameObject[] m_GliderCoins;
 

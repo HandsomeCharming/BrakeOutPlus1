@@ -382,9 +382,9 @@ public class ObstacleBuilder : MonoBehaviour {
                         endPos.y += upY;
                         Vector3 dir = (endPos - prevPos).normalized;
                         float dist = Vector3.Distance(prevPos, endPos);
-                        float freq = Random.Range(5.0f, 10.0f);
+                        float freq = m_Storer.m_GlideCoinFreq.GetRandomBetweenRange();
                         Vector3 left = Vector3.Cross(dir, Vector3.up);
-                        float offset = Random.Range(1.0f, 5.0f);
+                        float offset = m_Storer.m_GlideCoinOffset.GetRandomBetweenRange();
 
                         float gap = m_Storer.m_GlideCoinGap;
                         int count = (int) (dist / gap);

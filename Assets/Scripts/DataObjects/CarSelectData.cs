@@ -40,6 +40,10 @@ public class MinMaxData
 {
     public float min;
     public float max;
+
+    public float GetRandomBetweenRange() {
+        return Random.Range(min, max);
+    }
 }
 
 [System.Serializable]
