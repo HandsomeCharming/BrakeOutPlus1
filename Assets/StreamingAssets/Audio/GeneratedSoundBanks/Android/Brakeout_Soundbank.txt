@@ -1,0 +1,84 @@
+Event	ID	Name			Wwise Object Path	Notes
+	254420377	magnetstart			\Default Work Unit\magnetstart	
+	454121546	scroll			\Default Work Unit\scroll	
+	748153228	glidestop			\Default Work Unit\glidestop	
+	750560166	autopilotstart			\Default Work Unit\autopilotstart	
+	1161967626	shield			\Default Work Unit\shield	
+	1206986035	click2			\Default Work Unit\click2	
+	1440041138	autopilotclose			\Default Work Unit\autopilotclose	
+	1500973335	x2			\Default Work Unit\x2	
+	1584507803	click			\Default Work Unit\click	
+	1586452650	yellowcoin			\Default Work Unit\yellowcoin	
+	1849998205	slowtimestop			\Default Work Unit\slowtimestop	
+	1974659302	autopilotstop			\Default Work Unit\autopilotstop	
+	2108779961	wall			\Default Work Unit\wall	
+	2147734643	magnetstop			\Default Work Unit\magnetstop	
+	2512384458	fall			\Default Work Unit\fall	
+	3005416228	tab2			\Default Work Unit\tab2	
+	3005416229	tab3			\Default Work Unit\tab3	
+	3005416231	tab1			\Default Work Unit\tab1	
+	3048106310	crash			\Default Work Unit\crash	
+	3212360787	startaudio			\Default Work Unit\startaudio	
+	3241391456	glidestart			\Default Work Unit\glidestart	
+	3334102693	redcoin			\Default Work Unit\redcoin	
+	3949140775	slowtimeclose			\Default Work Unit\slowtimeclose	
+	4245713047	slowtimestart			\Default Work Unit\slowtimestart	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	640949982	SPEED			\Default Work Unit\SPEED	
+	2398231425	SCORE			\Default Work Unit\SCORE	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	17309205	autopilot2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\autopilot2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilot2		2112160
+	40833462	tab2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\tab2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab2		391744
+	41281032	falling	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\falling_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\falling		564408
+	76224508	s1_l6_v2-02	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l6_v2-02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l6_v2-02		3800888
+	92767240	impact1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\impact1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact1		280924
+	139877051	s1_l5_v2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l5_v2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l5_v2		4259992
+	153814299	shield	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\shield_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\shield		131084
+	163532065	s1_l6_v2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l6_v2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l6_v2		4029084
+	177744442	impact5	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\impact5_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact5		269764
+	280193016	yellowcoin3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\yellowcoin3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin3		40600
+	296840312	yellowcoin2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\yellowcoin2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin2		44216
+	337550722	s1_l3#_10	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l3#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l3#_10		6200464
+	363046768	redcoin3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\redcoin3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin3		234756
+	373212312	s1_l5#_01	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l5#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l5#_01		3751984
+	391212068	s1_l6_v2-03	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l6_v2-03_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l6_v2-03		7051800
+	419150087	autopilotclose	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\autopilotclose_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilotclose		606752
+	420104218	yellowcoin1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\yellowcoin1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\yellowcoin\yellowcoin1		39876
+	427506041	slowtime	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\slowtime_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\slowtime\slowtime\slowtime		1242788
+	434613612	wall_v3_2#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\wall_v3_2#.2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wall_v3_2#_2		121428
+	464693520	s1_l2#_10	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l2#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l2#_10		6517984
+	468277978	wall_v3_1#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\wall_v3_1#.2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\wall\wall_v3_1#_2		134352
+	479575978	s1_l2#_6	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l2#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l2#_6		3427984
+	482017083	movev4	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\movev4_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\move\bo_sfx_move\movev4		1483212
+	504397293	s1_l1#_10	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l1#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l1#_10		6796624
+	514244258	s1_l4#_10	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l4#.10_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l4#_10		6524464
+	552897409	x2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\x2_v2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\x2		564732
+	624297125	redcoin2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\redcoin2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin2		202024
+	629591569	impact3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\impact3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact3		351864
+	647400573	s1_l5_v2-02	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l5_v2-02_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s3\s1_l5_v2-02		7348600
+	693182511	s1_l1#_6	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l1#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l1#_6		3518704
+	704082341	magnet	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\magnet_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\magnet\magnet\magnet		1176064
+	730798636	UIclick2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\UIclick2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIclick2		214560
+	733407512	autopilot1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\autopilot1_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\autopilot\autopilot1\autopilot1		1994208
+	735192962	s1_l4#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l4#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l4#_2		3249424
+	742846866	scroll3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\scroll3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll3		1508
+	746534377	tab1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\tab1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab1		360064
+	759056848	s1_l4#_6	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l4#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l4#_6		3453904
+	774448436	UIclick	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\UIclick_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIclick		69556
+	793530142	impact4	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\impact4_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact4		365616
+	793980733	s1_l2#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l2#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l2#_2		3141904
+	805584263	glidingv2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\glidingv2_F17FB28C.wem		\Actor-Mixer Hierarchy\Default Work Unit\glidingv2		1152064
+	816385963	impact2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\impact2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\crash\impact2		399640
+	825031112	scroll1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\scroll1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll1		1552
+	826149725	scroll4	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\scroll4_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll4		1440
+	837612678	scroll2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\scroll2_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll\scroll2		1708
+	858482414	s1_l3#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l3#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l3#_2		3082384
+	877303993	speed7	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\speed7_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\speed\speed\speed7		1208908
+	888458382	redcoin1	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\redcoin1_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\redcoin\redcoin1		225912
+	898054080	s1_l1#_2	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l1#.2_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s1\s1_l1#_2		3512464
+	902731285	tab3	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\tab3_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\tab3		374464
+	1008294273	slowtimeclose	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\slowtimeclose_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\slowtime\slowtime\slowtimeclose		384064
+	1043510067	s1_l3#_6	Y:\BrakeOutLFS\GravityRacer_WwiseProject\.cache\Android\SFX\s1_l3#.6_F17FB28C.wem		\Interactive Music Hierarchy\Default Work Unit\music\s2\s1_l3#_6		4192624
+
