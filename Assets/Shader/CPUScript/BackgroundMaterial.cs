@@ -226,6 +226,11 @@ public class BackgroundMaterial : MonoBehaviour {
         return Color.Lerp(m_CurrentColor.colors[ColorAIndex].downColor, m_CurrentColor.colors[ColorBIndex].downColor, lerpAmount);
     }
 
+    public Color GetCurrentTopColor() {
+        float lerpAmount = time / lerpTime;
+        return Color.Lerp(m_CurrentColor.colors[ColorAIndex].topColor, m_CurrentColor.colors[ColorBIndex].topColor, lerpAmount);
+    }
+
     public Color GetCurrentFloorColor()
     {
         if (m_SharpLerpTime > 0 || m_SharpLerpToBlack)
@@ -233,6 +238,14 @@ public class BackgroundMaterial : MonoBehaviour {
         else
             return Color.Lerp(m_CurrentColor.colors[ColorAIndex].floorColor, m_CurrentColor.colors[ColorBIndex].floorColor,
              time / lerpTime);
+    }
+
+    public Color GetCurrentCubeColor(int cubeIndex) {
+        if(cubeIndex < m_CurrentColor.colors[ColorAIndex].cubeColors.Length || cubeIndex < m_CurrentColor.colors[ColorBIndex].cubeColors.Length) {
+            return Color.black;
+        }
+        float lerpAmount = time / lerpTime;
+        return Color.Lerp(m_CurrentColor.colors[ColorAIndex].cubeColors[cubeIndex], m_CurrentColor.colors[ColorBIndex].cubeColors[cubeIndex], lerpAmount);
     }
 
     Color GetSharpLerpFloorColor()

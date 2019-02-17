@@ -8,6 +8,7 @@ public class TopDownColor
     public Color topColor;
     public Color downColor;
     public Color floorColor;
+    public Color[] cubeColors;
 }
 
 [System.Serializable]

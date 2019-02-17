@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackgroundKeepDistance : MonoBehaviour {
 
-    Vector3 dist;
+    public Vector3 dist;
 
 	// Use this for initialization
 	void Start () {

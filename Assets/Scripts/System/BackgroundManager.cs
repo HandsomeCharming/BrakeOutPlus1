@@ -18,6 +18,7 @@ public class BackgroundManager : MonoBehaviour {
 
     public BackgroundEnum m_Background;
     public GameObject m_ColorCanvas;
+    public CubeGroup m_CubeGroup;
 
     public BackgroundData m_Storer;
     public SceneObjects[] m_SceneObjects;
@@ -55,10 +56,12 @@ public class BackgroundManager : MonoBehaviour {
             case BackgroundEnum.Color:
                 Camera.main.clearFlags = CameraClearFlags.Depth;
                 m_ColorCanvas.SetActive(true);
+                m_CubeGroup.gameObject.SetActive(true);
                 FloorBuilder.current.EnableAllFloorMaterials(true);
                 FloorBuilder.current.ChangeAllFloorMaterials(m_Storer.floorColorMat);
                 BackgroundMaterial.current.EndAutoPilot();
                 BackgroundMaterial.current.EndGlide();
+                RenderSettings.fog = true;
 
                 ChangeSceneObject();
                 break;
@@ -68,6 +71,7 @@ public class BackgroundManager : MonoBehaviour {
                 //FloorBuilder.current.EnableAllFloorMaterials(false);
                 FloorBuilder.current.EnableAllFloorMaterials(true);
                 FloorBuilder.current.ChangeAllFloorMaterials(m_Storer.floorSkyMat);
+                RenderSettings.fog = false;
 
                 int count = Random.Range(2, 4);
                 for(int i=0; i < count; ++i)
