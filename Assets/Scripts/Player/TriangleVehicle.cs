@@ -15,6 +15,7 @@ public class TriangleVehicle : VehicleSuper {
     float m_Throttle = 0;
 
     Vector3 m_OriginalRot;
+    MeshRenderer m_Renderer;
 
     public override void Awake()
     {
@@ -25,6 +26,7 @@ public class TriangleVehicle : VehicleSuper {
         //RuntimeManager.AttachInstanceToGameObject(, transform, GetComponent<Rigidbody>());
         //m_DriveSound.start();
         m_Throttle = 0;
+        m_Renderer = GetComponent<MeshRenderer>();
         //m_DriveSound.setParameterValue("Throttle", m_Throttle);
 
     }
@@ -81,7 +83,10 @@ public class TriangleVehicle : VehicleSuper {
             //print(m_Throttle);
         }*/
 
-        if(m_State == VehicleState.Normal || m_State == VehicleState.Gliding)
+        if(BackgroundMaterial.current != null) {
+            m_Renderer.sharedMaterial.color = BackgroundMaterial.current.GetCurrentCarColor();
+        }
+        if (m_State == VehicleState.Normal || m_State == VehicleState.Gliding)
         {
             tiltAngle = transform.eulerAngles.z;
             if (turning)

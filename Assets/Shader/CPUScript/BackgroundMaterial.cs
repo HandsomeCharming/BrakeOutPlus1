@@ -240,12 +240,9 @@ public class BackgroundMaterial : MonoBehaviour {
              time / lerpTime);
     }
 
-    public Color GetCurrentCubeColor(int cubeIndex) {
-        if(cubeIndex < m_CurrentColor.colors[ColorAIndex].cubeColors.Length || cubeIndex < m_CurrentColor.colors[ColorBIndex].cubeColors.Length) {
-            return Color.black;
-        }
+    public Color GetCurrentCarColor() {
         float lerpAmount = time / lerpTime;
-        return Color.Lerp(m_CurrentColor.colors[ColorAIndex].cubeColors[cubeIndex], m_CurrentColor.colors[ColorBIndex].cubeColors[cubeIndex], lerpAmount);
+        return Color.Lerp(m_CurrentColor.colors[ColorAIndex].carColor, m_CurrentColor.colors[ColorBIndex].carColor, lerpAmount);
     }
 
     Color GetSharpLerpFloorColor()

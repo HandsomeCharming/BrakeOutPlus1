@@ -42,11 +42,11 @@ public class CubeGroup : MonoBehaviour {
     }
 
     private void Update() {
-        if(Player.current == null) {
+        if(CameraFollow.current == null) {
             return;
         }
 
-        Vector3 pos = Player.current.transform.position + new Vector3(0, -distY, 0);
+        Vector3 pos = CameraFollow.current.transform.position + new Vector3(0, -distY, 0);
         transform.position = pos;
         // And enable fog
         //RenderSettings.fog = true;
@@ -54,10 +54,6 @@ public class CubeGroup : MonoBehaviour {
         if (BackgroundMaterial.current && BackgroundMaterial.current.gameObject.activeSelf) {
             Color col = BackgroundMaterial.current.GetCurrentTopColor();
             RenderSettings.fogColor = col;
-
-            for(var i=0; i<materials.Length; ++i) {
-                materials[i].color = BackgroundMaterial.current.GetCurrentCubeColor(i);
-            }
             //cubeList[0].m_Renderer.sharedMaterial.color = col;
            // m_Renderer.sharedMaterial.SetColor("_EmissionColor", col / 3.0f);`
         }
