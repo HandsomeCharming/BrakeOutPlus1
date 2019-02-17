@@ -95,7 +95,7 @@ public class SaveManager {
         filepath.Directory.Create();
 
 		string path = Application.persistentDataPath + "/savedGames.gd";
-		FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd"); //you can call it anything you want
+		FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
 
 		m_Data.coin = GameManager.current.GetCoinCount();
 		m_Data.star = GameManager.current.gameStars;
@@ -117,12 +117,13 @@ public class SaveManager {
             }
             catch (System.Exception e)
             {
-                Debug.Log(e);
+                Debug.LogError(e);
                 m_Data = new GameSave();
 			}
 			file.Close();
+            MaybeBackfillDefaultSceneCarSaveData();
 
-            if(m_Data.m_Cars == null)
+            if (m_Data.m_Cars == null)
             {
                 m_Data.m_Cars = new CarSave();
                 AcquireCar(0, 0);
@@ -153,6 +154,31 @@ public class SaveManager {
         }
     }
 
+    private void MaybeBackfillDefaultSceneCarSaveData() {
+        var carData = m_Data.m_Cars;
+        var carIndexesToBackfill = new List<int>();
+        foreach(var car in carData.m_Cars) {
+            if(car.m_SceneIndex != 0) {
+                bool shouldBackfill = true;
+                foreach(var c in carData.m_Cars) {
+                    if(c.m_CarIndex == car.m_CarIndex  && c.m_SceneIndex == 0) {
+                        shouldBackfill = false;
+                        break;
+                    }
+                }
+                if(shouldBackfill) {
+                    carIndexesToBackfill.Add(car.m_CarIndex);
+                }
+            }
+        }
+
+        foreach(var carIndex in carIndexesToBackfill) {
+            AcquireCar(carIndex, 0);
+        }
+        if(carIndexesToBackfill.Count > 0) {
+            Debug.Log("Backfill failed");
+        }
+    }
 
     public void GetDefaultCarAndTrails()
     {
@@ -163,13 +189,54 @@ public class SaveManager {
         AcquireTrail("NONE");
     }
 
+    public int GetCarPriceCoin(SingleCarSelectData carData) {
+        if (m_Data == null) {
+            Debug.LogError("Get price failed: save data is null");
+        }
+        var coinPrice = carData.coinPrice;
+
+        // If not first scene and doesn't have car
+        if (carData.sceneIndex > 0 && !HasCar(carData.carIndex, 0)) {
+            var firstSceneCarData = CarSelectDataReader.Instance.GetCarData(carData.carIndex, 0);
+            coinPrice += firstSceneCarData.coinPrice;
+        }
+        return coinPrice;
+    }
+
+    public int GetCarPriceStar(SingleCarSelectData carData) {
+        if (m_Data == null) {
+            Debug.LogError("Get price failed: save data is null");
+        }
+        var starPrice = carData.starPrice;
+
+        // If not first scene and doesn't have car
+        if (carData.sceneIndex > 0 && !HasCar(carData.carIndex, 0)) {
+            var firstSceneCarData = CarSelectDataReader.Instance.GetCarData(carData.carIndex, 0);
+            starPrice += firstSceneCarData.starPrice;
+        }
+        return starPrice;
+    }
+
+    public int GetCarPriceCoin(int carIndex, int sceneIndex) {
+        return GetCarPriceCoin(CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex));
+    }
+
+    public int GetCarPriceStar(int carIndex, int sceneIndex) {
+        return GetCarPriceStar(CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex));
+    }
+
     public bool BuyCarWithCoin(int carIndex, int sceneIndex)
     {
-        int price = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).coinPrice;
+        int price = GetCarPriceCoin(carIndex, sceneIndex);
         if (GameManager.current.gameCoins >= price)
         {
             GameManager.current.AddCoin(-price);
             AcquireCar(carIndex, sceneIndex);
+
+            // get default scene car
+            if (!HasCar(carIndex, 0)) {
+                AcquireCar(carIndex, 0);
+            }
 
             return true;
         }
@@ -179,11 +246,16 @@ public class SaveManager {
 
     public bool BuyCarWithStar(int carIndex, int sceneIndex)
     {
-        int price = CarSelectDataReader.Instance.GetCarData(carIndex, sceneIndex).starPrice;
+        int price = GetCarPriceStar(carIndex, sceneIndex);
         if (GameManager.current.gameStars >= price)
         {
             GameManager.current.AddStar(-price);
             AcquireCar(carIndex, sceneIndex);
+
+            // get default scene car
+            if(!HasCar(carIndex, 0)) {
+                AcquireCar(carIndex, 0);
+            }
 
             return true;
         }
@@ -237,36 +309,36 @@ public class SaveManager {
     {
         if (HasCar(carName))
         {
-            CarSaveData data = GetSavedCarData(carName);
+            CarSaveData realData = GetSavedCarDataForLevel(carName);
             SingleCarSelectData carData = CarSelectDataReader.Instance.GetCarData(carName);
             bool success = false;
 
             switch (type)
             {
                 case CarUpgradeCatagory.Accelerate:
-                    if (data.m_AccLevel < carData.maxUpgradeLevel &&
-                        GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_AccLevel, type))
+                    if (realData.m_AccLevel < carData.maxUpgradeLevel &&
+                        GameManager.current.gameCoins >= carData.GetUpgradePrice(realData.m_AccLevel, type))
                     {
-                        GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_AccLevel, type));
-                        data.m_AccLevel++;
+                        GameManager.current.AddCoin(-carData.GetUpgradePrice(realData.m_AccLevel, type));
+                        realData.m_AccLevel++;
                         success = true;
                     }
                     break;
                 case CarUpgradeCatagory.Boost:
-                    if (data.m_BoostLevel < carData.maxUpgradeLevel &&
-                        GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_BoostLevel, type))
+                    if (realData.m_BoostLevel < carData.maxUpgradeLevel &&
+                        GameManager.current.gameCoins >= carData.GetUpgradePrice(realData.m_BoostLevel, type))
                     {
-                        GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_BoostLevel, type));
-                        data.m_BoostLevel++;
+                        GameManager.current.AddCoin(-carData.GetUpgradePrice(realData.m_BoostLevel, type));
+                        realData.m_BoostLevel++;
                         success = true;
                     }
                     break;
                 case CarUpgradeCatagory.Handling:
-                    if (data.m_HandlingLevel < carData.maxUpgradeLevel &&
-                        GameManager.current.gameCoins >= carData.GetUpgradePrice(data.m_HandlingLevel, type))
+                    if (realData.m_HandlingLevel < carData.maxUpgradeLevel &&
+                        GameManager.current.gameCoins >= carData.GetUpgradePrice(realData.m_HandlingLevel, type))
                     {
-                        GameManager.current.AddCoin(-carData.GetUpgradePrice(data.m_HandlingLevel, type));
-                        data.m_HandlingLevel++;
+                        GameManager.current.AddCoin(-carData.GetUpgradePrice(realData.m_HandlingLevel, type));
+                        realData.m_HandlingLevel++;
                         success = true;
                     }
                     break;
@@ -275,9 +347,9 @@ public class SaveManager {
             {
                 Save();
                 QuestManager.UpdateQuestsStatic(QuestAction.UpgradeCar);
-                if ((type == CarUpgradeCatagory.Accelerate && data.m_AccLevel == carData.maxUpgradeLevel)
-                    || (type == CarUpgradeCatagory.Boost && data.m_BoostLevel == carData.maxUpgradeLevel)
-                    || (type == CarUpgradeCatagory.Handling && data.m_HandlingLevel == carData.maxUpgradeLevel))
+                if ((type == CarUpgradeCatagory.Accelerate && realData.m_AccLevel == carData.maxUpgradeLevel)
+                    || (type == CarUpgradeCatagory.Boost && realData.m_BoostLevel == carData.maxUpgradeLevel)
+                    || (type == CarUpgradeCatagory.Handling && realData.m_HandlingLevel == carData.maxUpgradeLevel))
                 {
                     QuestManager.UpdateQuestsStatic(QuestAction.UpgradeCarToMax);
                 }
@@ -292,6 +364,15 @@ public class SaveManager {
         return m_CarDict.ContainsKey(name);
     }
 
+    public bool HasCar(int carIndex, int sceneIndex) {
+        foreach(var car in m_Data.m_Cars.m_Cars) {
+            if(car.m_CarIndex == carIndex && car.m_SceneIndex == sceneIndex) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public bool HasTrail(string name)
     {
         return m_Data.m_Trails.m_TrailNames.Contains(name);
@@ -303,5 +384,24 @@ public class SaveManager {
             return m_CarDict[name];
         else
             return null;
+    }
+
+    public CarSaveData GetSavedCarDataForLevel(string name) {
+        if (m_CarDict.ContainsKey(name)) {
+            var data = m_CarDict[name];
+            return GetSavedCarDataForLevel(data.m_CarIndex);
+        }
+        else
+            return null;
+    }
+
+    // Gets saved scar data in first scene
+    public CarSaveData GetSavedCarDataForLevel(int carIndex) {
+        foreach(var car in m_Data.m_Cars.m_Cars) {
+            if(car.m_CarIndex == carIndex && car.m_SceneIndex == 0) {
+                return car;
+            }
+        }
+        return null;
     }
 }

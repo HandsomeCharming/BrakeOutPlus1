@@ -124,7 +124,7 @@ public class SelectCarManager : MonoBehaviour {
 
     public void SelectScene(int index)
     {
-        SelectScene(index, false);
+        SelectScene(index, false, m_CarIndex);
     }
 
     public void SelectScene(int index, bool forced, int carIndex = 0)

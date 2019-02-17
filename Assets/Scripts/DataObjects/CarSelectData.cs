@@ -161,6 +161,11 @@ public class SingleCarSelectData
     public bool CanChangeTrail = true;
     public List<TrailOnCarData> m_Trails;
 
+    [HideInInspector]
+    public int carIndex;
+    [HideInInspector]
+    public int sceneIndex;
+
     public int GetUpgradePrice(int currentLevel, CarUpgradeCatagory type)
     {
         switch (type)
@@ -270,6 +275,14 @@ public class CarSelectDataReader
         m_CarStorer = (CarSelectData)Resources.Load(m_DataPath);
         m_CarDict = new Dictionary<string, SingleCarSelectData>();
         m_TrailSelectDict = new Dictionary<string, TrailSelectData>();
+
+        for(var i=0; i<m_CarStorer.sceneData.Count; ++i) {
+            var sceneData = m_CarStorer.sceneData[i];
+            for(var j=0; j<sceneData.carData.Count; ++j) {
+                sceneData.carData[j].carIndex = j;
+                sceneData.carData[j].sceneIndex = i;
+            }
+        }
 
         foreach (var cars in m_CarStorer.sceneData)
         {

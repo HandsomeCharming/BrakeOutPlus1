@@ -129,8 +129,8 @@ public class SelectMenuUI : MonoBehaviour {
         if(show)
         {
             var carData = m_Manager.GetCurrentCarData();
-            m_CoinPrice.text = carData.coinPrice.ToString();
-            m_StarPrice.text = carData.starPrice.ToString();
+            m_CoinPrice.text = SaveManager.instance.GetCarPriceCoin(carData).ToString();
+            m_StarPrice.text = SaveManager.instance.GetCarPriceStar(carData).ToString();
         }
     }
 
@@ -139,7 +139,7 @@ public class SelectMenuUI : MonoBehaviour {
         // hard code lol
         SingleCarSelectData carData = m_Manager.GetCurrentCarData();
         CarClassData classData = CarSelectDataReader.Instance.GetCarClassData(carData.carClass);
-        CarSaveData saveData = SaveManager.instance.GetSavedCarData(carData.name);
+        CarSaveData saveData = SaveManager.instance.GetSavedCarDataForLevel(carData.name);
         bool hasCar = saveData != null;
         for (int i=0; i<3; ++i)
         {
