@@ -148,7 +148,7 @@ public class SingleCarSelectData
     public Rarity rarity;
     public int maxUpgradeLevel;
 
-    [Header("Price Settings")]
+    [Header("Price Settings, DOES NOT MATTER IF NOT FIRST SCENE")]
     public int[] m_AccelerationPrice;
     public int[] m_HandlingPrice;
     public int[] m_BoostPrice;
@@ -336,5 +336,10 @@ public class CarSelectDataReader
             }
         }
         return null;
+    }
+
+    public int GetUpgradePrice(int carIndex, int currentLevel, CarUpgradeCatagory type) {
+        var data = GetCarData(carIndex, 0);
+        return data.GetUpgradePrice(currentLevel, type);
     }
 }
