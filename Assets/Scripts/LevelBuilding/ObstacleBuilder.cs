@@ -384,7 +384,9 @@ public class ObstacleBuilder : MonoBehaviour {
                     var arrowRendererRightGO = Instantiate(ObstacleDataReader.GetObstaclePrefab(ArrowRendererName));
                     var arrowRendererRight = arrowRendererRightGO.GetComponent<ArrowRenderer>();
                     arrowRendererLeft.SetPositions(prevPos1, floorMesh.prevPos1);
+                    arrowRendererLeft.upwards = Vector3.right;
                     arrowRendererRight.SetPositions(prevPos2, floorMesh.prevPos2);
+                    arrowRendererRight.upwards = Vector3.right;
                     floorMesh.destroyOnRemake.Add(arrowRendererLeftGO);
                     floorMesh.destroyOnRemake.Add(arrowRendererRightGO);
 

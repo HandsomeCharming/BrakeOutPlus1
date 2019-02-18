@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//#define HAS_WWISE
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,10 +38,15 @@ public class AudioSystem : MonoBehaviour {
     GameObject bgm;
     GameObject sfx;
     bool bankInited = false;
+    
 	// Use this for initialization
 	void Awake () {
         current = this;
         m_PlayAudio = PlayerPrefs.GetInt(PlayAudioPrefName, 1) == 1? true : false;
+
+#if !HAS_WWISE
+        return;
+#endif
 
         print("Audio awake");
 
@@ -92,8 +98,10 @@ public class AudioSystem : MonoBehaviour {
     }
 
 
-    void OnLevelWasLoaded()
-    {
+    void OnLevelWasLoaded() {
+#if !HAS_WWISE
+        return;
+#endif
         if (GetComponent<AkInitializer>() != null)
         {
             if (Camera.main.GetComponent<AkAudioListener>() == null)
@@ -105,8 +113,10 @@ public class AudioSystem : MonoBehaviour {
         }
     }
 
-    public void SetScore(float score)
-    {
+    public void SetScore(float score) {
+#if !HAS_WWISE
+        return;
+#endif
         if (m_PlayAudio)
         {
             AkSoundEngine.SetRTPCValue("SCORE", score, bgm);
@@ -114,33 +124,41 @@ public class AudioSystem : MonoBehaviour {
     }
 
     //0 - 100
-    public void SetSpeed(float speed)
-    {
+    public void SetSpeed(float speed) {
+#if !HAS_WWISE
+        return;
+#endif
         if (m_PlayAudio)
         {
             AkSoundEngine.SetRTPCValue("SPEED", speed, bgm);
         }
     }
 
-    public void PlayCrash()
-    {
+    public void PlayCrash() {
+#if !HAS_WWISE
+        return;
+#endif
         if (m_PlayAudio)
         {
             AkSoundEngine.PostEvent(AudioSystemEvents.CrashEventName, sfx);
         }
     }
 
-    public void PlayCoin()
-    {
+    public void PlayCoin() {
+#if !HAS_WWISE
+        return;
+#endif
         if (m_PlayAudio)
         {
             AkSoundEngine.PostEvent(AudioSystemEvents.CoinEventName, sfx);
         }
     }
 
-    public void PlayEvent(string eventName)
-    {
-        if(m_PlayAudio)
+    public void PlayEvent(string eventName) {
+#if !HAS_WWISE
+        return;
+#endif
+        if (m_PlayAudio)
         {
             AkSoundEngine.PostEvent(eventName, bgm);
         }
@@ -151,8 +169,10 @@ public class AudioSystem : MonoBehaviour {
 
     }
     
-    public void StopAllSound()
-    {
+    public void StopAllSound() {
+#if !HAS_WWISE
+        return;
+#endif
         m_PlayAudio = false;
         AkSoundEngine.StopAll();
 
@@ -160,8 +180,10 @@ public class AudioSystem : MonoBehaviour {
         PlayerPrefs.Save();
     }
     
-    public void StartAllSound()
-    {
+    public void StartAllSound() {
+#if !HAS_WWISE
+        return;
+#endif
         m_PlayAudio = true;
 
         StartInitialSound();
