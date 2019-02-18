@@ -37,6 +37,7 @@ public class ObstacleBuilder : MonoBehaviour {
     public const string BoostSign = "BoostSign";
     public const string GlideSign = "GlideSign";
     public const string StopSign = "StopSign";
+    public const string ArrowRendererName = "ArrowRenderer";
 
     List<GameObject> glideCoinsToDestroy;
 
@@ -365,15 +366,29 @@ public class ObstacleBuilder : MonoBehaviour {
             case ObstacleType.GlidingEnd:
                 {
                     FloorColorController.current.NextColorPalette();
-
+                    
                     FloorMesh floorMesh = FloorBuilder.current.floorMeshes[meshIndex];
+
+                    Vector3 prevPos1 = floorMesh.prevPos1;
+                    Vector3 prevPos2 = floorMesh.prevPos2;
+
                     floorMesh.prevPos1 = floorMesh.prevPos1 + floorMesh.dir * m_Storer.m_GlideDistance; //floorMesh.length * 6.2f;
                     floorMesh.prevPos2 = floorMesh.prevPos2 + floorMesh.dir * m_Storer.m_GlideDistance; // * floorMesh.length * 6.2f;
                     floorMesh.prevPos1.y -= m_Storer.m_GlideHeight; //6.5f;
                     floorMesh.prevPos2.y -= m_Storer.m_GlideHeight;  //6.5f;
                     floorMesh.makeMesh();
 
-                    if(GlideTrigger.current)
+                    // Add arrows
+                    var arrowRendererLeftGO = Instantiate(ObstacleDataReader.GetObstaclePrefab(ArrowRendererName));
+                    var arrowRendererLeft = arrowRendererLeftGO.GetComponent<ArrowRenderer>();
+                    var arrowRendererRightGO = Instantiate(ObstacleDataReader.GetObstaclePrefab(ArrowRendererName));
+                    var arrowRendererRight = arrowRendererRightGO.GetComponent<ArrowRenderer>();
+                    arrowRendererLeft.SetPositions(prevPos1, floorMesh.prevPos1);
+                    arrowRendererRight.SetPositions(prevPos2, floorMesh.prevPos2);
+                    floorMesh.destroyOnRemake.Add(arrowRendererLeftGO);
+                    floorMesh.destroyOnRemake.Add(arrowRendererRightGO);
+
+                    if (GlideTrigger.current)
                     {
                         float upY = 3.5f;
 
