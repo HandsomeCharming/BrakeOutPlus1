@@ -275,6 +275,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     Vector3 pos1 = prevPosMid + Vector3.Cross(floorMesh.dir, Vector3.up) * m_Storer.m_MovingCubeMoveDistance;
                     Vector3 pos2 = prevPosMid - Vector3.Cross(floorMesh.dir, Vector3.up) * m_Storer.m_MovingCubeMoveDistance;
                     obstacle.transform.position = prevPosMid;
+                    obstacle.transform.rotation = Quaternion.identity;
                     obstacle.transform.forward = floorMesh.prevDir;
                     obstacle.GetComponent<MovingCubeObstacle>().StartAnim();
                     obstacle.GetComponent<MovingCubeObstacle>().movePos = new Vector3[2];

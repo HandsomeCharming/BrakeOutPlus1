@@ -41,14 +41,6 @@ public class WallObstacle : Obstacle {
 
     void HitEffect()
     {
-        /*foreach (var rb in childRigidBodies)
-        {
-            //rb.gameObject.GetComponent<Collider>().enabled = false;
-            rb.AddExplosionForce(0.07f, transform.position, 10.0f, 0.2f, ForceMode.Impulse);
-            rb.AddTorque(Random.value, Random.value, Random.value, ForceMode.Impulse);
-            rb.gameObject.GetComponent<Collider>().enabled = true;
-            rb.useGravity = true;
-        }*/
         transform.GetComponentInChildren<EasyBreakable>().Damage(100);
 
         CameraEffectManager.Bloom(2.0f, 0.1f);

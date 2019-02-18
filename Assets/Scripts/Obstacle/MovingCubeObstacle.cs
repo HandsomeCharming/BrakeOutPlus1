@@ -10,6 +10,7 @@ public class MovingCubeObstacle : Obstacle {
     
     // if true, insta kill, if false, can be knock by accelerating
     public bool m_DamageIsCube;
+    public Rigidbody rb;
 
     [HideInInspector]
     public Vector3[] movePos;
@@ -18,6 +19,7 @@ public class MovingCubeObstacle : Obstacle {
 
     bool m_Moving;
     float m_WaitTime;
+    const float m_DestroyTime = 2.0f;
 
     void Awake()
     {
@@ -27,6 +29,7 @@ public class MovingCubeObstacle : Obstacle {
     public override void MoveToCallBack()
     {
         GetComponent<BoxCollider>().enabled = true;
+        rb.useGravity = true;
         m_Moving = true;
         m_WaitTime = 0;
     }
@@ -55,22 +58,26 @@ public class MovingCubeObstacle : Obstacle {
         if (other.gameObject.CompareTag("Player") && !m_Triggered)
         {
             m_Triggered = true;
-            //Player.current.GetComponent<Rigidbody>().constraints = 0;
             if (Player.current.playerState == Player.PlayerState.Playing)
             {
                 ObstacleType type = ObstacleType.Cube;
                 if (!m_DamageIsCube)
                     type = ObstacleType.Wall;
                 Player.current.HitByObstacle(type);
-                AudioSystem.current.PlayEvent(AudioSystemEvents.WallEventName);
             }
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * m_ImpactImpulse + transform.up * 1.0f, ForceMode.Impulse);
-            rb.AddTorque(new Vector3(2, 2, 2), ForceMode.Impulse);
-            rb.useGravity = true;
-            GetComponent<BoxCollider>().isTrigger = false;
-            //Destroy(gameObject, 1.0f);
+            HitEffect();
             m_Moving = false;
         }
+    }
+
+    void HitEffect() {
+        transform.GetComponentInChildren<EasyBreakable>().Damage(100);
+
+        CameraEffectManager.Bloom(2.0f, 0.1f);
+        CameraFollow.current.StartShaking(0.2f, 0.3f);
+        if (Player.current.m_Health >= 0)
+            AudioSystem.current.PlayEvent(AudioSystemEvents.WallEventName);
+
+        Destroy(this.gameObject, m_DestroyTime);
     }
 }
