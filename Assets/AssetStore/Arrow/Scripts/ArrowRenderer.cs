@@ -20,7 +20,7 @@ public class ArrowRenderer : MonoBehaviour
 	[SerializeField]
 	Vector3 end;
 	[SerializeField]
-	Vector3 upwards = Vector3.up;
+	public Vector3 upwards = Vector3.up;
 
 	Transform arrow;
 	List<Transform> segments = new List<Transform>();
