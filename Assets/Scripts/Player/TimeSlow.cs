@@ -28,10 +28,10 @@ public class TimeSlow : MonoBehaviour {
         m_Time -= Time.deltaTime;
         if (m_Time <= 0)
         {
-            Destroy(this, 0.1f);
             GameManager.current.TokiyoTomare(1.0f);
 
             Camera.main.GetComponent<CameraFollow>().EnableMotionBlur(false);
+            Destroy(this, 0.1f);
         }
     }
 }

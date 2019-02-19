@@ -68,6 +68,7 @@ public class BackgroundManager : MonoBehaviour {
             case BackgroundEnum.SkyCity:
                 Camera.main.clearFlags = CameraClearFlags.Skybox;
                 m_ColorCanvas.SetActive(false);
+                m_CubeGroup.gameObject.SetActive(false);
                 //FloorBuilder.current.EnableAllFloorMaterials(false);
                 FloorBuilder.current.EnableAllFloorMaterials(true);
                 FloorBuilder.current.ChangeAllFloorMaterials(m_Storer.floorSkyMat);

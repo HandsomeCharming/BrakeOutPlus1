@@ -136,9 +136,9 @@ public class ObstacleBuilder : MonoBehaviour {
                     rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
                     rim.transform.forward = (end1 - end2).normalized;
                     rim.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(rim);
 
                     //rim.transform.parent = floorMesh.transform;
-                    floorMesh.destroyOnRemake.Add(rim);
 
                     madeMesh = true;
                     break;
@@ -343,6 +343,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
                     rim.transform.forward = (end1 - end2).normalized;
                     rim.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(rim);
 
                     // Add sign
                     GameObject signpost1 = Instantiate(ObstacleDataReader.GetObstaclePrefab(GlideSign), null);
@@ -358,7 +359,6 @@ public class ObstacleBuilder : MonoBehaviour {
                     floorMesh.destroyOnRemake.Add(signpost2);*/
 
                     //rim.transform.parent = floorMesh.transform;
-                    floorMesh.destroyOnRemake.Add(rim);
 
                     madeMesh = true;
                     break;
@@ -379,7 +379,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     floorMesh.makeMesh();
 
                     // Add arrows
-                    var arrowRendererLeftGO = Instantiate(ObstacleDataReader.GetObstaclePrefab(ArrowRendererName));
+                    /*var arrowRendererLeftGO = Instantiate(ObstacleDataReader.GetObstaclePrefab(ArrowRendererName));
                     var arrowRendererLeft = arrowRendererLeftGO.GetComponent<ArrowRenderer>();
                     var arrowRendererRightGO = Instantiate(ObstacleDataReader.GetObstaclePrefab(ArrowRendererName));
                     var arrowRendererRight = arrowRendererRightGO.GetComponent<ArrowRenderer>();
@@ -388,7 +388,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     arrowRendererRight.SetPositions(prevPos2, floorMesh.prevPos2);
                     arrowRendererRight.upwards = Vector3.right;
                     floorMesh.destroyOnRemake.Add(arrowRendererLeftGO);
-                    floorMesh.destroyOnRemake.Add(arrowRendererRightGO);
+                    floorMesh.destroyOnRemake.Add(arrowRendererRightGO);*/
 
                     if (GlideTrigger.current)
                     {
@@ -430,6 +430,7 @@ public class ObstacleBuilder : MonoBehaviour {
                     rim.transform.localScale = new Vector3(0.3f, 0.3f, (end1 - end2).magnitude);
                     rim.transform.forward = (end1 - end2).normalized;
                     rim.GetComponent<ItemSuper>().StartAnim();
+                    floorMesh.destroyOnRemake.Add(rim);
 
                     madeMesh = true;
                     break;
