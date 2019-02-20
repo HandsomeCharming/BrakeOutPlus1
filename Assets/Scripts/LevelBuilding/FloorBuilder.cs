@@ -254,7 +254,6 @@ public class FloorBuilder : MonoBehaviour {
         {
             floorMeshes[0].GetComponent<FloorColor>().DrawColor();
         }
-        
     }
 
     void AddDefaultFloorType()

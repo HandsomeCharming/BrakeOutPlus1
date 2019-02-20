@@ -24,7 +24,7 @@ public class TabUIColor : MonoBehaviour {
 	void Update () {
 		if(BackgroundManager.current.m_Background == BackgroundEnum.Color && inPlayTab == true)
         {
-            Color col = background.GetCurrentDownColor();
+            Color col = background.GetCurrentTopColor();
 
             foreach(var image in images)
             {

@@ -9,7 +9,6 @@ using System;
 public class GameManager : MonoBehaviour {
 
     public static GameManager current;
-    public static int m_NextAdTime = 3;
 
     public bool m_LoadFromDefault = true;
     public GameObject m_PlayerPrefab;
@@ -500,26 +499,22 @@ public class GameManager : MonoBehaviour {
         UIManager.current.ChangeStateByGameState();
     }
 
-    void HandleAdCountAndShowIfShould()
-    {
-        if (AdPlacementRecorder.ShouldPlayAd())
-        {
-            //AdManager.Instance.ShowBannerAd();
-			if (!RateUsPanel.IsRated ()) {
-				RandomShowRateUsOrInterstitial ();
-			} else {
-				ShowInterstitialAndResetAdTime ();
-			}
-
+      void HandleAdCountAndShowIfShould() {
+        if (AdPlacementRecorder.ShouldPlayAd()) {
+          //AdManager.Instance.ShowBannerAd();
+          if (!RateUsPanel.IsRated()) {
+            RandomShowRateUsOrInterstitial();
+          } else {
+            ShowInterstitialAndResetAdTime();
+          }
         }
-    }
+      }
 
-	void RandomShowRateUsOrInterstitial()
+    void RandomShowRateUsOrInterstitial()
 	{
 		float chance = UnityEngine.Random.value;
 		if (chance < 0.5f) {
 			UIManager.current.m_RateUsPanel.Show ();
-			m_NextAdTime = UnityEngine.Random.Range (2, 5);
 		} else {
 			ShowInterstitialAndResetAdTime ();
 		}
@@ -529,7 +524,6 @@ public class GameManager : MonoBehaviour {
 	{
 		if(AdManager.Instance.ShowInterstitial())
 		{
-			m_NextAdTime = UnityEngine.Random.Range(2, 5);
             AdPlacementRecorder.AdPlayed();
 		}
 	}
@@ -614,10 +608,8 @@ public class GameManager : MonoBehaviour {
         //Scene scene = SceneManager.GetActiveScene();
         //SceneManager.LoadScene(scene.name);
 
-        if (!AdRemoved())
-        {
+        if (!AdRemoved()) {
             AdPlacementRecorder.GamePlayed();
-            HandleAdCountAndShowIfShould();
         }
     }
 

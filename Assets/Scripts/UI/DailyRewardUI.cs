@@ -75,7 +75,6 @@ public class DailyRewardUI : MonoBehaviour {
             m_ButtonAfterClaim.SetActive(false);
 
             StartCoroutine(FadeIn(UIManager.UIFadeInTime));
-
         }
     }
 
@@ -152,7 +151,7 @@ public class DailyRewardUI : MonoBehaviour {
         m_ButtonAfterClaim.SetActive(true);
     }
 
-    bool CanReceiveReward()
+    public bool CanReceiveReward()
     {
         if (RecordManager.HasRecordDate(DateKey))
         {

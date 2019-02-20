@@ -49,36 +49,33 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void ChangeStateByGameState()
-    {
-        m_ConsistantUI.UpdateNumbers();
-		if (GameManager.current.state == GameManager.GameState.Start || GameManager.current.state == GameManager.GameState.AssembleTrack) {
-            if (false) //!AppManager.instance.HasName())
-            {
-                StartLogin();
-            }
-			else {
-				StartMainMenu ();
-			}
-		} else if (GameManager.current.state == GameManager.GameState.Running) {
-			StartGame ();
-		} else if (GameManager.current.state == GameManager.GameState.Paused) {
-			Pause ();
-		} else if (GameManager.current.state == GameManager.GameState.ReviveMenu) {
-			ShowRevive ();
-		} else if (GameManager.current.state == GameManager.GameState.Login) {
-            StartLogin();
-		} else if (GameManager.current.state == GameManager.GameState.Tutorial) {
-			DisableOthersForTutorial ();
-		}
-
-        if (GameManager.current.state == GameManager.GameState.Dead)
-        {
-            GameOver();
-        }
+  public void ChangeStateByGameState() {
+    m_ConsistantUI.UpdateNumbers();
+    if (GameManager.current.state == GameManager.GameState.Start || GameManager.current.state == GameManager.GameState.AssembleTrack) {
+      if (false) //!AppManager.instance.HasName())
+      {
+        StartLogin();
+      } else {
+        StartMainMenu();
+      }
+    } else if (GameManager.current.state == GameManager.GameState.Running) {
+      StartGame();
+    } else if (GameManager.current.state == GameManager.GameState.Paused) {
+      Pause();
+    } else if (GameManager.current.state == GameManager.GameState.ReviveMenu) {
+      ShowRevive();
+    } else if (GameManager.current.state == GameManager.GameState.Login) {
+      StartLogin();
+    } else if (GameManager.current.state == GameManager.GameState.Tutorial) {
+      DisableOthersForTutorial();
     }
 
-    public void ShowDailyLogin()
+    if (GameManager.current.state == GameManager.GameState.Dead) {
+      GameOver();
+    }
+  }
+
+  public void ShowDailyLogin()
     {
         m_DailyReward.ShowIfCanReceiveReward();
     }
@@ -99,10 +96,40 @@ public class UIManager : MonoBehaviour {
 
         if(GameManager.current.m_GameCount > 0)
         {
-            ShowDailyLogin();
+            if(m_DailyReward.CanReceiveReward()) {
+                ShowDailyLogin();
+            } else {
+                HandleAdCountAndShowIfShould();
+            }
         }
     }
-	
+    
+    void HandleAdCountAndShowIfShould() {
+        if (AdPlacementRecorder.ShouldPlayAd()) {
+            //AdManager.Instance.ShowBannerAd();
+            if (!RateUsPanel.IsRated()) {
+                RandomShowRateUsOrInterstitial();
+            } else {
+                ShowInterstitialAndResetAdTime();
+            }
+        }
+    }
+
+    void RandomShowRateUsOrInterstitial() {
+        float chance = UnityEngine.Random.value;
+        if (chance < 0.5f) {
+            UIManager.current.m_RateUsPanel.Show();
+        } else {
+            ShowInterstitialAndResetAdTime();
+        }
+    }
+
+    void ShowInterstitialAndResetAdTime() {
+        if (AdManager.Instance.ShowInterstitial()) {
+            AdPlacementRecorder.AdPlayed();
+        }
+    }
+    
     void StartLogin()
     {
         DisableAll();

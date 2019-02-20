@@ -91,9 +91,7 @@ public class BackgroundMaterial : MonoBehaviour {
     {
         if(BackgroundManager.current.m_Background == BackgroundEnum.Color)
         {
-            GlideBackground.SetActive(true);
             m_Gliding = true;
-            StartCoroutine(GlideManage());
         }
     }
     
@@ -101,46 +99,13 @@ public class BackgroundMaterial : MonoBehaviour {
     {
         m_Gliding = false;
     }
-
-    IEnumerator GlideManage()
-    {
-        const float fadeInTime = 1.0f;
-        const float maxAlpha = 0.6f;
-        float time = 0;
-        Image image = GlideBackground.GetComponent<Image>();
-        while (m_Gliding)
-        {
-            if(time < fadeInTime)
-            {
-                Color col = image.color;
-                col.a = Mathf.Lerp(0, maxAlpha, time / fadeInTime);
-                image.color = col;
-            }
-            yield return new WaitForEndOfFrame();
-            time += Time.deltaTime;
-        }
-
-        time = 0;
-        while (time < fadeInTime)
-        {
-            Color col = image.color;
-            col.a = Mathf.Lerp(maxAlpha, 0, time / fadeInTime);
-            image.color = col;
-            yield return new WaitForEndOfFrame();
-            time += Time.deltaTime;
-        }
-        
-        GlideBackground.SetActive(false);
-    }
-
+    
 
     public void StartAutoPilotIfColor()
     {
         if (BackgroundManager.current.m_Background == BackgroundEnum.Color)
         {
-            AutoPilotBackground.SetActive(true);
             m_Autopilot = true;
-            StartCoroutine(AutoPilotManage());
         }
     }
 
@@ -148,38 +113,6 @@ public class BackgroundMaterial : MonoBehaviour {
     {
         m_Autopilot = false;
     }
-
-    IEnumerator AutoPilotManage()
-    {
-        const float fadeInTime = 1.0f;
-        const float maxAlpha = 0.5f;
-        float time = 0;
-        Image image = AutoPilotBackground.GetComponent<Image>();
-        while (m_Autopilot)
-        {
-            if (time < fadeInTime)
-            {
-                Color col = image.color;
-                col.a = Mathf.Lerp(0, maxAlpha, time / fadeInTime);
-                image.color = col;
-            }
-            yield return new WaitForEndOfFrame();
-            time += Time.deltaTime;
-        }
-
-        time = 0;
-        while (time < fadeInTime)
-        {
-            Color col = image.color;
-            col.a = Mathf.Lerp(maxAlpha, 0, time / fadeInTime);
-            image.color = col;
-            yield return new WaitForEndOfFrame();
-            time += Time.deltaTime;
-        }
-
-        AutoPilotBackground.SetActive(false);
-    }
-
 
     void SetColorA(TopDownColor colors)
     {
@@ -297,7 +230,6 @@ public class BackgroundMaterial : MonoBehaviour {
     }
 
     void Update () {
-        time += Time.deltaTime;
         //floorTime += Time.deltaTime;
         if(m_SharpLerpTime > 0)
         {
@@ -312,8 +244,7 @@ public class BackgroundMaterial : MonoBehaviour {
                     SetColorA(blackColor);
                     SetColorB(blackColor);
                 }
-                else
-                {
+                else {
                     SetColorA(m_CurrentColor.colors[ColorAIndex]);
                     SetColorB(m_CurrentColor.colors[ColorBIndex]);
                 }
@@ -333,8 +264,8 @@ public class BackgroundMaterial : MonoBehaviour {
             SetColorB(m_CurrentColor.colors[ColorBIndex]);
             mat.SetFloat("_ColorLerp", time / lerpTime);
         }
-        else
-        {
+        else if(!m_Gliding) {
+            time += Time.deltaTime;
             mat.SetFloat("_ColorLerp", time / lerpTime);
             FloorBuilder.current.ChangeFloorColor();
         }
