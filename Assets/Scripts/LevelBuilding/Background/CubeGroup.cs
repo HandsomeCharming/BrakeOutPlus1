@@ -41,7 +41,7 @@ public class CubeGroup : MonoBehaviour {
         transform.localScale = new Vector3(scaleXZ, 1, scaleXZ); 
     }
 
-    private void Update() {
+    private void LateUpdate() {
         if(CameraFollow.current == null) {
             return;
         }
