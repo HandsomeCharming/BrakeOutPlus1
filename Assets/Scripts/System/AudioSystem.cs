@@ -1,4 +1,4 @@
-﻿//#define HAS_WWISE
+﻿#define HAS_WWISE
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
