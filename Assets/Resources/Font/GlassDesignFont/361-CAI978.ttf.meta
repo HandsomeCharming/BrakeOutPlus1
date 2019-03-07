@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2b12d61eab28e40b7bc4f5e5c7a6ec74
+timeCreated: 1551939126
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: 361-CAI978
+  fontNames:
+  - 361-CAI978
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
