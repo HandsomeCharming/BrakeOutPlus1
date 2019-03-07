@@ -6,12 +6,17 @@ using UnityEngine.Events;
 
 public class MenuBarButton : MonoBehaviour {
     public Image m_BaseImage;
+	public Image m_Icon;
+	public Text m_Text;
     public GameObject m_Menu;
     public UnityEvent m_EventWhenPressedAgain;
     public UnityEvent m_EventWhenFirstActivate;
     bool m_Active;
 
-    static Color selectedColor = new Color(100.0f / 255.0f, 120.0f / 255.0f, 135.0f / 255.0f);
+    static Color flatDesignSelectedColor = new Color(100.0f / 255.0f, 120.0f / 255.0f, 135.0f / 255.0f);
+	static Color glassDesignSelectedColor = new Color(235.0f / 245.0f, 255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
+	static Color glassDesignDeselectedColor = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f, 100.0f / 255.0f);
+	static Color glassDesignContainSelectedColor = new Color(37.0f / 255.0f, 170.0f / 255.0f, 225.0f / 255.0f);
 
     public void Activate()
     {
@@ -34,7 +39,9 @@ public class MenuBarButton : MonoBehaviour {
         m_Active = active;
         if (active == true)
         {
-            m_BaseImage.color = selectedColor;
+			m_BaseImage.color = glassDesignSelectedColor;
+			m_Icon.color = glassDesignContainSelectedColor;
+			m_Text.color = glassDesignContainSelectedColor;
             if (m_Menu)
             {
                 m_Menu.SetActive(true);
@@ -42,7 +49,9 @@ public class MenuBarButton : MonoBehaviour {
         }
         else
         {
-            m_BaseImage.color = Color.white;
+			m_BaseImage.color = glassDesignDeselectedColor;
+			m_Icon.color = Color.white;
+			m_Text.color = Color.white;
             if (m_Menu)
             {
                 m_Menu.SetActive(false);

@@ -16,8 +16,10 @@ public class TabUIColor : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         inPlayTab = true;
-        otherColor = new Color(37.0f/255.0f, 170.0f / 255.0f, 225.0f / 255.0f);
-        skyColor = new Color(37.0f / 255.0f, 170.0f / 255.0f, 225.0f / 255.0f);
+        //otherColor = new Color(37.0f/255.0f, 170.0f / 255.0f, 225.0f / 255.0f);
+        //skyColor = new Color(37.0f / 255.0f, 170.0f / 255.0f, 225.0f / 255.0f);
+		otherColor = Color.white;
+		skyColor = Color.white;
     }
 	
 	// Update is called once per frame
@@ -64,12 +66,12 @@ public class TabUIColor : MonoBehaviour {
         {
             foreach (var image in images)
             {
-                image.color = skyColor;
+                //image.color = skyColor;
             }
 
             foreach (var text in texts)
             {
-                text.color = skyColor;
+                //text.color = skyColor;
             }
         }
     }
