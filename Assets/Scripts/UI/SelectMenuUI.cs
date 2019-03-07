@@ -94,7 +94,7 @@ public class SelectMenuUI : MonoBehaviour {
             m_CurrentLocked = false;
             ShowBuyButtonAndPrice(false);
             if(m_Manager.GetCurrentCarData().CanChangeTrail)
-                m_TrailButton.SetActive(true);
+                m_TrailButton.SetActive(false);
         }
 
         SetCurrentRarity();
