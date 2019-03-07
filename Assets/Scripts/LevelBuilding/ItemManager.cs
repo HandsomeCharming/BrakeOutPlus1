@@ -83,6 +83,7 @@ public class ItemManager {
     int m_CurrentItemDataIndex = 0;
     int m_LastItemDataIndex;
     ItemSpawnData m_CurrentItemData;
+    ItemType m_LastItemType;
 
     const string savePath = "/itemSave.save";
 

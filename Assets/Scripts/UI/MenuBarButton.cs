@@ -40,8 +40,12 @@ public class MenuBarButton : MonoBehaviour {
         if (active == true)
         {
 			m_BaseImage.color = glassDesignSelectedColor;
-			m_Icon.color = glassDesignContainSelectedColor;
-			m_Text.color = glassDesignContainSelectedColor;
+            if(m_Icon != null) {
+                m_Icon.color = glassDesignContainSelectedColor;
+            }
+            if (m_Text != null) {
+                m_Text.color = glassDesignContainSelectedColor;
+            }
             if (m_Menu)
             {
                 m_Menu.SetActive(true);
@@ -50,8 +54,12 @@ public class MenuBarButton : MonoBehaviour {
         else
         {
 			m_BaseImage.color = glassDesignDeselectedColor;
-			m_Icon.color = Color.white;
-			m_Text.color = Color.white;
+            if (m_Icon != null) {
+                m_Icon.color = Color.white;
+            }
+            if (m_Text != null) {
+                m_Text.color = Color.white;
+            }
             if (m_Menu)
             {
                 m_Menu.SetActive(false);
