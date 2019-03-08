@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 using System.Collections;
@@ -313,7 +314,7 @@ public class GameManager : MonoBehaviour {
 
     public void CollectInGameCoins(bool doubleCollect = false)
     {
-        int mult = doubleCollect ? 2 : 1;
+        int mult = doubleCollect ? 3 : 1;
         AddCoin(singleGameCoins * mult);
         singleGameCoins = 0;
     }

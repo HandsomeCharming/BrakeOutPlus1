@@ -74,7 +74,8 @@ public class ItemUpgradeCard : MonoBehaviour {
         m_Level = ItemManager.current.GetItemLevel(m_Type);
 		m_Price = ItemManager.current.GetItemPrice(m_Type);
 
-		Color purchaseColor = new Color(0.153F, 0.667F, 0.882F);
+		//Color purchaseColor = new Color(0.153F, 0.667F, 0.882F);
+		Color purchaseColor = Color.white;
 		Color insufficientCoinColor = new Color(0.69F, 0.69F, 0.69F);
 		Color solid = Color.white;
 		Color trans = solid;
