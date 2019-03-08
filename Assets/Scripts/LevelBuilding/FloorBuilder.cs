@@ -408,7 +408,7 @@ public class FloorBuilder : MonoBehaviour {
         end.AddObstacleByType(ObstacleType.GlidingEnd);
         m_UpcomingFloorDatas.Enqueue(end);
 
-        m_UpcomingFloorDatas.Enqueue(GetStraightFloorData(22));
+        m_UpcomingFloorDatas.Enqueue(GetStraightFloorData(28));
     }
 
     public void AddAutoPilotEnd()
