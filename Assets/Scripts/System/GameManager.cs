@@ -99,6 +99,10 @@ public class GameManager : MonoBehaviour {
         {
             GameObject go = new GameObject();
             go.AddComponent<AppManager>();
+
+            iOSHapticFeedback haptic = go.AddComponent<iOSHapticFeedback>();
+            haptic.debug = false;
+            go.AddComponent<VibrateService>();
             go.name = "AppManager";
         }
 

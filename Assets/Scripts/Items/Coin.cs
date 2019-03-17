@@ -56,6 +56,7 @@ public class Coin : ItemSuper {
         GameManager.current.AddCoinInGame(m_CoinAmount);
         isMagneting = false;
         AudioSystem.current.PlayCoin();
+        VibrateService.instance.TriggerLight();
 
         disableCoinWithGenerator();
 

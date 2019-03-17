@@ -215,7 +215,9 @@ public class Player : MonoBehaviour {
     {
         print("Hit");
         print(m_Health);
-        if(type == ObstacleType.Cube)
+
+        VibrateService.instance.TriggerHeavy();
+        if (type == ObstacleType.Cube)
         {
             DecreaseHealth();
         }
