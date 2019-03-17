@@ -93,6 +93,7 @@ public class ItemManager {
         
         m_Storer = (ItemManagerObject) Resources.Load("ScriptableObjects/ItemManagerData");
         Debug.Assert(m_Storer != null, "Item Manager data should not be null");
+
         m_LastItemDataIndex = m_Storer.m_SpawnData.Length - 1;
         m_CurrentItemData = m_Storer.m_SpawnData[0];
         m_NextItemFloorCount = m_CurrentItemData.ItemFloorGap;
@@ -207,7 +208,7 @@ public class ItemManager {
             float count = 1.0f;
             for (int i = first + 1; i < items.Length; ++i)
             {
-                if (GetItemLevel(items[i]) <= 0)
+                if (GetItemLevel(items[i]) <= 0 || m_LastItemType == items[i])
                     continue;
                 float p = count + 1.0f;
                 count += 1.0f;
@@ -218,6 +219,7 @@ public class ItemManager {
                 }
             }
 
+            m_LastItemType = type;
             return m_PrefabDict[type];
         }
         return null;
