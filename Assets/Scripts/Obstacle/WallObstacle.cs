@@ -56,9 +56,11 @@ public class WallObstacle : Obstacle {
         if (other.gameObject.CompareTag("Player"))
         {
             //Player.current.GetComponent<Rigidbody>().constraints = 0;
-            if (Player.current.playerState == Player.PlayerState.Playing)
-            {
+            print("WALLLLLLL");
+            if (Player.current.playerState == Player.PlayerState.Playing) {
                 HitOnWall();
+            } else if(Player.current.playerState == Player.PlayerState.AutoControl) {
+                HitEffect();
             }
         }
     }

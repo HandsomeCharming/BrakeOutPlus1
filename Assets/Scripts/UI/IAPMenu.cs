@@ -13,6 +13,12 @@ public class IAPMenu : MonoBehaviour {
         ResetRemovedAdUI();
     }
 
+    private void OnEnable() {
+        ResetRemovedAdUI();
+        // call it twice to override iap button translate
+        Invoke("ResetRemovedAdUI", 0.3f);
+    }
+
     public void GetCoin(int coinCount)
     {
         GameManager.current.AddCoin(coinCount);
@@ -33,7 +39,6 @@ public class IAPMenu : MonoBehaviour {
         if (GameManager.current.AdRemoved())
         {
             RemoveAdButton.enabled = false;
-            RemoveAdButton.GetComponent<UnityEngine.Purchasing.IAPButton>().enabled = false;
             RemoveAdPriceText.text = LocalizationManager.tr("OWNED");
         }
     }
